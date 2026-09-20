@@ -16,8 +16,11 @@ passed its two existing tests. The Windows repair preflight timed out with the
 function unchanged. These integration checks are unscored and do not measure
 Ratchet's usefulness. A second Linux preflight combined four real MCP calls,
 exact original retrieval, an implementation edit, and a passing pytest test.
-The three-task prospective repair protocol and runner have passed independent
-review; scoring requires their committed freeze.
+The three-task prospective repair protocol and runner were frozen at `2c6da13`.
+The first triplet passed task quality, but both Ratchet workers missed their
+assigned MCP calls. Their failed method checks and unknown costs are retained.
+A prospective startup amendment is documented separately; these results cannot
+establish the original confirmatory usefulness gate.
 
 ## Try the offline replay
 
@@ -112,5 +115,7 @@ authored adapters invoking permitted public-library code, not natural agent trac
 
 See [evaluation plan](docs/ratchet-plan.md), [development protocol](docs/ratchet-development-evaluation.md),
 [workflow protocol](docs/ratchet-workflow-protocol.md), and [numeric receipts](results/ratchet/).
+The [reproduction instructions](docs/ratchet-workflow-reproduction.md) distinguish
+the frozen setup from the [startup amendment](docs/ratchet-workflow-amendment-1.md).
 Pytest-xdist is not supported yet.
 Interrupted/fail-fast runs, changed test scope, and multiple failures abstain.

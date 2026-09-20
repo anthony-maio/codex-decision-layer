@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "independent_review": true,
+  "human_validation": false,
+  "new_scored_trials_started": 0,
+  "original_trials_preserved": 3,
+  "scope": "amendment input freeze, exact command delta, lock ownership, original-row preservation, recovery attribution and final-state audit; no usefulness or release approval",
+  "independent_tests_passed": 8,
+  "findings_resolved": [
+    "require explicit six-input freeze and matching independent review hashes",
+    "audit final state under output lock even when original runner returns ALREADY_COMPLETE"
+  ],
+  "sha256": {
+    "scripts/run_ratchet_workflow_amended.py": "3fda4ea5bb00e8001b2fad40e45308eac87a193bd4af91a30a4a87ece2836bd2",
+    "tests/test_ratchet_workflow_amendment.py": "cbbc466b3d2ca241adff7437b22b577c74978a96834aeb92772247401f81b89c",
+    "docs/ratchet-workflow-amendment-1.md": "7f763031d022fe91d52a14f915f3b408f4669ddbdab02c1d0e9a8f2e9c64ff4d",
+    "results/ratchet/workflow-v1-first-three.json": "186323ed1af669bc4ab8b41c1721f49b811ae5c9c6f5f8ccca75a3e4d39295f9",
+    "results/ratchet/workflow-startup-diagnostics.json": "0374a687a76dd17b15959e1bd35744d6336fba62750c860007fe35dd89c6232d"
+  }
+}

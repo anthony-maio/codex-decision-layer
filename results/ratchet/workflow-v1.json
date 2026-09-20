@@ -1,0 +1,504 @@
+{
+  "status": "IN_PROGRESS",
+  "kind": "ORIGINAL",
+  "freeze_commit": "2c6da13ffb964a77f3e9b0cfd88f7810de23ff7f",
+  "freeze_sha256": "cbc1638d6270a457a194ed3220cdc2fe9cacff7d19decd2d7bb679c5b9c9d03c",
+  "codex_cli": "codex-cli 0.146.0",
+  "python": "3.12.13",
+  "platform": "linux",
+  "history": {
+    "status": "RECORDED_NOT_CLASSIFIED",
+    "records": [
+      {
+        "task": "invoice",
+        "attempt": 0,
+        "record": "attempt-0.jsonl",
+        "record_sha256": "1bb77896775f62ec31681be3a2dbdc18b55c1aa23934460a1277d501ade8bd2e",
+        "source_sha256": "9b63f20afb9016c05b8048598da68b0eab7ffb3a81562e976cf5d6d59e6cc3a3",
+        "failure_stage": "call",
+        "exit_code": 1,
+        "child_provenance": {
+          "status": "VERIFIED",
+          "mode": "pytest",
+          "module_sha256": {
+            "evidence_selector/__init__.py": "8266bea66e88db2dd554f5cd90aeec10ff55b91f15d942219f5f882e3b55091c",
+            "evidence_selector/ratchet/records.py": "1dda34ea02f0bfd90a8a693f1bde846ecbcf1824737903d619f937478ddb4f78",
+            "evidence_selector/ratchet/pytest_reporter.py": "b0d1f8137401300adc2d308c6975f8c76617be185ac6d97713b85c7f05355fba"
+          },
+          "freeze_sha256": null
+        }
+      },
+      {
+        "task": "invoice",
+        "attempt": 1,
+        "record": "attempt-1.jsonl",
+        "record_sha256": "c0a9208e8a1e5521653d0b02608917653eb2abfd25aca7b06bd589d2590c053c",
+        "source_sha256": "e5a356c805cf992c5a1bb38caa5f911fbe58aba522e3f5eb72d54cfa7d8e35f5",
+        "failure_stage": "call",
+        "exit_code": 1,
+        "child_provenance": {
+          "status": "VERIFIED",
+          "mode": "pytest",
+          "module_sha256": {
+            "evidence_selector/__init__.py": "8266bea66e88db2dd554f5cd90aeec10ff55b91f15d942219f5f882e3b55091c",
+            "evidence_selector/ratchet/records.py": "1dda34ea02f0bfd90a8a693f1bde846ecbcf1824737903d619f937478ddb4f78",
+            "evidence_selector/ratchet/pytest_reporter.py": "b0d1f8137401300adc2d308c6975f8c76617be185ac6d97713b85c7f05355fba"
+          },
+          "freeze_sha256": null
+        }
+      },
+      {
+        "task": "queue",
+        "attempt": 0,
+        "record": "attempt-0.jsonl",
+        "record_sha256": "36d533c0336f7dd163d71b7747bce0e65fdc3890abae7daebab5d969d5e79196",
+        "source_sha256": "a504543bf4e48d4772b8672258d8c32d3ec91942bf58165af192d593ab16f9ce",
+        "failure_stage": "setup",
+        "exit_code": 1,
+        "child_provenance": {
+          "status": "VERIFIED",
+          "mode": "pytest",
+          "module_sha256": {
+            "evidence_selector/__init__.py": "8266bea66e88db2dd554f5cd90aeec10ff55b91f15d942219f5f882e3b55091c",
+            "evidence_selector/ratchet/records.py": "1dda34ea02f0bfd90a8a693f1bde846ecbcf1824737903d619f937478ddb4f78",
+            "evidence_selector/ratchet/pytest_reporter.py": "b0d1f8137401300adc2d308c6975f8c76617be185ac6d97713b85c7f05355fba"
+          },
+          "freeze_sha256": null
+        }
+      },
+      {
+        "task": "queue",
+        "attempt": 1,
+        "record": "attempt-1.jsonl",
+        "record_sha256": "9f23ecc8bcd09798d87f357d35e47440aefdef09e1d7319ee92225cde2faebbf",
+        "source_sha256": "0ca7d451c4926174989f5294e472ecf3304b39b902e15e7944a8e5f5b7e059c2",
+        "failure_stage": "call",
+        "exit_code": 1,
+        "child_provenance": {
+          "status": "VERIFIED",
+          "mode": "pytest",
+          "module_sha256": {
+            "evidence_selector/__init__.py": "8266bea66e88db2dd554f5cd90aeec10ff55b91f15d942219f5f882e3b55091c",
+            "evidence_selector/ratchet/records.py": "1dda34ea02f0bfd90a8a693f1bde846ecbcf1824737903d619f937478ddb4f78",
+            "evidence_selector/ratchet/pytest_reporter.py": "b0d1f8137401300adc2d308c6975f8c76617be185ac6d97713b85c7f05355fba"
+          },
+          "freeze_sha256": null
+        }
+      },
+      {
+        "task": "events",
+        "attempt": 0,
+        "record": "attempt-0.jsonl",
+        "record_sha256": "82f3bd03f0510f65528cd9b2c4810850895b088e23b67b19e541f46881adc79c",
+        "source_sha256": "1f2567b0e4dbc004e824e416a6ef00896c7049399a1a951111dd7a43a11caccc",
+        "failure_stage": "call",
+        "exit_code": 1,
+        "child_provenance": {
+          "status": "VERIFIED",
+          "mode": "pytest",
+          "module_sha256": {
+            "evidence_selector/__init__.py": "8266bea66e88db2dd554f5cd90aeec10ff55b91f15d942219f5f882e3b55091c",
+            "evidence_selector/ratchet/records.py": "1dda34ea02f0bfd90a8a693f1bde846ecbcf1824737903d619f937478ddb4f78",
+            "evidence_selector/ratchet/pytest_reporter.py": "b0d1f8137401300adc2d308c6975f8c76617be185ac6d97713b85c7f05355fba"
+          },
+          "freeze_sha256": null
+        }
+      },
+      {
+        "task": "events",
+        "attempt": 1,
+        "record": "attempt-1.jsonl",
+        "record_sha256": "9d94ae6012f308a75d8169d4b79c97e1c8c096ad0b8310f33aadc69bd669347c",
+        "source_sha256": "1d8c2a1f57f270dcede18995a5fe20ede55a491843e6b0877edc027b01e3f550",
+        "failure_stage": "call",
+        "exit_code": 1,
+        "child_provenance": {
+          "status": "VERIFIED",
+          "mode": "pytest",
+          "module_sha256": {
+            "evidence_selector/__init__.py": "8266bea66e88db2dd554f5cd90aeec10ff55b91f15d942219f5f882e3b55091c",
+            "evidence_selector/ratchet/records.py": "1dda34ea02f0bfd90a8a693f1bde846ecbcf1824737903d619f937478ddb4f78",
+            "evidence_selector/ratchet/pytest_reporter.py": "b0d1f8137401300adc2d308c6975f8c76617be185ac6d97713b85c7f05355fba"
+          },
+          "freeze_sha256": null
+        }
+      }
+    ],
+    "setup_seconds": 3.415135408984497,
+    "python": "3.12.13",
+    "platform": "linux"
+  },
+  "trials": [
+    {
+      "index": 0,
+      "task": "invoice",
+      "replicate": 0,
+      "method": "plain",
+      "position": 0,
+      "triplet": 0,
+      "status": "COMPLETE",
+      "worker_model_requested": "gpt-5.6-sol",
+      "prompt_sha256": "a2f7c0c8c985e562780071fb50537bda5c6fde1018c0e52e3a98a34410d80a82",
+      "elapsed_seconds": 53.33622317900881,
+      "timed_out": false,
+      "worker_exit_code": 0,
+      "worker_completed": true,
+      "worker_usage": {
+        "input_tokens": 101951,
+        "cached_input_tokens": 89472,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2166,
+        "reasoning_output_tokens": 606
+      },
+      "usage_status": "REPORTED",
+      "worker_transport": {
+        "retry_count": null,
+        "retry_count_status": "NOT_EXPOSED_BY_CLI",
+        "retry_notice_events": 0,
+        "retry_notice_stderr_lines": 0,
+        "error_events": 0
+      },
+      "worker_cost": {
+        "lower_usd": 0.1290248,
+        "upper_usd": 0.1290248,
+        "status": "EXACT_AT_DECLARED_RATES",
+        "cache_writes_reported": true,
+        "per_request_surcharge_unresolved": false,
+        "kind": "API-equivalent estimate, not subscription billing"
+      },
+      "selector": {
+        "status": "NOT_USED",
+        "tool_calls": 0,
+        "tool_elapsed_ms": 0,
+        "provider_calls": 0,
+        "provider_retries": 0,
+        "provider_errors": 0,
+        "provider_input_tokens": 0,
+        "provider_output_tokens": 0,
+        "provider_latency_ms": 0,
+        "estimated_cost_usd": 0
+      },
+      "total_cost": {
+        "lower_usd": 0.1290248,
+        "upper_usd": 0.1290248
+      },
+      "supplied_files_unchanged": true,
+      "implementation_changed": true,
+      "unexpected_workspace_files": 0,
+      "method_compliance": true,
+      "unexpected_mcp_calls": 0,
+      "recorded_test_runs": [
+        {
+          "sha256": "6563eee202cdb83f4abcdaa3e20c0f3f27ee869fee3048ec44dda02ae78ab551",
+          "exit_code": 0,
+          "failures": 0
+        }
+      ],
+      "implementation_sha256": "5490084fd82e792317a8d583dd480b6badab801b0f5c0081c5fd7aba671b38df",
+      "observed_test_commands": 1,
+      "completed_commands": 3,
+      "repeated_completed_commands": 0,
+      "grading": {
+        "exit_code": 0,
+        "tests": 39,
+        "passed": 39,
+        "failed": 0,
+        "skipped": 0,
+        "test_ids": [
+          "test_visible::test_invoice",
+          "test_grading::test_totals[lines0-0-123-123]",
+          "test_grading::test_totals[lines1-0-1000000000000000000000000000000000000000000000000000000000000-1000000000000000000000000000000000000000000000000000000000000]",
+          "test_grading::test_totals[lines2-1000-125-2240]",
+          "test_grading::test_totals[lines3-0-0-1]",
+          "test_grading::test_totals[lines4-0-0-1]",
+          "test_grading::test_totals[lines5-0-0-30]",
+          "test_grading::test_totals[lines6-10000-42-42]",
+          "test_grading::test_totals[lines7-0-0-999999999999999999]",
+          "test_grading::test_totals[lines8-5000-0-50]",
+          "test_grading::test_invalid_quantity[True]",
+          "test_grading::test_invalid_quantity[False]",
+          "test_grading::test_invalid_quantity[0]",
+          "test_grading::test_invalid_quantity[-1_0]",
+          "test_grading::test_invalid_quantity[1.5_0]",
+          "test_grading::test_invalid_quantity[]",
+          "test_grading::test_invalid_quantity[1.5_1]",
+          "test_grading::test_invalid_quantity[-1_1]",
+          "test_grading::test_invalid_quantity[ 1]",
+          "test_grading::test_invalid_quantity[\\u0661]",
+          "test_grading::test_invalid_quantity[None]",
+          "test_grading::test_invalid_price[None]",
+          "test_grading::test_invalid_price[1.0]",
+          "test_grading::test_invalid_price[]",
+          "test_grading::test_invalid_price[NaN]",
+          "test_grading::test_invalid_price[Infinity]",
+          "test_grading::test_invalid_price[-0.01]",
+          "test_grading::test_invalid_price[abc]",
+          "test_grading::test_invalid_line[line0]",
+          "test_grading::test_invalid_line[line1]",
+          "test_grading::test_invalid_line[line2]",
+          "test_grading::test_invalid_line[None]",
+          "test_grading::test_invalid_options[-1-0]",
+          "test_grading::test_invalid_options[10001-0]",
+          "test_grading::test_invalid_options[True-0]",
+          "test_grading::test_invalid_options[1.5-0]",
+          "test_grading::test_invalid_options[0--1]",
+          "test_grading::test_invalid_options[0-True]",
+          "test_grading::test_invalid_options[0-1.5]"
+        ],
+        "status": "PASS",
+        "exact_collection": true,
+        "elapsed_seconds": 0.3282892889692448
+      },
+      "quality_pass": true,
+      "worker_events_sha256": "3829d861d874433c27e5491eb19322360dc3661759ea6d44da2afc4908f5e9f3"
+    },
+    {
+      "index": 1,
+      "task": "invoice",
+      "replicate": 0,
+      "method": "deterministic",
+      "position": 1,
+      "triplet": 0,
+      "status": "COMPLETE",
+      "worker_model_requested": "gpt-5.6-sol",
+      "prompt_sha256": "306e7b50aa38797194452ca82ad0a16bfa37bf5d939e1d0bdc73b0036400ae30",
+      "elapsed_seconds": 66.37821403401904,
+      "timed_out": false,
+      "worker_exit_code": 0,
+      "worker_completed": true,
+      "worker_usage": {
+        "input_tokens": 167304,
+        "cached_input_tokens": 152960,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2600,
+        "reasoning_output_tokens": 785
+      },
+      "usage_status": "REPORTED",
+      "worker_transport": {
+        "retry_count": null,
+        "retry_count_status": "NOT_EXPOSED_BY_CLI",
+        "retry_notice_events": 0,
+        "retry_notice_stderr_lines": 0,
+        "error_events": 0
+      },
+      "worker_cost": {
+        "lower_usd": 0.17056,
+        "upper_usd": 0.17056,
+        "status": "EXACT_AT_DECLARED_RATES",
+        "cache_writes_reported": true,
+        "per_request_surcharge_unresolved": false,
+        "kind": "API-equivalent estimate, not subscription billing"
+      },
+      "selector": {
+        "status": "INCOMPLETE_ACCOUNTING",
+        "tool_calls": 0,
+        "tool_elapsed_ms": 0,
+        "tool_errors": 0,
+        "provider_errors": 0,
+        "provider_calls": null,
+        "provider_retries": null,
+        "provider_input_tokens": null,
+        "provider_output_tokens": null,
+        "provider_latency_ms": null,
+        "estimated_cost_usd": null
+      },
+      "total_cost": {
+        "lower_usd": null,
+        "upper_usd": null
+      },
+      "supplied_files_unchanged": true,
+      "implementation_changed": true,
+      "unexpected_workspace_files": 0,
+      "method_compliance": false,
+      "unexpected_mcp_calls": 0,
+      "recorded_test_runs": [
+        {
+          "sha256": "898de8075bf29c0766fbf3fe35316d0e1fd9acf7748ae1350ed35a2ade122fbf",
+          "exit_code": 0,
+          "failures": 0
+        }
+      ],
+      "implementation_sha256": "fa45d56d99541486134ebd2e46dcf671beaf23c70d061a1694fe342ee71afb59",
+      "observed_test_commands": 1,
+      "completed_commands": 5,
+      "repeated_completed_commands": 0,
+      "grading": {
+        "exit_code": 0,
+        "tests": 39,
+        "passed": 39,
+        "failed": 0,
+        "skipped": 0,
+        "test_ids": [
+          "test_visible::test_invoice",
+          "test_grading::test_totals[lines0-0-123-123]",
+          "test_grading::test_totals[lines1-0-1000000000000000000000000000000000000000000000000000000000000-1000000000000000000000000000000000000000000000000000000000000]",
+          "test_grading::test_totals[lines2-1000-125-2240]",
+          "test_grading::test_totals[lines3-0-0-1]",
+          "test_grading::test_totals[lines4-0-0-1]",
+          "test_grading::test_totals[lines5-0-0-30]",
+          "test_grading::test_totals[lines6-10000-42-42]",
+          "test_grading::test_totals[lines7-0-0-999999999999999999]",
+          "test_grading::test_totals[lines8-5000-0-50]",
+          "test_grading::test_invalid_quantity[True]",
+          "test_grading::test_invalid_quantity[False]",
+          "test_grading::test_invalid_quantity[0]",
+          "test_grading::test_invalid_quantity[-1_0]",
+          "test_grading::test_invalid_quantity[1.5_0]",
+          "test_grading::test_invalid_quantity[]",
+          "test_grading::test_invalid_quantity[1.5_1]",
+          "test_grading::test_invalid_quantity[-1_1]",
+          "test_grading::test_invalid_quantity[ 1]",
+          "test_grading::test_invalid_quantity[\\u0661]",
+          "test_grading::test_invalid_quantity[None]",
+          "test_grading::test_invalid_price[None]",
+          "test_grading::test_invalid_price[1.0]",
+          "test_grading::test_invalid_price[]",
+          "test_grading::test_invalid_price[NaN]",
+          "test_grading::test_invalid_price[Infinity]",
+          "test_grading::test_invalid_price[-0.01]",
+          "test_grading::test_invalid_price[abc]",
+          "test_grading::test_invalid_line[line0]",
+          "test_grading::test_invalid_line[line1]",
+          "test_grading::test_invalid_line[line2]",
+          "test_grading::test_invalid_line[None]",
+          "test_grading::test_invalid_options[-1-0]",
+          "test_grading::test_invalid_options[10001-0]",
+          "test_grading::test_invalid_options[True-0]",
+          "test_grading::test_invalid_options[1.5-0]",
+          "test_grading::test_invalid_options[0--1]",
+          "test_grading::test_invalid_options[0-True]",
+          "test_grading::test_invalid_options[0-1.5]"
+        ],
+        "status": "PASS",
+        "exact_collection": true,
+        "elapsed_seconds": 0.3525732310372405
+      },
+      "quality_pass": true,
+      "worker_events_sha256": "f42fac0534ec6c6dec977a70228935ec235f75319bae6dd48fc56df9c80db7ef"
+    },
+    {
+      "index": 2,
+      "task": "invoice",
+      "replicate": 0,
+      "method": "jev",
+      "position": 2,
+      "triplet": 0,
+      "status": "COMPLETE",
+      "worker_model_requested": "gpt-5.6-sol",
+      "prompt_sha256": "306e7b50aa38797194452ca82ad0a16bfa37bf5d939e1d0bdc73b0036400ae30",
+      "elapsed_seconds": 61.81751838698983,
+      "timed_out": false,
+      "worker_exit_code": 0,
+      "worker_completed": true,
+      "worker_usage": {
+        "input_tokens": 163208,
+        "cached_input_tokens": 149504,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2569,
+        "reasoning_output_tokens": 863
+      },
+      "usage_status": "REPORTED",
+      "worker_transport": {
+        "retry_count": null,
+        "retry_count_status": "NOT_EXPOSED_BY_CLI",
+        "retry_notice_events": 0,
+        "retry_notice_stderr_lines": 0,
+        "error_events": 0
+      },
+      "worker_cost": {
+        "lower_usd": 0.1659976,
+        "upper_usd": 0.1659976,
+        "status": "EXACT_AT_DECLARED_RATES",
+        "cache_writes_reported": true,
+        "per_request_surcharge_unresolved": false,
+        "kind": "API-equivalent estimate, not subscription billing"
+      },
+      "selector": {
+        "status": "INCOMPLETE_ACCOUNTING",
+        "tool_calls": 0,
+        "tool_elapsed_ms": 0,
+        "tool_errors": 0,
+        "provider_errors": 0,
+        "provider_calls": null,
+        "provider_retries": null,
+        "provider_input_tokens": null,
+        "provider_output_tokens": null,
+        "provider_latency_ms": null,
+        "estimated_cost_usd": null
+      },
+      "total_cost": {
+        "lower_usd": null,
+        "upper_usd": null
+      },
+      "supplied_files_unchanged": true,
+      "implementation_changed": true,
+      "unexpected_workspace_files": 0,
+      "method_compliance": false,
+      "unexpected_mcp_calls": 0,
+      "recorded_test_runs": [
+        {
+          "sha256": "2f096031dafeba3373996ceb03e72bdf4e75442ab68a3123c7c1f28ecc9d56d8",
+          "exit_code": 0,
+          "failures": 0
+        }
+      ],
+      "implementation_sha256": "2f48594bffdfce55019cb0d75623ed6c076bc11fe8e7b9fa76ca2a5cba47b990",
+      "observed_test_commands": 1,
+      "completed_commands": 4,
+      "repeated_completed_commands": 0,
+      "grading": {
+        "exit_code": 0,
+        "tests": 39,
+        "passed": 39,
+        "failed": 0,
+        "skipped": 0,
+        "test_ids": [
+          "test_visible::test_invoice",
+          "test_grading::test_totals[lines0-0-123-123]",
+          "test_grading::test_totals[lines1-0-1000000000000000000000000000000000000000000000000000000000000-1000000000000000000000000000000000000000000000000000000000000]",
+          "test_grading::test_totals[lines2-1000-125-2240]",
+          "test_grading::test_totals[lines3-0-0-1]",
+          "test_grading::test_totals[lines4-0-0-1]",
+          "test_grading::test_totals[lines5-0-0-30]",
+          "test_grading::test_totals[lines6-10000-42-42]",
+          "test_grading::test_totals[lines7-0-0-999999999999999999]",
+          "test_grading::test_totals[lines8-5000-0-50]",
+          "test_grading::test_invalid_quantity[True]",
+          "test_grading::test_invalid_quantity[False]",
+          "test_grading::test_invalid_quantity[0]",
+          "test_grading::test_invalid_quantity[-1_0]",
+          "test_grading::test_invalid_quantity[1.5_0]",
+          "test_grading::test_invalid_quantity[]",
+          "test_grading::test_invalid_quantity[1.5_1]",
+          "test_grading::test_invalid_quantity[-1_1]",
+          "test_grading::test_invalid_quantity[ 1]",
+          "test_grading::test_invalid_quantity[\\u0661]",
+          "test_grading::test_invalid_quantity[None]",
+          "test_grading::test_invalid_price[None]",
+          "test_grading::test_invalid_price[1.0]",
+          "test_grading::test_invalid_price[]",
+          "test_grading::test_invalid_price[NaN]",
+          "test_grading::test_invalid_price[Infinity]",
+          "test_grading::test_invalid_price[-0.01]",
+          "test_grading::test_invalid_price[abc]",
+          "test_grading::test_invalid_line[line0]",
+          "test_grading::test_invalid_line[line1]",
+          "test_grading::test_invalid_line[line2]",
+          "test_grading::test_invalid_line[None]",
+          "test_grading::test_invalid_options[-1-0]",
+          "test_grading::test_invalid_options[10001-0]",
+          "test_grading::test_invalid_options[True-0]",
+          "test_grading::test_invalid_options[1.5-0]",
+          "test_grading::test_invalid_options[0--1]",
+          "test_grading::test_invalid_options[0-True]",
+          "test_grading::test_invalid_options[0-1.5]"
+        ],
+        "status": "PASS",
+        "exact_collection": true,
+        "elapsed_seconds": 0.32211230497341603
+      },
+      "quality_pass": true,
+      "worker_events_sha256": "207118532cf556ce4fba227c411f081b719fb8ad5b9741398773a21e6e24422a"
+    }
+  ]
+}

@@ -1,0 +1,211 @@
+{
+  "scope": "unscored startup diagnosis on authored addition and development replay; no scored repair replaced",
+  "original_freeze_commit": "2c6da13ffb964a77f3e9b0cfd88f7810de23ff7f",
+  "all_comparators_unchanged": true,
+  "model_calls": 4,
+  "rows": [
+    {
+      "diagnostic": 1,
+      "required_server": false,
+      "startup_timeout_override_seconds": null,
+      "numeric_handshake_trace": false,
+      "summary": {
+        "status": "FAIL",
+        "checks": {
+          "worker_completed": true,
+          "mcp_status_comparison_and_exact_originals": false,
+          "implementation_changed_to_addition": false,
+          "test_unchanged": true,
+          "one_observed_passing_test_command": false,
+          "complete_meter": false
+        },
+        "scope": "unscored addition repair plus recorded replay; no usefulness comparison",
+        "platform": "linux",
+        "elapsed_seconds": 31.26661111996509,
+        "usage": {
+          "input_tokens": 134804,
+          "cached_input_tokens": 116864,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 550,
+          "reasoning_output_tokens": 280
+        },
+        "meter": {
+          "status": "INCOMPLETE_ACCOUNTING",
+          "tool_calls": 0,
+          "tool_elapsed_ms": 0,
+          "tool_errors": 0,
+          "provider_errors": 0,
+          "provider_calls": null,
+          "provider_retries": null,
+          "provider_input_tokens": null,
+          "provider_output_tokens": null,
+          "provider_latency_ms": null,
+          "estimated_cost_usd": null
+        },
+        "unexpected_mcp_calls": 0,
+        "worker_events_sha256": "68c4980f1a4d785bf00eb5ca9253bf62e6ab95a459369a7f68aaa2e53c7e861d"
+      },
+      "worker_cost": {
+        "lower_usd": 0.1295056,
+        "upper_usd": 0.1295056,
+        "status": "EXACT_AT_DECLARED_RATES",
+        "cache_writes_reported": true,
+        "per_request_surcharge_unresolved": false,
+        "kind": "API-equivalent estimate, not subscription billing"
+      }
+    },
+    {
+      "diagnostic": 2,
+      "required_server": false,
+      "startup_timeout_override_seconds": null,
+      "numeric_handshake_trace": true,
+      "summary": {
+        "status": "FAIL",
+        "checks": {
+          "worker_completed": true,
+          "mcp_status_comparison_and_exact_originals": false,
+          "implementation_changed_to_addition": false,
+          "test_unchanged": true,
+          "one_observed_passing_test_command": false,
+          "complete_meter": false
+        },
+        "scope": "unscored addition repair plus recorded replay; no usefulness comparison",
+        "platform": "linux",
+        "elapsed_seconds": 24.291512413008604,
+        "usage": {
+          "input_tokens": 89139,
+          "cached_input_tokens": 72064,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 350,
+          "reasoning_output_tokens": 166
+        },
+        "meter": {
+          "status": "INCOMPLETE_ACCOUNTING",
+          "tool_calls": 0,
+          "tool_elapsed_ms": 0,
+          "tool_errors": 0,
+          "provider_errors": 0,
+          "provider_calls": null,
+          "provider_retries": null,
+          "provider_input_tokens": null,
+          "provider_output_tokens": null,
+          "provider_latency_ms": null,
+          "estimated_cost_usd": null
+        },
+        "unexpected_mcp_calls": 0,
+        "worker_events_sha256": "42afdb541a4f3507fc5db23cd8a890147aa01d99ce299b11a90f7f0cf49b55f6"
+      },
+      "worker_cost": {
+        "lower_usd": 0.10412560000000001,
+        "upper_usd": 0.10412560000000001,
+        "status": "EXACT_AT_DECLARED_RATES",
+        "cache_writes_reported": true,
+        "per_request_surcharge_unresolved": false,
+        "kind": "API-equivalent estimate, not subscription billing"
+      }
+    },
+    {
+      "diagnostic": 3,
+      "required_server": true,
+      "startup_timeout_override_seconds": 60,
+      "numeric_handshake_trace": true,
+      "summary": {
+        "status": "PASS",
+        "checks": {
+          "worker_completed": true,
+          "mcp_status_comparison_and_exact_originals": true,
+          "implementation_changed_to_addition": true,
+          "test_unchanged": true,
+          "one_observed_passing_test_command": true,
+          "complete_meter": true
+        },
+        "scope": "unscored addition repair plus recorded replay; no usefulness comparison",
+        "platform": "linux",
+        "elapsed_seconds": 39.84172158699948,
+        "usage": {
+          "input_tokens": 157118,
+          "cached_input_tokens": 135552,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 864,
+          "reasoning_output_tokens": 155
+        },
+        "meter": {
+          "status": "COMPLETE",
+          "tool_calls": 4,
+          "tool_elapsed_ms": 73.86404601857066,
+          "tool_errors": 0,
+          "provider_errors": 0,
+          "provider_calls": 0,
+          "provider_retries": 0,
+          "provider_input_tokens": 0,
+          "provider_output_tokens": 0,
+          "provider_latency_ms": 0,
+          "estimated_cost_usd": 0.0
+        },
+        "unexpected_mcp_calls": 0,
+        "worker_events_sha256": "a242feb9123f1efef9fc453036af6b89c570c85d5a8709dd4876f671852b22f9"
+      },
+      "worker_cost": {
+        "lower_usd": 0.15776479999999998,
+        "upper_usd": 0.15776479999999998,
+        "status": "EXACT_AT_DECLARED_RATES",
+        "cache_writes_reported": true,
+        "per_request_surcharge_unresolved": false,
+        "kind": "API-equivalent estimate, not subscription billing"
+      }
+    },
+    {
+      "diagnostic": 4,
+      "required_server": true,
+      "startup_timeout_override_seconds": null,
+      "numeric_handshake_trace": false,
+      "summary": {
+        "status": "PASS",
+        "checks": {
+          "worker_completed": true,
+          "mcp_status_comparison_and_exact_originals": true,
+          "implementation_changed_to_addition": true,
+          "test_unchanged": true,
+          "one_observed_passing_test_command": true,
+          "complete_meter": true
+        },
+        "scope": "unscored addition repair plus recorded replay; no usefulness comparison",
+        "platform": "linux",
+        "elapsed_seconds": 47.2721130939899,
+        "usage": {
+          "input_tokens": 208524,
+          "cached_input_tokens": 182016,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1424,
+          "reasoning_output_tokens": 368
+        },
+        "meter": {
+          "status": "COMPLETE",
+          "tool_calls": 4,
+          "tool_elapsed_ms": 32.51839004224166,
+          "tool_errors": 0,
+          "provider_errors": 0,
+          "provider_calls": 0,
+          "provider_retries": 0,
+          "provider_input_tokens": 0,
+          "provider_output_tokens": 0,
+          "provider_latency_ms": 0,
+          "estimated_cost_usd": 0.0
+        },
+        "unexpected_mcp_calls": 0,
+        "worker_events_sha256": "ceeb0b04e2180d529409fecdbef3bc0f057febf75dacf37a5e5b08025eb758c2"
+      },
+      "worker_cost": {
+        "lower_usd": 0.2073184,
+        "upper_usd": 0.2073184,
+        "status": "EXACT_AT_DECLARED_RATES",
+        "cache_writes_reported": true,
+        "per_request_surcharge_unresolved": false,
+        "kind": "API-equivalent estimate, not subscription billing"
+      }
+    }
+  ],
+  "total_worker_seconds": 142.67195821396308,
+  "worker_cost_lower_usd": 0.5987144,
+  "worker_cost_upper_usd": 0.5987144
+}

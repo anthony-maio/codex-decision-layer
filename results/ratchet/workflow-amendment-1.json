@@ -1,0 +1,27 @@
+{
+  "status": "FROZEN_BEFORE_SLOT_3",
+  "date": "2026-09-20",
+  "first_amended_slot": 3,
+  "original_freeze_commit": "2c6da13ffb964a77f3e9b0cfd88f7810de23ff7f",
+  "original_first_three_sha256": "593779513942da55fd582d2235b401245b60a378646e22f3e5035f7c350a81f1",
+  "schedule_positions": 45,
+  "interpretation": "amended exploratory; original failed method and unknown cost gates cannot be rescued",
+  "command_delta": {
+    "methods": [
+      "deterministic",
+      "jev"
+    ],
+    "insert_before_stdin": [
+      "-c",
+      "mcp_servers.ratchet_trial.required=true"
+    ]
+  },
+  "sha256": {
+    "docs/ratchet-workflow-amendment-1.md": "7f763031d022fe91d52a14f915f3b408f4669ddbdab02c1d0e9a8f2e9c64ff4d",
+    "results/ratchet/workflow-amendment-review.json": "32c080718f1209b07ea612159de44ee5795a7fe4fb20541e914897afeb295d3b",
+    "results/ratchet/workflow-startup-diagnostics.json": "0374a687a76dd17b15959e1bd35744d6336fba62750c860007fe35dd89c6232d",
+    "results/ratchet/workflow-v1-first-three.json": "186323ed1af669bc4ab8b41c1721f49b811ae5c9c6f5f8ccca75a3e4d39295f9",
+    "scripts/run_ratchet_workflow_amended.py": "3fda4ea5bb00e8001b2fad40e45308eac87a193bd4af91a30a4a87ece2836bd2",
+    "tests/test_ratchet_workflow_amendment.py": "cbbc466b3d2ca241adff7437b22b577c74978a96834aeb92772247401f81b89c"
+  }
+}
