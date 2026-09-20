@@ -1,0 +1,55 @@
+{
+  "status": "REVIEWED_PREPARATION_NOT_FROZEN",
+  "date": "2026-09-20",
+  "independent_review": true,
+  "human_validation": false,
+  "scope": "draft design, fixture contracts/references/graders, and numeric metrics; excludes future trial runner",
+  "findings_resolved": [
+    "reference shipping precision now includes very large valid integers",
+    "worker contracts omit supplied historical diagnoses",
+    "protocol requires fresh trusted grader and exact frozen test identities",
+    "cost aggregation and unknown usage are explicit",
+    "invalid or inverted cost bounds, latency, quality flags and grading counts reject"
+  ],
+  "validation": {
+    "reference_tests_windows": 93,
+    "reference_tests_linux": 93,
+    "metric_tests_windows": 10,
+    "metric_tests_linux": 10,
+    "full_suite_windows_passed": 90,
+    "full_suite_linux_passed": 88,
+    "full_suite_linux_skipped": 2
+  },
+  "model_repair_trials_started": 0,
+  "usefulness_established": false,
+  "remaining": [
+    "trial runner and timing capture",
+    "independent runner review",
+    "complete committed freeze",
+    "45 matched repair trials"
+  ],
+  "sha256": {
+    "docs/ratchet-workflow-protocol.md": "04f5d2a4cac35ab80f56ec2320c6ce6561156e039e1713044427ca13e6aad90e",
+    "scripts/ratchet_workflow_metrics.py": "0b468fb42dc4da37498296396bc4edaaf26d73f10dc3ac19616ccb00eb837e07",
+    "scripts/validate_ratchet_workflow_fixtures.py": "2bbbe225a0a2963de0317847dbcf622ebdfeaae9e197ea6f03d64593d29d618c",
+    "tests/test_ratchet_workflow_metrics.py": "13a9f9d2bb9db48450e84a4cb41f2802eca19a18ec70d37da46df79cf3cb5c19",
+    "fixtures/ratchet/workflow-v1/events/previous.py": "1f2567b0e4dbc004e824e416a6ef00896c7049399a1a951111dd7a43a11caccc",
+    "fixtures/ratchet/workflow-v1/events/product.py": "1d8c2a1f57f270dcede18995a5fe20ede55a491843e6b0877edc027b01e3f550",
+    "fixtures/ratchet/workflow-v1/events/reference.py": "5269188029bec7850f9ed35f8820f954e6cc1a0caf1559aa56a44a4a22eadd9b",
+    "fixtures/ratchet/workflow-v1/events/TASK.md": "f21efa3e72187909f0e45af9c754af4709da34bedf746e9944110e3259f0e4c3",
+    "fixtures/ratchet/workflow-v1/events/test_grading.py": "35354e3c2d09f73ffe339fb17ef969a5acdde2359b0ff99649adb7d547cab1e4",
+    "fixtures/ratchet/workflow-v1/events/test_visible.py": "19908b29dfe82ae83b3253bcac99e0d08b19aa7f7fef727daf408f6a463ab8ae",
+    "fixtures/ratchet/workflow-v1/invoice/previous.py": "9b63f20afb9016c05b8048598da68b0eab7ffb3a81562e976cf5d6d59e6cc3a3",
+    "fixtures/ratchet/workflow-v1/invoice/product.py": "e5a356c805cf992c5a1bb38caa5f911fbe58aba522e3f5eb72d54cfa7d8e35f5",
+    "fixtures/ratchet/workflow-v1/invoice/reference.py": "b470929d99947c1e7f0e7ebb830bd67e9ea0323d04b337bf05afe62f593f985b",
+    "fixtures/ratchet/workflow-v1/invoice/TASK.md": "3412e188a91f34d9b077d4d54c9bdeb50d25921e7d7f85e2279a03eaa7435f0e",
+    "fixtures/ratchet/workflow-v1/invoice/test_grading.py": "78b935b699d09bf8187310ee3927c0a8fd0eb0e2ae272e916d5d8c311eaaf58d",
+    "fixtures/ratchet/workflow-v1/invoice/test_visible.py": "c49aa4a516de92dcfa8da87c52088fc75a826b1b74008f576aa8ee6f742ccbc3",
+    "fixtures/ratchet/workflow-v1/queue/previous.py": "a504543bf4e48d4772b8672258d8c32d3ec91942bf58165af192d593ab16f9ce",
+    "fixtures/ratchet/workflow-v1/queue/product.py": "0ca7d451c4926174989f5294e472ecf3304b39b902e15e7944a8e5f5b7e059c2",
+    "fixtures/ratchet/workflow-v1/queue/reference.py": "272b548ccb793ca5dd5dfcdb36d1884372c721d84edb19066725a57e792fc8e1",
+    "fixtures/ratchet/workflow-v1/queue/TASK.md": "375cd155487e666e268abccb586bcb8d1e1749a3f422a44f7e3bb994c5459907",
+    "fixtures/ratchet/workflow-v1/queue/test_grading.py": "8e991af2c2060c1d13d2283a705e81380863e0abeac070837e67a225e9f7958b",
+    "fixtures/ratchet/workflow-v1/queue/test_visible.py": "1c1b398e89605ba69f74e5e8a5649d8820adf4c835dfa8e2dd6ea8ac72df15a9"
+  }
+}

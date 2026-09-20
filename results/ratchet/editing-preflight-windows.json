@@ -1,0 +1,18 @@
+{
+  "status": "FAIL",
+  "checks": {
+    "worker_completed": false,
+    "actual_addition_edit": false,
+    "tests_unchanged": true,
+    "one_observed_passing_test_command": false
+  },
+  "scope": "unscored authored addition repair; no Ratchet comparison or usefulness measurement",
+  "elapsed_seconds": 240.03200000000652,
+  "timed_out": true,
+  "worker_exit_code": 0,
+  "usage": null,
+  "events_sha256": "c1544b818cad1c51b97821d3cfc2e515f7e1603aa99b211193e8c6add0789cf6",
+  "implementation_sha256": "025a88bc1f8b3c400f260c118826afc4aa8e67d5288e89da70a02b3ddb652e95",
+  "supplied_tests_sha256": "0cb8f9f207ec3cd60294c27e753a227801065e0392da4840c3c44fd741888368",
+  "verification_platform": "win32"
+}

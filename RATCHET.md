@@ -11,6 +11,12 @@ Codex task using read-only MCP comparison and exact original retrieval. Automati
 hook capture remains unverified after the first probe's shell commands were
 declined by policy. The supported prototype uses explicitly named records.
 
+A separate native Linux Codex preflight has edited a small authored function and
+passed its two existing tests. The Windows repair preflight timed out with the
+function unchanged. These integration checks are unscored and do not measure
+Ratchet's usefulness. The three-task prospective repair protocol is being prepared
+and independently reviewed; its matched model trials have not started.
+
 ## Try the offline replay
 
 From this checkout:
@@ -103,5 +109,6 @@ usefulness. Independent review is not human validation. The holdout consists of
 authored adapters invoking permitted public-library code, not natural agent traces.
 
 See [evaluation plan](docs/ratchet-plan.md), [development protocol](docs/ratchet-development-evaluation.md),
-and [raw numeric receipts](results/ratchet/). Pytest-xdist is not supported yet.
+[draft workflow protocol](docs/ratchet-workflow-protocol.md), and [numeric receipts](results/ratchet/).
+Pytest-xdist is not supported yet.
 Interrupted/fail-fast runs, changed test scope, and multiple failures abstain.

@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "checks": {
+    "worker_completed": true,
+    "actual_addition_edit": true,
+    "tests_unchanged": true,
+    "one_observed_passing_test_command": true
+  },
+  "scope": "unscored authored addition repair; no Ratchet comparison or usefulness measurement",
+  "elapsed_seconds": 23.12549037701683,
+  "timed_out": false,
+  "worker_exit_code": 0,
+  "usage": {
+    "input_tokens": 87494,
+    "cached_input_tokens": 72832,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 526,
+    "reasoning_output_tokens": 51
+  },
+  "events_sha256": "a52a9a111296f8071c64670f75cd42b9ae6967253dc00041baddfe5f3530331e",
+  "implementation_sha256": "a3556971136d81b12967ea30043e028a9f506c94af78b5c0f0b94b7ce2f75edb",
+  "supplied_tests_sha256": "0cb8f9f207ec3cd60294c27e753a227801065e0392da4840c3c44fd741888368",
+  "verification_platform": "linux"
+}

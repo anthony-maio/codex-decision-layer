@@ -160,3 +160,55 @@ hosted CI or workflow usefulness.
 Full prospective workflow quality, latency and cache-aware worker cost remain
 open. Pair classification is now measured; debugging usefulness is still
 unproven. See `ratchet-holdout-results.md` for the failed gates and receipt paths.
+
+## Feasibility checkpoint 5 - 2026-09-20
+
+Native Linux Codex completed an unscored addition-function repair in 23.1 seconds.
+The original function subtracted its arguments; the resulting file adds them.
+The worker executed the existing unittest suite once and both tests passed.
+Exact final file content, unchanged test content, a completed file-change event,
+and actual command output were checked separately from the worker's final message.
+Reported usage was 87,494 input tokens, including 72,832 cached reads and zero
+cache writes, plus 526 output tokens. This is an execution prerequisite, not a
+Ratchet speed or cost comparison.
+
+The first native Linux attempt failed because its sign-in could not refresh.
+The user signed in again before the successful attempt. Windows' unscored repair
+attempt reached a 240-second limit with no completed shell commands, no final
+usage, and the source unchanged. Both terminal outcomes are retained. Its root
+cause is unresolved; the timeout alone does not identify a sandbox or MCP fault.
+No permission restrictions were disabled to obtain the Linux success. The CLI
+version used for both platforms was 0.146.0; installing the native Linux package
+also resolved a WSL launcher that had pointed at a Windows npm package.
+
+The prospective protocol remains DRAFT. Three authored repair tasks cover invoice
+arithmetic, ready-job selection after setup progress, and event replay with a
+generic error callback. The event task is deliberately motivated by the known
+holdout weakness and cannot serve as new independent classification evidence.
+No scored repair has been run with a model. Original comparator and Jev prompt
+remain unchanged after holdout scoring.
+
+Independent review found that the invoice reference rejected a very large valid
+shipping amount. Precision now includes shipping digits, with a regression case.
+It also led to removing diagnostic hints from worker task descriptions, requiring
+fresh trusted grading with exact frozen test identities, and spelling out median
+cost-bound ratios and missing-usage treatment. Both platforms now verify all six
+broken historical versions fail their smoke tests and all three references pass
+93 visible-plus-grading tests in total.
+
+The accounting implementation covers a balanced 45-run schedule, both Jev
+comparators, cache reads/writes, uncertain per-request surcharges, complete-run
+coverage, failed-run retention, per-task quality, and latency regressions. Review
+reproduced a false pass from inverted or infinite cost bounds; numeric validation
+now rejects those receipts. Ten focused metric checks pass on Windows and Linux.
+The private worker utility also preserves timeout and duplicate-usage states.
+
+Checkpoint checks: Windows full suite passed 90/90; Linux ran 90 checks with 88
+passing and two Windows-specific skips. Final independent closure confirmed the
+reported design, fixture, and metric issues were resolved. Trial execution and
+its enforcement remain outside that review's completed scope.
+
+Next: implement and independently verify the trial runner and MCP timing capture,
+freeze the complete protocol and inputs, then run the 15 matched triplets. General
+published-plugin installation, Windows repair execution, exact-commit CI, workflow
+usefulness, and release preparation remain open. Advisory behavior stays disabled.
