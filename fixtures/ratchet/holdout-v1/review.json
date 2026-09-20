@@ -1,0 +1,198 @@
+{
+  "status": "ACCEPTED",
+  "human_validation": false,
+  "reviewed_before_scoring": true,
+  "corpus_sha256": "c57bb590ba920bfbce063bf19a4c86ddd39f14a7e005753f837731a1b50a6de9",
+  "review_input_sha256": "d9ae59c1f7615cf516a1131f89d1673d1faab8d7e813ce15028d5a82bdfcf2cd",
+  "independent_review_sha256": "5cf0abaee556b0b7eb67c3e26f31441064b1579ab80c7521a5003fd298fb5635",
+  "review_confirmation": "All 30 labels reconfirmed after provenance checks; generator frame fix reconfirmed for pair-22.",
+  "accepted_labels": {
+    "holdout-cli-choice-insufficient": {
+      "relationship": "insufficient_evidence",
+      "advisory_eligible": false,
+      "review_id": "pair-01",
+      "reason": "The second attempt has no finish record, so completion is unconfirmed despite matching Choice membership failures."
+    },
+    "holdout-fixed-result-cardinality-insufficient": {
+      "relationship": "insufficient_evidence",
+      "advisory_eligible": false,
+      "review_id": "pair-02",
+      "reason": "Both runs contain mixed failures: strictly_n rejects too few items and test_second independently fails its arithmetic assertion."
+    },
+    "holdout-cli-range-insufficient": {
+      "relationship": "insufficient_evidence",
+      "advisory_eligible": false,
+      "review_id": "pair-03",
+      "reason": "The second attempt has no finish record, so completion is unconfirmed despite matching IntRange bounds failures."
+    },
+    "holdout-single-result-cardinality-insufficient": {
+      "relationship": "insufficient_evidence",
+      "advisory_eligible": false,
+      "review_id": "pair-04",
+      "reason": "Both runs contain mixed failures: one rejects an empty iterable and test_second independently fails its arithmetic assertion."
+    },
+    "holdout-release-specifier-operator-different": {
+      "relationship": "different_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-05",
+      "reason": "Invalid specifier syntax is replaced by successful construction followed by a failed version-membership assertion."
+    },
+    "holdout-cli-required-option-different": {
+      "relationship": "different_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-06",
+      "reason": "The first run lacks required name; the second supplies name but fails option parsing on --unknown."
+    },
+    "holdout-environment-marker-operator-same": {
+      "relationship": "same_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-07",
+      "reason": "Both Marker constructions fail at marker-operator parsing because ??? is invalid; changing the version operand leaves that constraint unchanged."
+    },
+    "holdout-release-version-grammar-same": {
+      "relationship": "same_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-08",
+      "reason": "Both Version constructions fail the same version-format validation; only the invalid input string changes."
+    },
+    "holdout-release-specifier-operator-insufficient": {
+      "relationship": "insufficient_evidence",
+      "advisory_eligible": false,
+      "review_id": "pair-09",
+      "reason": "Both runs contain mixed failures: invalid specifier syntax and an independent arithmetic assertion in test_second."
+    },
+    "holdout-cli-range-same": {
+      "relationship": "same_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-10",
+      "reason": "Both IntRange conversions reject values above the unchanged maximum of 9; diagnostic retry intent does not change blocker identity."
+    },
+    "holdout-requirement-url-grammar-different": {
+      "relationship": "different_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-11",
+      "reason": "Missing URL after @ is replaced by successful requirement parsing followed by a failed package-name assertion."
+    },
+    "holdout-cli-choice-different": {
+      "relationship": "different_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-12",
+      "reason": "The Choice failure occurs during fixture setup; the later run completes setup and fails the test's prepared-value assertion."
+    },
+    "holdout-cli-tuple-arity-same": {
+      "relationship": "same_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-13",
+      "reason": "Both Tuple conversions fail the unchanged two-value arity requirement, with zero then one value supplied."
+    },
+    "holdout-environment-marker-operator-insufficient": {
+      "relationship": "insufficient_evidence",
+      "advisory_eligible": false,
+      "review_id": "pair-14",
+      "reason": "Both runs contain mixed failures: invalid marker operator and an independent arithmetic assertion in test_second."
+    },
+    "holdout-fixed-result-cardinality-different": {
+      "relationship": "different_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-15",
+      "reason": "strictly_n first invokes too_short for insufficient items, then invokes too_long for excess items; identical callback text hides distinct failing constraints."
+    },
+    "holdout-release-specifier-operator-same": {
+      "relationship": "same_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-16",
+      "reason": "Both SpecifierSet constructions reject the same invalid => operator syntax; changing the version number leaves the parsing constraint unchanged."
+    },
+    "holdout-cli-required-option-same": {
+      "relationship": "same_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-17",
+      "reason": "Both command invocations fail required-name validation; adding --verbose does not supply the missing name."
+    },
+    "holdout-single-result-cardinality-different": {
+      "relationship": "different_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-18",
+      "reason": "one first rejects an empty iterable through too_short, then rejects multiple items through too_long; matching exception text does not equate those constraints."
+    },
+    "holdout-cli-choice-same": {
+      "relationship": "same_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-19",
+      "reason": "Both Choice conversions reject membership outside the unchanged red/blue choices; green becoming purple leaves the blocker unchanged."
+    },
+    "holdout-fixed-result-cardinality-same": {
+      "relationship": "same_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-20",
+      "reason": "Both strictly_n calls invoke too_short because one then two items fail the unchanged requirement for three items."
+    },
+    "holdout-single-result-cardinality-same": {
+      "relationship": "same_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-21",
+      "reason": "Both one calls reject an empty iterable through the same too_short branch; wrapping the empty list in iter does not change the constraint."
+    },
+    "holdout-cli-tuple-arity-different": {
+      "relationship": "different_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-22",
+      "reason": "The initial Tuple arity failure is resolved; the second run reaches element conversion and rejects word as an integer."
+    },
+    "holdout-cli-required-option-insufficient": {
+      "relationship": "insufficient_evidence",
+      "advisory_eligible": false,
+      "review_id": "pair-23",
+      "reason": "The second attempt has no finish record, so completion is unconfirmed despite matching missing-name failures."
+    },
+    "holdout-release-version-grammar-different": {
+      "relationship": "different_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-24",
+      "reason": "Invalid version syntax is replaced by successfully constructed versions followed by a failed ordering assertion."
+    },
+    "holdout-release-version-grammar-insufficient": {
+      "relationship": "insufficient_evidence",
+      "advisory_eligible": false,
+      "review_id": "pair-25",
+      "reason": "Both runs contain mixed failures: invalid version format and an independent arithmetic assertion in test_second."
+    },
+    "holdout-cli-range-different": {
+      "relationship": "different_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-26",
+      "reason": "The IntRange failure occurs during fixture setup; the later run completes setup and fails the test's prepared-value assertion."
+    },
+    "holdout-cli-tuple-arity-insufficient": {
+      "relationship": "insufficient_evidence",
+      "advisory_eligible": false,
+      "review_id": "pair-27",
+      "reason": "The second attempt has no finish record, so completion is unconfirmed despite matching Tuple arity failures."
+    },
+    "holdout-environment-marker-operator-different": {
+      "relationship": "different_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-28",
+      "reason": "Invalid marker-operator parsing is replaced by successful marker construction followed by a false evaluation assertion."
+    },
+    "holdout-requirement-url-grammar-insufficient": {
+      "relationship": "insufficient_evidence",
+      "advisory_eligible": false,
+      "review_id": "pair-29",
+      "reason": "Both runs contain mixed failures: missing requirement URL after @ and an independent arithmetic assertion in test_second."
+    },
+    "holdout-requirement-url-grammar-same": {
+      "relationship": "same_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-30",
+      "reason": "Both Requirement constructions fail because @ lacks a following URL; changing the package name leaves the immediate parsing constraint unchanged."
+    }
+  },
+  "label_changes": [],
+  "exclusions": [],
+  "counts": {
+    "insufficient_evidence": 10,
+    "different_blocker": 10,
+    "same_blocker": 10
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "scope": "Independent blind review of review-input.json only, before classifier execution",
+  "human_validation": false,
+  "labels": [
+    {
+      "id": "pair-01",
+      "relationship": "insufficient_evidence",
+      "reason": "The second attempt has no finish record, so completion is unconfirmed despite matching Choice membership failures.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-02",
+      "relationship": "insufficient_evidence",
+      "reason": "Both runs contain mixed failures: strictly_n rejects too few items and test_second independently fails its arithmetic assertion.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-03",
+      "relationship": "insufficient_evidence",
+      "reason": "The second attempt has no finish record, so completion is unconfirmed despite matching IntRange bounds failures.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-04",
+      "relationship": "insufficient_evidence",
+      "reason": "Both runs contain mixed failures: one rejects an empty iterable and test_second independently fails its arithmetic assertion.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-05",
+      "relationship": "different_blocker",
+      "reason": "Invalid specifier syntax is replaced by successful construction followed by a failed version-membership assertion.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-06",
+      "relationship": "different_blocker",
+      "reason": "The first run lacks required name; the second supplies name but fails option parsing on --unknown.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-07",
+      "relationship": "same_blocker",
+      "reason": "Both Marker constructions fail at marker-operator parsing because ??? is invalid; changing the version operand leaves that constraint unchanged.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-08",
+      "relationship": "same_blocker",
+      "reason": "Both Version constructions fail the same version-format validation; only the invalid input string changes.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-09",
+      "relationship": "insufficient_evidence",
+      "reason": "Both runs contain mixed failures: invalid specifier syntax and an independent arithmetic assertion in test_second.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-10",
+      "relationship": "same_blocker",
+      "reason": "Both IntRange conversions reject values above the unchanged maximum of 9; diagnostic retry intent does not change blocker identity.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-11",
+      "relationship": "different_blocker",
+      "reason": "Missing URL after @ is replaced by successful requirement parsing followed by a failed package-name assertion.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-12",
+      "relationship": "different_blocker",
+      "reason": "The Choice failure occurs during fixture setup; the later run completes setup and fails the test's prepared-value assertion.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-13",
+      "relationship": "same_blocker",
+      "reason": "Both Tuple conversions fail the unchanged two-value arity requirement, with zero then one value supplied.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-14",
+      "relationship": "insufficient_evidence",
+      "reason": "Both runs contain mixed failures: invalid marker operator and an independent arithmetic assertion in test_second.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-15",
+      "relationship": "different_blocker",
+      "reason": "strictly_n first invokes too_short for insufficient items, then invokes too_long for excess items; identical callback text hides distinct failing constraints.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-16",
+      "relationship": "same_blocker",
+      "reason": "Both SpecifierSet constructions reject the same invalid => operator syntax; changing the version number leaves the parsing constraint unchanged.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-17",
+      "relationship": "same_blocker",
+      "reason": "Both command invocations fail required-name validation; adding --verbose does not supply the missing name.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-18",
+      "relationship": "different_blocker",
+      "reason": "one first rejects an empty iterable through too_short, then rejects multiple items through too_long; matching exception text does not equate those constraints.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-19",
+      "relationship": "same_blocker",
+      "reason": "Both Choice conversions reject membership outside the unchanged red/blue choices; green becoming purple leaves the blocker unchanged.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-20",
+      "relationship": "same_blocker",
+      "reason": "Both strictly_n calls invoke too_short because one then two items fail the unchanged requirement for three items.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-21",
+      "relationship": "same_blocker",
+      "reason": "Both one calls reject an empty iterable through the same too_short branch; wrapping the empty list in iter does not change the constraint.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-22",
+      "relationship": "different_blocker",
+      "reason": "The initial Tuple arity failure is resolved; the second run reaches element conversion and rejects word as an integer.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-23",
+      "relationship": "insufficient_evidence",
+      "reason": "The second attempt has no finish record, so completion is unconfirmed despite matching missing-name failures.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-24",
+      "relationship": "different_blocker",
+      "reason": "Invalid version syntax is replaced by successfully constructed versions followed by a failed ordering assertion.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-25",
+      "relationship": "insufficient_evidence",
+      "reason": "Both runs contain mixed failures: invalid version format and an independent arithmetic assertion in test_second.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-26",
+      "relationship": "different_blocker",
+      "reason": "The IntRange failure occurs during fixture setup; the later run completes setup and fails the test's prepared-value assertion.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-27",
+      "relationship": "insufficient_evidence",
+      "reason": "The second attempt has no finish record, so completion is unconfirmed despite matching Tuple arity failures.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-28",
+      "relationship": "different_blocker",
+      "reason": "Invalid marker-operator parsing is replaced by successful marker construction followed by a false evaluation assertion.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-29",
+      "relationship": "insufficient_evidence",
+      "reason": "Both runs contain mixed failures: missing requirement URL after @ and an independent arithmetic assertion in test_second.",
+      "advisory_eligible": false
+    },
+    {
+      "id": "pair-30",
+      "relationship": "same_blocker",
+      "reason": "Both Requirement constructions fail because @ lacks a following URL; changing the package name leaves the immediate parsing constraint unchanged.",
+      "advisory_eligible": false
+    }
+  ],
+  "limitations": [
+    "Only two attempts per pair; advisory eligibility cannot pass.",
+    "Diagnostic retry intent for pairs 10, 13 and 19; unknown intent elsewhere.",
+    "Four pairs lack the second finish record; passed teardown does not replace completion.",
+    "Six pairs contain multiple failing tests and require abstention.",
+    "Pairs 15 and 18 have identical custom exception messages at different cardinality branches.",
+    "Related variants occur across pairs; 30 pairs are not 30 independent failure mechanisms.",
+    "Zeroed recorded durations cannot establish latency or runtime cost."
+  ]
+}

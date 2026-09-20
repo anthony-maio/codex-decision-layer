@@ -1,0 +1,4349 @@
+{
+  "protocol": "Label same_blocker/different_blocker/insufficient_evidence and advisory eligibility with decisive evidence. Same means same immediate failing operation and constraint, not necessarily identical input. Only two attempts are available. Do not inspect other files or run comparators.",
+  "cases": [
+    {
+      "id": "pair-01",
+      "retry_intent": "unknown",
+      "sources": {
+        "before": "import click\n\ndef test_case():\n    click.Choice(['red', 'blue']).convert('green', None, None)\n",
+        "after": "import click\n\ndef test_case():\n    click.Choice(['red', 'blue']).convert('purple', None, None)\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-01-0",
+            "schema": 1,
+            "root": "public-adapter/click",
+            "runner": "pytest",
+            "task": "pair-01",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-01-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-01-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-01-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    click.Choice(['red', 'blue']).convert('green', None, None)\n<PUBLIC>/click/src/click/types.py:297: in convert\n    self.fail(\n<PUBLIC>/click/src/click/types.py:137: in fail\n    raise BadParameter(message, ctx=ctx, param=param)\nE   click.exceptions.BadParameter: 'green' is not one of 'red', 'blue'.",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-01-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-01-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-01-1",
+            "schema": 1,
+            "root": "public-adapter/click",
+            "runner": "pytest",
+            "task": "pair-01",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-01-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-01-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-01-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    click.Choice(['red', 'blue']).convert('purple', None, None)\n<PUBLIC>/click/src/click/types.py:297: in convert\n    self.fail(\n<PUBLIC>/click/src/click/types.py:137: in fail\n    raise BadParameter(message, ctx=ctx, param=param)\nE   click.exceptions.BadParameter: 'purple' is not one of 'red', 'blue'.",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-01-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-02",
+      "retry_intent": "unknown",
+      "sources": {
+        "before": "from more_itertools import strictly_n\ndef count_error(count):\n    raise ValueError('expected exactly three results')\n\ndef test_case():\n    list(strictly_n([1], 3, too_short=count_error))\n\ndef test_second():\n    assert 2 + 2 == 5\n",
+        "after": "from more_itertools import strictly_n\ndef count_error(count):\n    raise ValueError('expected exactly three results')\n\ndef test_case():\n    list(strictly_n([1, 2], 3, too_short=count_error))\n\ndef test_second():\n    assert 2 + 2 == 5\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-02-0",
+            "schema": 1,
+            "root": "public-adapter/more-itertools",
+            "runner": "pytest",
+            "task": "pair-02",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-02-0",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_second"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-02-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-02-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in test_case\n    list(strictly_n([1], 3, too_short=count_error))\n<PUBLIC>/more-itertools/more_itertools/more.py:701: in strictly_n\n    too_short(sent)\ntest_case.py:3: in count_error\n    raise ValueError('expected exactly three results')\nE   ValueError: expected exactly three results",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-02-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-02-0",
+            "nodeid": "test_case.py::test_second",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-02-0",
+            "nodeid": "test_case.py::test_second",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:9: in test_second\n    assert 2 + 2 == 5\nE   assert (2 + 2) == 5",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-02-0",
+            "nodeid": "test_case.py::test_second",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-02-0",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-02-1",
+            "schema": 1,
+            "root": "public-adapter/more-itertools",
+            "runner": "pytest",
+            "task": "pair-02",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-02-1",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_second"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-02-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-02-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in test_case\n    list(strictly_n([1, 2], 3, too_short=count_error))\n<PUBLIC>/more-itertools/more_itertools/more.py:701: in strictly_n\n    too_short(sent)\ntest_case.py:3: in count_error\n    raise ValueError('expected exactly three results')\nE   ValueError: expected exactly three results",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-02-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-02-1",
+            "nodeid": "test_case.py::test_second",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-02-1",
+            "nodeid": "test_case.py::test_second",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:9: in test_second\n    assert 2 + 2 == 5\nE   assert (2 + 2) == 5",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-02-1",
+            "nodeid": "test_case.py::test_second",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-02-1",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-03",
+      "retry_intent": "unknown",
+      "sources": {
+        "before": "import click\n\ndef test_case():\n    click.IntRange(1, 9).convert(10, None, None)\n",
+        "after": "import click\n\ndef test_case():\n    click.IntRange(1, 9).convert(11, None, None)\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-03-0",
+            "schema": 1,
+            "root": "public-adapter/click",
+            "runner": "pytest",
+            "task": "pair-03",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-03-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-03-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-03-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    click.IntRange(1, 9).convert(10, None, None)\n<PUBLIC>/click/src/click/types.py:470: in convert\n    self.fail(\n<PUBLIC>/click/src/click/types.py:137: in fail\n    raise BadParameter(message, ctx=ctx, param=param)\nE   click.exceptions.BadParameter: 10 is not in the range 1<=x<=9.",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-03-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-03-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-03-1",
+            "schema": 1,
+            "root": "public-adapter/click",
+            "runner": "pytest",
+            "task": "pair-03",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-03-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-03-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-03-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    click.IntRange(1, 9).convert(11, None, None)\n<PUBLIC>/click/src/click/types.py:470: in convert\n    self.fail(\n<PUBLIC>/click/src/click/types.py:137: in fail\n    raise BadParameter(message, ctx=ctx, param=param)\nE   click.exceptions.BadParameter: 11 is not in the range 1<=x<=9.",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-03-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-04",
+      "retry_intent": "unknown",
+      "sources": {
+        "before": "from more_itertools import one\n\ndef test_case():\n    one([], too_short=ValueError('expected exactly one result'))\n\ndef test_second():\n    assert 2 + 2 == 5\n",
+        "after": "from more_itertools import one\n\ndef test_case():\n    one(iter([]), too_short=ValueError('expected exactly one result'))\n\ndef test_second():\n    assert 2 + 2 == 5\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-04-0",
+            "schema": 1,
+            "root": "public-adapter/more-itertools",
+            "runner": "pytest",
+            "task": "pair-04",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-04-0",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_second"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-04-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-04-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    one([], too_short=ValueError('expected exactly one result'))\n<PUBLIC>/more-itertools/more_itertools/more.py:627: in one\n    raise too_short or ValueError('too few items in iterable (expected 1)')\nE   ValueError: expected exactly one result",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-04-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-04-0",
+            "nodeid": "test_case.py::test_second",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-04-0",
+            "nodeid": "test_case.py::test_second",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:7: in test_second\n    assert 2 + 2 == 5\nE   assert (2 + 2) == 5",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-04-0",
+            "nodeid": "test_case.py::test_second",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-04-0",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-04-1",
+            "schema": 1,
+            "root": "public-adapter/more-itertools",
+            "runner": "pytest",
+            "task": "pair-04",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-04-1",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_second"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-04-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-04-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    one(iter([]), too_short=ValueError('expected exactly one result'))\n<PUBLIC>/more-itertools/more_itertools/more.py:627: in one\n    raise too_short or ValueError('too few items in iterable (expected 1)')\nE   ValueError: expected exactly one result",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-04-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-04-1",
+            "nodeid": "test_case.py::test_second",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-04-1",
+            "nodeid": "test_case.py::test_second",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:7: in test_second\n    assert 2 + 2 == 5\nE   assert (2 + 2) == 5",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-04-1",
+            "nodeid": "test_case.py::test_second",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-04-1",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-05",
+      "retry_intent": "unknown",
+      "sources": {
+        "before": "from packaging.specifiers import SpecifierSet\n\ndef test_case():\n    SpecifierSet('=>1.0')\n",
+        "after": "from packaging.specifiers import SpecifierSet\n\ndef test_case():\n    assert SpecifierSet('>=1.0').contains('0.9')\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-05-0",
+            "schema": 1,
+            "root": "public-adapter/packaging",
+            "runner": "pytest",
+            "task": "pair-05",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-05-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-05-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-05-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    SpecifierSet('=>1.0')\n<PUBLIC>/packaging/src/packaging/specifiers.py:726: in __init__\n    self._specs = frozenset(map(Specifier, split_specifiers))\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/specifiers.py:237: in __init__\n    raise InvalidSpecifier(f\"Invalid specifier: {spec!r}\")\nE   packaging.specifiers.InvalidSpecifier: Invalid specifier: '=>1.0'",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-05-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-05-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-05-1",
+            "schema": 1,
+            "root": "public-adapter/packaging",
+            "runner": "pytest",
+            "task": "pair-05",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-05-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-05-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-05-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    assert SpecifierSet('>=1.0').contains('0.9')\nE   AssertionError: assert False\nE    +  where False = contains('0.9')\nE    +    where contains = <SpecifierSet('>=1.0')>.contains\nE    +      where <SpecifierSet('>=1.0')> = SpecifierSet('>=1.0')",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-05-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-05-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-06",
+      "retry_intent": "unknown",
+      "sources": {
+        "before": "import click\n@click.command()\n@click.option('--name', required=True)\n@click.option('--verbose', is_flag=True)\ndef command(name, verbose):\n    return name\n\ndef test_case():\n    command.main(args=[], standalone_mode=False)\n",
+        "after": "import click\n@click.command()\n@click.option('--name', required=True)\n@click.option('--verbose', is_flag=True)\ndef command(name, verbose):\n    return name\n\ndef test_case():\n    command.main(args=['--name', 'valid', '--unknown'], standalone_mode=False)\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-06-0",
+            "schema": 1,
+            "root": "public-adapter/click",
+            "runner": "pytest",
+            "task": "pair-06",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-06-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-06-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-06-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:9: in test_case\n    command.main(args=[], standalone_mode=False)\n<PUBLIC>/click/src/click/core.py:1081: in main\n    with self.make_context(prog_name, args, **extra) as ctx:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/click/src/click/core.py:949: in make_context\n    self.parse_args(ctx, args)\n<PUBLIC>/click/src/click/core.py:1417: in parse_args\n    value, args = param.handle_parse_result(ctx, opts, args)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/click/src/click/core.py:2403: in handle_parse_result\n    value = self.process_value(ctx, value)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/click/src/click/core.py:2362: in process_value\n    raise MissingParameter(ctx=ctx, param=self)\nE   click.exceptions.MissingParameter: Missing parameter: name",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-06-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-06-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-06-1",
+            "schema": 1,
+            "root": "public-adapter/click",
+            "runner": "pytest",
+            "task": "pair-06",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-06-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-06-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-06-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:9: in test_case\n    command.main(args=['--name', 'valid', '--unknown'], standalone_mode=False)\n<PUBLIC>/click/src/click/core.py:1081: in main\n    with self.make_context(prog_name, args, **extra) as ctx:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/click/src/click/core.py:949: in make_context\n    self.parse_args(ctx, args)\n<PUBLIC>/click/src/click/core.py:1414: in parse_args\n    opts, args, param_order = parser.parse_args(args=args)\n                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/click/src/click/parser.py:339: in parse_args\n    self._process_args_for_options(state)\n<PUBLIC>/click/src/click/parser.py:366: in _process_args_for_options\n    self._process_opts(arg, state)\n<PUBLIC>/click/src/click/parser.py:516: in _process_opts\n    self._match_long_opt(norm_long_opt, explicit_value, state)\n<PUBLIC>/click/src/click/parser.py:400: in _match_long_opt\n    raise NoSuchOption(opt, possibilities=possibilities, ctx=self.ctx)\nE   click.exceptions.NoSuchOption: No such option: --unknown",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-06-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-06-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-07",
+      "retry_intent": "unknown",
+      "sources": {
+        "before": "from packaging.markers import Marker\n\ndef test_case():\n    Marker(\"python_version ??? '3.12'\")\n",
+        "after": "from packaging.markers import Marker\n\ndef test_case():\n    Marker(\"python_version ??? '3.13'\")\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-07-0",
+            "schema": 1,
+            "root": "public-adapter/packaging",
+            "runner": "pytest",
+            "task": "pair-07",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-07-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-07-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-07-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "<PUBLIC>/packaging/src/packaging/markers.py:280: in __init__\n    self._markers = _normalize_extra_values(_parse_marker(marker))\n                                            ^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:253: in parse_marker\n    return _parse_full_marker(Tokenizer(source, rules=DEFAULT_RULES))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:257: in _parse_full_marker\n    retval = _parse_marker(tokenizer)\n             ^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:266: in _parse_marker\n    expression = [_parse_marker_atom(tokenizer)]\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:291: in _parse_marker_atom\n    marker = _parse_marker_item(tokenizer)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:303: in _parse_marker_item\n    marker_op = _parse_marker_op(tokenizer)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:351: in _parse_marker_op\n    return tokenizer.raise_syntax_error(\n<PUBLIC>/packaging/src/packaging/_tokenizer.py:168: in raise_syntax_error\n    raise ParserSyntaxError(\nE   packaging._tokenizer.ParserSyntaxError: Expected marker operator, one of <=, <, !=, ==, >=, >, ~=, ===, in, not in\nE       python_version ??? '3.12'\nE                      ^\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:4: in test_case\n    Marker(\"python_version ??? '3.12'\")\n<PUBLIC>/packaging/src/packaging/markers.py:298: in __init__\n    raise InvalidMarker(str(e)) from e\nE   packaging.markers.InvalidMarker: Expected marker operator, one of <=, <, !=, ==, >=, >, ~=, ===, in, not in\nE       python_version ??? '3.12'\nE                      ^",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-07-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-07-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-07-1",
+            "schema": 1,
+            "root": "public-adapter/packaging",
+            "runner": "pytest",
+            "task": "pair-07",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-07-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-07-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-07-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "<PUBLIC>/packaging/src/packaging/markers.py:280: in __init__\n    self._markers = _normalize_extra_values(_parse_marker(marker))\n                                            ^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:253: in parse_marker\n    return _parse_full_marker(Tokenizer(source, rules=DEFAULT_RULES))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:257: in _parse_full_marker\n    retval = _parse_marker(tokenizer)\n             ^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:266: in _parse_marker\n    expression = [_parse_marker_atom(tokenizer)]\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:291: in _parse_marker_atom\n    marker = _parse_marker_item(tokenizer)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:303: in _parse_marker_item\n    marker_op = _parse_marker_op(tokenizer)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:351: in _parse_marker_op\n    return tokenizer.raise_syntax_error(\n<PUBLIC>/packaging/src/packaging/_tokenizer.py:168: in raise_syntax_error\n    raise ParserSyntaxError(\nE   packaging._tokenizer.ParserSyntaxError: Expected marker operator, one of <=, <, !=, ==, >=, >, ~=, ===, in, not in\nE       python_version ??? '3.13'\nE                      ^\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:4: in test_case\n    Marker(\"python_version ??? '3.13'\")\n<PUBLIC>/packaging/src/packaging/markers.py:298: in __init__\n    raise InvalidMarker(str(e)) from e\nE   packaging.markers.InvalidMarker: Expected marker operator, one of <=, <, !=, ==, >=, >, ~=, ===, in, not in\nE       python_version ??? '3.13'\nE                      ^",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-07-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-07-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-08",
+      "retry_intent": "unknown",
+      "sources": {
+        "before": "from packaging.version import Version\n\ndef test_case():\n    Version('banana')\n",
+        "after": "from packaging.version import Version\n\ndef test_case():\n    Version('not-a-version')\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-08-0",
+            "schema": 1,
+            "root": "public-adapter/packaging",
+            "runner": "pytest",
+            "task": "pair-08",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-08-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-08-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-08-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    Version('banana')\n<PUBLIC>/packaging/src/packaging/version.py:202: in __init__\n    raise InvalidVersion(f\"Invalid version: {version!r}\")\nE   packaging.version.InvalidVersion: Invalid version: 'banana'",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-08-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-08-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-08-1",
+            "schema": 1,
+            "root": "public-adapter/packaging",
+            "runner": "pytest",
+            "task": "pair-08",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-08-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-08-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-08-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    Version('not-a-version')\n<PUBLIC>/packaging/src/packaging/version.py:202: in __init__\n    raise InvalidVersion(f\"Invalid version: {version!r}\")\nE   packaging.version.InvalidVersion: Invalid version: 'not-a-version'",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-08-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-08-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-09",
+      "retry_intent": "unknown",
+      "sources": {
+        "before": "from packaging.specifiers import SpecifierSet\n\ndef test_case():\n    SpecifierSet('=>1.0')\n\ndef test_second():\n    assert 2 + 2 == 5\n",
+        "after": "from packaging.specifiers import SpecifierSet\n\ndef test_case():\n    SpecifierSet('=>2.0')\n\ndef test_second():\n    assert 2 + 2 == 5\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-09-0",
+            "schema": 1,
+            "root": "public-adapter/packaging",
+            "runner": "pytest",
+            "task": "pair-09",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-09-0",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_second"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-09-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-09-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    SpecifierSet('=>1.0')\n<PUBLIC>/packaging/src/packaging/specifiers.py:726: in __init__\n    self._specs = frozenset(map(Specifier, split_specifiers))\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/specifiers.py:237: in __init__\n    raise InvalidSpecifier(f\"Invalid specifier: {spec!r}\")\nE   packaging.specifiers.InvalidSpecifier: Invalid specifier: '=>1.0'",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-09-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-09-0",
+            "nodeid": "test_case.py::test_second",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-09-0",
+            "nodeid": "test_case.py::test_second",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:7: in test_second\n    assert 2 + 2 == 5\nE   assert (2 + 2) == 5",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-09-0",
+            "nodeid": "test_case.py::test_second",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-09-0",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-09-1",
+            "schema": 1,
+            "root": "public-adapter/packaging",
+            "runner": "pytest",
+            "task": "pair-09",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-09-1",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_second"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-09-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-09-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    SpecifierSet('=>2.0')\n<PUBLIC>/packaging/src/packaging/specifiers.py:726: in __init__\n    self._specs = frozenset(map(Specifier, split_specifiers))\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/specifiers.py:237: in __init__\n    raise InvalidSpecifier(f\"Invalid specifier: {spec!r}\")\nE   packaging.specifiers.InvalidSpecifier: Invalid specifier: '=>2.0'",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-09-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-09-1",
+            "nodeid": "test_case.py::test_second",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-09-1",
+            "nodeid": "test_case.py::test_second",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:7: in test_second\n    assert 2 + 2 == 5\nE   assert (2 + 2) == 5",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-09-1",
+            "nodeid": "test_case.py::test_second",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-09-1",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-10",
+      "retry_intent": "diagnostic_retry",
+      "sources": {
+        "before": "import click\n\ndef test_case():\n    click.IntRange(1, 9).convert(10, None, None)\n",
+        "after": "import click\n\ndef test_case():\n    click.IntRange(1, 9).convert(11, None, None)\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-10-0",
+            "schema": 1,
+            "root": "public-adapter/click",
+            "runner": "pytest",
+            "task": "pair-10",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-10-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-10-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-10-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    click.IntRange(1, 9).convert(10, None, None)\n<PUBLIC>/click/src/click/types.py:470: in convert\n    self.fail(\n<PUBLIC>/click/src/click/types.py:137: in fail\n    raise BadParameter(message, ctx=ctx, param=param)\nE   click.exceptions.BadParameter: 10 is not in the range 1<=x<=9.",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-10-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-10-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-10-1",
+            "schema": 1,
+            "root": "public-adapter/click",
+            "runner": "pytest",
+            "task": "pair-10",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-10-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-10-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-10-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    click.IntRange(1, 9).convert(11, None, None)\n<PUBLIC>/click/src/click/types.py:470: in convert\n    self.fail(\n<PUBLIC>/click/src/click/types.py:137: in fail\n    raise BadParameter(message, ctx=ctx, param=param)\nE   click.exceptions.BadParameter: 11 is not in the range 1<=x<=9.",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-10-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-10-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-11",
+      "retry_intent": "unknown",
+      "sources": {
+        "before": "from packaging.requirements import Requirement\n\ndef test_case():\n    Requirement('demo @')\n",
+        "after": "from packaging.requirements import Requirement\n\ndef test_case():\n    assert Requirement('demo>=1.0').name == 'other'\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-11-0",
+            "schema": 1,
+            "root": "public-adapter/packaging",
+            "runner": "pytest",
+            "task": "pair-11",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-11-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-11-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-11-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "<PUBLIC>/packaging/src/packaging/requirements.py:36: in __init__\n    parsed = _parse_requirement(requirement_string)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:62: in parse_requirement\n    return _parse_requirement(Tokenizer(source, rules=DEFAULT_RULES))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:80: in _parse_requirement\n    url, specifier, marker = _parse_requirement_details(tokenizer)\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:103: in _parse_requirement_details\n    url = tokenizer.expect(\"URL\", expected=\"URL after @\").text\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_tokenizer.py:143: in expect\n    raise self.raise_syntax_error(f\"Expected {expected}\")\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_tokenizer.py:168: in raise_syntax_error\n    raise ParserSyntaxError(\nE   packaging._tokenizer.ParserSyntaxError: Expected URL after @\nE       demo @\nE             ^\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:4: in test_case\n    Requirement('demo @')\n<PUBLIC>/packaging/src/packaging/requirements.py:38: in __init__\n    raise InvalidRequirement(str(e)) from e\nE   packaging.requirements.InvalidRequirement: Expected URL after @\nE       demo @\nE             ^",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-11-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-11-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-11-1",
+            "schema": 1,
+            "root": "public-adapter/packaging",
+            "runner": "pytest",
+            "task": "pair-11",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-11-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-11-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-11-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    assert Requirement('demo>=1.0').name == 'other'\nE   AssertionError: assert 'demo' == 'other'\nE     \nE     - other\nE     + demo",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-11-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-11-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-12",
+      "retry_intent": "unknown",
+      "sources": {
+        "before": "import click\n\nimport pytest\n@pytest.fixture\ndef prepared():\n    click.Choice(['red', 'blue']).convert('green', None, None)\n\ndef test_case(prepared):\n    assert prepared == 'expected'\n",
+        "after": "import pytest\n@pytest.fixture\ndef prepared():\n    return 'initialized'\n\ndef test_case(prepared):\n    assert prepared == 'expected'\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-12-0",
+            "schema": 1,
+            "root": "public-adapter/click",
+            "runner": "pytest",
+            "task": "pair-12",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-12-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-12-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in prepared\n    click.Choice(['red', 'blue']).convert('green', None, None)\n<PUBLIC>/click/src/click/types.py:297: in convert\n    self.fail(\n<PUBLIC>/click/src/click/types.py:137: in fail\n    raise BadParameter(message, ctx=ctx, param=param)\nE   click.exceptions.BadParameter: 'green' is not one of 'red', 'blue'.",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-12-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-12-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-12-1",
+            "schema": 1,
+            "root": "public-adapter/click",
+            "runner": "pytest",
+            "task": "pair-12",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-12-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-12-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-12-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:7: in test_case\n    assert prepared == 'expected'\nE   AssertionError: assert 'initialized' == 'expected'\nE     \nE     - expected\nE     + initialized",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-12-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-12-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-13",
+      "retry_intent": "diagnostic_retry",
+      "sources": {
+        "before": "import click\n\ndef test_case():\n    click.Tuple([int, int]).convert([], None, None)\n",
+        "after": "import click\n\ndef test_case():\n    click.Tuple([int, int]).convert(['1'], None, None)\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-13-0",
+            "schema": 1,
+            "root": "public-adapter/click",
+            "runner": "pytest",
+            "task": "pair-13",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-13-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-13-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-13-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    click.Tuple([int, int]).convert([], None, None)\n<PUBLIC>/click/src/click/types.py:990: in convert\n    self.fail(\n<PUBLIC>/click/src/click/types.py:137: in fail\n    raise BadParameter(message, ctx=ctx, param=param)\nE   click.exceptions.BadParameter: 2 values are required, but 0 were given.",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-13-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-13-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-13-1",
+            "schema": 1,
+            "root": "public-adapter/click",
+            "runner": "pytest",
+            "task": "pair-13",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-13-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-13-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-13-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    click.Tuple([int, int]).convert(['1'], None, None)\n<PUBLIC>/click/src/click/types.py:990: in convert\n    self.fail(\n<PUBLIC>/click/src/click/types.py:137: in fail\n    raise BadParameter(message, ctx=ctx, param=param)\nE   click.exceptions.BadParameter: 2 values are required, but 1 was given.",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-13-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-13-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-14",
+      "retry_intent": "unknown",
+      "sources": {
+        "before": "from packaging.markers import Marker\n\ndef test_case():\n    Marker(\"python_version ??? '3.12'\")\n\ndef test_second():\n    assert 2 + 2 == 5\n",
+        "after": "from packaging.markers import Marker\n\ndef test_case():\n    Marker(\"python_version ??? '3.13'\")\n\ndef test_second():\n    assert 2 + 2 == 5\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-14-0",
+            "schema": 1,
+            "root": "public-adapter/packaging",
+            "runner": "pytest",
+            "task": "pair-14",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-14-0",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_second"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-14-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-14-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "<PUBLIC>/packaging/src/packaging/markers.py:280: in __init__\n    self._markers = _normalize_extra_values(_parse_marker(marker))\n                                            ^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:253: in parse_marker\n    return _parse_full_marker(Tokenizer(source, rules=DEFAULT_RULES))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:257: in _parse_full_marker\n    retval = _parse_marker(tokenizer)\n             ^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:266: in _parse_marker\n    expression = [_parse_marker_atom(tokenizer)]\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:291: in _parse_marker_atom\n    marker = _parse_marker_item(tokenizer)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:303: in _parse_marker_item\n    marker_op = _parse_marker_op(tokenizer)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:351: in _parse_marker_op\n    return tokenizer.raise_syntax_error(\n<PUBLIC>/packaging/src/packaging/_tokenizer.py:168: in raise_syntax_error\n    raise ParserSyntaxError(\nE   packaging._tokenizer.ParserSyntaxError: Expected marker operator, one of <=, <, !=, ==, >=, >, ~=, ===, in, not in\nE       python_version ??? '3.12'\nE                      ^\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:4: in test_case\n    Marker(\"python_version ??? '3.12'\")\n<PUBLIC>/packaging/src/packaging/markers.py:298: in __init__\n    raise InvalidMarker(str(e)) from e\nE   packaging.markers.InvalidMarker: Expected marker operator, one of <=, <, !=, ==, >=, >, ~=, ===, in, not in\nE       python_version ??? '3.12'\nE                      ^",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-14-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-14-0",
+            "nodeid": "test_case.py::test_second",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-14-0",
+            "nodeid": "test_case.py::test_second",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:7: in test_second\n    assert 2 + 2 == 5\nE   assert (2 + 2) == 5",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-14-0",
+            "nodeid": "test_case.py::test_second",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-14-0",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-14-1",
+            "schema": 1,
+            "root": "public-adapter/packaging",
+            "runner": "pytest",
+            "task": "pair-14",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-14-1",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_second"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-14-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-14-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "<PUBLIC>/packaging/src/packaging/markers.py:280: in __init__\n    self._markers = _normalize_extra_values(_parse_marker(marker))\n                                            ^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:253: in parse_marker\n    return _parse_full_marker(Tokenizer(source, rules=DEFAULT_RULES))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:257: in _parse_full_marker\n    retval = _parse_marker(tokenizer)\n             ^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:266: in _parse_marker\n    expression = [_parse_marker_atom(tokenizer)]\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:291: in _parse_marker_atom\n    marker = _parse_marker_item(tokenizer)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:303: in _parse_marker_item\n    marker_op = _parse_marker_op(tokenizer)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:351: in _parse_marker_op\n    return tokenizer.raise_syntax_error(\n<PUBLIC>/packaging/src/packaging/_tokenizer.py:168: in raise_syntax_error\n    raise ParserSyntaxError(\nE   packaging._tokenizer.ParserSyntaxError: Expected marker operator, one of <=, <, !=, ==, >=, >, ~=, ===, in, not in\nE       python_version ??? '3.13'\nE                      ^\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:4: in test_case\n    Marker(\"python_version ??? '3.13'\")\n<PUBLIC>/packaging/src/packaging/markers.py:298: in __init__\n    raise InvalidMarker(str(e)) from e\nE   packaging.markers.InvalidMarker: Expected marker operator, one of <=, <, !=, ==, >=, >, ~=, ===, in, not in\nE       python_version ??? '3.13'\nE                      ^",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-14-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-14-1",
+            "nodeid": "test_case.py::test_second",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-14-1",
+            "nodeid": "test_case.py::test_second",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:7: in test_second\n    assert 2 + 2 == 5\nE   assert (2 + 2) == 5",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-14-1",
+            "nodeid": "test_case.py::test_second",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-14-1",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-15",
+      "retry_intent": "unknown",
+      "sources": {
+        "before": "from more_itertools import strictly_n\ndef count_error(count):\n    raise ValueError('expected exactly three results')\n\ndef test_case():\n    list(strictly_n([1], 3, too_short=count_error))\n",
+        "after": "from more_itertools import strictly_n\ndef count_error(count):\n    raise ValueError('expected exactly three results')\n\ndef test_case():\n    list(strictly_n([1, 2, 3, 4], 3, too_long=count_error))\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-15-0",
+            "schema": 1,
+            "root": "public-adapter/more-itertools",
+            "runner": "pytest",
+            "task": "pair-15",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-15-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-15-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-15-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in test_case\n    list(strictly_n([1], 3, too_short=count_error))\n<PUBLIC>/more-itertools/more_itertools/more.py:701: in strictly_n\n    too_short(sent)\ntest_case.py:3: in count_error\n    raise ValueError('expected exactly three results')\nE   ValueError: expected exactly three results",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-15-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-15-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-15-1",
+            "schema": 1,
+            "root": "public-adapter/more-itertools",
+            "runner": "pytest",
+            "task": "pair-15",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-15-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-15-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-15-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in test_case\n    list(strictly_n([1, 2, 3, 4], 3, too_long=count_error))\n<PUBLIC>/more-itertools/more_itertools/more.py:705: in strictly_n\n    too_long(n + 1)\ntest_case.py:3: in count_error\n    raise ValueError('expected exactly three results')\nE   ValueError: expected exactly three results",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-15-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-15-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-16",
+      "retry_intent": "unknown",
+      "sources": {
+        "before": "from packaging.specifiers import SpecifierSet\n\ndef test_case():\n    SpecifierSet('=>1.0')\n",
+        "after": "from packaging.specifiers import SpecifierSet\n\ndef test_case():\n    SpecifierSet('=>2.0')\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-16-0",
+            "schema": 1,
+            "root": "public-adapter/packaging",
+            "runner": "pytest",
+            "task": "pair-16",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-16-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-16-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-16-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    SpecifierSet('=>1.0')\n<PUBLIC>/packaging/src/packaging/specifiers.py:726: in __init__\n    self._specs = frozenset(map(Specifier, split_specifiers))\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/specifiers.py:237: in __init__\n    raise InvalidSpecifier(f\"Invalid specifier: {spec!r}\")\nE   packaging.specifiers.InvalidSpecifier: Invalid specifier: '=>1.0'",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-16-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-16-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-16-1",
+            "schema": 1,
+            "root": "public-adapter/packaging",
+            "runner": "pytest",
+            "task": "pair-16",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-16-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-16-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-16-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    SpecifierSet('=>2.0')\n<PUBLIC>/packaging/src/packaging/specifiers.py:726: in __init__\n    self._specs = frozenset(map(Specifier, split_specifiers))\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/specifiers.py:237: in __init__\n    raise InvalidSpecifier(f\"Invalid specifier: {spec!r}\")\nE   packaging.specifiers.InvalidSpecifier: Invalid specifier: '=>2.0'",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-16-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-16-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-17",
+      "retry_intent": "unknown",
+      "sources": {
+        "before": "import click\n@click.command()\n@click.option('--name', required=True)\n@click.option('--verbose', is_flag=True)\ndef command(name, verbose):\n    return name\n\ndef test_case():\n    command.main(args=[], standalone_mode=False)\n",
+        "after": "import click\n@click.command()\n@click.option('--name', required=True)\n@click.option('--verbose', is_flag=True)\ndef command(name, verbose):\n    return name\n\ndef test_case():\n    command.main(args=['--verbose'], standalone_mode=False)\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-17-0",
+            "schema": 1,
+            "root": "public-adapter/click",
+            "runner": "pytest",
+            "task": "pair-17",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-17-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-17-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-17-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:9: in test_case\n    command.main(args=[], standalone_mode=False)\n<PUBLIC>/click/src/click/core.py:1081: in main\n    with self.make_context(prog_name, args, **extra) as ctx:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/click/src/click/core.py:949: in make_context\n    self.parse_args(ctx, args)\n<PUBLIC>/click/src/click/core.py:1417: in parse_args\n    value, args = param.handle_parse_result(ctx, opts, args)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/click/src/click/core.py:2403: in handle_parse_result\n    value = self.process_value(ctx, value)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/click/src/click/core.py:2362: in process_value\n    raise MissingParameter(ctx=ctx, param=self)\nE   click.exceptions.MissingParameter: Missing parameter: name",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-17-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-17-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-17-1",
+            "schema": 1,
+            "root": "public-adapter/click",
+            "runner": "pytest",
+            "task": "pair-17",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-17-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-17-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-17-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:9: in test_case\n    command.main(args=['--verbose'], standalone_mode=False)\n<PUBLIC>/click/src/click/core.py:1081: in main\n    with self.make_context(prog_name, args, **extra) as ctx:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/click/src/click/core.py:949: in make_context\n    self.parse_args(ctx, args)\n<PUBLIC>/click/src/click/core.py:1417: in parse_args\n    value, args = param.handle_parse_result(ctx, opts, args)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/click/src/click/core.py:2403: in handle_parse_result\n    value = self.process_value(ctx, value)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/click/src/click/core.py:2362: in process_value\n    raise MissingParameter(ctx=ctx, param=self)\nE   click.exceptions.MissingParameter: Missing parameter: name",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-17-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-17-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-18",
+      "retry_intent": "unknown",
+      "sources": {
+        "before": "from more_itertools import one\n\ndef test_case():\n    one([], too_short=ValueError('expected exactly one result'))\n",
+        "after": "from more_itertools import one\n\ndef test_case():\n    one([1, 2], too_long=ValueError('expected exactly one result'))\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-18-0",
+            "schema": 1,
+            "root": "public-adapter/more-itertools",
+            "runner": "pytest",
+            "task": "pair-18",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-18-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-18-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-18-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    one([], too_short=ValueError('expected exactly one result'))\n<PUBLIC>/more-itertools/more_itertools/more.py:627: in one\n    raise too_short or ValueError('too few items in iterable (expected 1)')\nE   ValueError: expected exactly one result",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-18-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-18-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-18-1",
+            "schema": 1,
+            "root": "public-adapter/more-itertools",
+            "runner": "pytest",
+            "task": "pair-18",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-18-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-18-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-18-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    one([1, 2], too_long=ValueError('expected exactly one result'))\n<PUBLIC>/more-itertools/more_itertools/more.py:625: in one\n    raise too_long or ValueError(msg)\nE   ValueError: expected exactly one result",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-18-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-18-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-19",
+      "retry_intent": "diagnostic_retry",
+      "sources": {
+        "before": "import click\n\ndef test_case():\n    click.Choice(['red', 'blue']).convert('green', None, None)\n",
+        "after": "import click\n\ndef test_case():\n    click.Choice(['red', 'blue']).convert('purple', None, None)\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-19-0",
+            "schema": 1,
+            "root": "public-adapter/click",
+            "runner": "pytest",
+            "task": "pair-19",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-19-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-19-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-19-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    click.Choice(['red', 'blue']).convert('green', None, None)\n<PUBLIC>/click/src/click/types.py:297: in convert\n    self.fail(\n<PUBLIC>/click/src/click/types.py:137: in fail\n    raise BadParameter(message, ctx=ctx, param=param)\nE   click.exceptions.BadParameter: 'green' is not one of 'red', 'blue'.",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-19-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-19-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-19-1",
+            "schema": 1,
+            "root": "public-adapter/click",
+            "runner": "pytest",
+            "task": "pair-19",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-19-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-19-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-19-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    click.Choice(['red', 'blue']).convert('purple', None, None)\n<PUBLIC>/click/src/click/types.py:297: in convert\n    self.fail(\n<PUBLIC>/click/src/click/types.py:137: in fail\n    raise BadParameter(message, ctx=ctx, param=param)\nE   click.exceptions.BadParameter: 'purple' is not one of 'red', 'blue'.",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-19-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-19-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-20",
+      "retry_intent": "unknown",
+      "sources": {
+        "before": "from more_itertools import strictly_n\ndef count_error(count):\n    raise ValueError('expected exactly three results')\n\ndef test_case():\n    list(strictly_n([1], 3, too_short=count_error))\n",
+        "after": "from more_itertools import strictly_n\ndef count_error(count):\n    raise ValueError('expected exactly three results')\n\ndef test_case():\n    list(strictly_n([1, 2], 3, too_short=count_error))\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-20-0",
+            "schema": 1,
+            "root": "public-adapter/more-itertools",
+            "runner": "pytest",
+            "task": "pair-20",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-20-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-20-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-20-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in test_case\n    list(strictly_n([1], 3, too_short=count_error))\n<PUBLIC>/more-itertools/more_itertools/more.py:701: in strictly_n\n    too_short(sent)\ntest_case.py:3: in count_error\n    raise ValueError('expected exactly three results')\nE   ValueError: expected exactly three results",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-20-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-20-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-20-1",
+            "schema": 1,
+            "root": "public-adapter/more-itertools",
+            "runner": "pytest",
+            "task": "pair-20",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-20-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-20-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-20-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in test_case\n    list(strictly_n([1, 2], 3, too_short=count_error))\n<PUBLIC>/more-itertools/more_itertools/more.py:701: in strictly_n\n    too_short(sent)\ntest_case.py:3: in count_error\n    raise ValueError('expected exactly three results')\nE   ValueError: expected exactly three results",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-20-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-20-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-21",
+      "retry_intent": "unknown",
+      "sources": {
+        "before": "from more_itertools import one\n\ndef test_case():\n    one([], too_short=ValueError('expected exactly one result'))\n",
+        "after": "from more_itertools import one\n\ndef test_case():\n    one(iter([]), too_short=ValueError('expected exactly one result'))\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-21-0",
+            "schema": 1,
+            "root": "public-adapter/more-itertools",
+            "runner": "pytest",
+            "task": "pair-21",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-21-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-21-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-21-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    one([], too_short=ValueError('expected exactly one result'))\n<PUBLIC>/more-itertools/more_itertools/more.py:627: in one\n    raise too_short or ValueError('too few items in iterable (expected 1)')\nE   ValueError: expected exactly one result",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-21-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-21-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-21-1",
+            "schema": 1,
+            "root": "public-adapter/more-itertools",
+            "runner": "pytest",
+            "task": "pair-21",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-21-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-21-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-21-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    one(iter([]), too_short=ValueError('expected exactly one result'))\n<PUBLIC>/more-itertools/more_itertools/more.py:627: in one\n    raise too_short or ValueError('too few items in iterable (expected 1)')\nE   ValueError: expected exactly one result",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-21-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-21-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-22",
+      "retry_intent": "unknown",
+      "sources": {
+        "before": "import click\n\ndef test_case():\n    click.Tuple([int, int]).convert([], None, None)\n",
+        "after": "import click\n\ndef test_case():\n    click.Tuple([int, int]).convert(['1', 'word'], None, None)\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-22-0",
+            "schema": 1,
+            "root": "public-adapter/click",
+            "runner": "pytest",
+            "task": "pair-22",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-22-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-22-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-22-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    click.Tuple([int, int]).convert([], None, None)\n<PUBLIC>/click/src/click/types.py:990: in convert\n    self.fail(\n<PUBLIC>/click/src/click/types.py:137: in fail\n    raise BadParameter(message, ctx=ctx, param=param)\nE   click.exceptions.BadParameter: 2 values are required, but 0 were given.",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-22-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-22-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-22-1",
+            "schema": 1,
+            "root": "public-adapter/click",
+            "runner": "pytest",
+            "task": "pair-22",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-22-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-22-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-22-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "<PUBLIC>/click/src/click/types.py:412: in convert\n    return self._number_class(value)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   ValueError: invalid literal for int() with base 10: 'word'\n\nDuring handling of the above exception, another exception occurred:\ntest_case.py:4: in test_case\n    click.Tuple([int, int]).convert(['1', 'word'], None, None)\n<PUBLIC>/click/src/click/types.py:1000: in convert\n    return tuple(ty(x, param, ctx) for ty, x in zip(self.types, value))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/click/src/click/types.py:1000: in <genexpr>\n    return tuple(ty(x, param, ctx) for ty, x in zip(self.types, value))\n                 ^^^^^^^^^^^^^^^^^\n<PUBLIC>/click/src/click/types.py:84: in __call__\n    return self.convert(value, param, ctx)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/click/src/click/types.py:414: in convert\n    self.fail(\n<PUBLIC>/click/src/click/types.py:137: in fail\n    raise BadParameter(message, ctx=ctx, param=param)\nE   click.exceptions.BadParameter: 'word' is not a valid integer.",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-22-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-22-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-23",
+      "retry_intent": "unknown",
+      "sources": {
+        "before": "import click\n@click.command()\n@click.option('--name', required=True)\n@click.option('--verbose', is_flag=True)\ndef command(name, verbose):\n    return name\n\ndef test_case():\n    command.main(args=[], standalone_mode=False)\n",
+        "after": "import click\n@click.command()\n@click.option('--name', required=True)\n@click.option('--verbose', is_flag=True)\ndef command(name, verbose):\n    return name\n\ndef test_case():\n    command.main(args=['--verbose'], standalone_mode=False)\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-23-0",
+            "schema": 1,
+            "root": "public-adapter/click",
+            "runner": "pytest",
+            "task": "pair-23",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-23-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-23-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-23-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:9: in test_case\n    command.main(args=[], standalone_mode=False)\n<PUBLIC>/click/src/click/core.py:1081: in main\n    with self.make_context(prog_name, args, **extra) as ctx:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/click/src/click/core.py:949: in make_context\n    self.parse_args(ctx, args)\n<PUBLIC>/click/src/click/core.py:1417: in parse_args\n    value, args = param.handle_parse_result(ctx, opts, args)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/click/src/click/core.py:2403: in handle_parse_result\n    value = self.process_value(ctx, value)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/click/src/click/core.py:2362: in process_value\n    raise MissingParameter(ctx=ctx, param=self)\nE   click.exceptions.MissingParameter: Missing parameter: name",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-23-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-23-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-23-1",
+            "schema": 1,
+            "root": "public-adapter/click",
+            "runner": "pytest",
+            "task": "pair-23",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-23-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-23-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-23-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:9: in test_case\n    command.main(args=['--verbose'], standalone_mode=False)\n<PUBLIC>/click/src/click/core.py:1081: in main\n    with self.make_context(prog_name, args, **extra) as ctx:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/click/src/click/core.py:949: in make_context\n    self.parse_args(ctx, args)\n<PUBLIC>/click/src/click/core.py:1417: in parse_args\n    value, args = param.handle_parse_result(ctx, opts, args)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/click/src/click/core.py:2403: in handle_parse_result\n    value = self.process_value(ctx, value)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/click/src/click/core.py:2362: in process_value\n    raise MissingParameter(ctx=ctx, param=self)\nE   click.exceptions.MissingParameter: Missing parameter: name",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-23-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-24",
+      "retry_intent": "unknown",
+      "sources": {
+        "before": "from packaging.version import Version\n\ndef test_case():\n    Version('banana')\n",
+        "after": "from packaging.version import Version\n\ndef test_case():\n    assert Version('1.0') > Version('2.0')\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-24-0",
+            "schema": 1,
+            "root": "public-adapter/packaging",
+            "runner": "pytest",
+            "task": "pair-24",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-24-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-24-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-24-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    Version('banana')\n<PUBLIC>/packaging/src/packaging/version.py:202: in __init__\n    raise InvalidVersion(f\"Invalid version: {version!r}\")\nE   packaging.version.InvalidVersion: Invalid version: 'banana'",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-24-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-24-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-24-1",
+            "schema": 1,
+            "root": "public-adapter/packaging",
+            "runner": "pytest",
+            "task": "pair-24",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-24-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-24-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-24-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    assert Version('1.0') > Version('2.0')\nE   AssertionError: assert <Version('1.0')> > <Version('2.0')>\nE    +  where <Version('1.0')> = Version('1.0')\nE    +  and   <Version('2.0')> = Version('2.0')",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-24-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-24-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-25",
+      "retry_intent": "unknown",
+      "sources": {
+        "before": "from packaging.version import Version\n\ndef test_case():\n    Version('banana')\n\ndef test_second():\n    assert 2 + 2 == 5\n",
+        "after": "from packaging.version import Version\n\ndef test_case():\n    Version('not-a-version')\n\ndef test_second():\n    assert 2 + 2 == 5\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-25-0",
+            "schema": 1,
+            "root": "public-adapter/packaging",
+            "runner": "pytest",
+            "task": "pair-25",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-25-0",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_second"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-25-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-25-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    Version('banana')\n<PUBLIC>/packaging/src/packaging/version.py:202: in __init__\n    raise InvalidVersion(f\"Invalid version: {version!r}\")\nE   packaging.version.InvalidVersion: Invalid version: 'banana'",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-25-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-25-0",
+            "nodeid": "test_case.py::test_second",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-25-0",
+            "nodeid": "test_case.py::test_second",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:7: in test_second\n    assert 2 + 2 == 5\nE   assert (2 + 2) == 5",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-25-0",
+            "nodeid": "test_case.py::test_second",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-25-0",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-25-1",
+            "schema": 1,
+            "root": "public-adapter/packaging",
+            "runner": "pytest",
+            "task": "pair-25",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-25-1",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_second"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-25-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-25-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    Version('not-a-version')\n<PUBLIC>/packaging/src/packaging/version.py:202: in __init__\n    raise InvalidVersion(f\"Invalid version: {version!r}\")\nE   packaging.version.InvalidVersion: Invalid version: 'not-a-version'",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-25-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-25-1",
+            "nodeid": "test_case.py::test_second",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-25-1",
+            "nodeid": "test_case.py::test_second",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:7: in test_second\n    assert 2 + 2 == 5\nE   assert (2 + 2) == 5",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-25-1",
+            "nodeid": "test_case.py::test_second",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-25-1",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-26",
+      "retry_intent": "unknown",
+      "sources": {
+        "before": "import click\n\nimport pytest\n@pytest.fixture\ndef prepared():\n    click.IntRange(1, 9).convert(10, None, None)\n\ndef test_case(prepared):\n    assert prepared == 'expected'\n",
+        "after": "import pytest\n@pytest.fixture\ndef prepared():\n    return 'initialized'\n\ndef test_case(prepared):\n    assert prepared == 'expected'\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-26-0",
+            "schema": 1,
+            "root": "public-adapter/click",
+            "runner": "pytest",
+            "task": "pair-26",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-26-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-26-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in prepared\n    click.IntRange(1, 9).convert(10, None, None)\n<PUBLIC>/click/src/click/types.py:470: in convert\n    self.fail(\n<PUBLIC>/click/src/click/types.py:137: in fail\n    raise BadParameter(message, ctx=ctx, param=param)\nE   click.exceptions.BadParameter: 10 is not in the range 1<=x<=9.",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-26-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-26-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-26-1",
+            "schema": 1,
+            "root": "public-adapter/click",
+            "runner": "pytest",
+            "task": "pair-26",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-26-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-26-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-26-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:7: in test_case\n    assert prepared == 'expected'\nE   AssertionError: assert 'initialized' == 'expected'\nE     \nE     - expected\nE     + initialized",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-26-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-26-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-27",
+      "retry_intent": "unknown",
+      "sources": {
+        "before": "import click\n\ndef test_case():\n    click.Tuple([int, int]).convert([], None, None)\n",
+        "after": "import click\n\ndef test_case():\n    click.Tuple([int, int]).convert(['1'], None, None)\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-27-0",
+            "schema": 1,
+            "root": "public-adapter/click",
+            "runner": "pytest",
+            "task": "pair-27",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-27-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-27-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-27-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    click.Tuple([int, int]).convert([], None, None)\n<PUBLIC>/click/src/click/types.py:990: in convert\n    self.fail(\n<PUBLIC>/click/src/click/types.py:137: in fail\n    raise BadParameter(message, ctx=ctx, param=param)\nE   click.exceptions.BadParameter: 2 values are required, but 0 were given.",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-27-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-27-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-27-1",
+            "schema": 1,
+            "root": "public-adapter/click",
+            "runner": "pytest",
+            "task": "pair-27",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-27-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-27-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-27-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    click.Tuple([int, int]).convert(['1'], None, None)\n<PUBLIC>/click/src/click/types.py:990: in convert\n    self.fail(\n<PUBLIC>/click/src/click/types.py:137: in fail\n    raise BadParameter(message, ctx=ctx, param=param)\nE   click.exceptions.BadParameter: 2 values are required, but 1 was given.",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-27-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-28",
+      "retry_intent": "unknown",
+      "sources": {
+        "before": "from packaging.markers import Marker\n\ndef test_case():\n    Marker(\"python_version ??? '3.12'\")\n",
+        "after": "from packaging.markers import Marker\n\ndef test_case():\n    assert Marker(\"python_version < '2.0'\").evaluate({\"python_version\": \"3.12\"})\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-28-0",
+            "schema": 1,
+            "root": "public-adapter/packaging",
+            "runner": "pytest",
+            "task": "pair-28",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-28-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-28-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-28-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "<PUBLIC>/packaging/src/packaging/markers.py:280: in __init__\n    self._markers = _normalize_extra_values(_parse_marker(marker))\n                                            ^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:253: in parse_marker\n    return _parse_full_marker(Tokenizer(source, rules=DEFAULT_RULES))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:257: in _parse_full_marker\n    retval = _parse_marker(tokenizer)\n             ^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:266: in _parse_marker\n    expression = [_parse_marker_atom(tokenizer)]\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:291: in _parse_marker_atom\n    marker = _parse_marker_item(tokenizer)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:303: in _parse_marker_item\n    marker_op = _parse_marker_op(tokenizer)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:351: in _parse_marker_op\n    return tokenizer.raise_syntax_error(\n<PUBLIC>/packaging/src/packaging/_tokenizer.py:168: in raise_syntax_error\n    raise ParserSyntaxError(\nE   packaging._tokenizer.ParserSyntaxError: Expected marker operator, one of <=, <, !=, ==, >=, >, ~=, ===, in, not in\nE       python_version ??? '3.12'\nE                      ^\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:4: in test_case\n    Marker(\"python_version ??? '3.12'\")\n<PUBLIC>/packaging/src/packaging/markers.py:298: in __init__\n    raise InvalidMarker(str(e)) from e\nE   packaging.markers.InvalidMarker: Expected marker operator, one of <=, <, !=, ==, >=, >, ~=, ===, in, not in\nE       python_version ??? '3.12'\nE                      ^",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-28-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-28-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-28-1",
+            "schema": 1,
+            "root": "public-adapter/packaging",
+            "runner": "pytest",
+            "task": "pair-28",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-28-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-28-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-28-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:4: in test_case\n    assert Marker(\"python_version < '2.0'\").evaluate({\"python_version\": \"3.12\"})\nE   assert False\nE    +  where False = evaluate({'python_version': '3.12'})\nE    +    where evaluate = <Marker('python_version < \"2.0\"')>.evaluate\nE    +      where <Marker('python_version < \"2.0\"')> = Marker(\"python_version < '2.0'\")",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-28-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-28-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-29",
+      "retry_intent": "unknown",
+      "sources": {
+        "before": "from packaging.requirements import Requirement\n\ndef test_case():\n    Requirement('demo @')\n\ndef test_second():\n    assert 2 + 2 == 5\n",
+        "after": "from packaging.requirements import Requirement\n\ndef test_case():\n    Requirement('other @')\n\ndef test_second():\n    assert 2 + 2 == 5\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-29-0",
+            "schema": 1,
+            "root": "public-adapter/packaging",
+            "runner": "pytest",
+            "task": "pair-29",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-29-0",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_second"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-29-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-29-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "<PUBLIC>/packaging/src/packaging/requirements.py:36: in __init__\n    parsed = _parse_requirement(requirement_string)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:62: in parse_requirement\n    return _parse_requirement(Tokenizer(source, rules=DEFAULT_RULES))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:80: in _parse_requirement\n    url, specifier, marker = _parse_requirement_details(tokenizer)\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:103: in _parse_requirement_details\n    url = tokenizer.expect(\"URL\", expected=\"URL after @\").text\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_tokenizer.py:143: in expect\n    raise self.raise_syntax_error(f\"Expected {expected}\")\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_tokenizer.py:168: in raise_syntax_error\n    raise ParserSyntaxError(\nE   packaging._tokenizer.ParserSyntaxError: Expected URL after @\nE       demo @\nE             ^\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:4: in test_case\n    Requirement('demo @')\n<PUBLIC>/packaging/src/packaging/requirements.py:38: in __init__\n    raise InvalidRequirement(str(e)) from e\nE   packaging.requirements.InvalidRequirement: Expected URL after @\nE       demo @\nE             ^",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-29-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-29-0",
+            "nodeid": "test_case.py::test_second",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-29-0",
+            "nodeid": "test_case.py::test_second",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:7: in test_second\n    assert 2 + 2 == 5\nE   assert (2 + 2) == 5",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-29-0",
+            "nodeid": "test_case.py::test_second",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-29-0",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-29-1",
+            "schema": 1,
+            "root": "public-adapter/packaging",
+            "runner": "pytest",
+            "task": "pair-29",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-29-1",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_second"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-29-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-29-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "<PUBLIC>/packaging/src/packaging/requirements.py:36: in __init__\n    parsed = _parse_requirement(requirement_string)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:62: in parse_requirement\n    return _parse_requirement(Tokenizer(source, rules=DEFAULT_RULES))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:80: in _parse_requirement\n    url, specifier, marker = _parse_requirement_details(tokenizer)\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:103: in _parse_requirement_details\n    url = tokenizer.expect(\"URL\", expected=\"URL after @\").text\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_tokenizer.py:143: in expect\n    raise self.raise_syntax_error(f\"Expected {expected}\")\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_tokenizer.py:168: in raise_syntax_error\n    raise ParserSyntaxError(\nE   packaging._tokenizer.ParserSyntaxError: Expected URL after @\nE       other @\nE              ^\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:4: in test_case\n    Requirement('other @')\n<PUBLIC>/packaging/src/packaging/requirements.py:38: in __init__\n    raise InvalidRequirement(str(e)) from e\nE   packaging.requirements.InvalidRequirement: Expected URL after @\nE       other @\nE              ^",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-29-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-29-1",
+            "nodeid": "test_case.py::test_second",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-29-1",
+            "nodeid": "test_case.py::test_second",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:7: in test_second\n    assert 2 + 2 == 5\nE   assert (2 + 2) == 5",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-29-1",
+            "nodeid": "test_case.py::test_second",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-29-1",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ]
+      ]
+    },
+    {
+      "id": "pair-30",
+      "retry_intent": "unknown",
+      "sources": {
+        "before": "from packaging.requirements import Requirement\n\ndef test_case():\n    Requirement('demo @')\n",
+        "after": "from packaging.requirements import Requirement\n\ndef test_case():\n    Requirement('other @')\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-30-0",
+            "schema": 1,
+            "root": "public-adapter/packaging",
+            "runner": "pytest",
+            "task": "pair-30",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-30-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-30-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-30-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "<PUBLIC>/packaging/src/packaging/requirements.py:36: in __init__\n    parsed = _parse_requirement(requirement_string)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:62: in parse_requirement\n    return _parse_requirement(Tokenizer(source, rules=DEFAULT_RULES))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:80: in _parse_requirement\n    url, specifier, marker = _parse_requirement_details(tokenizer)\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:103: in _parse_requirement_details\n    url = tokenizer.expect(\"URL\", expected=\"URL after @\").text\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_tokenizer.py:143: in expect\n    raise self.raise_syntax_error(f\"Expected {expected}\")\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_tokenizer.py:168: in raise_syntax_error\n    raise ParserSyntaxError(\nE   packaging._tokenizer.ParserSyntaxError: Expected URL after @\nE       demo @\nE             ^\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:4: in test_case\n    Requirement('demo @')\n<PUBLIC>/packaging/src/packaging/requirements.py:38: in __init__\n    raise InvalidRequirement(str(e)) from e\nE   packaging.requirements.InvalidRequirement: Expected URL after @\nE       demo @\nE             ^",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-30-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-30-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-30-1",
+            "schema": 1,
+            "root": "public-adapter/packaging",
+            "runner": "pytest",
+            "task": "pair-30",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-30-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-30-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-30-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "<PUBLIC>/packaging/src/packaging/requirements.py:36: in __init__\n    parsed = _parse_requirement(requirement_string)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:62: in parse_requirement\n    return _parse_requirement(Tokenizer(source, rules=DEFAULT_RULES))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:80: in _parse_requirement\n    url, specifier, marker = _parse_requirement_details(tokenizer)\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_parser.py:103: in _parse_requirement_details\n    url = tokenizer.expect(\"URL\", expected=\"URL after @\").text\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_tokenizer.py:143: in expect\n    raise self.raise_syntax_error(f\"Expected {expected}\")\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<PUBLIC>/packaging/src/packaging/_tokenizer.py:168: in raise_syntax_error\n    raise ParserSyntaxError(\nE   packaging._tokenizer.ParserSyntaxError: Expected URL after @\nE       other @\nE              ^\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:4: in test_case\n    Requirement('other @')\n<PUBLIC>/packaging/src/packaging/requirements.py:38: in __init__\n    raise InvalidRequirement(str(e)) from e\nE   packaging.requirements.InvalidRequirement: Expected URL after @\nE       other @\nE              ^",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-30-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-30-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ]
+    }
+  ]
+}

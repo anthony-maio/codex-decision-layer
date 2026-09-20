@@ -3,10 +3,12 @@ from __future__ import annotations
 import argparse
 import hashlib
 import importlib.metadata
+import importlib
 import json
 import os
 from pathlib import Path
 import random
+import re
 import subprocess
 import sys
 
@@ -61,6 +63,18 @@ def adapter(imports, expression, *, setup=False, mixed=False):
     return source
 
 
+def normalize_traceback(text, replacements):
+    def frame(match):
+        path, suffix = match.groups()
+        for old, new in replacements:
+            if path == old or path.startswith(old + os.sep) or path.startswith(old + "/"):
+                path = new + path[len(old):]
+                break
+        return path.replace("\\", "/") + suffix
+    # Only traceback location lines. Never modify source expressions or E-lines.
+    return re.sub(r"(?m)^([^\s].*?\.py)(:\d+: (?:in [^\r\n]+|[\w.]+Error).*)$", frame, text)
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--source-dir", type=Path, required=True)
@@ -72,12 +86,12 @@ def main():
         p.error("private-dir must be outside Git; output-dir must be new")
     private.mkdir(parents=True, exist_ok=False)
     output.mkdir(parents=True)
-    provenance = {}
+    provenance, child_sources = {}, {}
     replacements = [(str(private), "<RUNS>"), (str(Path(sys.prefix)), "<ENV>")]
     for name, expected in SOURCES.items():
         path = (args.source_dir / name).resolve()
         head = subprocess.check_output(["git", "-C", str(path), "rev-parse", "HEAD"], text=True).strip()
-        dirty = subprocess.check_output(["git", "-C", str(path), "diff", "--name-only"], text=True).strip()
+        dirty = subprocess.check_output(["git", "-C", str(path), "status", "--porcelain", "--untracked-files=all"], text=True).strip()
         if head != expected["commit"] or dirty or importlib.metadata.version(name) != expected["version"]:
             raise ValueError("source_or_version_mismatch: " + name)
         license_bytes = (path / expected["license"]).read_bytes()
@@ -85,9 +99,39 @@ def main():
         (output / license_name).write_bytes(license_bytes)
         provenance[name] = {**expected, "license_file": license_name,
                             "license_sha256": hashlib.sha256(license_bytes).hexdigest()}
+        module = importlib.import_module(name.replace("-", "_"))
+        origin = Path(module.__file__).resolve()
+        if not origin.is_relative_to(path):
+            raise ValueError("runtime_source_origin_mismatch: " + name)
+        tracked = subprocess.check_output(["git", "-C", str(path), "ls-files", "*.py"], text=True).splitlines()
+        code_hashes = {name: hashlib.sha256((path / name).read_bytes()).hexdigest() for name in sorted(tracked)}
+        provenance[name].update(import_origin=origin.relative_to(path).as_posix(),
+            import_sha256=hashlib.sha256(origin.read_bytes()).hexdigest(),
+            tracked_python_sha256=code_hashes)
+        child_sources[name.replace("-", "_")] = {"root": str(path), "sha256": hashlib.sha256(origin.read_bytes()).hexdigest()}
         replacements.insert(0, (str(path), "<PUBLIC>/" + name))
     if importlib.metadata.version("pytest") != "8.4.2":
         raise ValueError("pytest_version_mismatch")
+    sys.path.insert(0, str(ROOT))
+    reporter = importlib.import_module("evidence_selector.ratchet.pytest_reporter")
+    reporter_path = ROOT / "evidence_selector/ratchet/pytest_reporter.py"
+    if Path(reporter.__file__).resolve() != reporter_path.resolve():
+        raise ValueError("reporter_origin_mismatch")
+    frozen_reporter = subprocess.check_output(["git", "-C", str(ROOT), "show", "b60386f:evidence_selector/ratchet/pytest_reporter.py"])
+    if reporter_path.read_bytes() != frozen_reporter:
+        raise ValueError("reporter_changed_since_checkpoint")
+    child_sources["evidence_selector.ratchet.pytest_reporter"] = {"root": str(ROOT), "sha256": hashlib.sha256(frozen_reporter).hexdigest()}
+    child_entry = (
+        "import hashlib,importlib,json,os,pathlib,runpy; observed={}\n"
+        "for name,expected in json.loads(os.environ['RATCHET_EVAL_SOURCES']).items():\n"
+        " origin=pathlib.Path(importlib.import_module(name).__file__).resolve()\n"
+        " root=pathlib.Path(expected['root']).resolve()\n"
+        " digest=hashlib.sha256(origin.read_bytes()).hexdigest()\n"
+        " if not origin.is_relative_to(root) or digest!=expected['sha256']: raise RuntimeError('child import identity mismatch')\n"
+        " observed[name]={'origin':origin.relative_to(root).as_posix(),'sha256':digest}\n"
+        "pathlib.Path(os.environ['RATCHET_EVAL_IDENTITY']).write_text(json.dumps(observed),encoding='utf-8')\n"
+        "runpy.run_module('pytest',run_name='__main__')\n"
+    )
     cases = []
     for index, (repo, family, imports, before_call, same_call, different_call) in enumerate(SCENARIOS):
         for kind in ("same", "different", "insufficient"):
@@ -99,18 +143,21 @@ def main():
             after = adapter(imports, different_call if kind == "different" else same_call, mixed=mixed)
             if kind == "different" and index < 2:
                 after = "import pytest\n@pytest.fixture\ndef prepared():\n    return 'initialized'\n\ndef test_case(prepared):\n    assert prepared == 'expected'\n"
-            records = []
+            records, record_provenance = [], []
             for side, source in (("before", before), ("after", after)):
                 (workspace / "test_case.py").write_text(source, encoding="utf-8", newline="\n")
                 record = workspace / (side + ".jsonl")
-                env = dict(os.environ, PYTHONPATH=str(ROOT), PYTEST_DISABLE_PLUGIN_AUTOLOAD="1", PYTHONDONTWRITEBYTECODE="1")
-                command = [sys.executable, "-m", "pytest", "-q", "--tb=short", "-p", "no:cacheprovider", "-p",
+                identity = workspace / (side + ".identity.json")
+                env = dict(os.environ, PYTHONPATH=str(ROOT), PYTEST_DISABLE_PLUGIN_AUTOLOAD="1", PYTHONDONTWRITEBYTECODE="1",
+                           RATCHET_EVAL_SOURCES=json.dumps(child_sources), RATCHET_EVAL_IDENTITY=str(identity))
+                command = [sys.executable, "-c", child_entry, "-q", "--tb=short", "-p", "no:cacheprovider", "-p",
                            "evidence_selector.ratchet.pytest_reporter", "--ratchet-task", case_id, "--ratchet-output", str(record)]
                 run = subprocess.run(command, cwd=workspace, env=env, capture_output=True, text=True, timeout=30)
                 if run.returncode != 1:
                     (workspace / (side + ".stderr")).write_text(run.stdout + run.stderr, encoding="utf-8")
                     raise ValueError(f"fixture_did_not_fail: {case_id}/{side}, exit {run.returncode}")
-                events = [json.loads(line) for line in record.read_text(encoding="utf-8").splitlines()]
+                raw = record.read_bytes()
+                events = [json.loads(line) for line in raw.decode("utf-8").splitlines()]
                 for event in events:
                     event["run_id"] = case_id + "-" + side
                     if "root" in event:
@@ -119,12 +166,16 @@ def main():
                         if key in event:
                             event[key] = 0
                     if "longrepr" in event:
-                        for old, new in replacements:
-                            event["longrepr"] = event["longrepr"].replace(old, new).replace(old.replace("\\", "/"), new)
-                        event["longrepr"] = event["longrepr"].replace("\\", "/")
+                        relative = [(os.path.relpath(old, workspace), new) for old, new in replacements]
+                        event["longrepr"] = normalize_traceback(event["longrepr"], replacements + relative)
                 if kind == "insufficient" and not mixed and side == "after":
                     events = events[:-1]
                 records.append(events)
+                normalized = ("\n".join(json.dumps(e) for e in events) + "\n").encode()
+                record_provenance.append({"side": side, "raw_sha256": hashlib.sha256(raw).hexdigest(),
+                    "normalized_sha256": hashlib.sha256(normalized).hexdigest(),
+                    "child_imports": json.loads(identity.read_text(encoding="utf-8")),
+                    "finish_removed": kind == "insufficient" and not mixed and side == "after"})
             tags = ["public_library_adapter", family]
             if kind == "different":
                 tags.append("productive_progress" if index < 8 else "identical_message_different_constraint")
@@ -133,13 +184,16 @@ def main():
             cases.append({"id": case_id, "repository": repo, "family": family, "tags": tags,
                           "retry_intent": "diagnostic_retry" if kind == "same" and index < 3 else "unknown",
                           "adapter_sources": {"before": before, "after": after}, "records": records,
+                          "record_provenance": record_provenance,
                           "author_label": {"same": "same_blocker", "different": "different_blocker", "insufficient": "insufficient_evidence"}[kind],
                           "author_advisory_eligible": False})
             print(case_id, flush=True)
     corpus = {"schema": 1, "split": "holdout", "status": "UNREVIEWED_UNSCORED",
               "provenance": "Authored adapters deliberately trigger failures in pinned public library code; not natural agent traces or upstream bugs.",
               "sources": provenance, "pytest": "8.4.2",
-              "normalization": "Deterministic run IDs, public root/task labels, zero timing, absolute paths replaced, path separators normalized. Four current records deliberately omit finish; all other report content preserved.",
+              "reporter_sha256": hashlib.sha256(frozen_reporter).hexdigest(),
+              "builder_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+              "normalization": "Deterministic run IDs, public root/task labels and zero timing. Only traceback frame-path spans are canonicalized; source expressions and exception messages remain exact. Four current records deliberately omit finish. Raw and normalized record hashes are retained.",
               "cases": cases}
     def write(name, value):
         (output / name).write_text(json.dumps(value, indent=2) + "\n", encoding="utf-8", newline="\n")

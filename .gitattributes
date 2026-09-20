@@ -1,3 +1,4 @@
 * text=auto eol=lf
 *.gguf binary
 *.safetensors binary
+fixtures/ratchet/holdout-v1/*LICENSE.txt -text whitespace=cr-at-eol
