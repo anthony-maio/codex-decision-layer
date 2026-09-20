@@ -1,5 +1,6 @@
 """Install the wheel into an empty environment and exercise it outside the checkout."""
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -39,9 +40,20 @@ def main():
         # Restart the installed CLI/MCP with package management explicitly offline.
         offline = run(["uv", "run", "--offline", "--no-project", "--python", str(python), "python", "-m", "evidence_selector", "doctor"])
         assert json.loads(offline)["ready"]
+        # Exercise packaged replay data with Python networking explicitly denied.
+        # This checks the installed wheel, not resources in the source checkout.
+        replay = json.loads(run([str(python), "-c",
+            "import socket,runpy,sys; "
+            "deny=lambda *a,**k: (_ for _ in ()).throw(RuntimeError('offline')); "
+            "socket.socket.connect=deny; socket.getaddrinfo=deny; "
+            "sys.argv=['ratchet','demo','--json']; "
+            "runpy.run_module('evidence_selector.ratchet',run_name='__main__')"]))
+        assert replay["provider_calls_this_run"] == 0 and len(replay["examples"]) == 3
     receipt = {"platform": platform.system(), "package_version": identity["version"], "wheel": wheel.name,
+               "wheel_sha256": hashlib.sha256(wheel.read_bytes()).hexdigest(),
                "isolated_wheel_import": True, "cli": "PASS", "mcp": mcp, "missing_local_extra": "ACTIONABLE_NONZERO",
-               "offline_installed_cli_restart": "PASS", "dependencies": "constrained by uv.lock"}
+               "offline_installed_cli_restart": "PASS", "ratchet_offline_wheel_replay": "PASS",
+               "dependencies": "constrained by uv.lock"}
     output = Path(args.output)
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")

@@ -1,0 +1,32 @@
+{
+  "platform": "Linux",
+  "package_version": "0.1.1rc1",
+  "wheel": "codex_evidence_selector-0.1.1rc1-py3-none-any.whl",
+  "wheel_sha256": "6320fd976cc096e16c9660ad9e29e8a1d2b15d841a47d0958178c5638ef661c3",
+  "isolated_wheel_import": true,
+  "cli": "PASS",
+  "mcp": {
+    "mcp_stdio": "PASS",
+    "provider": "baseline",
+    "original_text_preserved": true,
+    "expansion": "PASS",
+    "outside_root": "REFUSED",
+    "decisions": [
+      {
+        "id": "evidence.txt:1:d4ea650f7ad49155",
+        "proposal": "retain",
+        "reason": "lexical_overlap",
+        "probability": null,
+        "lexical_score": 0.5,
+        "model": "lexical-v1",
+        "usage": {},
+        "latency_ms": 0.08
+      }
+    ]
+  },
+  "missing_local_extra": "ACTIONABLE_NONZERO",
+  "offline_installed_cli_restart": "PASS",
+  "ratchet_offline_wheel_replay": "PASS",
+  "dependencies": "constrained by uv.lock",
+  "scope": "Ratchet development checkout; not a published release candidate"
+}

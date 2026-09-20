@@ -1,0 +1,393 @@
+{
+  "status": "COMPLETE",
+  "split": "development",
+  "method": "deterministic",
+  "corpus_sha256": "1aa5c951be42b509f11fc76206a448edee3234c2ec4f4fee6f15e8967037e947",
+  "review_sha256": "fbd430c990734b9017b80c89e5919a9f79f1522ff2cdde5f4854b32fcebaabbe",
+  "implementation_sha256": {
+    "evidence_selector/ratchet/records.py": "0b1f75aad1c635d08208bcca424ca827cf6ee915f1a5ce2aaebef14410c1e3d9",
+    "evidence_selector/ratchet/semantic.py": "903c7e32d7bd02d4d820d3b462fd00db60c168d59bb3ebee6e851481c8aae5ce",
+    "docs/ratchet-development-evaluation.md": "a649b9a47a209010b55003f7db9d34a430562ec5ffec5a49790b5a1fc773c744",
+    "scripts/evaluate_ratchet_dev.py": "3f31c5d6e7ec40fa381799326178e0470a74aa0e218f6cb76ae71c95b4779bbc"
+  },
+  "provenance": "Authored fixtures executed with pytest 8.4.2; no production agent traces.",
+  "rows": [
+    {
+      "id": "dev-database-same",
+      "expected": "same_blocker",
+      "relationship": "same_blocker",
+      "method": "deterministic",
+      "reason": "matching_failure_signature",
+      "evidence": [
+        "c5ca637564ae360a0a9bcac5640708ba2e338348b58c6a6365ea2d93137ee608",
+        "21c3d197fa5799ae61b19bfca4868cef49753158771cebe8384bf3870aadeb44"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-database-different",
+      "expected": "different_blocker",
+      "relationship": "different_blocker",
+      "method": "deterministic",
+      "reason": "execution_advanced",
+      "evidence": [
+        "d41066ff9f1fd29cbdeec34c44c69f9f14d6e9cd030b142cce7debb938d65e3c",
+        "ba5e05e8cd1a0436991d0ab72edb5c9c5700bf406484e672509ceddb9125dded"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-database-insufficient",
+      "expected": "insufficient_evidence",
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "unsupported_or_incomplete",
+      "evidence": [
+        "c8a81779283e4c7531abf266883d93ac0666f488b27fede1a38644204c23bb07",
+        "1ac4e53da16586fe672e29c80428ae6ad032e4bd1041d1ba669150155007b899"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-configuration-same",
+      "expected": "same_blocker",
+      "relationship": "same_blocker",
+      "method": "deterministic",
+      "reason": "matching_explicit_cause",
+      "evidence": [
+        "45f3e4ae9a0406dd122f8b026ad6ed68f2d7a6ea03d4280b8a0b387741749b79",
+        "ba009f9e6b7ca4a4fcefce03dda29036ef4b97d46bab342685d922db580e8952"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-configuration-different",
+      "expected": "different_blocker",
+      "relationship": "different_blocker",
+      "method": "deterministic",
+      "reason": "execution_advanced",
+      "evidence": [
+        "e99c0a7f800eb8f5ed2e1bdb9ebd5a8609edc128312b6b751b56181251c2e24b",
+        "e026db9e56d04ebeadecc698786fb2662776c01596615f49f9b6a3f74f87b3a5"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-configuration-insufficient",
+      "expected": "insufficient_evidence",
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "multiple_or_missing_failures",
+      "evidence": [
+        "d7aea9064c82758bf670ad6e8ec6265c101ca0c2bbf4f019989e27f953f7620a",
+        "6e1976bd7a2613220b91d4c0e702e50e3c128e0e68a89e2c49b1f7650d8f2ad8"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-payload-same",
+      "expected": "same_blocker",
+      "relationship": "same_blocker",
+      "method": "deterministic",
+      "reason": "matching_explicit_cause",
+      "evidence": [
+        "308473f17c1e5dc0040770de59964cc77d0fb4e346f5ae1066a5e4a090a20945",
+        "a6bea252c7feafb25bebab69125bbd8b87f5aca8d514fca2298f629fe8f50569"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-payload-different",
+      "expected": "different_blocker",
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "semantic_comparison_needed",
+      "evidence": [
+        "ec0ae606fe1c0bae7394fb4cd94321da50e9d5205886e9ef655923be8b091f1c",
+        "e0a6453aacb211e080023c8e75c3e5397c45b3fdc92eb9d8d657062864fefcd1"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-payload-insufficient",
+      "expected": "insufficient_evidence",
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "unsupported_or_incomplete",
+      "evidence": [
+        "dcffa648f6ecfd7e10a61ae413c93ef3874b9fc96a899035e807e6ab0e3126b4",
+        "c4b6cd0a1a907860ae1aa655e6158f3a651a6cfe53de20caaaab0516ecd40727"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-artifact-same",
+      "expected": "same_blocker",
+      "relationship": "same_blocker",
+      "method": "deterministic",
+      "reason": "matching_failure_signature",
+      "evidence": [
+        "f3f382cbdeedacf46d51e78ace55858b4d155a560d8917e20bdd84c4ea114300",
+        "f18c06ca437de066b59417730e94c0be719eb7997a1bdb2cc708c907828f92da"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-artifact-different",
+      "expected": "different_blocker",
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "semantic_comparison_needed",
+      "evidence": [
+        "e00bcbcd8d620331f13b008c94cedaa57b04a92704978a4cdf66828edf305296",
+        "f3824fc5edc093241cf45a31c4358da3f11004c66b4bcaec0229ce41fbfad6ce"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-artifact-insufficient",
+      "expected": "insufficient_evidence",
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "multiple_or_missing_failures",
+      "evidence": [
+        "8d07fc00a2e14f7f5417998811ca68c53527c8ccc766f17a5bd30f809b28946d",
+        "b7577ec531906dfa1b0d247b9112915c185a7cc302db26ee45f21c0e923d5052"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-dependency-same",
+      "expected": "same_blocker",
+      "relationship": "same_blocker",
+      "method": "deterministic",
+      "reason": "matching_explicit_cause",
+      "evidence": [
+        "5c2b7fd2191bead73aaaaa8ab804dea361d9c9e117210ef8a6f460afbbc20322",
+        "95f240f87350710a1bd3dfb66f44e5a3cb247edd494ffb8730a6df666fa01aa0"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-dependency-different",
+      "expected": "different_blocker",
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "semantic_comparison_needed",
+      "evidence": [
+        "398fb775d500d42f5dbb1fc409eddbaa028a8d380b3b1a6b4223fb5e5b50a178",
+        "1f69f8bddd670f1768de7ea3e5694140d523d5afc3c133d3d15c4f75bd679259"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-dependency-insufficient",
+      "expected": "insufficient_evidence",
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "unsupported_or_incomplete",
+      "evidence": [
+        "c1c5e80c1f2001a46e8fd524d917fa138bdb803d3e7633dbf8199da05ef2581b",
+        "711fd84f270ebf7071242b5eb2cf7c7b0a63eb0e581a444640aba91f61318ab8"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-integrity-same",
+      "expected": "same_blocker",
+      "relationship": "same_blocker",
+      "method": "deterministic",
+      "reason": "matching_explicit_cause",
+      "evidence": [
+        "f64adc75025beeca1136ac72039e2cebf5ff82f8539b482ee2362f2050cacd72",
+        "f482bf808778af45b7b96e54bb348ceb8dbf070341e89f0d117ffc4869d00205"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-integrity-different",
+      "expected": "different_blocker",
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "semantic_comparison_needed",
+      "evidence": [
+        "45d9a130e037b8f7ac4593b23064069ab5caed223e5aa3281745f302322bc411",
+        "bb7b8863cdde0f17255bc6557e11d033b56a602c4f14663b019795e8287d67c3"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-integrity-insufficient",
+      "expected": "insufficient_evidence",
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "multiple_or_missing_failures",
+      "evidence": [
+        "2c17261d5759a34f6e3cd8eebb1b6de4371f7375242c82270595a952136c3d5d",
+        "aa8bae229dacc8e29049c78b3a8423dce0e608a8b89b95f2241ec2ae1bdd093b"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-validation-same",
+      "expected": "same_blocker",
+      "relationship": "same_blocker",
+      "method": "deterministic",
+      "reason": "matching_explicit_cause",
+      "evidence": [
+        "7a39a787f2d00866ddbf1b1b169a8fc560556ff5af96519d43b76f2f3e03c80d",
+        "84c03d75fd50688b67d849719acc2437ef6ddbc6351ffee30166ca2eaf6514f7"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-validation-different",
+      "expected": "different_blocker",
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "semantic_comparison_needed",
+      "evidence": [
+        "4b85cb80eac861596c88aa1d49d19fa6b90d8eff0fe4aab2d2162cd87feb80fd",
+        "e287950aff004e1df518de0dabcb356a3c13d89afb7a491b3c69fe4055fbb8bf"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-validation-insufficient",
+      "expected": "insufficient_evidence",
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "unsupported_or_incomplete",
+      "evidence": [
+        "94708b947829fbd8ca196de91ba5f40faae5fdc959c8ca11509448886208023b",
+        "e226cb9b2d7da678770a5b9711c8a28da0194cbddc9d73d08996529448830f27"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-capacity-same",
+      "expected": "same_blocker",
+      "relationship": "same_blocker",
+      "method": "deterministic",
+      "reason": "matching_failure_signature",
+      "evidence": [
+        "d79f562967cc73a3b6af47e91ca7e22029d7b4f19b498b32f969a4b066d7b32b",
+        "c1990876e8ba1b6845e42f1769f5cdac80a4d8042edb7580c7dbdc7ecad5c914"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-capacity-different",
+      "expected": "different_blocker",
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "semantic_comparison_needed",
+      "evidence": [
+        "6fcffaaf7954e47f5de23c4feed4d5852e18f33d8fb4a0b293431d1e3e2045d2",
+        "6a81050a17499b0609f9b6ea40a4268e239fca451f5b9d6234fe5bdbeec08470"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-capacity-insufficient",
+      "expected": "insufficient_evidence",
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "multiple_or_missing_failures",
+      "evidence": [
+        "32cefe6a353014c99e4b9ef19adde8da03287a32e5079fed5ef6d2cc12841c46",
+        "6c41e51d3605e1c70d758909249df2915d20e30bd8301d21ea9beb49a9abbcd8"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-decoding-same",
+      "expected": "same_blocker",
+      "relationship": "same_blocker",
+      "method": "deterministic",
+      "reason": "matching_explicit_cause",
+      "evidence": [
+        "d31d8680dd3081b7c373c5f50b42f6c34c47499cc1d041b632b5379574300536",
+        "d69f996f571504ec6e66fd14e0bdf7c79ddd4c4a1f5df74148bf71bd04a7085c"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-decoding-different",
+      "expected": "different_blocker",
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "semantic_comparison_needed",
+      "evidence": [
+        "1a802b9cfcdac26ffee5a806d4d123cd39a2047cadad4f44f5082db16e5f25f3",
+        "9340d0780290d2da7daff6f44d620d18b3d7ee985f852effa44386196647afa3"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-decoding-insufficient",
+      "expected": "insufficient_evidence",
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "unsupported_or_incomplete",
+      "evidence": [
+        "4a8b6afb3e9ee338f47c36e75ea7ceb47165505fcfaba1d33df2e63a9d572e9d",
+        "8df0988cc9a911ba17380260bed3ed81a1a03c3e51f1780dd57edadcf9b3c317"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-routing-same",
+      "expected": "same_blocker",
+      "relationship": "same_blocker",
+      "method": "deterministic",
+      "reason": "matching_explicit_cause",
+      "evidence": [
+        "7693f14d352c4a2da27e47226b1f8ec4ac196727a21ab9ee8daed6cabd91cc2a",
+        "35dba9d674d84816a6e0b292ada5c0b6444e4be9a534e7d612ea97fcf60195e8"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-routing-different",
+      "expected": "different_blocker",
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "semantic_comparison_needed",
+      "evidence": [
+        "25992fc7b3b5a6ee6cd0f4825cf5a083f47fad740f46e203e333f29d7f0e3de4",
+        "246965bc5d06eceed1a7bdaa1065eb1d1ca487f25180f8bd8e0d4c6fec227287"
+      ],
+      "advisory": null
+    },
+    {
+      "id": "dev-routing-insufficient",
+      "expected": "insufficient_evidence",
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "multiple_or_missing_failures",
+      "evidence": [
+        "3e1b048630dc80e09238522838474f95554625180c23821850956de6fdb4e639",
+        "33740f710fe1c6b968d03f4cb3df3fba8928d11f55aff02477cc30f6986f824f"
+      ],
+      "advisory": null
+    }
+  ],
+  "advisory_gate": "NOT_EVALUATED",
+  "workflow_gate": "NOT_EVALUATED",
+  "retries": 0,
+  "metrics": {
+    "cases": 30,
+    "same_predictions": 10,
+    "true_same": 10,
+    "false_same": 0,
+    "actual_same": 10,
+    "same_precision": 1.0,
+    "same_recall": 1.0,
+    "all_label_accuracy": 0.7333333333333333,
+    "classification_gate": true
+  },
+  "provider_calls": 0,
+  "provider_latency_ms": 0,
+  "provider_errors": 0
+}

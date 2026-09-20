@@ -1,0 +1,453 @@
+{
+  "kind": "recorded_authored_development_replay",
+  "mode": "shadow",
+  "corpus_sha256": "1aa5c951be42b509f11fc76206a448edee3234c2ec4f4fee6f15e8967037e947",
+  "receipt_sha256": "d9547da3e47acc7452b46f06a27cdce62b5a59cdbf1fb90330592878f9f5f572",
+  "examples": [
+    {
+      "id": "dev-configuration-same",
+      "title": "Same blocker, new wrapper",
+      "explanation": "The missing setting remains the explicit cause. Deterministic exception-chain matching handles this case.",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-configuration-same-before",
+            "schema": 1,
+            "root": "authored/configuration",
+            "runner": "pytest",
+            "task": "dev-configuration-same",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-configuration-same-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise KeyError('required API_ENDPOINT setting absent')\nE   KeyError: 'required API_ENDPOINT setting absent'",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-configuration-same-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-configuration-same-after",
+            "schema": 1,
+            "root": "authored/configuration",
+            "runner": "pytest",
+            "task": "dev-configuration-same",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-configuration-same-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in invoke\n    perform()\ntest_case.py:2: in perform\n    raise KeyError('required API_ENDPOINT setting absent')\nE   KeyError: 'required API_ENDPOINT setting absent'\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:11: in test_case\n    invoke()\ntest_case.py:8: in invoke\n    raise RuntimeError('request could not finish') from cause\nE   RuntimeError: request could not finish",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-configuration-same-after",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "recorded_decision": {
+        "id": "dev-configuration-same",
+        "expected": "same_blocker",
+        "relationship": "same_blocker",
+        "method": "deterministic",
+        "reason": "matching_explicit_cause",
+        "evidence": [
+          "45f3e4ae9a0406dd122f8b026ad6ed68f2d7a6ea03d4280b8a0b387741749b79",
+          "ba009f9e6b7ca4a4fcefce03dda29036ef4b97d46bab342685d922db580e8952"
+        ],
+        "advisory": null,
+        "provider_calls": 0,
+        "provider_latency_ms": 0,
+        "retries": 0
+      }
+    },
+    {
+      "id": "dev-payload-different",
+      "title": "Different failed operation, same error message",
+      "explanation": "Recorded Jev decision: decoding the payload and validating the schema are different failing operations.",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-payload-different-before",
+            "schema": 1,
+            "root": "authored/payload",
+            "runner": "pytest",
+            "task": "dev-payload-different",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-payload-different-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-payload-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-payload-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    decode_payload()\ntest_case.py:2: in decode_payload\n    raise ValueError('operation unavailable')\nE   ValueError: operation unavailable",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-payload-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-payload-different-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-payload-different-after",
+            "schema": 1,
+            "root": "authored/payload",
+            "runner": "pytest",
+            "task": "dev-payload-different",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-payload-different-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-payload-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-payload-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    validate_schema()\ntest_case.py:2: in validate_schema\n    raise ValueError('operation unavailable')\nE   ValueError: operation unavailable",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-payload-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-payload-different-after",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "recorded_decision": {
+        "id": "dev-payload-different",
+        "expected": "different_blocker",
+        "relationship": "different_blocker",
+        "method": "deterministic_plus_jev",
+        "reason": "semantic_comparison",
+        "evidence": [
+          "ec0ae606fe1c0bae7394fb4cd94321da50e9d5205886e9ef655923be8b091f1c",
+          "e0a6453aacb211e080023c8e75c3e5397c45b3fdc92eb9d8d657062864fefcd1"
+        ],
+        "advisory": null,
+        "provider_calls": 1,
+        "provider_latency_ms": 675.974200014025,
+        "retries": 0,
+        "decision": {
+          "choice": "different_blocker",
+          "probabilities": {
+            "same_blocker": 0.02,
+            "insufficient_evidence": 0.02,
+            "different_blocker": 0.96
+          },
+          "provider_confidence": 0.94,
+          "model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 610,
+            "output_tokens": 53
+          }
+        }
+      }
+    },
+    {
+      "id": "dev-database-insufficient",
+      "title": "Incomplete evidence",
+      "explanation": "The second report has no finish record. Ratchet abstains without a provider call.",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-database-insufficient-before",
+            "schema": 1,
+            "root": "authored/database",
+            "runner": "pytest",
+            "task": "dev-database-insufficient",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-database-insufficient-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-database-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-database-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ConnectionRefusedError('database listener refused connection')\nE   ConnectionRefusedError: database listener refused connection",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-database-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-database-insufficient-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-database-insufficient-after",
+            "schema": 1,
+            "root": "authored/database",
+            "runner": "pytest",
+            "task": "dev-database-insufficient",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-database-insufficient-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-database-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-database-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ConnectionRefusedError('database listener refused connection')\nE   ConnectionRefusedError: database listener refused connection",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-database-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          }
+        ]
+      ],
+      "recorded_decision": {
+        "id": "dev-database-insufficient",
+        "expected": "insufficient_evidence",
+        "relationship": "insufficient_evidence",
+        "method": "deterministic",
+        "reason": "unsupported_or_incomplete",
+        "evidence": [
+          "c8a81779283e4c7531abf266883d93ac0666f488b27fede1a38644204c23bb07",
+          "1ac4e53da16586fe672e29c80428ae6ad032e4bd1041d1ba669150155007b899"
+        ],
+        "advisory": null,
+        "provider_calls": 0,
+        "provider_latency_ms": 0,
+        "retries": 0
+      }
+    }
+  ]
+}

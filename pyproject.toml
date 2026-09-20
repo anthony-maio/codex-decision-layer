@@ -12,6 +12,7 @@ local = ["torch>=2.7,<3", "transformers>=5,<6", "safetensors>=0.5", "huggingface
 
 [project.scripts]
 evidence-selector = "evidence_selector.cli:main"
+ratchet = "evidence_selector.ratchet.cli:main"
 eve-decision-server = "evidence_selector.eve_server:main"
 gguf-decision-server = "evidence_selector.gguf_server:main"
 
