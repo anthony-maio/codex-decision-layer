@@ -1,0 +1,4548 @@
+{
+  "schema": 1,
+  "split": "development",
+  "status": "UNREVIEWED",
+  "provenance": "Authored fixtures executed with pytest 8.4.2; no production agent traces.",
+  "normalization": "Run IDs and roots replaced, timing zeroed, workspace path replaced. Even-index incomplete cases omit finish intentionally; raw originals remain private.",
+  "cases": [
+    {
+      "id": "dev-database-same",
+      "family": "database",
+      "tags": [
+        "authored",
+        "database",
+        "exact_repeat"
+      ],
+      "retry_intent": "diagnostic_retry",
+      "authored_sources": {
+        "before": "def perform():\n    raise ConnectionRefusedError('database listener refused connection')\n\ndef test_case():\n    perform()\n",
+        "after": "def perform():\n    raise ConnectionRefusedError('database listener refused connection')\n\ndef test_case():\n    perform()\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-database-same-before",
+            "schema": 1,
+            "root": "authored/database",
+            "runner": "pytest",
+            "task": "dev-database-same",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-database-same-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-database-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-database-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ConnectionRefusedError('database listener refused connection')\nE   ConnectionRefusedError: database listener refused connection",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-database-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-database-same-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-database-same-after",
+            "schema": 1,
+            "root": "authored/database",
+            "runner": "pytest",
+            "task": "dev-database-same",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-database-same-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-database-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-database-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ConnectionRefusedError('database listener refused connection')\nE   ConnectionRefusedError: database listener refused connection",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-database-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-database-same-after",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "author_label": "same_blocker",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-database-different",
+      "family": "database",
+      "tags": [
+        "authored",
+        "database",
+        "productive_progress"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def perform():\n    raise ConnectionRefusedError('database listener refused connection')\n\nimport pytest\n@pytest.fixture\ndef prepared():\n    perform()\n\ndef test_case(prepared):\n    assert prepared == 'ready'\n",
+        "after": "import pytest\n@pytest.fixture\ndef prepared():\n    return 'started'\n\ndef test_case(prepared):\n    assert prepared == 'ready'\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-database-different-before",
+            "schema": 1,
+            "root": "authored/database",
+            "runner": "pytest",
+            "task": "dev-database-different",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-database-different-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-database-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "failed",
+            "longrepr": "test_case.py:7: in prepared\n    perform()\ntest_case.py:2: in perform\n    raise ConnectionRefusedError('database listener refused connection')\nE   ConnectionRefusedError: database listener refused connection",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-database-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-database-different-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-database-different-after",
+            "schema": 1,
+            "root": "authored/database",
+            "runner": "pytest",
+            "task": "dev-database-different",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-database-different-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-database-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-database-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:7: in test_case\n    assert prepared == 'ready'\nE   AssertionError: assert 'started' == 'ready'\nE     \nE     - ready\nE     + started",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-database-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-database-different-after",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "author_label": "different_blocker",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-database-insufficient",
+      "family": "database",
+      "tags": [
+        "authored",
+        "database",
+        "incomplete_record"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def perform():\n    raise ConnectionRefusedError('database listener refused connection')\n\ndef test_case():\n    perform()\n",
+        "after": "def perform():\n    raise ConnectionRefusedError('database listener refused connection')\n\ndef test_case():\n    perform()\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-database-insufficient-before",
+            "schema": 1,
+            "root": "authored/database",
+            "runner": "pytest",
+            "task": "dev-database-insufficient",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-database-insufficient-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-database-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-database-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ConnectionRefusedError('database listener refused connection')\nE   ConnectionRefusedError: database listener refused connection",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-database-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-database-insufficient-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-database-insufficient-after",
+            "schema": 1,
+            "root": "authored/database",
+            "runner": "pytest",
+            "task": "dev-database-insufficient",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-database-insufficient-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-database-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-database-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ConnectionRefusedError('database listener refused connection')\nE   ConnectionRefusedError: database listener refused connection",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-database-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          }
+        ]
+      ],
+      "author_label": "insufficient_evidence",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-configuration-same",
+      "family": "configuration",
+      "tags": [
+        "authored",
+        "configuration",
+        "wrapper_change"
+      ],
+      "retry_intent": "diagnostic_retry",
+      "authored_sources": {
+        "before": "def perform():\n    raise KeyError('required API_ENDPOINT setting absent')\n\ndef test_case():\n    perform()\n",
+        "after": "def perform():\n    raise KeyError('required API_ENDPOINT setting absent')\n\ndef invoke():\n    try:\n        perform()\n    except Exception as cause:\n        raise RuntimeError('request could not finish') from cause\n\ndef test_case():\n    invoke()\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-configuration-same-before",
+            "schema": 1,
+            "root": "authored/configuration",
+            "runner": "pytest",
+            "task": "dev-configuration-same",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-configuration-same-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise KeyError('required API_ENDPOINT setting absent')\nE   KeyError: 'required API_ENDPOINT setting absent'",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-configuration-same-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-configuration-same-after",
+            "schema": 1,
+            "root": "authored/configuration",
+            "runner": "pytest",
+            "task": "dev-configuration-same",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-configuration-same-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in invoke\n    perform()\ntest_case.py:2: in perform\n    raise KeyError('required API_ENDPOINT setting absent')\nE   KeyError: 'required API_ENDPOINT setting absent'\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:11: in test_case\n    invoke()\ntest_case.py:8: in invoke\n    raise RuntimeError('request could not finish') from cause\nE   RuntimeError: request could not finish",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-configuration-same-after",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "author_label": "same_blocker",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-configuration-different",
+      "family": "configuration",
+      "tags": [
+        "authored",
+        "configuration",
+        "productive_progress"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def perform():\n    raise KeyError('required API_ENDPOINT setting absent')\n\nimport pytest\n@pytest.fixture\ndef prepared():\n    perform()\n\ndef test_case(prepared):\n    assert prepared == 'ready'\n",
+        "after": "import pytest\n@pytest.fixture\ndef prepared():\n    return 'started'\n\ndef test_case(prepared):\n    assert prepared == 'ready'\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-configuration-different-before",
+            "schema": 1,
+            "root": "authored/configuration",
+            "runner": "pytest",
+            "task": "dev-configuration-different",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-configuration-different-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "failed",
+            "longrepr": "test_case.py:7: in prepared\n    perform()\ntest_case.py:2: in perform\n    raise KeyError('required API_ENDPOINT setting absent')\nE   KeyError: 'required API_ENDPOINT setting absent'",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-configuration-different-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-configuration-different-after",
+            "schema": 1,
+            "root": "authored/configuration",
+            "runner": "pytest",
+            "task": "dev-configuration-different",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-configuration-different-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:7: in test_case\n    assert prepared == 'ready'\nE   AssertionError: assert 'started' == 'ready'\nE     \nE     - ready\nE     + started",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-configuration-different-after",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "author_label": "different_blocker",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-configuration-insufficient",
+      "family": "configuration",
+      "tags": [
+        "authored",
+        "configuration",
+        "mixed_failures"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def perform():\n    raise KeyError('required API_ENDPOINT setting absent')\n\ndef test_case():\n    perform()\n\ndef test_independent():\n    raise RuntimeError('separate worker has stopped')\n",
+        "after": "def perform():\n    raise ValueError('API_ENDPOINT scheme is invalid')\n\ndef test_case():\n    perform()\n\ndef test_independent():\n    raise RuntimeError('separate worker has stopped')\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-configuration-insufficient-before",
+            "schema": 1,
+            "root": "authored/configuration",
+            "runner": "pytest",
+            "task": "dev-configuration-insufficient",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-configuration-insufficient-before",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_independent"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise KeyError('required API_ENDPOINT setting absent')\nE   KeyError: 'required API_ENDPOINT setting absent'",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-insufficient-before",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-insufficient-before",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:8: in test_independent\n    raise RuntimeError('separate worker has stopped')\nE   RuntimeError: separate worker has stopped",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-insufficient-before",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-configuration-insufficient-before",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-configuration-insufficient-after",
+            "schema": 1,
+            "root": "authored/configuration",
+            "runner": "pytest",
+            "task": "dev-configuration-insufficient",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-configuration-insufficient-after",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_independent"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('API_ENDPOINT scheme is invalid')\nE   ValueError: API_ENDPOINT scheme is invalid",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-insufficient-after",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-insufficient-after",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:8: in test_independent\n    raise RuntimeError('separate worker has stopped')\nE   RuntimeError: separate worker has stopped",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-configuration-insufficient-after",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-configuration-insufficient-after",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "author_label": "insufficient_evidence",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-payload-same",
+      "family": "payload",
+      "tags": [
+        "authored",
+        "payload",
+        "wrapper_change"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def perform():\n    raise ValueError('response body is invalid JSON')\n\ndef test_case():\n    perform()\n",
+        "after": "def perform():\n    raise ValueError('response body is invalid JSON')\n\ndef invoke():\n    try:\n        perform()\n    except Exception as cause:\n        raise RuntimeError('request could not finish') from cause\n\ndef test_case():\n    invoke()\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-payload-same-before",
+            "schema": 1,
+            "root": "authored/payload",
+            "runner": "pytest",
+            "task": "dev-payload-same",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-payload-same-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-payload-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-payload-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('response body is invalid JSON')\nE   ValueError: response body is invalid JSON",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-payload-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-payload-same-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-payload-same-after",
+            "schema": 1,
+            "root": "authored/payload",
+            "runner": "pytest",
+            "task": "dev-payload-same",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-payload-same-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-payload-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-payload-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in invoke\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('response body is invalid JSON')\nE   ValueError: response body is invalid JSON\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:11: in test_case\n    invoke()\ntest_case.py:8: in invoke\n    raise RuntimeError('request could not finish') from cause\nE   RuntimeError: request could not finish",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-payload-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-payload-same-after",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "author_label": "same_blocker",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-payload-different",
+      "family": "payload",
+      "tags": [
+        "authored",
+        "payload",
+        "same_message_different_operation"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def decode_payload():\n    raise ValueError('operation unavailable')\n\ndef test_case():\n    decode_payload()\n",
+        "after": "def validate_schema():\n    raise ValueError('operation unavailable')\n\ndef test_case():\n    validate_schema()\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-payload-different-before",
+            "schema": 1,
+            "root": "authored/payload",
+            "runner": "pytest",
+            "task": "dev-payload-different",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-payload-different-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-payload-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-payload-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    decode_payload()\ntest_case.py:2: in decode_payload\n    raise ValueError('operation unavailable')\nE   ValueError: operation unavailable",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-payload-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-payload-different-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-payload-different-after",
+            "schema": 1,
+            "root": "authored/payload",
+            "runner": "pytest",
+            "task": "dev-payload-different",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-payload-different-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-payload-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-payload-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    validate_schema()\ntest_case.py:2: in validate_schema\n    raise ValueError('operation unavailable')\nE   ValueError: operation unavailable",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-payload-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-payload-different-after",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "author_label": "different_blocker",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-payload-insufficient",
+      "family": "payload",
+      "tags": [
+        "authored",
+        "payload",
+        "incomplete_record"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def perform():\n    raise ValueError('response body is invalid JSON')\n\ndef test_case():\n    perform()\n",
+        "after": "def perform():\n    raise ValueError('response body is invalid JSON')\n\ndef invoke():\n    try:\n        perform()\n    except Exception as cause:\n        raise RuntimeError('request could not finish') from cause\n\ndef test_case():\n    invoke()\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-payload-insufficient-before",
+            "schema": 1,
+            "root": "authored/payload",
+            "runner": "pytest",
+            "task": "dev-payload-insufficient",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-payload-insufficient-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-payload-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-payload-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('response body is invalid JSON')\nE   ValueError: response body is invalid JSON",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-payload-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-payload-insufficient-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-payload-insufficient-after",
+            "schema": 1,
+            "root": "authored/payload",
+            "runner": "pytest",
+            "task": "dev-payload-insufficient",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-payload-insufficient-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-payload-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-payload-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in invoke\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('response body is invalid JSON')\nE   ValueError: response body is invalid JSON\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:11: in test_case\n    invoke()\ntest_case.py:8: in invoke\n    raise RuntimeError('request could not finish') from cause\nE   RuntimeError: request could not finish",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-payload-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          }
+        ]
+      ],
+      "author_label": "insufficient_evidence",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-artifact-same",
+      "family": "artifact",
+      "tags": [
+        "authored",
+        "artifact",
+        "exact_repeat"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def perform():\n    raise FileNotFoundError('compiled artifact is missing')\n\ndef test_case():\n    perform()\n",
+        "after": "def perform():\n    raise FileNotFoundError('compiled artifact is missing')\n\ndef test_case():\n    perform()\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-artifact-same-before",
+            "schema": 1,
+            "root": "authored/artifact",
+            "runner": "pytest",
+            "task": "dev-artifact-same",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-artifact-same-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-artifact-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-artifact-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise FileNotFoundError('compiled artifact is missing')\nE   FileNotFoundError: compiled artifact is missing",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-artifact-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-artifact-same-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-artifact-same-after",
+            "schema": 1,
+            "root": "authored/artifact",
+            "runner": "pytest",
+            "task": "dev-artifact-same",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-artifact-same-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-artifact-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-artifact-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise FileNotFoundError('compiled artifact is missing')\nE   FileNotFoundError: compiled artifact is missing",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-artifact-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-artifact-same-after",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "author_label": "same_blocker",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-artifact-different",
+      "family": "artifact",
+      "tags": [
+        "authored",
+        "artifact",
+        "same_message_different_operation"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def authenticate():\n    raise ValueError('operation unavailable')\n\ndef test_case():\n    authenticate()\n",
+        "after": "def read_storage():\n    raise ValueError('operation unavailable')\n\ndef test_case():\n    read_storage()\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-artifact-different-before",
+            "schema": 1,
+            "root": "authored/artifact",
+            "runner": "pytest",
+            "task": "dev-artifact-different",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-artifact-different-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-artifact-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-artifact-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    authenticate()\ntest_case.py:2: in authenticate\n    raise ValueError('operation unavailable')\nE   ValueError: operation unavailable",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-artifact-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-artifact-different-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-artifact-different-after",
+            "schema": 1,
+            "root": "authored/artifact",
+            "runner": "pytest",
+            "task": "dev-artifact-different",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-artifact-different-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-artifact-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-artifact-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    read_storage()\ntest_case.py:2: in read_storage\n    raise ValueError('operation unavailable')\nE   ValueError: operation unavailable",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-artifact-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-artifact-different-after",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "author_label": "different_blocker",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-artifact-insufficient",
+      "family": "artifact",
+      "tags": [
+        "authored",
+        "artifact",
+        "mixed_failures"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def perform():\n    raise FileNotFoundError('compiled artifact is missing')\n\ndef test_case():\n    perform()\n\ndef test_independent():\n    raise RuntimeError('separate worker has stopped')\n",
+        "after": "def perform():\n    raise PermissionError('artifact file cannot be opened')\n\ndef test_case():\n    perform()\n\ndef test_independent():\n    raise RuntimeError('separate worker has stopped')\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-artifact-insufficient-before",
+            "schema": 1,
+            "root": "authored/artifact",
+            "runner": "pytest",
+            "task": "dev-artifact-insufficient",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-artifact-insufficient-before",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_independent"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-artifact-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-artifact-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise FileNotFoundError('compiled artifact is missing')\nE   FileNotFoundError: compiled artifact is missing",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-artifact-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-artifact-insufficient-before",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-artifact-insufficient-before",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:8: in test_independent\n    raise RuntimeError('separate worker has stopped')\nE   RuntimeError: separate worker has stopped",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-artifact-insufficient-before",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-artifact-insufficient-before",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-artifact-insufficient-after",
+            "schema": 1,
+            "root": "authored/artifact",
+            "runner": "pytest",
+            "task": "dev-artifact-insufficient",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-artifact-insufficient-after",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_independent"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-artifact-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-artifact-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise PermissionError('artifact file cannot be opened')\nE   PermissionError: artifact file cannot be opened",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-artifact-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-artifact-insufficient-after",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-artifact-insufficient-after",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:8: in test_independent\n    raise RuntimeError('separate worker has stopped')\nE   RuntimeError: separate worker has stopped",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-artifact-insufficient-after",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-artifact-insufficient-after",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "author_label": "insufficient_evidence",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-dependency-same",
+      "family": "dependency",
+      "tags": [
+        "authored",
+        "dependency",
+        "wrapper_change"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def perform():\n    raise ModuleNotFoundError('optional parser dependency is missing')\n\ndef test_case():\n    perform()\n",
+        "after": "def perform():\n    raise ModuleNotFoundError('optional parser dependency is missing')\n\ndef invoke():\n    try:\n        perform()\n    except Exception as cause:\n        raise RuntimeError('request could not finish') from cause\n\ndef test_case():\n    invoke()\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-dependency-same-before",
+            "schema": 1,
+            "root": "authored/dependency",
+            "runner": "pytest",
+            "task": "dev-dependency-same",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-dependency-same-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-dependency-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-dependency-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ModuleNotFoundError('optional parser dependency is missing')\nE   ModuleNotFoundError: optional parser dependency is missing",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-dependency-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-dependency-same-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-dependency-same-after",
+            "schema": 1,
+            "root": "authored/dependency",
+            "runner": "pytest",
+            "task": "dev-dependency-same",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-dependency-same-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-dependency-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-dependency-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in invoke\n    perform()\ntest_case.py:2: in perform\n    raise ModuleNotFoundError('optional parser dependency is missing')\nE   ModuleNotFoundError: optional parser dependency is missing\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:11: in test_case\n    invoke()\ntest_case.py:8: in invoke\n    raise RuntimeError('request could not finish') from cause\nE   RuntimeError: request could not finish",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-dependency-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-dependency-same-after",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "author_label": "same_blocker",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-dependency-different",
+      "family": "dependency",
+      "tags": [
+        "authored",
+        "dependency"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def perform():\n    raise ModuleNotFoundError('optional parser dependency is missing')\n\ndef test_case():\n    perform()\n",
+        "after": "def perform():\n    raise AttributeError('installed parser has no parse method')\n\ndef test_case():\n    perform()\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-dependency-different-before",
+            "schema": 1,
+            "root": "authored/dependency",
+            "runner": "pytest",
+            "task": "dev-dependency-different",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-dependency-different-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-dependency-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-dependency-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ModuleNotFoundError('optional parser dependency is missing')\nE   ModuleNotFoundError: optional parser dependency is missing",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-dependency-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-dependency-different-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-dependency-different-after",
+            "schema": 1,
+            "root": "authored/dependency",
+            "runner": "pytest",
+            "task": "dev-dependency-different",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-dependency-different-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-dependency-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-dependency-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise AttributeError('installed parser has no parse method')\nE   AttributeError: installed parser has no parse method",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-dependency-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-dependency-different-after",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "author_label": "different_blocker",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-dependency-insufficient",
+      "family": "dependency",
+      "tags": [
+        "authored",
+        "dependency",
+        "incomplete_record"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def perform():\n    raise ModuleNotFoundError('optional parser dependency is missing')\n\ndef test_case():\n    perform()\n",
+        "after": "def perform():\n    raise ModuleNotFoundError('optional parser dependency is missing')\n\ndef invoke():\n    try:\n        perform()\n    except Exception as cause:\n        raise RuntimeError('request could not finish') from cause\n\ndef test_case():\n    invoke()\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-dependency-insufficient-before",
+            "schema": 1,
+            "root": "authored/dependency",
+            "runner": "pytest",
+            "task": "dev-dependency-insufficient",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-dependency-insufficient-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-dependency-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-dependency-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ModuleNotFoundError('optional parser dependency is missing')\nE   ModuleNotFoundError: optional parser dependency is missing",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-dependency-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-dependency-insufficient-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-dependency-insufficient-after",
+            "schema": 1,
+            "root": "authored/dependency",
+            "runner": "pytest",
+            "task": "dev-dependency-insufficient",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-dependency-insufficient-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-dependency-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-dependency-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in invoke\n    perform()\ntest_case.py:2: in perform\n    raise ModuleNotFoundError('optional parser dependency is missing')\nE   ModuleNotFoundError: optional parser dependency is missing\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:11: in test_case\n    invoke()\ntest_case.py:8: in invoke\n    raise RuntimeError('request could not finish') from cause\nE   RuntimeError: request could not finish",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-dependency-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          }
+        ]
+      ],
+      "author_label": "insufficient_evidence",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-integrity-same",
+      "family": "integrity",
+      "tags": [
+        "authored",
+        "integrity",
+        "wrapper_change"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def perform():\n    raise ValueError('download checksum differs from manifest')\n\ndef test_case():\n    perform()\n",
+        "after": "def perform():\n    raise ValueError('download checksum differs from manifest')\n\ndef invoke():\n    try:\n        perform()\n    except Exception as cause:\n        raise RuntimeError('request could not finish') from cause\n\ndef test_case():\n    invoke()\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-integrity-same-before",
+            "schema": 1,
+            "root": "authored/integrity",
+            "runner": "pytest",
+            "task": "dev-integrity-same",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-integrity-same-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-integrity-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-integrity-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('download checksum differs from manifest')\nE   ValueError: download checksum differs from manifest",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-integrity-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-integrity-same-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-integrity-same-after",
+            "schema": 1,
+            "root": "authored/integrity",
+            "runner": "pytest",
+            "task": "dev-integrity-same",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-integrity-same-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-integrity-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-integrity-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in invoke\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('download checksum differs from manifest')\nE   ValueError: download checksum differs from manifest\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:11: in test_case\n    invoke()\ntest_case.py:8: in invoke\n    raise RuntimeError('request could not finish') from cause\nE   RuntimeError: request could not finish",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-integrity-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-integrity-same-after",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "author_label": "same_blocker",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-integrity-different",
+      "family": "integrity",
+      "tags": [
+        "authored",
+        "integrity"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def perform():\n    raise ValueError('download checksum differs from manifest')\n\ndef test_case():\n    perform()\n",
+        "after": "def perform():\n    raise FileNotFoundError('checksum manifest is missing')\n\ndef test_case():\n    perform()\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-integrity-different-before",
+            "schema": 1,
+            "root": "authored/integrity",
+            "runner": "pytest",
+            "task": "dev-integrity-different",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-integrity-different-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-integrity-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-integrity-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('download checksum differs from manifest')\nE   ValueError: download checksum differs from manifest",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-integrity-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-integrity-different-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-integrity-different-after",
+            "schema": 1,
+            "root": "authored/integrity",
+            "runner": "pytest",
+            "task": "dev-integrity-different",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-integrity-different-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-integrity-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-integrity-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise FileNotFoundError('checksum manifest is missing')\nE   FileNotFoundError: checksum manifest is missing",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-integrity-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-integrity-different-after",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "author_label": "different_blocker",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-integrity-insufficient",
+      "family": "integrity",
+      "tags": [
+        "authored",
+        "integrity",
+        "mixed_failures"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def perform():\n    raise ValueError('download checksum differs from manifest')\n\ndef test_case():\n    perform()\n\ndef test_independent():\n    raise RuntimeError('separate worker has stopped')\n",
+        "after": "def perform():\n    raise FileNotFoundError('checksum manifest is missing')\n\ndef test_case():\n    perform()\n\ndef test_independent():\n    raise RuntimeError('separate worker has stopped')\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-integrity-insufficient-before",
+            "schema": 1,
+            "root": "authored/integrity",
+            "runner": "pytest",
+            "task": "dev-integrity-insufficient",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-integrity-insufficient-before",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_independent"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-integrity-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-integrity-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('download checksum differs from manifest')\nE   ValueError: download checksum differs from manifest",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-integrity-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-integrity-insufficient-before",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-integrity-insufficient-before",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:8: in test_independent\n    raise RuntimeError('separate worker has stopped')\nE   RuntimeError: separate worker has stopped",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-integrity-insufficient-before",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-integrity-insufficient-before",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-integrity-insufficient-after",
+            "schema": 1,
+            "root": "authored/integrity",
+            "runner": "pytest",
+            "task": "dev-integrity-insufficient",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-integrity-insufficient-after",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_independent"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-integrity-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-integrity-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise FileNotFoundError('checksum manifest is missing')\nE   FileNotFoundError: checksum manifest is missing",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-integrity-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-integrity-insufficient-after",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-integrity-insufficient-after",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:8: in test_independent\n    raise RuntimeError('separate worker has stopped')\nE   RuntimeError: separate worker has stopped",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-integrity-insufficient-after",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-integrity-insufficient-after",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "author_label": "insufficient_evidence",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-validation-same",
+      "family": "validation",
+      "tags": [
+        "authored",
+        "validation",
+        "wrapper_change"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def perform():\n    raise TypeError('account identifier must be a string')\n\ndef test_case():\n    perform()\n",
+        "after": "def perform():\n    raise TypeError('account identifier must be a string')\n\ndef invoke():\n    try:\n        perform()\n    except Exception as cause:\n        raise RuntimeError('request could not finish') from cause\n\ndef test_case():\n    invoke()\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-validation-same-before",
+            "schema": 1,
+            "root": "authored/validation",
+            "runner": "pytest",
+            "task": "dev-validation-same",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-validation-same-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-validation-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-validation-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise TypeError('account identifier must be a string')\nE   TypeError: account identifier must be a string",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-validation-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-validation-same-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-validation-same-after",
+            "schema": 1,
+            "root": "authored/validation",
+            "runner": "pytest",
+            "task": "dev-validation-same",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-validation-same-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-validation-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-validation-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in invoke\n    perform()\ntest_case.py:2: in perform\n    raise TypeError('account identifier must be a string')\nE   TypeError: account identifier must be a string\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:11: in test_case\n    invoke()\ntest_case.py:8: in invoke\n    raise RuntimeError('request could not finish') from cause\nE   RuntimeError: request could not finish",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-validation-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-validation-same-after",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "author_label": "same_blocker",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-validation-different",
+      "family": "validation",
+      "tags": [
+        "authored",
+        "validation"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def perform():\n    raise TypeError('account identifier must be a string')\n\ndef test_case():\n    perform()\n",
+        "after": "def perform():\n    raise ValueError('account identifier is empty')\n\ndef test_case():\n    perform()\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-validation-different-before",
+            "schema": 1,
+            "root": "authored/validation",
+            "runner": "pytest",
+            "task": "dev-validation-different",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-validation-different-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-validation-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-validation-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise TypeError('account identifier must be a string')\nE   TypeError: account identifier must be a string",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-validation-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-validation-different-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-validation-different-after",
+            "schema": 1,
+            "root": "authored/validation",
+            "runner": "pytest",
+            "task": "dev-validation-different",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-validation-different-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-validation-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-validation-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('account identifier is empty')\nE   ValueError: account identifier is empty",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-validation-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-validation-different-after",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "author_label": "different_blocker",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-validation-insufficient",
+      "family": "validation",
+      "tags": [
+        "authored",
+        "validation",
+        "incomplete_record"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def perform():\n    raise TypeError('account identifier must be a string')\n\ndef test_case():\n    perform()\n",
+        "after": "def perform():\n    raise TypeError('account identifier must be a string')\n\ndef invoke():\n    try:\n        perform()\n    except Exception as cause:\n        raise RuntimeError('request could not finish') from cause\n\ndef test_case():\n    invoke()\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-validation-insufficient-before",
+            "schema": 1,
+            "root": "authored/validation",
+            "runner": "pytest",
+            "task": "dev-validation-insufficient",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-validation-insufficient-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-validation-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-validation-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise TypeError('account identifier must be a string')\nE   TypeError: account identifier must be a string",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-validation-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-validation-insufficient-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-validation-insufficient-after",
+            "schema": 1,
+            "root": "authored/validation",
+            "runner": "pytest",
+            "task": "dev-validation-insufficient",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-validation-insufficient-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-validation-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-validation-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in invoke\n    perform()\ntest_case.py:2: in perform\n    raise TypeError('account identifier must be a string')\nE   TypeError: account identifier must be a string\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:11: in test_case\n    invoke()\ntest_case.py:8: in invoke\n    raise RuntimeError('request could not finish') from cause\nE   RuntimeError: request could not finish",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-validation-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          }
+        ]
+      ],
+      "author_label": "insufficient_evidence",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-capacity-same",
+      "family": "capacity",
+      "tags": [
+        "authored",
+        "capacity",
+        "exact_repeat"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def perform():\n    raise OSError('storage device has no free space')\n\ndef test_case():\n    perform()\n",
+        "after": "def perform():\n    raise OSError('storage device has no free space')\n\ndef test_case():\n    perform()\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-capacity-same-before",
+            "schema": 1,
+            "root": "authored/capacity",
+            "runner": "pytest",
+            "task": "dev-capacity-same",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-capacity-same-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-capacity-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-capacity-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise OSError('storage device has no free space')\nE   OSError: storage device has no free space",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-capacity-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-capacity-same-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-capacity-same-after",
+            "schema": 1,
+            "root": "authored/capacity",
+            "runner": "pytest",
+            "task": "dev-capacity-same",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-capacity-same-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-capacity-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-capacity-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise OSError('storage device has no free space')\nE   OSError: storage device has no free space",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-capacity-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-capacity-same-after",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "author_label": "same_blocker",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-capacity-different",
+      "family": "capacity",
+      "tags": [
+        "authored",
+        "capacity"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def perform():\n    raise OSError('storage device has no free space')\n\ndef test_case():\n    perform()\n",
+        "after": "def perform():\n    raise PermissionError('storage directory is read only')\n\ndef test_case():\n    perform()\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-capacity-different-before",
+            "schema": 1,
+            "root": "authored/capacity",
+            "runner": "pytest",
+            "task": "dev-capacity-different",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-capacity-different-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-capacity-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-capacity-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise OSError('storage device has no free space')\nE   OSError: storage device has no free space",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-capacity-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-capacity-different-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-capacity-different-after",
+            "schema": 1,
+            "root": "authored/capacity",
+            "runner": "pytest",
+            "task": "dev-capacity-different",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-capacity-different-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-capacity-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-capacity-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise PermissionError('storage directory is read only')\nE   PermissionError: storage directory is read only",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-capacity-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-capacity-different-after",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "author_label": "different_blocker",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-capacity-insufficient",
+      "family": "capacity",
+      "tags": [
+        "authored",
+        "capacity",
+        "mixed_failures"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def perform():\n    raise OSError('storage device has no free space')\n\ndef test_case():\n    perform()\n\ndef test_independent():\n    raise RuntimeError('separate worker has stopped')\n",
+        "after": "def perform():\n    raise PermissionError('storage directory is read only')\n\ndef test_case():\n    perform()\n\ndef test_independent():\n    raise RuntimeError('separate worker has stopped')\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-capacity-insufficient-before",
+            "schema": 1,
+            "root": "authored/capacity",
+            "runner": "pytest",
+            "task": "dev-capacity-insufficient",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-capacity-insufficient-before",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_independent"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-capacity-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-capacity-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise OSError('storage device has no free space')\nE   OSError: storage device has no free space",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-capacity-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-capacity-insufficient-before",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-capacity-insufficient-before",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:8: in test_independent\n    raise RuntimeError('separate worker has stopped')\nE   RuntimeError: separate worker has stopped",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-capacity-insufficient-before",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-capacity-insufficient-before",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-capacity-insufficient-after",
+            "schema": 1,
+            "root": "authored/capacity",
+            "runner": "pytest",
+            "task": "dev-capacity-insufficient",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-capacity-insufficient-after",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_independent"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-capacity-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-capacity-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise PermissionError('storage directory is read only')\nE   PermissionError: storage directory is read only",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-capacity-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-capacity-insufficient-after",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-capacity-insufficient-after",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:8: in test_independent\n    raise RuntimeError('separate worker has stopped')\nE   RuntimeError: separate worker has stopped",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-capacity-insufficient-after",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-capacity-insufficient-after",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "author_label": "insufficient_evidence",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-decoding-same",
+      "family": "decoding",
+      "tags": [
+        "authored",
+        "decoding",
+        "wrapper_change"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def perform():\n    raise ValueError('byte sequence is not valid UTF-8')\n\ndef test_case():\n    perform()\n",
+        "after": "def perform():\n    raise ValueError('byte sequence is not valid UTF-8')\n\ndef invoke():\n    try:\n        perform()\n    except Exception as cause:\n        raise RuntimeError('request could not finish') from cause\n\ndef test_case():\n    invoke()\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-decoding-same-before",
+            "schema": 1,
+            "root": "authored/decoding",
+            "runner": "pytest",
+            "task": "dev-decoding-same",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-decoding-same-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-decoding-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-decoding-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('byte sequence is not valid UTF-8')\nE   ValueError: byte sequence is not valid UTF-8",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-decoding-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-decoding-same-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-decoding-same-after",
+            "schema": 1,
+            "root": "authored/decoding",
+            "runner": "pytest",
+            "task": "dev-decoding-same",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-decoding-same-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-decoding-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-decoding-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in invoke\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('byte sequence is not valid UTF-8')\nE   ValueError: byte sequence is not valid UTF-8\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:11: in test_case\n    invoke()\ntest_case.py:8: in invoke\n    raise RuntimeError('request could not finish') from cause\nE   RuntimeError: request could not finish",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-decoding-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-decoding-same-after",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "author_label": "same_blocker",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-decoding-different",
+      "family": "decoding",
+      "tags": [
+        "authored",
+        "decoding"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def perform():\n    raise ValueError('byte sequence is not valid UTF-8')\n\ndef test_case():\n    perform()\n",
+        "after": "def perform():\n    raise LookupError('requested codec is unavailable')\n\ndef test_case():\n    perform()\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-decoding-different-before",
+            "schema": 1,
+            "root": "authored/decoding",
+            "runner": "pytest",
+            "task": "dev-decoding-different",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-decoding-different-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-decoding-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-decoding-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('byte sequence is not valid UTF-8')\nE   ValueError: byte sequence is not valid UTF-8",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-decoding-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-decoding-different-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-decoding-different-after",
+            "schema": 1,
+            "root": "authored/decoding",
+            "runner": "pytest",
+            "task": "dev-decoding-different",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-decoding-different-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-decoding-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-decoding-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise LookupError('requested codec is unavailable')\nE   LookupError: requested codec is unavailable",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-decoding-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-decoding-different-after",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "author_label": "different_blocker",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-decoding-insufficient",
+      "family": "decoding",
+      "tags": [
+        "authored",
+        "decoding",
+        "incomplete_record"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def perform():\n    raise ValueError('byte sequence is not valid UTF-8')\n\ndef test_case():\n    perform()\n",
+        "after": "def perform():\n    raise ValueError('byte sequence is not valid UTF-8')\n\ndef invoke():\n    try:\n        perform()\n    except Exception as cause:\n        raise RuntimeError('request could not finish') from cause\n\ndef test_case():\n    invoke()\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-decoding-insufficient-before",
+            "schema": 1,
+            "root": "authored/decoding",
+            "runner": "pytest",
+            "task": "dev-decoding-insufficient",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-decoding-insufficient-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-decoding-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-decoding-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('byte sequence is not valid UTF-8')\nE   ValueError: byte sequence is not valid UTF-8",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-decoding-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-decoding-insufficient-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-decoding-insufficient-after",
+            "schema": 1,
+            "root": "authored/decoding",
+            "runner": "pytest",
+            "task": "dev-decoding-insufficient",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-decoding-insufficient-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-decoding-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-decoding-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in invoke\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('byte sequence is not valid UTF-8')\nE   ValueError: byte sequence is not valid UTF-8\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:11: in test_case\n    invoke()\ntest_case.py:8: in invoke\n    raise RuntimeError('request could not finish') from cause\nE   RuntimeError: request could not finish",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-decoding-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          }
+        ]
+      ],
+      "author_label": "insufficient_evidence",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-routing-same",
+      "family": "routing",
+      "tags": [
+        "authored",
+        "routing",
+        "wrapper_change"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def perform():\n    raise LookupError('handler for route is not registered')\n\ndef test_case():\n    perform()\n",
+        "after": "def perform():\n    raise LookupError('handler for route is not registered')\n\ndef invoke():\n    try:\n        perform()\n    except Exception as cause:\n        raise RuntimeError('request could not finish') from cause\n\ndef test_case():\n    invoke()\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-routing-same-before",
+            "schema": 1,
+            "root": "authored/routing",
+            "runner": "pytest",
+            "task": "dev-routing-same",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-routing-same-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-routing-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-routing-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise LookupError('handler for route is not registered')\nE   LookupError: handler for route is not registered",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-routing-same-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-routing-same-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-routing-same-after",
+            "schema": 1,
+            "root": "authored/routing",
+            "runner": "pytest",
+            "task": "dev-routing-same",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-routing-same-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-routing-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-routing-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in invoke\n    perform()\ntest_case.py:2: in perform\n    raise LookupError('handler for route is not registered')\nE   LookupError: handler for route is not registered\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:11: in test_case\n    invoke()\ntest_case.py:8: in invoke\n    raise RuntimeError('request could not finish') from cause\nE   RuntimeError: request could not finish",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-routing-same-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-routing-same-after",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "author_label": "same_blocker",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-routing-different",
+      "family": "routing",
+      "tags": [
+        "authored",
+        "routing"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def perform():\n    raise LookupError('handler for route is not registered')\n\ndef test_case():\n    perform()\n",
+        "after": "def perform():\n    raise TypeError('registered handler is not callable')\n\ndef test_case():\n    perform()\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-routing-different-before",
+            "schema": 1,
+            "root": "authored/routing",
+            "runner": "pytest",
+            "task": "dev-routing-different",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-routing-different-before",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-routing-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-routing-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise LookupError('handler for route is not registered')\nE   LookupError: handler for route is not registered",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-routing-different-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-routing-different-before",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-routing-different-after",
+            "schema": 1,
+            "root": "authored/routing",
+            "runner": "pytest",
+            "task": "dev-routing-different",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-routing-different-after",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-routing-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-routing-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise TypeError('registered handler is not callable')\nE   TypeError: registered handler is not callable",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-routing-different-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-routing-different-after",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "author_label": "different_blocker",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    },
+    {
+      "id": "dev-routing-insufficient",
+      "family": "routing",
+      "tags": [
+        "authored",
+        "routing",
+        "mixed_failures"
+      ],
+      "retry_intent": "unknown",
+      "authored_sources": {
+        "before": "def perform():\n    raise LookupError('handler for route is not registered')\n\ndef test_case():\n    perform()\n\ndef test_independent():\n    raise RuntimeError('separate worker has stopped')\n",
+        "after": "def perform():\n    raise TypeError('registered handler is not callable')\n\ndef test_case():\n    perform()\n\ndef test_independent():\n    raise RuntimeError('separate worker has stopped')\n"
+      },
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-routing-insufficient-before",
+            "schema": 1,
+            "root": "authored/routing",
+            "runner": "pytest",
+            "task": "dev-routing-insufficient",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-routing-insufficient-before",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_independent"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-routing-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-routing-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise LookupError('handler for route is not registered')\nE   LookupError: handler for route is not registered",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-routing-insufficient-before",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-routing-insufficient-before",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-routing-insufficient-before",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:8: in test_independent\n    raise RuntimeError('separate worker has stopped')\nE   RuntimeError: separate worker has stopped",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-routing-insufficient-before",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-routing-insufficient-before",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "dev-routing-insufficient-after",
+            "schema": 1,
+            "root": "authored/routing",
+            "runner": "pytest",
+            "task": "dev-routing-insufficient",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "dev-routing-insufficient-after",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_independent"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-routing-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-routing-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise TypeError('registered handler is not callable')\nE   TypeError: registered handler is not callable",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-routing-insufficient-after",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-routing-insufficient-after",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-routing-insufficient-after",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:8: in test_independent\n    raise RuntimeError('separate worker has stopped')\nE   RuntimeError: separate worker has stopped",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "dev-routing-insufficient-after",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "dev-routing-insufficient-after",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "author_label": "insufficient_evidence",
+      "author_advisory_eligible": false,
+      "advisory_reason": "Only two attempts; retry intent is justified or unknown."
+    }
+  ]
+}

@@ -1,0 +1,4191 @@
+{
+  "corpus_sha256": "1aa5c951be42b509f11fc76206a448edee3234c2ec4f4fee6f15e8967037e947",
+  "provenance": "Authored fixtures executed with pytest 8.4.2; no production agent traces.",
+  "cases": [
+    {
+      "id": "pair-01",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-01-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-01",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-01-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-01-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-01-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ModuleNotFoundError('optional parser dependency is missing')\nE   ModuleNotFoundError: optional parser dependency is missing",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-01-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-01-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-01-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-01",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-01-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-01-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-01-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise AttributeError('installed parser has no parse method')\nE   AttributeError: installed parser has no parse method",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-01-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-01-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-02",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-02-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-02",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-02-0",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_independent"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-02-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-02-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise OSError('storage device has no free space')\nE   OSError: storage device has no free space",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-02-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-02-0",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-02-0",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:8: in test_independent\n    raise RuntimeError('separate worker has stopped')\nE   RuntimeError: separate worker has stopped",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-02-0",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-02-0",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-02-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-02",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-02-1",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_independent"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-02-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-02-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise PermissionError('storage directory is read only')\nE   PermissionError: storage directory is read only",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-02-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-02-1",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-02-1",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:8: in test_independent\n    raise RuntimeError('separate worker has stopped')\nE   RuntimeError: separate worker has stopped",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-02-1",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-02-1",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-03",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-03-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-03",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-03-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-03-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-03-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    authenticate()\ntest_case.py:2: in authenticate\n    raise ValueError('operation unavailable')\nE   ValueError: operation unavailable",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-03-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-03-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-03-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-03",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-03-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-03-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-03-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    read_storage()\ntest_case.py:2: in read_storage\n    raise ValueError('operation unavailable')\nE   ValueError: operation unavailable",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-03-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-03-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-04",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-04-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-04",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-04-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-04-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-04-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise TypeError('account identifier must be a string')\nE   TypeError: account identifier must be a string",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-04-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-04-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-04-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-04",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-04-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-04-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-04-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in invoke\n    perform()\ntest_case.py:2: in perform\n    raise TypeError('account identifier must be a string')\nE   TypeError: account identifier must be a string\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:11: in test_case\n    invoke()\ntest_case.py:8: in invoke\n    raise RuntimeError('request could not finish') from cause\nE   RuntimeError: request could not finish",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-04-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-04-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-05",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-05-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-05",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-05-0",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_independent"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-05-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-05-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('download checksum differs from manifest')\nE   ValueError: download checksum differs from manifest",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-05-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-05-0",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-05-0",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:8: in test_independent\n    raise RuntimeError('separate worker has stopped')\nE   RuntimeError: separate worker has stopped",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-05-0",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-05-0",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-05-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-05",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-05-1",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_independent"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-05-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-05-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise FileNotFoundError('checksum manifest is missing')\nE   FileNotFoundError: checksum manifest is missing",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-05-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-05-1",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-05-1",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:8: in test_independent\n    raise RuntimeError('separate worker has stopped')\nE   RuntimeError: separate worker has stopped",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-05-1",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-05-1",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-06",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-06-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-06",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-06-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-06-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-06-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('response body is invalid JSON')\nE   ValueError: response body is invalid JSON",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-06-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-06-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-06-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-06",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-06-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-06-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-06-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in invoke\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('response body is invalid JSON')\nE   ValueError: response body is invalid JSON\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:11: in test_case\n    invoke()\ntest_case.py:8: in invoke\n    raise RuntimeError('request could not finish') from cause\nE   RuntimeError: request could not finish",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-06-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-07",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-07-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-07",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-07-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-07-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-07-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('byte sequence is not valid UTF-8')\nE   ValueError: byte sequence is not valid UTF-8",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-07-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-07-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-07-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-07",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-07-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-07-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-07-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in invoke\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('byte sequence is not valid UTF-8')\nE   ValueError: byte sequence is not valid UTF-8\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:11: in test_case\n    invoke()\ntest_case.py:8: in invoke\n    raise RuntimeError('request could not finish') from cause\nE   RuntimeError: request could not finish",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-07-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-08",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-08-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-08",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-08-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-08-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-08-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise LookupError('handler for route is not registered')\nE   LookupError: handler for route is not registered",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-08-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-08-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-08-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-08",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-08-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-08-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-08-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise TypeError('registered handler is not callable')\nE   TypeError: registered handler is not callable",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-08-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-08-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-09",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-09-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-09",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-09-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-09-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-09-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise TypeError('account identifier must be a string')\nE   TypeError: account identifier must be a string",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-09-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-09-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-09-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-09",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-09-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-09-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-09-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('account identifier is empty')\nE   ValueError: account identifier is empty",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-09-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-09-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-10",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-10-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-10",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-10-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-10-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-10-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('byte sequence is not valid UTF-8')\nE   ValueError: byte sequence is not valid UTF-8",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-10-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-10-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-10-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-10",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-10-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-10-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-10-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in invoke\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('byte sequence is not valid UTF-8')\nE   ValueError: byte sequence is not valid UTF-8\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:11: in test_case\n    invoke()\ntest_case.py:8: in invoke\n    raise RuntimeError('request could not finish') from cause\nE   RuntimeError: request could not finish",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-10-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-10-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-11",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-11-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-11",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-11-0",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_independent"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-11-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-11-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise FileNotFoundError('compiled artifact is missing')\nE   FileNotFoundError: compiled artifact is missing",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-11-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-11-0",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-11-0",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:8: in test_independent\n    raise RuntimeError('separate worker has stopped')\nE   RuntimeError: separate worker has stopped",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-11-0",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-11-0",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-11-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-11",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-11-1",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_independent"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-11-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-11-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise PermissionError('artifact file cannot be opened')\nE   PermissionError: artifact file cannot be opened",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-11-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-11-1",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-11-1",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:8: in test_independent\n    raise RuntimeError('separate worker has stopped')\nE   RuntimeError: separate worker has stopped",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-11-1",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-11-1",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-12",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-12-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-12",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-12-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-12-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-12-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('download checksum differs from manifest')\nE   ValueError: download checksum differs from manifest",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-12-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-12-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-12-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-12",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-12-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-12-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-12-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in invoke\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('download checksum differs from manifest')\nE   ValueError: download checksum differs from manifest\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:11: in test_case\n    invoke()\ntest_case.py:8: in invoke\n    raise RuntimeError('request could not finish') from cause\nE   RuntimeError: request could not finish",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-12-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-12-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-13",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-13-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-13",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-13-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-13-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "failed",
+            "longrepr": "test_case.py:7: in prepared\n    perform()\ntest_case.py:2: in perform\n    raise ConnectionRefusedError('database listener refused connection')\nE   ConnectionRefusedError: database listener refused connection",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-13-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-13-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-13-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-13",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-13-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-13-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-13-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:7: in test_case\n    assert prepared == 'ready'\nE   AssertionError: assert 'started' == 'ready'\nE     \nE     - ready\nE     + started",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-13-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-13-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-14",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-14-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-14",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-14-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-14-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-14-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ConnectionRefusedError('database listener refused connection')\nE   ConnectionRefusedError: database listener refused connection",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-14-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-14-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-14-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-14",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-14-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-14-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-14-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ConnectionRefusedError('database listener refused connection')\nE   ConnectionRefusedError: database listener refused connection",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-14-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-15",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-15-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-15",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-15-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-15-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-15-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('download checksum differs from manifest')\nE   ValueError: download checksum differs from manifest",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-15-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-15-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-15-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-15",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-15-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-15-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-15-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise FileNotFoundError('checksum manifest is missing')\nE   FileNotFoundError: checksum manifest is missing",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-15-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-15-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-16",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-16-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-16",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-16-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-16-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-16-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    decode_payload()\ntest_case.py:2: in decode_payload\n    raise ValueError('operation unavailable')\nE   ValueError: operation unavailable",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-16-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-16-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-16-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-16",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-16-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-16-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-16-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    validate_schema()\ntest_case.py:2: in validate_schema\n    raise ValueError('operation unavailable')\nE   ValueError: operation unavailable",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-16-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-16-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-17",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-17-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-17",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-17-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-17-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-17-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ModuleNotFoundError('optional parser dependency is missing')\nE   ModuleNotFoundError: optional parser dependency is missing",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-17-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-17-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-17-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-17",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-17-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-17-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-17-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in invoke\n    perform()\ntest_case.py:2: in perform\n    raise ModuleNotFoundError('optional parser dependency is missing')\nE   ModuleNotFoundError: optional parser dependency is missing\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:11: in test_case\n    invoke()\ntest_case.py:8: in invoke\n    raise RuntimeError('request could not finish') from cause\nE   RuntimeError: request could not finish",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-17-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-18",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-18-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-18",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-18-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-18-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-18-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('response body is invalid JSON')\nE   ValueError: response body is invalid JSON",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-18-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-18-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-18-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-18",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-18-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-18-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-18-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in invoke\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('response body is invalid JSON')\nE   ValueError: response body is invalid JSON\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:11: in test_case\n    invoke()\ntest_case.py:8: in invoke\n    raise RuntimeError('request could not finish') from cause\nE   RuntimeError: request could not finish",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-18-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-18-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-19",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-19-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-19",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-19-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-19-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-19-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise TypeError('account identifier must be a string')\nE   TypeError: account identifier must be a string",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-19-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-19-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-19-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-19",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-19-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-19-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-19-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in invoke\n    perform()\ntest_case.py:2: in perform\n    raise TypeError('account identifier must be a string')\nE   TypeError: account identifier must be a string\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:11: in test_case\n    invoke()\ntest_case.py:8: in invoke\n    raise RuntimeError('request could not finish') from cause\nE   RuntimeError: request could not finish",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-19-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-20",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-20-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-20",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-20-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-20-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-20-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise OSError('storage device has no free space')\nE   OSError: storage device has no free space",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-20-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-20-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-20-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-20",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-20-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-20-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-20-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise PermissionError('storage directory is read only')\nE   PermissionError: storage directory is read only",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-20-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-20-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-21",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-21-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-21",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-21-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-21-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-21-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise LookupError('handler for route is not registered')\nE   LookupError: handler for route is not registered",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-21-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-21-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-21-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-21",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-21-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-21-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-21-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in invoke\n    perform()\ntest_case.py:2: in perform\n    raise LookupError('handler for route is not registered')\nE   LookupError: handler for route is not registered\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:11: in test_case\n    invoke()\ntest_case.py:8: in invoke\n    raise RuntimeError('request could not finish') from cause\nE   RuntimeError: request could not finish",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-21-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-21-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-22",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-22-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-22",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-22-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-22-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-22-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('byte sequence is not valid UTF-8')\nE   ValueError: byte sequence is not valid UTF-8",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-22-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-22-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-22-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-22",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-22-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-22-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-22-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise LookupError('requested codec is unavailable')\nE   LookupError: requested codec is unavailable",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-22-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-22-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-23",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-23-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-23",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-23-0",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_independent"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-23-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-23-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise KeyError('required API_ENDPOINT setting absent')\nE   KeyError: 'required API_ENDPOINT setting absent'",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-23-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-23-0",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-23-0",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:8: in test_independent\n    raise RuntimeError('separate worker has stopped')\nE   RuntimeError: separate worker has stopped",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-23-0",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-23-0",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-23-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-23",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-23-1",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_independent"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-23-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-23-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ValueError('API_ENDPOINT scheme is invalid')\nE   ValueError: API_ENDPOINT scheme is invalid",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-23-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-23-1",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-23-1",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:8: in test_independent\n    raise RuntimeError('separate worker has stopped')\nE   RuntimeError: separate worker has stopped",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-23-1",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-23-1",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-24",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-24-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-24",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-24-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-24-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-24-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise OSError('storage device has no free space')\nE   OSError: storage device has no free space",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-24-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-24-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-24-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-24",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-24-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-24-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-24-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise OSError('storage device has no free space')\nE   OSError: storage device has no free space",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-24-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-24-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-25",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-25-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-25",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-25-0",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_independent"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-25-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-25-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise LookupError('handler for route is not registered')\nE   LookupError: handler for route is not registered",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-25-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-25-0",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-25-0",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:8: in test_independent\n    raise RuntimeError('separate worker has stopped')\nE   RuntimeError: separate worker has stopped",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-25-0",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-25-0",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-25-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-25",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-25-1",
+            "nodeids": [
+              "test_case.py::test_case",
+              "test_case.py::test_independent"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-25-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-25-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise TypeError('registered handler is not callable')\nE   TypeError: registered handler is not callable",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-25-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-25-1",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-25-1",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:8: in test_independent\n    raise RuntimeError('separate worker has stopped')\nE   RuntimeError: separate worker has stopped",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-25-1",
+            "nodeid": "test_case.py::test_independent",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-25-1",
+            "exit_code": 1,
+            "collected": 2,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-26",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-26-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-26",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-26-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-26-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-26-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ModuleNotFoundError('optional parser dependency is missing')\nE   ModuleNotFoundError: optional parser dependency is missing",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-26-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-26-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-26-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-26",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-26-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-26-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-26-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in invoke\n    perform()\ntest_case.py:2: in perform\n    raise ModuleNotFoundError('optional parser dependency is missing')\nE   ModuleNotFoundError: optional parser dependency is missing\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:11: in test_case\n    invoke()\ntest_case.py:8: in invoke\n    raise RuntimeError('request could not finish') from cause\nE   RuntimeError: request could not finish",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-26-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-26-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-27",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-27-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-27",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-27-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-27-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-27-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise FileNotFoundError('compiled artifact is missing')\nE   FileNotFoundError: compiled artifact is missing",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-27-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-27-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-27-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-27",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-27-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-27-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-27-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise FileNotFoundError('compiled artifact is missing')\nE   FileNotFoundError: compiled artifact is missing",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-27-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-27-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-28",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-28-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-28",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-28-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-28-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "failed",
+            "longrepr": "test_case.py:7: in prepared\n    perform()\ntest_case.py:2: in perform\n    raise KeyError('required API_ENDPOINT setting absent')\nE   KeyError: 'required API_ENDPOINT setting absent'",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-28-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-28-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-28-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-28",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-28-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-28-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-28-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:7: in test_case\n    assert prepared == 'ready'\nE   AssertionError: assert 'started' == 'ready'\nE     \nE     - ready\nE     + started",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-28-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-28-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "retry_intent": "unknown",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-29",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-29-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-29",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-29-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-29-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-29-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ConnectionRefusedError('database listener refused connection')\nE   ConnectionRefusedError: database listener refused connection",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-29-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-29-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-29-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-29",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-29-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-29-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-29-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise ConnectionRefusedError('database listener refused connection')\nE   ConnectionRefusedError: database listener refused connection",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-29-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-29-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "retry_intent": "diagnostic_retry",
+      "available_attempts": 2
+    },
+    {
+      "id": "pair-30",
+      "records": [
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-30-0",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-30",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-30-0",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-30-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-30-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:5: in test_case\n    perform()\ntest_case.py:2: in perform\n    raise KeyError('required API_ENDPOINT setting absent')\nE   KeyError: 'required API_ENDPOINT setting absent'",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-30-0",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-30-0",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ],
+        [
+          {
+            "kind": "start",
+            "run_id": "pair-30-1",
+            "schema": 1,
+            "root": "authored-repository",
+            "runner": "pytest",
+            "task": "pair-30",
+            "options": [
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "-p",
+              "evidence_selector.ratchet.pytest_reporter"
+            ]
+          },
+          {
+            "kind": "selection",
+            "run_id": "pair-30-1",
+            "nodeids": [
+              "test_case.py::test_case"
+            ]
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-30-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "setup",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-30-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "call",
+            "outcome": "failed",
+            "longrepr": "test_case.py:6: in invoke\n    perform()\ntest_case.py:2: in perform\n    raise KeyError('required API_ENDPOINT setting absent')\nE   KeyError: 'required API_ENDPOINT setting absent'\n\nThe above exception was the direct cause of the following exception:\ntest_case.py:11: in test_case\n    invoke()\ntest_case.py:8: in invoke\n    raise RuntimeError('request could not finish') from cause\nE   RuntimeError: request could not finish",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "report",
+            "run_id": "pair-30-1",
+            "nodeid": "test_case.py::test_case",
+            "stage": "teardown",
+            "outcome": "passed",
+            "longrepr": "",
+            "sections": [],
+            "duration": 0
+          },
+          {
+            "kind": "finish",
+            "run_id": "pair-30-1",
+            "exit_code": 1,
+            "collected": 1,
+            "duration_seconds": 0
+          }
+        ]
+      ],
+      "retry_intent": "diagnostic_retry",
+      "available_attempts": 2
+    }
+  ]
+}

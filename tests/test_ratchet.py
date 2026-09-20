@@ -64,6 +64,15 @@ class ReporterTests(unittest.TestCase):
                                   "def test_case():\n    storage()\n")
         self.assertEqual(compare(first, second)["reason"], "semantic_comparison_needed")
 
+    def test_explicit_wrapper_preserves_identified_cause(self):
+        cause = "def perform():\n    raise KeyError('required setting')\n\n"
+        first, _ = self.run_pytest(cause + "def test_case():\n    perform()\n")
+        second, _ = self.run_pytest(cause + "def wrapper():\n    try:\n        perform()\n"
+            "    except KeyError as cause:\n        raise RuntimeError('wrapper failed') from cause\n\n"
+            "def test_case():\n    wrapper()\n")
+        self.assertEqual(compare(first, second)["reason"], "matching_explicit_cause")
+        self.assertEqual(compare(first, second, explicit_chains=False)["relationship"], "insufficient_evidence")
+
     def test_maxfail_finish_is_incomplete_and_duplicate_reports_rejected(self):
         _, path = self.run_pytest("def test_case():\n    assert False\n"
                                  "def test_other():\n    assert True\n", extra=("-x",))

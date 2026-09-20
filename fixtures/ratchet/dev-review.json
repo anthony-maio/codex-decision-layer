@@ -1,0 +1,166 @@
+{
+  "status": "ACCEPTED",
+  "scope": "Authored development classification only",
+  "human_validation": false,
+  "reviewed_before_model_calls": true,
+  "corpus_sha256": "1aa5c951be42b509f11fc76206a448edee3234c2ec4f4fee6f15e8967037e947",
+  "review_input_sha256": "82ada72a9b8137a2fe339662830bceed72ef0a28b0b267d6658208c6d95dc24a",
+  "accepted_labels": {
+    "dev-validation-same": {
+      "relationship": "same_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-04"
+    },
+    "dev-decoding-same": {
+      "relationship": "same_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-10"
+    },
+    "dev-integrity-same": {
+      "relationship": "same_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-12"
+    },
+    "dev-payload-same": {
+      "relationship": "same_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-18"
+    },
+    "dev-routing-same": {
+      "relationship": "same_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-21"
+    },
+    "dev-capacity-same": {
+      "relationship": "same_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-24"
+    },
+    "dev-dependency-same": {
+      "relationship": "same_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-26"
+    },
+    "dev-artifact-same": {
+      "relationship": "same_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-27"
+    },
+    "dev-database-same": {
+      "relationship": "same_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-29"
+    },
+    "dev-configuration-same": {
+      "relationship": "same_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-30"
+    },
+    "dev-dependency-different": {
+      "relationship": "different_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-01"
+    },
+    "dev-artifact-different": {
+      "relationship": "different_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-03"
+    },
+    "dev-routing-different": {
+      "relationship": "different_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-08"
+    },
+    "dev-validation-different": {
+      "relationship": "different_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-09"
+    },
+    "dev-database-different": {
+      "relationship": "different_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-13"
+    },
+    "dev-integrity-different": {
+      "relationship": "different_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-15"
+    },
+    "dev-payload-different": {
+      "relationship": "different_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-16"
+    },
+    "dev-capacity-different": {
+      "relationship": "different_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-20"
+    },
+    "dev-decoding-different": {
+      "relationship": "different_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-22"
+    },
+    "dev-configuration-different": {
+      "relationship": "different_blocker",
+      "advisory_eligible": false,
+      "review_id": "pair-28"
+    },
+    "dev-capacity-insufficient": {
+      "relationship": "insufficient_evidence",
+      "advisory_eligible": false,
+      "review_id": "pair-02"
+    },
+    "dev-integrity-insufficient": {
+      "relationship": "insufficient_evidence",
+      "advisory_eligible": false,
+      "review_id": "pair-05"
+    },
+    "dev-payload-insufficient": {
+      "relationship": "insufficient_evidence",
+      "advisory_eligible": false,
+      "review_id": "pair-06"
+    },
+    "dev-decoding-insufficient": {
+      "relationship": "insufficient_evidence",
+      "advisory_eligible": false,
+      "review_id": "pair-07"
+    },
+    "dev-artifact-insufficient": {
+      "relationship": "insufficient_evidence",
+      "advisory_eligible": false,
+      "review_id": "pair-11"
+    },
+    "dev-database-insufficient": {
+      "relationship": "insufficient_evidence",
+      "advisory_eligible": false,
+      "review_id": "pair-14"
+    },
+    "dev-dependency-insufficient": {
+      "relationship": "insufficient_evidence",
+      "advisory_eligible": false,
+      "review_id": "pair-17"
+    },
+    "dev-validation-insufficient": {
+      "relationship": "insufficient_evidence",
+      "advisory_eligible": false,
+      "review_id": "pair-19"
+    },
+    "dev-configuration-insufficient": {
+      "relationship": "insufficient_evidence",
+      "advisory_eligible": false,
+      "review_id": "pair-23"
+    },
+    "dev-routing-insufficient": {
+      "relationship": "insufficient_evidence",
+      "advisory_eligible": false,
+      "review_id": "pair-25"
+    }
+  },
+  "limits": [
+    "No positive advisory sequences",
+    "Authored explicit-raise fixtures, not naturally occurring failures",
+    "Limited exception-chain formats and incomplete-evidence patterns",
+    "No deployment, workflow savings, or public-repository generalization claim"
+  ]
+}

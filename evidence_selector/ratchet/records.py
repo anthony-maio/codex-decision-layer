@@ -114,7 +114,27 @@ def failure_signature(report):
     return report["stage"], report["nodeid"], tuple(errors), report["longrepr"]
 
 
-def compare(previous: Run, current: Run) -> dict:
+def explicit_cause_signature(report):
+    """Recognize short tracebacks with explicit cause chains conservatively.
+
+    Preserve the innermost operation, source statement, and exception evidence.
+    Implicit context chains or unknown formatting abstain rather than guessing.
+    """
+    text = report["longrepr"]
+    if "During handling of the above exception" in text:
+        return None
+    first = text.split("The above exception was the direct cause of the following exception:")[0]
+    lines = first.splitlines()
+    frames = [i for i, line in enumerate(lines) if re.match(r"^.+:\d+: in \w+\s*$", line)]
+    if not frames:
+        return None
+    terminal = [line.rstrip() for line in lines[frames[-1]:] if line.strip()]
+    if not any(re.match(r"^E\s+", line) for line in terminal):
+        return None
+    return report["stage"], report["nodeid"], tuple(terminal)
+
+
+def compare(previous: Run, current: Run, *, explicit_chains=True) -> dict:
     result = {"relationship": "insufficient_evidence", "method": "deterministic",
               "reason": "unsupported_or_incomplete", "evidence": [previous.digest, current.digest],
               "advisory": None}
@@ -151,6 +171,8 @@ def compare(previous: Run, current: Run) -> dict:
     signature = failure_signature(before)
     if signature and signature == failure_signature(after):
         result.update(relationship="same_blocker", reason="matching_failure_signature")
+    elif explicit_chains and (cause := explicit_cause_signature(before)) and cause == explicit_cause_signature(after):
+        result.update(relationship="same_blocker", reason="matching_explicit_cause")
     else:
         result["reason"] = "semantic_comparison_needed"
     # No warning yet: repeated evidence alone does not prove an unproductive
