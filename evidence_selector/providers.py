@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import http.client
 import math
 import os
 import urllib.error
@@ -33,7 +34,7 @@ class Answer:
 
 
 class HttpProvider:
-    def __init__(self, provider, endpoint=None, key_env=None, model=None, timeout=15.0):
+    def __init__(self, provider, endpoint=None, key_env=None, model=None, timeout=15.0, require_key=True):
         if provider not in ("typesafe", "openrouter", "eve"):
             raise ValueError("Unknown provider")
         if not math.isfinite(timeout) or not 0 < timeout <= 120:
@@ -57,7 +58,7 @@ class HttpProvider:
         if provider != "eve":
             name = key_env or {"typesafe": "TYPESAFE_API_KEY", "openrouter": "OPENROUTER_API_KEY"}[provider]
             self.key = os.environ.get(name)
-            if not self.key:
+            if not self.key and require_key:
                 raise ValueError(f"Missing API key environment variable: {name}")
         # Explicit local requests must not pass through an environment HTTP proxy.
         handlers = [NoRedirect()]
@@ -98,7 +99,7 @@ class HttpProvider:
         except urllib.error.HTTPError as exc:
             # Provider error bodies can contain submitted text. Never log them.
             raise DecisionError(f"http_{exc.code}") from None
-        except (urllib.error.URLError, TimeoutError, OSError):
+        except (urllib.error.URLError, TimeoutError, OSError, http.client.HTTPException):
             raise DecisionError("connection_failed") from None
         except (ValueError, KeyError, TypeError, UnicodeError):
             raise DecisionError("invalid_response") from None

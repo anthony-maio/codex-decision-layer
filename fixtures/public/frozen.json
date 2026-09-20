@@ -1,0 +1,31 @@
+{
+  "protocol": "v1",
+  "frozen_before_new_model_scores": true,
+  "split_overlap": {
+    "duplicate_passage_hashes": 0,
+    "unique_dev_passages": 18,
+    "unique_holdout_passages": 18
+  },
+  "sha256": {
+    "docs/evaluation-protocol.md": "0cbb726a02433719f9418b4b3ec38a40da3114e3872c378c09ab92b61f7355ce",
+    "evidence_selector/benchmark.py": "80dc8bf756c3e1e1c278544ca34bcebf25a05ee746a103f7a37e8269a662fc0d",
+    "evidence_selector/core.py": "5bfc1bb1958bf7caf6ff347e10004e0fc64a3daaef2db3d0987595b51b47be6f",
+    "evidence_selector/providers.py": "7665ec28f07602c2a50b00863d14e0d79a31c1699755b93ef0a5ee36c0de86dd",
+    "fixtures/public/REVIEW.md": "e72039a90c704ce6174904e1e0082ce2fd7e1e9d749fa870bfccdd51fd52c453",
+    "fixtures/public/dev.json": "75efff5d4a4ec95bd03afa1bcbde215275a71938eae348d016d7646d63965a15",
+    "fixtures/public/holdout.json": "ce694ab7e19cd4211d612c19b6e7e9df6db5a8896f88e2db9959b672f56fe054",
+    "fixtures/public/licenses/click.txt": "9a8ad106a394e853bfe21f42f4e72d592819a22805d991b5f3275029292b658d",
+    "fixtures/public/licenses/flask.txt": "489a8e1108509ed98a37bb983e11e0f7e1d31f0bd8f99a79c8448e7ff37d07ea",
+    "fixtures/public/licenses/requests.txt": "09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b",
+    "fixtures/public/provenance.json": "b90459f6668a383ca5659d5110c21c7ea2f1e7f99fad8a26af9cc006cbbd64f5",
+    "fixtures/public/review-input.json": "e52a5276f6e57a01df762397fd00d5acf5770cd3e45482064569282ae1dbbead",
+    "fixtures/public/sources/click/parser.py": "878b2775ca45e4e1eb65037cbc3f0859be4e072bd6ec005b8514e8c68beba92f",
+    "fixtures/public/sources/click/types.py": "043e50aaae21fbc91ac0198e2332659aae31cd38407f8c02bda38b652043371d",
+    "fixtures/public/sources/flask/config.py": "3e2a85d033da9ba1d6d051f8087d61a574c17b7d0d4b38cf10ec2bcf56fa92dd",
+    "fixtures/public/sources/flask/sessions.py": "a4899215020308fb55f97488f2db40c934dbbed44c9210dea89f153d965469fd",
+    "fixtures/public/sources/requests/adapters.py": "28871e72c72a6a6eab78e097465e03c0fe235fc25c97cb1de7b7edd7b291d9c4",
+    "fixtures/public/sources/requests/sessions.py": "ca44c8f145864a5b4e7c7d3b1caa25947ee44c11b0e168620556901a67244f0e",
+    "scripts/build_public_corpus.py": "45ba2334c54a7579313ea537bcfa981f180b1f49862119d160176c4b9d6fe71a",
+    "scripts/evaluate_public.py": "8fa20d081e9b52f478985061eb5788eaeb8594b10bb3855758aa3284ad413d0b"
+  }
+}

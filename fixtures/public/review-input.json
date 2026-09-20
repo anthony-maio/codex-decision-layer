@@ -1,0 +1,866 @@
+[
+  {
+    "id": "dev-requests-1",
+    "query": "Does Requests always remove Authorization on a same-host HTTP to HTTPS redirect using default ports?",
+    "candidates": [
+      {
+        "id": "requests-sessions.py-127-143",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/sessions.py",
+        "start_line": 127,
+        "end_line": 143,
+        "text": "    def should_strip_auth(self, old_url, new_url):\n        \"\"\"Decide whether Authorization header should be removed when redirecting\"\"\"\n        old_parsed = urlparse(old_url)\n        new_parsed = urlparse(new_url)\n        if old_parsed.hostname != new_parsed.hostname:\n            return True\n        # Special case: allow http -> https redirect when using the standard\n        # ports. This isn't specified by RFC 7235, but is kept to avoid\n        # breaking backwards compatibility with older versions of requests\n        # that allowed any redirects on the same host.\n        if (\n            old_parsed.scheme == \"http\"\n            and old_parsed.port in (80, None)\n            and new_parsed.scheme == \"https\"\n            and new_parsed.port in (443, None)\n        ):\n            return False\n"
+      },
+      {
+        "id": "requests-sessions.py-282-300",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/sessions.py",
+        "start_line": 282,
+        "end_line": 300,
+        "text": "    def rebuild_auth(self, prepared_request, response):\n        \"\"\"When being redirected we may want to strip authentication from the\n        request to avoid leaking credentials. This method intelligently removes\n        and reapplies authentication where possible to avoid credential loss.\n        \"\"\"\n        headers = prepared_request.headers\n        url = prepared_request.url\n\n        if \"Authorization\" in headers and self.should_strip_auth(\n            response.request.url, url\n        ):\n            # If we get redirected to a new host, we should strip out any\n            # authentication headers.\n            del headers[\"Authorization\"]\n\n        # .netrc might have more auth for us on our new host.\n        new_auth = get_netrc_auth(url) if self.trust_env else None\n        if new_auth is not None:\n            prepared_request.prepare_auth(new_auth)\n"
+      },
+      {
+        "id": "requests-sessions.py-333-353",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/sessions.py",
+        "start_line": 333,
+        "end_line": 353,
+        "text": "    def rebuild_method(self, prepared_request, response):\n        \"\"\"When being redirected we may want to change the method of the request\n        based on certain specs or browser behavior.\n        \"\"\"\n        method = prepared_request.method\n\n        # https://tools.ietf.org/html/rfc7231#section-6.4.4\n        if response.status_code == codes.see_other and method != \"HEAD\":\n            method = \"GET\"\n\n        # Do what the browsers do, despite standards...\n        # First, turn 302s into GETs.\n        if response.status_code == codes.found and method != \"HEAD\":\n            method = \"GET\"\n\n        # Second, if a POST is responded to with a 301, turn it into a GET.\n        # This bizarre behaviour is explained in Issue 1704.\n        if response.status_code == codes.moved and method == \"POST\":\n            method = \"GET\"\n\n        prepared_request.method = method\n"
+      },
+      {
+        "id": "requests-sessions.py-61-88",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/sessions.py",
+        "start_line": 61,
+        "end_line": 88,
+        "text": "def merge_setting(request_setting, session_setting, dict_class=OrderedDict):\n    \"\"\"Determines appropriate setting for a given request, taking into account\n    the explicit setting on that request, and the setting in the session. If a\n    setting is a dictionary, they will be merged together using `dict_class`\n    \"\"\"\n\n    if session_setting is None:\n        return request_setting\n\n    if request_setting is None:\n        return session_setting\n\n    # Bypass if not a dictionary (e.g. verify)\n    if not (\n        isinstance(session_setting, Mapping) and isinstance(request_setting, Mapping)\n    ):\n        return request_setting\n\n    merged_setting = dict_class(to_key_val_list(session_setting))\n    merged_setting.update(to_key_val_list(request_setting))\n\n    # Remove keys that are set to None. Extract keys first to avoid altering\n    # the dictionary during iteration.\n    none_keys = [k for (k, v) in merged_setting.items() if v is None]\n    for key in none_keys:\n        del merged_setting[key]\n\n    return merged_setting\n"
+      },
+      {
+        "id": "requests-sessions.py-91-103",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/sessions.py",
+        "start_line": 91,
+        "end_line": 103,
+        "text": "def merge_hooks(request_hooks, session_hooks, dict_class=OrderedDict):\n    \"\"\"Properly merges both requests and session hooks.\n\n    This is necessary because when request_hooks == {'response': []}, the\n    merge breaks Session hooks entirely.\n    \"\"\"\n    if session_hooks is None or session_hooks.get(\"response\") == []:\n        return request_hooks\n\n    if request_hooks is None or request_hooks.get(\"response\") == []:\n        return session_hooks\n\n    return merge_setting(request_hooks, session_hooks, dict_class)\n"
+      },
+      {
+        "id": "requests-sessions.py-750-779",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/sessions.py",
+        "start_line": 750,
+        "end_line": 779,
+        "text": "    def merge_environment_settings(self, url, proxies, stream, verify, cert):\n        \"\"\"\n        Check the environment and merge it with some settings.\n\n        :rtype: dict\n        \"\"\"\n        # Gather clues from the surrounding environment.\n        if self.trust_env:\n            # Set environment's proxies.\n            no_proxy = proxies.get(\"no_proxy\") if proxies is not None else None\n            env_proxies = get_environ_proxies(url, no_proxy=no_proxy)\n            for k, v in env_proxies.items():\n                proxies.setdefault(k, v)\n\n            # Look for requests environment configuration\n            # and be compatible with cURL.\n            if verify is True or verify is None:\n                verify = (\n                    os.environ.get(\"REQUESTS_CA_BUNDLE\")\n                    or os.environ.get(\"CURL_CA_BUNDLE\")\n                    or verify\n                )\n\n        # Merge all the kwargs.\n        proxies = merge_setting(proxies, self.proxies)\n        stream = merge_setting(stream, self.stream)\n        verify = merge_setting(verify, self.verify)\n        cert = merge_setting(cert, self.cert)\n\n        return {\"proxies\": proxies, \"stream\": stream, \"verify\": verify, \"cert\": cert}\n"
+      }
+    ]
+  },
+  {
+    "id": "dev-requests-2",
+    "query": "Which redirect responses change POST to GET, and does HEAD get changed?",
+    "candidates": [
+      {
+        "id": "requests-sessions.py-127-143",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/sessions.py",
+        "start_line": 127,
+        "end_line": 143,
+        "text": "    def should_strip_auth(self, old_url, new_url):\n        \"\"\"Decide whether Authorization header should be removed when redirecting\"\"\"\n        old_parsed = urlparse(old_url)\n        new_parsed = urlparse(new_url)\n        if old_parsed.hostname != new_parsed.hostname:\n            return True\n        # Special case: allow http -> https redirect when using the standard\n        # ports. This isn't specified by RFC 7235, but is kept to avoid\n        # breaking backwards compatibility with older versions of requests\n        # that allowed any redirects on the same host.\n        if (\n            old_parsed.scheme == \"http\"\n            and old_parsed.port in (80, None)\n            and new_parsed.scheme == \"https\"\n            and new_parsed.port in (443, None)\n        ):\n            return False\n"
+      },
+      {
+        "id": "requests-sessions.py-282-300",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/sessions.py",
+        "start_line": 282,
+        "end_line": 300,
+        "text": "    def rebuild_auth(self, prepared_request, response):\n        \"\"\"When being redirected we may want to strip authentication from the\n        request to avoid leaking credentials. This method intelligently removes\n        and reapplies authentication where possible to avoid credential loss.\n        \"\"\"\n        headers = prepared_request.headers\n        url = prepared_request.url\n\n        if \"Authorization\" in headers and self.should_strip_auth(\n            response.request.url, url\n        ):\n            # If we get redirected to a new host, we should strip out any\n            # authentication headers.\n            del headers[\"Authorization\"]\n\n        # .netrc might have more auth for us on our new host.\n        new_auth = get_netrc_auth(url) if self.trust_env else None\n        if new_auth is not None:\n            prepared_request.prepare_auth(new_auth)\n"
+      },
+      {
+        "id": "requests-sessions.py-333-353",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/sessions.py",
+        "start_line": 333,
+        "end_line": 353,
+        "text": "    def rebuild_method(self, prepared_request, response):\n        \"\"\"When being redirected we may want to change the method of the request\n        based on certain specs or browser behavior.\n        \"\"\"\n        method = prepared_request.method\n\n        # https://tools.ietf.org/html/rfc7231#section-6.4.4\n        if response.status_code == codes.see_other and method != \"HEAD\":\n            method = \"GET\"\n\n        # Do what the browsers do, despite standards...\n        # First, turn 302s into GETs.\n        if response.status_code == codes.found and method != \"HEAD\":\n            method = \"GET\"\n\n        # Second, if a POST is responded to with a 301, turn it into a GET.\n        # This bizarre behaviour is explained in Issue 1704.\n        if response.status_code == codes.moved and method == \"POST\":\n            method = \"GET\"\n\n        prepared_request.method = method\n"
+      },
+      {
+        "id": "requests-sessions.py-61-88",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/sessions.py",
+        "start_line": 61,
+        "end_line": 88,
+        "text": "def merge_setting(request_setting, session_setting, dict_class=OrderedDict):\n    \"\"\"Determines appropriate setting for a given request, taking into account\n    the explicit setting on that request, and the setting in the session. If a\n    setting is a dictionary, they will be merged together using `dict_class`\n    \"\"\"\n\n    if session_setting is None:\n        return request_setting\n\n    if request_setting is None:\n        return session_setting\n\n    # Bypass if not a dictionary (e.g. verify)\n    if not (\n        isinstance(session_setting, Mapping) and isinstance(request_setting, Mapping)\n    ):\n        return request_setting\n\n    merged_setting = dict_class(to_key_val_list(session_setting))\n    merged_setting.update(to_key_val_list(request_setting))\n\n    # Remove keys that are set to None. Extract keys first to avoid altering\n    # the dictionary during iteration.\n    none_keys = [k for (k, v) in merged_setting.items() if v is None]\n    for key in none_keys:\n        del merged_setting[key]\n\n    return merged_setting\n"
+      },
+      {
+        "id": "requests-sessions.py-91-103",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/sessions.py",
+        "start_line": 91,
+        "end_line": 103,
+        "text": "def merge_hooks(request_hooks, session_hooks, dict_class=OrderedDict):\n    \"\"\"Properly merges both requests and session hooks.\n\n    This is necessary because when request_hooks == {'response': []}, the\n    merge breaks Session hooks entirely.\n    \"\"\"\n    if session_hooks is None or session_hooks.get(\"response\") == []:\n        return request_hooks\n\n    if request_hooks is None or request_hooks.get(\"response\") == []:\n        return session_hooks\n\n    return merge_setting(request_hooks, session_hooks, dict_class)\n"
+      },
+      {
+        "id": "requests-sessions.py-750-779",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/sessions.py",
+        "start_line": 750,
+        "end_line": 779,
+        "text": "    def merge_environment_settings(self, url, proxies, stream, verify, cert):\n        \"\"\"\n        Check the environment and merge it with some settings.\n\n        :rtype: dict\n        \"\"\"\n        # Gather clues from the surrounding environment.\n        if self.trust_env:\n            # Set environment's proxies.\n            no_proxy = proxies.get(\"no_proxy\") if proxies is not None else None\n            env_proxies = get_environ_proxies(url, no_proxy=no_proxy)\n            for k, v in env_proxies.items():\n                proxies.setdefault(k, v)\n\n            # Look for requests environment configuration\n            # and be compatible with cURL.\n            if verify is True or verify is None:\n                verify = (\n                    os.environ.get(\"REQUESTS_CA_BUNDLE\")\n                    or os.environ.get(\"CURL_CA_BUNDLE\")\n                    or verify\n                )\n\n        # Merge all the kwargs.\n        proxies = merge_setting(proxies, self.proxies)\n        stream = merge_setting(stream, self.stream)\n        verify = merge_setting(verify, self.verify)\n        cert = merge_setting(cert, self.cert)\n\n        return {\"proxies\": proxies, \"stream\": stream, \"verify\": verify, \"cert\": cert}\n"
+      }
+    ]
+  },
+  {
+    "id": "dev-requests-3",
+    "query": "How does merge_setting combine request and session dictionaries, including entries set to None?",
+    "candidates": [
+      {
+        "id": "requests-sessions.py-127-143",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/sessions.py",
+        "start_line": 127,
+        "end_line": 143,
+        "text": "    def should_strip_auth(self, old_url, new_url):\n        \"\"\"Decide whether Authorization header should be removed when redirecting\"\"\"\n        old_parsed = urlparse(old_url)\n        new_parsed = urlparse(new_url)\n        if old_parsed.hostname != new_parsed.hostname:\n            return True\n        # Special case: allow http -> https redirect when using the standard\n        # ports. This isn't specified by RFC 7235, but is kept to avoid\n        # breaking backwards compatibility with older versions of requests\n        # that allowed any redirects on the same host.\n        if (\n            old_parsed.scheme == \"http\"\n            and old_parsed.port in (80, None)\n            and new_parsed.scheme == \"https\"\n            and new_parsed.port in (443, None)\n        ):\n            return False\n"
+      },
+      {
+        "id": "requests-sessions.py-282-300",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/sessions.py",
+        "start_line": 282,
+        "end_line": 300,
+        "text": "    def rebuild_auth(self, prepared_request, response):\n        \"\"\"When being redirected we may want to strip authentication from the\n        request to avoid leaking credentials. This method intelligently removes\n        and reapplies authentication where possible to avoid credential loss.\n        \"\"\"\n        headers = prepared_request.headers\n        url = prepared_request.url\n\n        if \"Authorization\" in headers and self.should_strip_auth(\n            response.request.url, url\n        ):\n            # If we get redirected to a new host, we should strip out any\n            # authentication headers.\n            del headers[\"Authorization\"]\n\n        # .netrc might have more auth for us on our new host.\n        new_auth = get_netrc_auth(url) if self.trust_env else None\n        if new_auth is not None:\n            prepared_request.prepare_auth(new_auth)\n"
+      },
+      {
+        "id": "requests-sessions.py-333-353",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/sessions.py",
+        "start_line": 333,
+        "end_line": 353,
+        "text": "    def rebuild_method(self, prepared_request, response):\n        \"\"\"When being redirected we may want to change the method of the request\n        based on certain specs or browser behavior.\n        \"\"\"\n        method = prepared_request.method\n\n        # https://tools.ietf.org/html/rfc7231#section-6.4.4\n        if response.status_code == codes.see_other and method != \"HEAD\":\n            method = \"GET\"\n\n        # Do what the browsers do, despite standards...\n        # First, turn 302s into GETs.\n        if response.status_code == codes.found and method != \"HEAD\":\n            method = \"GET\"\n\n        # Second, if a POST is responded to with a 301, turn it into a GET.\n        # This bizarre behaviour is explained in Issue 1704.\n        if response.status_code == codes.moved and method == \"POST\":\n            method = \"GET\"\n\n        prepared_request.method = method\n"
+      },
+      {
+        "id": "requests-sessions.py-61-88",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/sessions.py",
+        "start_line": 61,
+        "end_line": 88,
+        "text": "def merge_setting(request_setting, session_setting, dict_class=OrderedDict):\n    \"\"\"Determines appropriate setting for a given request, taking into account\n    the explicit setting on that request, and the setting in the session. If a\n    setting is a dictionary, they will be merged together using `dict_class`\n    \"\"\"\n\n    if session_setting is None:\n        return request_setting\n\n    if request_setting is None:\n        return session_setting\n\n    # Bypass if not a dictionary (e.g. verify)\n    if not (\n        isinstance(session_setting, Mapping) and isinstance(request_setting, Mapping)\n    ):\n        return request_setting\n\n    merged_setting = dict_class(to_key_val_list(session_setting))\n    merged_setting.update(to_key_val_list(request_setting))\n\n    # Remove keys that are set to None. Extract keys first to avoid altering\n    # the dictionary during iteration.\n    none_keys = [k for (k, v) in merged_setting.items() if v is None]\n    for key in none_keys:\n        del merged_setting[key]\n\n    return merged_setting\n"
+      },
+      {
+        "id": "requests-sessions.py-91-103",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/sessions.py",
+        "start_line": 91,
+        "end_line": 103,
+        "text": "def merge_hooks(request_hooks, session_hooks, dict_class=OrderedDict):\n    \"\"\"Properly merges both requests and session hooks.\n\n    This is necessary because when request_hooks == {'response': []}, the\n    merge breaks Session hooks entirely.\n    \"\"\"\n    if session_hooks is None or session_hooks.get(\"response\") == []:\n        return request_hooks\n\n    if request_hooks is None or request_hooks.get(\"response\") == []:\n        return session_hooks\n\n    return merge_setting(request_hooks, session_hooks, dict_class)\n"
+      },
+      {
+        "id": "requests-sessions.py-750-779",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/sessions.py",
+        "start_line": 750,
+        "end_line": 779,
+        "text": "    def merge_environment_settings(self, url, proxies, stream, verify, cert):\n        \"\"\"\n        Check the environment and merge it with some settings.\n\n        :rtype: dict\n        \"\"\"\n        # Gather clues from the surrounding environment.\n        if self.trust_env:\n            # Set environment's proxies.\n            no_proxy = proxies.get(\"no_proxy\") if proxies is not None else None\n            env_proxies = get_environ_proxies(url, no_proxy=no_proxy)\n            for k, v in env_proxies.items():\n                proxies.setdefault(k, v)\n\n            # Look for requests environment configuration\n            # and be compatible with cURL.\n            if verify is True or verify is None:\n                verify = (\n                    os.environ.get(\"REQUESTS_CA_BUNDLE\")\n                    or os.environ.get(\"CURL_CA_BUNDLE\")\n                    or verify\n                )\n\n        # Merge all the kwargs.\n        proxies = merge_setting(proxies, self.proxies)\n        stream = merge_setting(stream, self.stream)\n        verify = merge_setting(verify, self.verify)\n        cert = merge_setting(cert, self.cert)\n\n        return {\"proxies\": proxies, \"stream\": stream, \"verify\": verify, \"cert\": cert}\n"
+      }
+    ]
+  },
+  {
+    "id": "dev-flask-1",
+    "query": "Does from_prefixed_env reject a value when its JSON loader raises an exception?",
+    "candidates": [
+      {
+        "id": "flask-config.py-126-148",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/config.py",
+        "start_line": 126,
+        "end_line": 148,
+        "text": "    def from_prefixed_env(\n        self, prefix: str = \"FLASK\", *, loads: t.Callable[[str], t.Any] = json.loads\n    ) -> bool:\n        \"\"\"Load any environment variables that start with ``FLASK_``,\n        dropping the prefix from the env key for the config key. Values\n        are passed through a loading function to attempt to convert them\n        to more specific types than strings.\n\n        Keys are loaded in :func:`sorted` order.\n\n        The default loading function attempts to parse values as any\n        valid JSON type, including dicts and lists.\n\n        Specific items in nested dicts can be set by separating the\n        keys with double underscores (``__``). If an intermediate key\n        doesn't exist, it will be initialized to an empty dict.\n\n        :param prefix: Load env vars that start with this prefix,\n            separated with an underscore (``_``).\n        :param loads: Pass each string value to this function and use\n            the returned value as the config value. If any error is\n            raised it is ignored and the value remains a string. The\n            default is :func:`json.loads`.\n"
+      },
+      {
+        "id": "flask-config.py-152-170",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/config.py",
+        "start_line": 152,
+        "end_line": 170,
+        "text": "        prefix = f\"{prefix}_\"\n\n        for key in sorted(os.environ):\n            if not key.startswith(prefix):\n                continue\n\n            value = os.environ[key]\n            key = key.removeprefix(prefix)\n\n            try:\n                value = loads(value)\n            except Exception:\n                # Keep the value as a string if loading failed.\n                pass\n\n            if \"__\" not in key:\n                # A non-nested key, set directly.\n                self[key] = value\n                continue\n"
+      },
+      {
+        "id": "flask-config.py-172-185",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/config.py",
+        "start_line": 172,
+        "end_line": 185,
+        "text": "            # Traverse nested dictionaries with keys separated by \"__\".\n            current = self\n            *parts, tail = key.split(\"__\")\n\n            for part in parts:\n                # If an intermediate dict does not exist, create it.\n                if part not in current:\n                    current[part] = {}\n\n                current = current[part]\n\n            current[tail] = value\n\n        return True\n"
+      },
+      {
+        "id": "flask-config.py-304-321",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/config.py",
+        "start_line": 304,
+        "end_line": 321,
+        "text": "    def from_mapping(\n        self, mapping: t.Mapping[str, t.Any] | None = None, **kwargs: t.Any\n    ) -> bool:\n        \"\"\"Updates the config like :meth:`update` ignoring items with\n        non-upper keys.\n\n        :return: Always returns ``True``.\n\n        .. versionadded:: 0.11\n        \"\"\"\n        mappings: dict[str, t.Any] = {}\n        if mapping is not None:\n            mappings.update(mapping)\n        mappings.update(kwargs)\n        for key, value in mappings.items():\n            if key.isupper():\n                self[key] = value\n        return True\n"
+      },
+      {
+        "id": "flask-config.py-353-364",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/config.py",
+        "start_line": 353,
+        "end_line": 364,
+        "text": "        rv = {}\n        for k, v in self.items():\n            if not k.startswith(namespace):\n                continue\n            if trim_namespace:\n                key = k[len(namespace) :]\n            else:\n                key = k\n            if lowercase:\n                key = key.lower()\n            rv[key] = v\n        return rv\n"
+      },
+      {
+        "id": "flask-config.py-218-228",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/config.py",
+        "start_line": 218,
+        "end_line": 228,
+        "text": "    def from_object(self, obj: object | str) -> None:\n        \"\"\"Updates the values from the given object.  An object can be of one\n        of the following two types:\n\n        -   a string: in this case the object with that name will be imported\n        -   an actual object reference: that object is used directly\n\n        Objects are usually either modules or classes. :meth:`from_object`\n        loads only the uppercase attributes of the module/class. A ``dict``\n        object will not work with :meth:`from_object` because the keys of a\n        ``dict`` are not attributes of the ``dict`` class.\n"
+      }
+    ]
+  },
+  {
+    "id": "dev-flask-2",
+    "query": "How do double underscores in a prefixed environment key create nested configuration dictionaries?",
+    "candidates": [
+      {
+        "id": "flask-config.py-126-148",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/config.py",
+        "start_line": 126,
+        "end_line": 148,
+        "text": "    def from_prefixed_env(\n        self, prefix: str = \"FLASK\", *, loads: t.Callable[[str], t.Any] = json.loads\n    ) -> bool:\n        \"\"\"Load any environment variables that start with ``FLASK_``,\n        dropping the prefix from the env key for the config key. Values\n        are passed through a loading function to attempt to convert them\n        to more specific types than strings.\n\n        Keys are loaded in :func:`sorted` order.\n\n        The default loading function attempts to parse values as any\n        valid JSON type, including dicts and lists.\n\n        Specific items in nested dicts can be set by separating the\n        keys with double underscores (``__``). If an intermediate key\n        doesn't exist, it will be initialized to an empty dict.\n\n        :param prefix: Load env vars that start with this prefix,\n            separated with an underscore (``_``).\n        :param loads: Pass each string value to this function and use\n            the returned value as the config value. If any error is\n            raised it is ignored and the value remains a string. The\n            default is :func:`json.loads`.\n"
+      },
+      {
+        "id": "flask-config.py-152-170",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/config.py",
+        "start_line": 152,
+        "end_line": 170,
+        "text": "        prefix = f\"{prefix}_\"\n\n        for key in sorted(os.environ):\n            if not key.startswith(prefix):\n                continue\n\n            value = os.environ[key]\n            key = key.removeprefix(prefix)\n\n            try:\n                value = loads(value)\n            except Exception:\n                # Keep the value as a string if loading failed.\n                pass\n\n            if \"__\" not in key:\n                # A non-nested key, set directly.\n                self[key] = value\n                continue\n"
+      },
+      {
+        "id": "flask-config.py-172-185",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/config.py",
+        "start_line": 172,
+        "end_line": 185,
+        "text": "            # Traverse nested dictionaries with keys separated by \"__\".\n            current = self\n            *parts, tail = key.split(\"__\")\n\n            for part in parts:\n                # If an intermediate dict does not exist, create it.\n                if part not in current:\n                    current[part] = {}\n\n                current = current[part]\n\n            current[tail] = value\n\n        return True\n"
+      },
+      {
+        "id": "flask-config.py-304-321",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/config.py",
+        "start_line": 304,
+        "end_line": 321,
+        "text": "    def from_mapping(\n        self, mapping: t.Mapping[str, t.Any] | None = None, **kwargs: t.Any\n    ) -> bool:\n        \"\"\"Updates the config like :meth:`update` ignoring items with\n        non-upper keys.\n\n        :return: Always returns ``True``.\n\n        .. versionadded:: 0.11\n        \"\"\"\n        mappings: dict[str, t.Any] = {}\n        if mapping is not None:\n            mappings.update(mapping)\n        mappings.update(kwargs)\n        for key, value in mappings.items():\n            if key.isupper():\n                self[key] = value\n        return True\n"
+      },
+      {
+        "id": "flask-config.py-353-364",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/config.py",
+        "start_line": 353,
+        "end_line": 364,
+        "text": "        rv = {}\n        for k, v in self.items():\n            if not k.startswith(namespace):\n                continue\n            if trim_namespace:\n                key = k[len(namespace) :]\n            else:\n                key = k\n            if lowercase:\n                key = key.lower()\n            rv[key] = v\n        return rv\n"
+      },
+      {
+        "id": "flask-config.py-218-228",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/config.py",
+        "start_line": 218,
+        "end_line": 228,
+        "text": "    def from_object(self, obj: object | str) -> None:\n        \"\"\"Updates the values from the given object.  An object can be of one\n        of the following two types:\n\n        -   a string: in this case the object with that name will be imported\n        -   an actual object reference: that object is used directly\n\n        Objects are usually either modules or classes. :meth:`from_object`\n        loads only the uppercase attributes of the module/class. A ``dict``\n        object will not work with :meth:`from_object` because the keys of a\n        ``dict`` are not attributes of the ``dict`` class.\n"
+      }
+    ]
+  },
+  {
+    "id": "dev-flask-3",
+    "query": "Does from_mapping load lowercase keys, and do keyword arguments override the mapping?",
+    "candidates": [
+      {
+        "id": "flask-config.py-126-148",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/config.py",
+        "start_line": 126,
+        "end_line": 148,
+        "text": "    def from_prefixed_env(\n        self, prefix: str = \"FLASK\", *, loads: t.Callable[[str], t.Any] = json.loads\n    ) -> bool:\n        \"\"\"Load any environment variables that start with ``FLASK_``,\n        dropping the prefix from the env key for the config key. Values\n        are passed through a loading function to attempt to convert them\n        to more specific types than strings.\n\n        Keys are loaded in :func:`sorted` order.\n\n        The default loading function attempts to parse values as any\n        valid JSON type, including dicts and lists.\n\n        Specific items in nested dicts can be set by separating the\n        keys with double underscores (``__``). If an intermediate key\n        doesn't exist, it will be initialized to an empty dict.\n\n        :param prefix: Load env vars that start with this prefix,\n            separated with an underscore (``_``).\n        :param loads: Pass each string value to this function and use\n            the returned value as the config value. If any error is\n            raised it is ignored and the value remains a string. The\n            default is :func:`json.loads`.\n"
+      },
+      {
+        "id": "flask-config.py-152-170",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/config.py",
+        "start_line": 152,
+        "end_line": 170,
+        "text": "        prefix = f\"{prefix}_\"\n\n        for key in sorted(os.environ):\n            if not key.startswith(prefix):\n                continue\n\n            value = os.environ[key]\n            key = key.removeprefix(prefix)\n\n            try:\n                value = loads(value)\n            except Exception:\n                # Keep the value as a string if loading failed.\n                pass\n\n            if \"__\" not in key:\n                # A non-nested key, set directly.\n                self[key] = value\n                continue\n"
+      },
+      {
+        "id": "flask-config.py-172-185",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/config.py",
+        "start_line": 172,
+        "end_line": 185,
+        "text": "            # Traverse nested dictionaries with keys separated by \"__\".\n            current = self\n            *parts, tail = key.split(\"__\")\n\n            for part in parts:\n                # If an intermediate dict does not exist, create it.\n                if part not in current:\n                    current[part] = {}\n\n                current = current[part]\n\n            current[tail] = value\n\n        return True\n"
+      },
+      {
+        "id": "flask-config.py-304-321",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/config.py",
+        "start_line": 304,
+        "end_line": 321,
+        "text": "    def from_mapping(\n        self, mapping: t.Mapping[str, t.Any] | None = None, **kwargs: t.Any\n    ) -> bool:\n        \"\"\"Updates the config like :meth:`update` ignoring items with\n        non-upper keys.\n\n        :return: Always returns ``True``.\n\n        .. versionadded:: 0.11\n        \"\"\"\n        mappings: dict[str, t.Any] = {}\n        if mapping is not None:\n            mappings.update(mapping)\n        mappings.update(kwargs)\n        for key, value in mappings.items():\n            if key.isupper():\n                self[key] = value\n        return True\n"
+      },
+      {
+        "id": "flask-config.py-353-364",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/config.py",
+        "start_line": 353,
+        "end_line": 364,
+        "text": "        rv = {}\n        for k, v in self.items():\n            if not k.startswith(namespace):\n                continue\n            if trim_namespace:\n                key = k[len(namespace) :]\n            else:\n                key = k\n            if lowercase:\n                key = key.lower()\n            rv[key] = v\n        return rv\n"
+      },
+      {
+        "id": "flask-config.py-218-228",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/config.py",
+        "start_line": 218,
+        "end_line": 228,
+        "text": "    def from_object(self, obj: object | str) -> None:\n        \"\"\"Updates the values from the given object.  An object can be of one\n        of the following two types:\n\n        -   a string: in this case the object with that name will be imported\n        -   an actual object reference: that object is used directly\n\n        Objects are usually either modules or classes. :meth:`from_object`\n        loads only the uppercase attributes of the module/class. A ``dict``\n        object will not work with :meth:`from_object` because the keys of a\n        ``dict`` are not attributes of the ``dict`` class.\n"
+      }
+    ]
+  },
+  {
+    "id": "dev-click-1",
+    "query": "Which strings convert to boolean values, and are whitespace and case normalized?",
+    "candidates": [
+      {
+        "id": "click-types.py-594-613",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/types.py",
+        "start_line": 594,
+        "end_line": 613,
+        "text": "class BoolParamType(ParamType):\n    name = \"boolean\"\n\n    def convert(\n        self, value: t.Any, param: t.Optional[\"Parameter\"], ctx: t.Optional[\"Context\"]\n    ) -> t.Any:\n        if value in {False, True}:\n            return bool(value)\n\n        norm = value.strip().lower()\n\n        if norm in {\"1\", \"true\", \"t\", \"yes\", \"y\", \"on\"}:\n            return True\n\n        if norm in {\"0\", \"false\", \"f\", \"no\", \"n\", \"off\"}:\n            return False\n\n        self.fail(\n            _(\"{value!r} is not a valid boolean.\").format(value=value), param, ctx\n        )\n"
+      },
+      {
+        "id": "click-types.py-279-294",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/types.py",
+        "start_line": 279,
+        "end_line": 294,
+        "text": "        if ctx is not None and ctx.token_normalize_func is not None:\n            normed_value = ctx.token_normalize_func(value)\n            normed_choices = {\n                ctx.token_normalize_func(normed_choice): original\n                for normed_choice, original in normed_choices.items()\n            }\n\n        if not self.case_sensitive:\n            normed_value = normed_value.casefold()\n            normed_choices = {\n                normed_choice.casefold(): original\n                for normed_choice, original in normed_choices.items()\n            }\n\n        if normed_value in normed_choices:\n            return normed_choices[normed_value]\n"
+      },
+      {
+        "id": "click-types.py-643-665",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/types.py",
+        "start_line": 643,
+        "end_line": 665,
+        "text": "class File(ParamType):\n    \"\"\"Declares a parameter to be a file for reading or writing.  The file\n    is automatically closed once the context tears down (after the command\n    finished working).\n\n    Files can be opened for reading or writing.  The special value ``-``\n    indicates stdin or stdout depending on the mode.\n\n    By default, the file is opened for reading text data, but it can also be\n    opened in binary mode or for writing.  The encoding parameter can be used\n    to force a specific encoding.\n\n    The `lazy` flag controls if the file should be opened immediately or upon\n    first IO. The default is to be non-lazy for standard input and output\n    streams as well as files opened for reading, `lazy` otherwise. When opening a\n    file lazily for reading, it is still opened temporarily for validation, but\n    will not be held open until first IO. lazy is mainly useful when opening\n    for writing to avoid creating the file until it is needed.\n\n    Files can also be opened atomically in which case all writes go into a\n    separate file in the same folder and upon completion the file will\n    be moved over to the original location.  This is useful if a file\n    regularly read by other users is modified.\n"
+      },
+      {
+        "id": "click-types.py-695-702",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/types.py",
+        "start_line": 695,
+        "end_line": 702,
+        "text": "    def resolve_lazy_flag(self, value: \"t.Union[str, os.PathLike[str]]\") -> bool:\n        if self.lazy is not None:\n            return self.lazy\n        if os.fspath(value) == \"-\":\n            return False\n        elif \"w\" in self.mode:\n            return True\n        return False\n"
+      },
+      {
+        "id": "click-types.py-875-886",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/types.py",
+        "start_line": 875,
+        "end_line": 886,
+        "text": "            try:\n                st = os.stat(rv)\n            except OSError:\n                if not self.exists:\n                    return self.coerce_path_result(rv)\n                self.fail(\n                    _(\"{name} {filename!r} does not exist.\").format(\n                        name=self.name.title(), filename=format_filename(value)\n                    ),\n                    param,\n                    ctx,\n                )\n"
+      },
+      {
+        "id": "click-types.py-622-637",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/types.py",
+        "start_line": 622,
+        "end_line": 637,
+        "text": "    def convert(\n        self, value: t.Any, param: t.Optional[\"Parameter\"], ctx: t.Optional[\"Context\"]\n    ) -> t.Any:\n        import uuid\n\n        if isinstance(value, uuid.UUID):\n            return value\n\n        value = value.strip()\n\n        try:\n            return uuid.UUID(value)\n        except ValueError:\n            self.fail(\n                _(\"{value!r} is not a valid UUID.\").format(value=value), param, ctx\n            )\n"
+      }
+    ]
+  },
+  {
+    "id": "dev-click-2",
+    "query": "Are files opened for reading lazy by default, including the special dash stream?",
+    "candidates": [
+      {
+        "id": "click-types.py-594-613",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/types.py",
+        "start_line": 594,
+        "end_line": 613,
+        "text": "class BoolParamType(ParamType):\n    name = \"boolean\"\n\n    def convert(\n        self, value: t.Any, param: t.Optional[\"Parameter\"], ctx: t.Optional[\"Context\"]\n    ) -> t.Any:\n        if value in {False, True}:\n            return bool(value)\n\n        norm = value.strip().lower()\n\n        if norm in {\"1\", \"true\", \"t\", \"yes\", \"y\", \"on\"}:\n            return True\n\n        if norm in {\"0\", \"false\", \"f\", \"no\", \"n\", \"off\"}:\n            return False\n\n        self.fail(\n            _(\"{value!r} is not a valid boolean.\").format(value=value), param, ctx\n        )\n"
+      },
+      {
+        "id": "click-types.py-279-294",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/types.py",
+        "start_line": 279,
+        "end_line": 294,
+        "text": "        if ctx is not None and ctx.token_normalize_func is not None:\n            normed_value = ctx.token_normalize_func(value)\n            normed_choices = {\n                ctx.token_normalize_func(normed_choice): original\n                for normed_choice, original in normed_choices.items()\n            }\n\n        if not self.case_sensitive:\n            normed_value = normed_value.casefold()\n            normed_choices = {\n                normed_choice.casefold(): original\n                for normed_choice, original in normed_choices.items()\n            }\n\n        if normed_value in normed_choices:\n            return normed_choices[normed_value]\n"
+      },
+      {
+        "id": "click-types.py-643-665",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/types.py",
+        "start_line": 643,
+        "end_line": 665,
+        "text": "class File(ParamType):\n    \"\"\"Declares a parameter to be a file for reading or writing.  The file\n    is automatically closed once the context tears down (after the command\n    finished working).\n\n    Files can be opened for reading or writing.  The special value ``-``\n    indicates stdin or stdout depending on the mode.\n\n    By default, the file is opened for reading text data, but it can also be\n    opened in binary mode or for writing.  The encoding parameter can be used\n    to force a specific encoding.\n\n    The `lazy` flag controls if the file should be opened immediately or upon\n    first IO. The default is to be non-lazy for standard input and output\n    streams as well as files opened for reading, `lazy` otherwise. When opening a\n    file lazily for reading, it is still opened temporarily for validation, but\n    will not be held open until first IO. lazy is mainly useful when opening\n    for writing to avoid creating the file until it is needed.\n\n    Files can also be opened atomically in which case all writes go into a\n    separate file in the same folder and upon completion the file will\n    be moved over to the original location.  This is useful if a file\n    regularly read by other users is modified.\n"
+      },
+      {
+        "id": "click-types.py-695-702",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/types.py",
+        "start_line": 695,
+        "end_line": 702,
+        "text": "    def resolve_lazy_flag(self, value: \"t.Union[str, os.PathLike[str]]\") -> bool:\n        if self.lazy is not None:\n            return self.lazy\n        if os.fspath(value) == \"-\":\n            return False\n        elif \"w\" in self.mode:\n            return True\n        return False\n"
+      },
+      {
+        "id": "click-types.py-875-886",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/types.py",
+        "start_line": 875,
+        "end_line": 886,
+        "text": "            try:\n                st = os.stat(rv)\n            except OSError:\n                if not self.exists:\n                    return self.coerce_path_result(rv)\n                self.fail(\n                    _(\"{name} {filename!r} does not exist.\").format(\n                        name=self.name.title(), filename=format_filename(value)\n                    ),\n                    param,\n                    ctx,\n                )\n"
+      },
+      {
+        "id": "click-types.py-622-637",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/types.py",
+        "start_line": 622,
+        "end_line": 637,
+        "text": "    def convert(\n        self, value: t.Any, param: t.Optional[\"Parameter\"], ctx: t.Optional[\"Context\"]\n    ) -> t.Any:\n        import uuid\n\n        if isinstance(value, uuid.UUID):\n            return value\n\n        value = value.strip()\n\n        try:\n            return uuid.UUID(value)\n        except ValueError:\n            self.fail(\n                _(\"{value!r} is not a valid UUID.\").format(value=value), param, ctx\n            )\n"
+      }
+    ]
+  },
+  {
+    "id": "dev-click-3",
+    "query": "Does a case-insensitive Choice return the original declared choice or its normalized spelling?",
+    "candidates": [
+      {
+        "id": "click-types.py-594-613",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/types.py",
+        "start_line": 594,
+        "end_line": 613,
+        "text": "class BoolParamType(ParamType):\n    name = \"boolean\"\n\n    def convert(\n        self, value: t.Any, param: t.Optional[\"Parameter\"], ctx: t.Optional[\"Context\"]\n    ) -> t.Any:\n        if value in {False, True}:\n            return bool(value)\n\n        norm = value.strip().lower()\n\n        if norm in {\"1\", \"true\", \"t\", \"yes\", \"y\", \"on\"}:\n            return True\n\n        if norm in {\"0\", \"false\", \"f\", \"no\", \"n\", \"off\"}:\n            return False\n\n        self.fail(\n            _(\"{value!r} is not a valid boolean.\").format(value=value), param, ctx\n        )\n"
+      },
+      {
+        "id": "click-types.py-279-294",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/types.py",
+        "start_line": 279,
+        "end_line": 294,
+        "text": "        if ctx is not None and ctx.token_normalize_func is not None:\n            normed_value = ctx.token_normalize_func(value)\n            normed_choices = {\n                ctx.token_normalize_func(normed_choice): original\n                for normed_choice, original in normed_choices.items()\n            }\n\n        if not self.case_sensitive:\n            normed_value = normed_value.casefold()\n            normed_choices = {\n                normed_choice.casefold(): original\n                for normed_choice, original in normed_choices.items()\n            }\n\n        if normed_value in normed_choices:\n            return normed_choices[normed_value]\n"
+      },
+      {
+        "id": "click-types.py-643-665",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/types.py",
+        "start_line": 643,
+        "end_line": 665,
+        "text": "class File(ParamType):\n    \"\"\"Declares a parameter to be a file for reading or writing.  The file\n    is automatically closed once the context tears down (after the command\n    finished working).\n\n    Files can be opened for reading or writing.  The special value ``-``\n    indicates stdin or stdout depending on the mode.\n\n    By default, the file is opened for reading text data, but it can also be\n    opened in binary mode or for writing.  The encoding parameter can be used\n    to force a specific encoding.\n\n    The `lazy` flag controls if the file should be opened immediately or upon\n    first IO. The default is to be non-lazy for standard input and output\n    streams as well as files opened for reading, `lazy` otherwise. When opening a\n    file lazily for reading, it is still opened temporarily for validation, but\n    will not be held open until first IO. lazy is mainly useful when opening\n    for writing to avoid creating the file until it is needed.\n\n    Files can also be opened atomically in which case all writes go into a\n    separate file in the same folder and upon completion the file will\n    be moved over to the original location.  This is useful if a file\n    regularly read by other users is modified.\n"
+      },
+      {
+        "id": "click-types.py-695-702",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/types.py",
+        "start_line": 695,
+        "end_line": 702,
+        "text": "    def resolve_lazy_flag(self, value: \"t.Union[str, os.PathLike[str]]\") -> bool:\n        if self.lazy is not None:\n            return self.lazy\n        if os.fspath(value) == \"-\":\n            return False\n        elif \"w\" in self.mode:\n            return True\n        return False\n"
+      },
+      {
+        "id": "click-types.py-875-886",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/types.py",
+        "start_line": 875,
+        "end_line": 886,
+        "text": "            try:\n                st = os.stat(rv)\n            except OSError:\n                if not self.exists:\n                    return self.coerce_path_result(rv)\n                self.fail(\n                    _(\"{name} {filename!r} does not exist.\").format(\n                        name=self.name.title(), filename=format_filename(value)\n                    ),\n                    param,\n                    ctx,\n                )\n"
+      },
+      {
+        "id": "click-types.py-622-637",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/types.py",
+        "start_line": 622,
+        "end_line": 637,
+        "text": "    def convert(\n        self, value: t.Any, param: t.Optional[\"Parameter\"], ctx: t.Optional[\"Context\"]\n    ) -> t.Any:\n        import uuid\n\n        if isinstance(value, uuid.UUID):\n            return value\n\n        value = value.strip()\n\n        try:\n            return uuid.UUID(value)\n        except ValueError:\n            self.fail(\n                _(\"{value!r} is not a valid UUID.\").format(value=value), param, ctx\n            )\n"
+      }
+    ]
+  },
+  {
+    "id": "holdout-requests-1",
+    "query": "Does a scalar HTTPAdapter timeout affect only connection establishment, and what happens to an invalid tuple?",
+    "candidates": [
+      {
+        "id": "requests-adapters.py-316-340",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/adapters.py",
+        "start_line": 316,
+        "end_line": 340,
+        "text": "        if url.lower().startswith(\"https\") and verify:\n            conn.cert_reqs = \"CERT_REQUIRED\"\n\n            # Only load the CA certificates if 'verify' is a string indicating the CA bundle to use.\n            # Otherwise, if verify is a boolean, we don't load anything since\n            # the connection will be using a context with the default certificates already loaded,\n            # and this avoids a call to the slow load_verify_locations()\n            if verify is not True:\n                # `verify` must be a str with a path then\n                cert_loc = verify\n\n                if not os.path.exists(cert_loc):\n                    raise OSError(\n                        f\"Could not find a suitable TLS CA certificate bundle, \"\n                        f\"invalid path: {cert_loc}\"\n                    )\n\n                if not os.path.isdir(cert_loc):\n                    conn.ca_certs = cert_loc\n                else:\n                    conn.ca_cert_dir = cert_loc\n        else:\n            conn.cert_reqs = \"CERT_NONE\"\n            conn.ca_certs = None\n            conn.ca_cert_dir = None\n"
+      },
+      {
+        "id": "requests-adapters.py-560-576",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/adapters.py",
+        "start_line": 560,
+        "end_line": 576,
+        "text": "        proxy = select_proxy(request.url, proxies)\n        scheme = urlparse(request.url).scheme\n\n        is_proxied_http_request = proxy and scheme != \"https\"\n        using_socks_proxy = False\n        if proxy:\n            proxy_scheme = urlparse(proxy).scheme.lower()\n            using_socks_proxy = proxy_scheme.startswith(\"socks\")\n\n        url = request.path_url\n        if url.startswith(\"//\"):  # Don't confuse urllib3\n            url = f\"/{url.lstrip('/')}\"\n\n        if is_proxied_http_request and not using_socks_proxy:\n            url = urldefragauth(request.url)\n\n        return url\n"
+      },
+      {
+        "id": "requests-adapters.py-650-664",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/adapters.py",
+        "start_line": 650,
+        "end_line": 664,
+        "text": "        chunked = not (request.body is None or \"Content-Length\" in request.headers)\n\n        if isinstance(timeout, tuple):\n            try:\n                connect, read = timeout\n                timeout = TimeoutSauce(connect=connect, read=read)\n            except ValueError:\n                raise ValueError(\n                    f\"Invalid timeout {timeout}. Pass a (connect, read) timeout tuple, \"\n                    f\"or a single float to set both timeouts to the same value.\"\n                )\n        elif isinstance(timeout, TimeoutSauce):\n            pass\n        else:\n            timeout = TimeoutSauce(connect=timeout, read=timeout)\n"
+      },
+      {
+        "id": "requests-adapters.py-536-544",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/adapters.py",
+        "start_line": 536,
+        "end_line": 544,
+        "text": "    def close(self):\n        \"\"\"Disposes of any internal state.\n\n        Currently, this closes the PoolManager and any active ProxyManager,\n        which closes any pooled connections.\n        \"\"\"\n        self.poolmanager.clear()\n        for proxy in self.proxy_manager.values():\n            proxy.clear()\n"
+      },
+      {
+        "id": "requests-adapters.py-592-611",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/adapters.py",
+        "start_line": 592,
+        "end_line": 611,
+        "text": "    def proxy_headers(self, proxy):\n        \"\"\"Returns a dictionary of the headers to add to any request sent\n        through a proxy. This works with urllib3 magic to ensure that they are\n        correctly sent to the proxy, rather than in a tunnelled request if\n        CONNECT is being used.\n\n        This should not be called from user code, and is only exposed for use\n        when subclassing the\n        :class:`HTTPAdapter <requests.adapters.HTTPAdapter>`.\n\n        :param proxy: The url of the proxy being used for this request.\n        :rtype: dict\n        \"\"\"\n        headers = {}\n        username, password = get_auth_from_url(proxy)\n\n        if username:\n            headers[\"Proxy-Authorization\"] = _basic_auth_str(username, password)\n\n        return headers\n"
+      },
+      {
+        "id": "requests-adapters.py-667-679",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/adapters.py",
+        "start_line": 667,
+        "end_line": 679,
+        "text": "            resp = conn.urlopen(\n                method=request.method,\n                url=url,\n                body=request.body,\n                headers=request.headers,\n                redirect=False,\n                assert_same_host=False,\n                preload_content=False,\n                decode_content=False,\n                retries=self.max_retries,\n                timeout=timeout,\n                chunked=chunked,\n            )\n"
+      }
+    ]
+  },
+  {
+    "id": "holdout-requests-2",
+    "query": "What does cert_verify configure for verify=False versus a CA bundle file or directory?",
+    "candidates": [
+      {
+        "id": "requests-adapters.py-316-340",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/adapters.py",
+        "start_line": 316,
+        "end_line": 340,
+        "text": "        if url.lower().startswith(\"https\") and verify:\n            conn.cert_reqs = \"CERT_REQUIRED\"\n\n            # Only load the CA certificates if 'verify' is a string indicating the CA bundle to use.\n            # Otherwise, if verify is a boolean, we don't load anything since\n            # the connection will be using a context with the default certificates already loaded,\n            # and this avoids a call to the slow load_verify_locations()\n            if verify is not True:\n                # `verify` must be a str with a path then\n                cert_loc = verify\n\n                if not os.path.exists(cert_loc):\n                    raise OSError(\n                        f\"Could not find a suitable TLS CA certificate bundle, \"\n                        f\"invalid path: {cert_loc}\"\n                    )\n\n                if not os.path.isdir(cert_loc):\n                    conn.ca_certs = cert_loc\n                else:\n                    conn.ca_cert_dir = cert_loc\n        else:\n            conn.cert_reqs = \"CERT_NONE\"\n            conn.ca_certs = None\n            conn.ca_cert_dir = None\n"
+      },
+      {
+        "id": "requests-adapters.py-560-576",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/adapters.py",
+        "start_line": 560,
+        "end_line": 576,
+        "text": "        proxy = select_proxy(request.url, proxies)\n        scheme = urlparse(request.url).scheme\n\n        is_proxied_http_request = proxy and scheme != \"https\"\n        using_socks_proxy = False\n        if proxy:\n            proxy_scheme = urlparse(proxy).scheme.lower()\n            using_socks_proxy = proxy_scheme.startswith(\"socks\")\n\n        url = request.path_url\n        if url.startswith(\"//\"):  # Don't confuse urllib3\n            url = f\"/{url.lstrip('/')}\"\n\n        if is_proxied_http_request and not using_socks_proxy:\n            url = urldefragauth(request.url)\n\n        return url\n"
+      },
+      {
+        "id": "requests-adapters.py-650-664",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/adapters.py",
+        "start_line": 650,
+        "end_line": 664,
+        "text": "        chunked = not (request.body is None or \"Content-Length\" in request.headers)\n\n        if isinstance(timeout, tuple):\n            try:\n                connect, read = timeout\n                timeout = TimeoutSauce(connect=connect, read=read)\n            except ValueError:\n                raise ValueError(\n                    f\"Invalid timeout {timeout}. Pass a (connect, read) timeout tuple, \"\n                    f\"or a single float to set both timeouts to the same value.\"\n                )\n        elif isinstance(timeout, TimeoutSauce):\n            pass\n        else:\n            timeout = TimeoutSauce(connect=timeout, read=timeout)\n"
+      },
+      {
+        "id": "requests-adapters.py-536-544",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/adapters.py",
+        "start_line": 536,
+        "end_line": 544,
+        "text": "    def close(self):\n        \"\"\"Disposes of any internal state.\n\n        Currently, this closes the PoolManager and any active ProxyManager,\n        which closes any pooled connections.\n        \"\"\"\n        self.poolmanager.clear()\n        for proxy in self.proxy_manager.values():\n            proxy.clear()\n"
+      },
+      {
+        "id": "requests-adapters.py-592-611",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/adapters.py",
+        "start_line": 592,
+        "end_line": 611,
+        "text": "    def proxy_headers(self, proxy):\n        \"\"\"Returns a dictionary of the headers to add to any request sent\n        through a proxy. This works with urllib3 magic to ensure that they are\n        correctly sent to the proxy, rather than in a tunnelled request if\n        CONNECT is being used.\n\n        This should not be called from user code, and is only exposed for use\n        when subclassing the\n        :class:`HTTPAdapter <requests.adapters.HTTPAdapter>`.\n\n        :param proxy: The url of the proxy being used for this request.\n        :rtype: dict\n        \"\"\"\n        headers = {}\n        username, password = get_auth_from_url(proxy)\n\n        if username:\n            headers[\"Proxy-Authorization\"] = _basic_auth_str(username, password)\n\n        return headers\n"
+      },
+      {
+        "id": "requests-adapters.py-667-679",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/adapters.py",
+        "start_line": 667,
+        "end_line": 679,
+        "text": "            resp = conn.urlopen(\n                method=request.method,\n                url=url,\n                body=request.body,\n                headers=request.headers,\n                redirect=False,\n                assert_same_host=False,\n                preload_content=False,\n                decode_content=False,\n                retries=self.max_retries,\n                timeout=timeout,\n                chunked=chunked,\n            )\n"
+      }
+    ]
+  },
+  {
+    "id": "holdout-requests-3",
+    "query": "Does request_url send the full URL for HTTPS and SOCKS proxies as well as ordinary HTTP proxies?",
+    "candidates": [
+      {
+        "id": "requests-adapters.py-316-340",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/adapters.py",
+        "start_line": 316,
+        "end_line": 340,
+        "text": "        if url.lower().startswith(\"https\") and verify:\n            conn.cert_reqs = \"CERT_REQUIRED\"\n\n            # Only load the CA certificates if 'verify' is a string indicating the CA bundle to use.\n            # Otherwise, if verify is a boolean, we don't load anything since\n            # the connection will be using a context with the default certificates already loaded,\n            # and this avoids a call to the slow load_verify_locations()\n            if verify is not True:\n                # `verify` must be a str with a path then\n                cert_loc = verify\n\n                if not os.path.exists(cert_loc):\n                    raise OSError(\n                        f\"Could not find a suitable TLS CA certificate bundle, \"\n                        f\"invalid path: {cert_loc}\"\n                    )\n\n                if not os.path.isdir(cert_loc):\n                    conn.ca_certs = cert_loc\n                else:\n                    conn.ca_cert_dir = cert_loc\n        else:\n            conn.cert_reqs = \"CERT_NONE\"\n            conn.ca_certs = None\n            conn.ca_cert_dir = None\n"
+      },
+      {
+        "id": "requests-adapters.py-560-576",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/adapters.py",
+        "start_line": 560,
+        "end_line": 576,
+        "text": "        proxy = select_proxy(request.url, proxies)\n        scheme = urlparse(request.url).scheme\n\n        is_proxied_http_request = proxy and scheme != \"https\"\n        using_socks_proxy = False\n        if proxy:\n            proxy_scheme = urlparse(proxy).scheme.lower()\n            using_socks_proxy = proxy_scheme.startswith(\"socks\")\n\n        url = request.path_url\n        if url.startswith(\"//\"):  # Don't confuse urllib3\n            url = f\"/{url.lstrip('/')}\"\n\n        if is_proxied_http_request and not using_socks_proxy:\n            url = urldefragauth(request.url)\n\n        return url\n"
+      },
+      {
+        "id": "requests-adapters.py-650-664",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/adapters.py",
+        "start_line": 650,
+        "end_line": 664,
+        "text": "        chunked = not (request.body is None or \"Content-Length\" in request.headers)\n\n        if isinstance(timeout, tuple):\n            try:\n                connect, read = timeout\n                timeout = TimeoutSauce(connect=connect, read=read)\n            except ValueError:\n                raise ValueError(\n                    f\"Invalid timeout {timeout}. Pass a (connect, read) timeout tuple, \"\n                    f\"or a single float to set both timeouts to the same value.\"\n                )\n        elif isinstance(timeout, TimeoutSauce):\n            pass\n        else:\n            timeout = TimeoutSauce(connect=timeout, read=timeout)\n"
+      },
+      {
+        "id": "requests-adapters.py-536-544",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/adapters.py",
+        "start_line": 536,
+        "end_line": 544,
+        "text": "    def close(self):\n        \"\"\"Disposes of any internal state.\n\n        Currently, this closes the PoolManager and any active ProxyManager,\n        which closes any pooled connections.\n        \"\"\"\n        self.poolmanager.clear()\n        for proxy in self.proxy_manager.values():\n            proxy.clear()\n"
+      },
+      {
+        "id": "requests-adapters.py-592-611",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/adapters.py",
+        "start_line": 592,
+        "end_line": 611,
+        "text": "    def proxy_headers(self, proxy):\n        \"\"\"Returns a dictionary of the headers to add to any request sent\n        through a proxy. This works with urllib3 magic to ensure that they are\n        correctly sent to the proxy, rather than in a tunnelled request if\n        CONNECT is being used.\n\n        This should not be called from user code, and is only exposed for use\n        when subclassing the\n        :class:`HTTPAdapter <requests.adapters.HTTPAdapter>`.\n\n        :param proxy: The url of the proxy being used for this request.\n        :rtype: dict\n        \"\"\"\n        headers = {}\n        username, password = get_auth_from_url(proxy)\n\n        if username:\n            headers[\"Proxy-Authorization\"] = _basic_auth_str(username, password)\n\n        return headers\n"
+      },
+      {
+        "id": "requests-adapters.py-667-679",
+        "source": "psf/requests@0e322af87745eff34caffe4df68456ebc20d9068/src/requests/adapters.py",
+        "start_line": 667,
+        "end_line": 679,
+        "text": "            resp = conn.urlopen(\n                method=request.method,\n                url=url,\n                body=request.body,\n                headers=request.headers,\n                redirect=False,\n                assert_same_host=False,\n                preload_content=False,\n                decode_content=False,\n                retries=self.max_retries,\n                timeout=timeout,\n                chunked=chunked,\n            )\n"
+      }
+    ]
+  },
+  {
+    "id": "holdout-flask-1",
+    "query": "Will modifying a nested dictionary inside SecureCookieSession automatically mark the session modified?",
+    "candidates": [
+      {
+        "id": "flask-sessions.py-61-72",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/sessions.py",
+        "start_line": 61,
+        "end_line": 72,
+        "text": "    #: When data is changed, this is set to ``True``. Only the session\n    #: dictionary itself is tracked; if the session contains mutable\n    #: data (for example a nested dict) then this must be set to\n    #: ``True`` manually when modifying that data. The session cookie\n    #: will only be written to the response if this is ``True``.\n    modified = False\n\n    #: When data is read or written, this is set to ``True``. Used by\n    # :class:`.SecureCookieSessionInterface` to add a ``Vary: Cookie``\n    #: header, which allows caching proxies to cache different pages for\n    #: different users.\n    accessed = False\n"
+      },
+      {
+        "id": "flask-sessions.py-237-245",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/sessions.py",
+        "start_line": 237,
+        "end_line": 245,
+        "text": "    def get_expiration_time(self, app: Flask, session: SessionMixin) -> datetime | None:\n        \"\"\"A helper method that returns an expiration date for the session\n        or ``None`` if the session is linked to the browser session.  The\n        default implementation returns now + the permanent session\n        lifetime configured on the application.\n        \"\"\"\n        if session.permanent:\n            return datetime.now(timezone.utc) + app.permanent_session_lifetime\n        return None\n"
+      },
+      {
+        "id": "flask-sessions.py-247-261",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/sessions.py",
+        "start_line": 247,
+        "end_line": 261,
+        "text": "    def should_set_cookie(self, app: Flask, session: SessionMixin) -> bool:\n        \"\"\"Used by session backends to determine if a ``Set-Cookie`` header\n        should be set for this session cookie for this response. If the session\n        has been modified, the cookie is set. If the session is permanent and\n        the ``SESSION_REFRESH_EACH_REQUEST`` config is true, the cookie is\n        always set.\n\n        This check is usually skipped if the session was deleted.\n\n        .. versionadded:: 0.11\n        \"\"\"\n\n        return session.modified or (\n            session.permanent and app.config[\"SESSION_REFRESH_EACH_REQUEST\"]\n        )\n"
+      },
+      {
+        "id": "flask-sessions.py-336-348",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/sessions.py",
+        "start_line": 336,
+        "end_line": 348,
+        "text": "    def open_session(self, app: Flask, request: Request) -> SecureCookieSession | None:\n        s = self.get_signing_serializer(app)\n        if s is None:\n            return None\n        val = request.cookies.get(self.get_cookie_name(app))\n        if not val:\n            return self.session_class()\n        max_age = int(app.permanent_session_lifetime.total_seconds())\n        try:\n            data = s.loads(val, max_age=max_age)\n            return self.session_class(data)\n        except BadSignature:\n            return self.session_class()\n"
+      },
+      {
+        "id": "flask-sessions.py-189-199",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/sessions.py",
+        "start_line": 189,
+        "end_line": 199,
+        "text": "    def get_cookie_domain(self, app: Flask) -> str | None:\n        \"\"\"The value of the ``Domain`` parameter on the session cookie. If not set,\n        browsers will only send the cookie to the exact domain it was set from.\n        Otherwise, they will send it to any subdomain of the given value as well.\n\n        Uses the :data:`SESSION_COOKIE_DOMAIN` config.\n\n        .. versionchanged:: 2.3\n            Not set by default, does not fall back to ``SERVER_NAME``.\n        \"\"\"\n        return app.config[\"SESSION_COOKIE_DOMAIN\"]  # type: ignore[no-any-return]\n"
+      },
+      {
+        "id": "flask-sessions.py-361-383",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/sessions.py",
+        "start_line": 361,
+        "end_line": 383,
+        "text": "        # Add a \"Vary: Cookie\" header if the session was accessed at all.\n        if session.accessed:\n            response.vary.add(\"Cookie\")\n\n        # If the session is modified to be empty, remove the cookie.\n        # If the session is empty, return without setting the cookie.\n        if not session:\n            if session.modified:\n                response.delete_cookie(\n                    name,\n                    domain=domain,\n                    path=path,\n                    secure=secure,\n                    partitioned=partitioned,\n                    samesite=samesite,\n                    httponly=httponly,\n                )\n                response.vary.add(\"Cookie\")\n\n            return\n\n        if not self.should_set_cookie(app, session):\n            return\n"
+      }
+    ]
+  },
+  {
+    "id": "holdout-flask-2",
+    "query": "What does open_session return for a bad cookie signature or when no signing serializer exists?",
+    "candidates": [
+      {
+        "id": "flask-sessions.py-61-72",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/sessions.py",
+        "start_line": 61,
+        "end_line": 72,
+        "text": "    #: When data is changed, this is set to ``True``. Only the session\n    #: dictionary itself is tracked; if the session contains mutable\n    #: data (for example a nested dict) then this must be set to\n    #: ``True`` manually when modifying that data. The session cookie\n    #: will only be written to the response if this is ``True``.\n    modified = False\n\n    #: When data is read or written, this is set to ``True``. Used by\n    # :class:`.SecureCookieSessionInterface` to add a ``Vary: Cookie``\n    #: header, which allows caching proxies to cache different pages for\n    #: different users.\n    accessed = False\n"
+      },
+      {
+        "id": "flask-sessions.py-237-245",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/sessions.py",
+        "start_line": 237,
+        "end_line": 245,
+        "text": "    def get_expiration_time(self, app: Flask, session: SessionMixin) -> datetime | None:\n        \"\"\"A helper method that returns an expiration date for the session\n        or ``None`` if the session is linked to the browser session.  The\n        default implementation returns now + the permanent session\n        lifetime configured on the application.\n        \"\"\"\n        if session.permanent:\n            return datetime.now(timezone.utc) + app.permanent_session_lifetime\n        return None\n"
+      },
+      {
+        "id": "flask-sessions.py-247-261",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/sessions.py",
+        "start_line": 247,
+        "end_line": 261,
+        "text": "    def should_set_cookie(self, app: Flask, session: SessionMixin) -> bool:\n        \"\"\"Used by session backends to determine if a ``Set-Cookie`` header\n        should be set for this session cookie for this response. If the session\n        has been modified, the cookie is set. If the session is permanent and\n        the ``SESSION_REFRESH_EACH_REQUEST`` config is true, the cookie is\n        always set.\n\n        This check is usually skipped if the session was deleted.\n\n        .. versionadded:: 0.11\n        \"\"\"\n\n        return session.modified or (\n            session.permanent and app.config[\"SESSION_REFRESH_EACH_REQUEST\"]\n        )\n"
+      },
+      {
+        "id": "flask-sessions.py-336-348",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/sessions.py",
+        "start_line": 336,
+        "end_line": 348,
+        "text": "    def open_session(self, app: Flask, request: Request) -> SecureCookieSession | None:\n        s = self.get_signing_serializer(app)\n        if s is None:\n            return None\n        val = request.cookies.get(self.get_cookie_name(app))\n        if not val:\n            return self.session_class()\n        max_age = int(app.permanent_session_lifetime.total_seconds())\n        try:\n            data = s.loads(val, max_age=max_age)\n            return self.session_class(data)\n        except BadSignature:\n            return self.session_class()\n"
+      },
+      {
+        "id": "flask-sessions.py-189-199",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/sessions.py",
+        "start_line": 189,
+        "end_line": 199,
+        "text": "    def get_cookie_domain(self, app: Flask) -> str | None:\n        \"\"\"The value of the ``Domain`` parameter on the session cookie. If not set,\n        browsers will only send the cookie to the exact domain it was set from.\n        Otherwise, they will send it to any subdomain of the given value as well.\n\n        Uses the :data:`SESSION_COOKIE_DOMAIN` config.\n\n        .. versionchanged:: 2.3\n            Not set by default, does not fall back to ``SERVER_NAME``.\n        \"\"\"\n        return app.config[\"SESSION_COOKIE_DOMAIN\"]  # type: ignore[no-any-return]\n"
+      },
+      {
+        "id": "flask-sessions.py-361-383",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/sessions.py",
+        "start_line": 361,
+        "end_line": 383,
+        "text": "        # Add a \"Vary: Cookie\" header if the session was accessed at all.\n        if session.accessed:\n            response.vary.add(\"Cookie\")\n\n        # If the session is modified to be empty, remove the cookie.\n        # If the session is empty, return without setting the cookie.\n        if not session:\n            if session.modified:\n                response.delete_cookie(\n                    name,\n                    domain=domain,\n                    path=path,\n                    secure=secure,\n                    partitioned=partitioned,\n                    samesite=samesite,\n                    httponly=httponly,\n                )\n                response.vary.add(\"Cookie\")\n\n            return\n\n        if not self.should_set_cookie(app, session):\n            return\n"
+      }
+    ]
+  },
+  {
+    "id": "holdout-flask-3",
+    "query": "Can should_set_cookie refresh an unmodified permanent session, and which setting controls this?",
+    "candidates": [
+      {
+        "id": "flask-sessions.py-61-72",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/sessions.py",
+        "start_line": 61,
+        "end_line": 72,
+        "text": "    #: When data is changed, this is set to ``True``. Only the session\n    #: dictionary itself is tracked; if the session contains mutable\n    #: data (for example a nested dict) then this must be set to\n    #: ``True`` manually when modifying that data. The session cookie\n    #: will only be written to the response if this is ``True``.\n    modified = False\n\n    #: When data is read or written, this is set to ``True``. Used by\n    # :class:`.SecureCookieSessionInterface` to add a ``Vary: Cookie``\n    #: header, which allows caching proxies to cache different pages for\n    #: different users.\n    accessed = False\n"
+      },
+      {
+        "id": "flask-sessions.py-237-245",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/sessions.py",
+        "start_line": 237,
+        "end_line": 245,
+        "text": "    def get_expiration_time(self, app: Flask, session: SessionMixin) -> datetime | None:\n        \"\"\"A helper method that returns an expiration date for the session\n        or ``None`` if the session is linked to the browser session.  The\n        default implementation returns now + the permanent session\n        lifetime configured on the application.\n        \"\"\"\n        if session.permanent:\n            return datetime.now(timezone.utc) + app.permanent_session_lifetime\n        return None\n"
+      },
+      {
+        "id": "flask-sessions.py-247-261",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/sessions.py",
+        "start_line": 247,
+        "end_line": 261,
+        "text": "    def should_set_cookie(self, app: Flask, session: SessionMixin) -> bool:\n        \"\"\"Used by session backends to determine if a ``Set-Cookie`` header\n        should be set for this session cookie for this response. If the session\n        has been modified, the cookie is set. If the session is permanent and\n        the ``SESSION_REFRESH_EACH_REQUEST`` config is true, the cookie is\n        always set.\n\n        This check is usually skipped if the session was deleted.\n\n        .. versionadded:: 0.11\n        \"\"\"\n\n        return session.modified or (\n            session.permanent and app.config[\"SESSION_REFRESH_EACH_REQUEST\"]\n        )\n"
+      },
+      {
+        "id": "flask-sessions.py-336-348",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/sessions.py",
+        "start_line": 336,
+        "end_line": 348,
+        "text": "    def open_session(self, app: Flask, request: Request) -> SecureCookieSession | None:\n        s = self.get_signing_serializer(app)\n        if s is None:\n            return None\n        val = request.cookies.get(self.get_cookie_name(app))\n        if not val:\n            return self.session_class()\n        max_age = int(app.permanent_session_lifetime.total_seconds())\n        try:\n            data = s.loads(val, max_age=max_age)\n            return self.session_class(data)\n        except BadSignature:\n            return self.session_class()\n"
+      },
+      {
+        "id": "flask-sessions.py-189-199",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/sessions.py",
+        "start_line": 189,
+        "end_line": 199,
+        "text": "    def get_cookie_domain(self, app: Flask) -> str | None:\n        \"\"\"The value of the ``Domain`` parameter on the session cookie. If not set,\n        browsers will only send the cookie to the exact domain it was set from.\n        Otherwise, they will send it to any subdomain of the given value as well.\n\n        Uses the :data:`SESSION_COOKIE_DOMAIN` config.\n\n        .. versionchanged:: 2.3\n            Not set by default, does not fall back to ``SERVER_NAME``.\n        \"\"\"\n        return app.config[\"SESSION_COOKIE_DOMAIN\"]  # type: ignore[no-any-return]\n"
+      },
+      {
+        "id": "flask-sessions.py-361-383",
+        "source": "pallets/flask@ab8149664182b662453a563161aa89013c806dc9/src/flask/sessions.py",
+        "start_line": 361,
+        "end_line": 383,
+        "text": "        # Add a \"Vary: Cookie\" header if the session was accessed at all.\n        if session.accessed:\n            response.vary.add(\"Cookie\")\n\n        # If the session is modified to be empty, remove the cookie.\n        # If the session is empty, return without setting the cookie.\n        if not session:\n            if session.modified:\n                response.delete_cookie(\n                    name,\n                    domain=domain,\n                    path=path,\n                    secure=secure,\n                    partitioned=partitioned,\n                    samesite=samesite,\n                    httponly=httponly,\n                )\n                response.vary.add(\"Cookie\")\n\n            return\n\n        if not self.should_set_cookie(app, session):\n            return\n"
+      }
+    ]
+  },
+  {
+    "id": "holdout-click-1",
+    "query": "Does option parsing continue after the double-dash separator?",
+    "candidates": [
+      {
+        "id": "click-parser.py-199-212",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/parser.py",
+        "start_line": 199,
+        "end_line": 212,
+        "text": "    def process(self, value: t.Any, state: \"ParsingState\") -> None:\n        if self.action == \"store\":\n            state.opts[self.dest] = value  # type: ignore\n        elif self.action == \"store_const\":\n            state.opts[self.dest] = self.const  # type: ignore\n        elif self.action == \"append\":\n            state.opts.setdefault(self.dest, []).append(value)  # type: ignore\n        elif self.action == \"append_const\":\n            state.opts.setdefault(self.dest, []).append(self.const)  # type: ignore\n        elif self.action == \"count\":\n            state.opts[self.dest] = state.opts.get(self.dest, 0) + 1  # type: ignore\n        else:\n            raise ValueError(f\"unknown action '{self.action}'\")\n        state.order.append(self.obj)\n"
+      },
+      {
+        "id": "click-parser.py-357-371",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/parser.py",
+        "start_line": 357,
+        "end_line": 371,
+        "text": "    def _process_args_for_options(self, state: ParsingState) -> None:\n        while state.rargs:\n            arg = state.rargs.pop(0)\n            arglen = len(arg)\n            # Double dashes always handled explicitly regardless of what\n            # prefixes are valid.\n            if arg == \"--\":\n                return\n            elif arg[:1] in self._opt_prefixes and arglen > 1:\n                self._process_opts(arg, state)\n            elif self.allow_interspersed_args:\n                state.largs.append(arg)\n            else:\n                state.rargs.insert(0, arg)\n                return\n"
+      },
+      {
+        "id": "click-parser.py-393-421",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/parser.py",
+        "start_line": 393,
+        "end_line": 421,
+        "text": "    def _match_long_opt(\n        self, opt: str, explicit_value: t.Optional[str], state: ParsingState\n    ) -> None:\n        if opt not in self._long_opt:\n            from difflib import get_close_matches\n\n            possibilities = get_close_matches(opt, self._long_opt)\n            raise NoSuchOption(opt, possibilities=possibilities, ctx=self.ctx)\n\n        option = self._long_opt[opt]\n        if option.takes_value:\n            # At this point it's safe to modify rargs by injecting the\n            # explicit value, because no exception is raised in this\n            # branch.  This means that the inserted value will be fully\n            # consumed.\n            if explicit_value is not None:\n                state.rargs.insert(0, explicit_value)\n\n            value = self._get_value_from_state(opt, option, state)\n\n        elif explicit_value is not None:\n            raise BadOptionUsage(\n                opt, _(\"Option {name!r} does not take a value.\").format(name=opt)\n            )\n\n        else:\n            value = None\n\n        option.process(value, state)\n"
+      },
+      {
+        "id": "click-parser.py-463-480",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/parser.py",
+        "start_line": 463,
+        "end_line": 480,
+        "text": "    def _get_value_from_state(\n        self, option_name: str, option: Option, state: ParsingState\n    ) -> t.Any:\n        nargs = option.nargs\n\n        if len(state.rargs) < nargs:\n            if option.obj._flag_needs_value:\n                # Option allows omitting the value.\n                value = _flag_needs_value\n            else:\n                raise BadOptionUsage(\n                    option_name,\n                    ngettext(\n                        \"Option {name!r} requires an argument.\",\n                        \"Option {name!r} requires {nargs} arguments.\",\n                        nargs,\n                    ).format(name=option_name, nargs=nargs),\n                )\n"
+      },
+      {
+        "id": "click-parser.py-481-499",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/parser.py",
+        "start_line": 481,
+        "end_line": 499,
+        "text": "        elif nargs == 1:\n            next_rarg = state.rargs[0]\n\n            if (\n                option.obj._flag_needs_value\n                and isinstance(next_rarg, str)\n                and next_rarg[:1] in self._opt_prefixes\n                and len(next_rarg) > 1\n            ):\n                # The next arg looks like the start of an option, don't\n                # use it as the value if omitting the value is allowed.\n                value = _flag_needs_value\n            else:\n                value = state.rargs.pop(0)\n        else:\n            value = tuple(state.rargs[:nargs])\n            del state.rargs[:nargs]\n\n        return value\n"
+      },
+      {
+        "id": "click-parser.py-328-344",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/parser.py",
+        "start_line": 328,
+        "end_line": 344,
+        "text": "    def parse_args(\n        self, args: t.List[str]\n    ) -> t.Tuple[t.Dict[str, t.Any], t.List[str], t.List[\"CoreParameter\"]]:\n        \"\"\"Parses positional arguments and returns ``(values, args, order)``\n        for the parsed options and arguments as well as the leftover\n        arguments if there are any.  The order is a list of objects as they\n        appear on the command line.  If arguments appear multiple times they\n        will be memorized multiple times as well.\n        \"\"\"\n        state = ParsingState(args)\n        try:\n            self._process_args_for_options(state)\n            self._process_args_for_args(state)\n        except UsageError:\n            if self.ctx is None or not self.ctx.resilient_parsing:\n                raise\n        return state.opts, state.largs, state.order\n"
+      }
+    ]
+  },
+  {
+    "id": "holdout-click-2",
+    "query": "How does a long option process an explicit value, and what if that option takes no value?",
+    "candidates": [
+      {
+        "id": "click-parser.py-199-212",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/parser.py",
+        "start_line": 199,
+        "end_line": 212,
+        "text": "    def process(self, value: t.Any, state: \"ParsingState\") -> None:\n        if self.action == \"store\":\n            state.opts[self.dest] = value  # type: ignore\n        elif self.action == \"store_const\":\n            state.opts[self.dest] = self.const  # type: ignore\n        elif self.action == \"append\":\n            state.opts.setdefault(self.dest, []).append(value)  # type: ignore\n        elif self.action == \"append_const\":\n            state.opts.setdefault(self.dest, []).append(self.const)  # type: ignore\n        elif self.action == \"count\":\n            state.opts[self.dest] = state.opts.get(self.dest, 0) + 1  # type: ignore\n        else:\n            raise ValueError(f\"unknown action '{self.action}'\")\n        state.order.append(self.obj)\n"
+      },
+      {
+        "id": "click-parser.py-357-371",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/parser.py",
+        "start_line": 357,
+        "end_line": 371,
+        "text": "    def _process_args_for_options(self, state: ParsingState) -> None:\n        while state.rargs:\n            arg = state.rargs.pop(0)\n            arglen = len(arg)\n            # Double dashes always handled explicitly regardless of what\n            # prefixes are valid.\n            if arg == \"--\":\n                return\n            elif arg[:1] in self._opt_prefixes and arglen > 1:\n                self._process_opts(arg, state)\n            elif self.allow_interspersed_args:\n                state.largs.append(arg)\n            else:\n                state.rargs.insert(0, arg)\n                return\n"
+      },
+      {
+        "id": "click-parser.py-393-421",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/parser.py",
+        "start_line": 393,
+        "end_line": 421,
+        "text": "    def _match_long_opt(\n        self, opt: str, explicit_value: t.Optional[str], state: ParsingState\n    ) -> None:\n        if opt not in self._long_opt:\n            from difflib import get_close_matches\n\n            possibilities = get_close_matches(opt, self._long_opt)\n            raise NoSuchOption(opt, possibilities=possibilities, ctx=self.ctx)\n\n        option = self._long_opt[opt]\n        if option.takes_value:\n            # At this point it's safe to modify rargs by injecting the\n            # explicit value, because no exception is raised in this\n            # branch.  This means that the inserted value will be fully\n            # consumed.\n            if explicit_value is not None:\n                state.rargs.insert(0, explicit_value)\n\n            value = self._get_value_from_state(opt, option, state)\n\n        elif explicit_value is not None:\n            raise BadOptionUsage(\n                opt, _(\"Option {name!r} does not take a value.\").format(name=opt)\n            )\n\n        else:\n            value = None\n\n        option.process(value, state)\n"
+      },
+      {
+        "id": "click-parser.py-463-480",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/parser.py",
+        "start_line": 463,
+        "end_line": 480,
+        "text": "    def _get_value_from_state(\n        self, option_name: str, option: Option, state: ParsingState\n    ) -> t.Any:\n        nargs = option.nargs\n\n        if len(state.rargs) < nargs:\n            if option.obj._flag_needs_value:\n                # Option allows omitting the value.\n                value = _flag_needs_value\n            else:\n                raise BadOptionUsage(\n                    option_name,\n                    ngettext(\n                        \"Option {name!r} requires an argument.\",\n                        \"Option {name!r} requires {nargs} arguments.\",\n                        nargs,\n                    ).format(name=option_name, nargs=nargs),\n                )\n"
+      },
+      {
+        "id": "click-parser.py-481-499",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/parser.py",
+        "start_line": 481,
+        "end_line": 499,
+        "text": "        elif nargs == 1:\n            next_rarg = state.rargs[0]\n\n            if (\n                option.obj._flag_needs_value\n                and isinstance(next_rarg, str)\n                and next_rarg[:1] in self._opt_prefixes\n                and len(next_rarg) > 1\n            ):\n                # The next arg looks like the start of an option, don't\n                # use it as the value if omitting the value is allowed.\n                value = _flag_needs_value\n            else:\n                value = state.rargs.pop(0)\n        else:\n            value = tuple(state.rargs[:nargs])\n            del state.rargs[:nargs]\n\n        return value\n"
+      },
+      {
+        "id": "click-parser.py-328-344",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/parser.py",
+        "start_line": 328,
+        "end_line": 344,
+        "text": "    def parse_args(\n        self, args: t.List[str]\n    ) -> t.Tuple[t.Dict[str, t.Any], t.List[str], t.List[\"CoreParameter\"]]:\n        \"\"\"Parses positional arguments and returns ``(values, args, order)``\n        for the parsed options and arguments as well as the leftover\n        arguments if there are any.  The order is a list of objects as they\n        appear on the command line.  If arguments appear multiple times they\n        will be memorized multiple times as well.\n        \"\"\"\n        state = ParsingState(args)\n        try:\n            self._process_args_for_options(state)\n            self._process_args_for_args(state)\n        except UsageError:\n            if self.ctx is None or not self.ctx.resilient_parsing:\n                raise\n        return state.opts, state.largs, state.order\n"
+      }
+    ]
+  },
+  {
+    "id": "holdout-click-3",
+    "query": "When fewer arguments remain than an option requires, does _get_value_from_state always raise an error?",
+    "candidates": [
+      {
+        "id": "click-parser.py-199-212",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/parser.py",
+        "start_line": 199,
+        "end_line": 212,
+        "text": "    def process(self, value: t.Any, state: \"ParsingState\") -> None:\n        if self.action == \"store\":\n            state.opts[self.dest] = value  # type: ignore\n        elif self.action == \"store_const\":\n            state.opts[self.dest] = self.const  # type: ignore\n        elif self.action == \"append\":\n            state.opts.setdefault(self.dest, []).append(value)  # type: ignore\n        elif self.action == \"append_const\":\n            state.opts.setdefault(self.dest, []).append(self.const)  # type: ignore\n        elif self.action == \"count\":\n            state.opts[self.dest] = state.opts.get(self.dest, 0) + 1  # type: ignore\n        else:\n            raise ValueError(f\"unknown action '{self.action}'\")\n        state.order.append(self.obj)\n"
+      },
+      {
+        "id": "click-parser.py-357-371",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/parser.py",
+        "start_line": 357,
+        "end_line": 371,
+        "text": "    def _process_args_for_options(self, state: ParsingState) -> None:\n        while state.rargs:\n            arg = state.rargs.pop(0)\n            arglen = len(arg)\n            # Double dashes always handled explicitly regardless of what\n            # prefixes are valid.\n            if arg == \"--\":\n                return\n            elif arg[:1] in self._opt_prefixes and arglen > 1:\n                self._process_opts(arg, state)\n            elif self.allow_interspersed_args:\n                state.largs.append(arg)\n            else:\n                state.rargs.insert(0, arg)\n                return\n"
+      },
+      {
+        "id": "click-parser.py-393-421",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/parser.py",
+        "start_line": 393,
+        "end_line": 421,
+        "text": "    def _match_long_opt(\n        self, opt: str, explicit_value: t.Optional[str], state: ParsingState\n    ) -> None:\n        if opt not in self._long_opt:\n            from difflib import get_close_matches\n\n            possibilities = get_close_matches(opt, self._long_opt)\n            raise NoSuchOption(opt, possibilities=possibilities, ctx=self.ctx)\n\n        option = self._long_opt[opt]\n        if option.takes_value:\n            # At this point it's safe to modify rargs by injecting the\n            # explicit value, because no exception is raised in this\n            # branch.  This means that the inserted value will be fully\n            # consumed.\n            if explicit_value is not None:\n                state.rargs.insert(0, explicit_value)\n\n            value = self._get_value_from_state(opt, option, state)\n\n        elif explicit_value is not None:\n            raise BadOptionUsage(\n                opt, _(\"Option {name!r} does not take a value.\").format(name=opt)\n            )\n\n        else:\n            value = None\n\n        option.process(value, state)\n"
+      },
+      {
+        "id": "click-parser.py-463-480",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/parser.py",
+        "start_line": 463,
+        "end_line": 480,
+        "text": "    def _get_value_from_state(\n        self, option_name: str, option: Option, state: ParsingState\n    ) -> t.Any:\n        nargs = option.nargs\n\n        if len(state.rargs) < nargs:\n            if option.obj._flag_needs_value:\n                # Option allows omitting the value.\n                value = _flag_needs_value\n            else:\n                raise BadOptionUsage(\n                    option_name,\n                    ngettext(\n                        \"Option {name!r} requires an argument.\",\n                        \"Option {name!r} requires {nargs} arguments.\",\n                        nargs,\n                    ).format(name=option_name, nargs=nargs),\n                )\n"
+      },
+      {
+        "id": "click-parser.py-481-499",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/parser.py",
+        "start_line": 481,
+        "end_line": 499,
+        "text": "        elif nargs == 1:\n            next_rarg = state.rargs[0]\n\n            if (\n                option.obj._flag_needs_value\n                and isinstance(next_rarg, str)\n                and next_rarg[:1] in self._opt_prefixes\n                and len(next_rarg) > 1\n            ):\n                # The next arg looks like the start of an option, don't\n                # use it as the value if omitting the value is allowed.\n                value = _flag_needs_value\n            else:\n                value = state.rargs.pop(0)\n        else:\n            value = tuple(state.rargs[:nargs])\n            del state.rargs[:nargs]\n\n        return value\n"
+      },
+      {
+        "id": "click-parser.py-328-344",
+        "source": "pallets/click@934813e4d421071a1b3db3973c02fe2721359a6e/src/click/parser.py",
+        "start_line": 328,
+        "end_line": 344,
+        "text": "    def parse_args(\n        self, args: t.List[str]\n    ) -> t.Tuple[t.Dict[str, t.Any], t.List[str], t.List[\"CoreParameter\"]]:\n        \"\"\"Parses positional arguments and returns ``(values, args, order)``\n        for the parsed options and arguments as well as the leftover\n        arguments if there are any.  The order is a list of objects as they\n        appear on the command line.  If arguments appear multiple times they\n        will be memorized multiple times as well.\n        \"\"\"\n        state = ParsingState(args)\n        try:\n            self._process_args_for_options(state)\n            self._process_args_for_args(state)\n        except UsageError:\n            if self.ctx is None or not self.ctx.resilient_parsing:\n                raise\n        return state.opts, state.largs, state.order\n"
+      }
+    ]
+  }
+]

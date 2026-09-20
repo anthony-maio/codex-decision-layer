@@ -1,0 +1,62 @@
+{
+  "requests/sessions.py": {
+    "repository": "https://github.com/psf/requests",
+    "revision": "0e322af87745eff34caffe4df68456ebc20d9068",
+    "source": "src/requests/sessions.py",
+    "url": "https://raw.githubusercontent.com/psf/requests/0e322af87745eff34caffe4df68456ebc20d9068/src/requests/sessions.py",
+    "sha256": "ca44c8f145864a5b4e7c7d3b1caa25947ee44c11b0e168620556901a67244f0e",
+    "license": "Apache-2.0",
+    "license_sha256": "09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b",
+    "split": "dev"
+  },
+  "flask/config.py": {
+    "repository": "https://github.com/pallets/flask",
+    "revision": "ab8149664182b662453a563161aa89013c806dc9",
+    "source": "src/flask/config.py",
+    "url": "https://raw.githubusercontent.com/pallets/flask/ab8149664182b662453a563161aa89013c806dc9/src/flask/config.py",
+    "sha256": "3e2a85d033da9ba1d6d051f8087d61a574c17b7d0d4b38cf10ec2bcf56fa92dd",
+    "license": "BSD-3-Clause",
+    "license_sha256": "489a8e1108509ed98a37bb983e11e0f7e1d31f0bd8f99a79c8448e7ff37d07ea",
+    "split": "dev"
+  },
+  "click/types.py": {
+    "repository": "https://github.com/pallets/click",
+    "revision": "934813e4d421071a1b3db3973c02fe2721359a6e",
+    "source": "src/click/types.py",
+    "url": "https://raw.githubusercontent.com/pallets/click/934813e4d421071a1b3db3973c02fe2721359a6e/src/click/types.py",
+    "sha256": "043e50aaae21fbc91ac0198e2332659aae31cd38407f8c02bda38b652043371d",
+    "license": "BSD-3-Clause",
+    "license_sha256": "9a8ad106a394e853bfe21f42f4e72d592819a22805d991b5f3275029292b658d",
+    "split": "dev"
+  },
+  "requests/adapters.py": {
+    "repository": "https://github.com/psf/requests",
+    "revision": "0e322af87745eff34caffe4df68456ebc20d9068",
+    "source": "src/requests/adapters.py",
+    "url": "https://raw.githubusercontent.com/psf/requests/0e322af87745eff34caffe4df68456ebc20d9068/src/requests/adapters.py",
+    "sha256": "28871e72c72a6a6eab78e097465e03c0fe235fc25c97cb1de7b7edd7b291d9c4",
+    "license": "Apache-2.0",
+    "license_sha256": "09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b",
+    "split": "holdout"
+  },
+  "flask/sessions.py": {
+    "repository": "https://github.com/pallets/flask",
+    "revision": "ab8149664182b662453a563161aa89013c806dc9",
+    "source": "src/flask/sessions.py",
+    "url": "https://raw.githubusercontent.com/pallets/flask/ab8149664182b662453a563161aa89013c806dc9/src/flask/sessions.py",
+    "sha256": "a4899215020308fb55f97488f2db40c934dbbed44c9210dea89f153d965469fd",
+    "license": "BSD-3-Clause",
+    "license_sha256": "489a8e1108509ed98a37bb983e11e0f7e1d31f0bd8f99a79c8448e7ff37d07ea",
+    "split": "holdout"
+  },
+  "click/parser.py": {
+    "repository": "https://github.com/pallets/click",
+    "revision": "934813e4d421071a1b3db3973c02fe2721359a6e",
+    "source": "src/click/parser.py",
+    "url": "https://raw.githubusercontent.com/pallets/click/934813e4d421071a1b3db3973c02fe2721359a6e/src/click/parser.py",
+    "sha256": "878b2775ca45e4e1eb65037cbc3f0859be4e072bd6ec005b8514e8c68beba92f",
+    "license": "BSD-3-Clause",
+    "license_sha256": "9a8ad106a394e853bfe21f42f4e72d592819a22805d991b5f3275029292b658d",
+    "split": "holdout"
+  }
+}

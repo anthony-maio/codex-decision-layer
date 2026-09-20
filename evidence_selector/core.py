@@ -58,7 +58,7 @@ def inside(root, filename):
 
 def read_file(root, filename):
     path = inside(root, filename)
-    if path.name == ".env" or path.name.startswith(".env.") or ".git" in path.parts:
+    if path.name.casefold() == ".env" or path.name.casefold().startswith(".env.") or ".git" in [p.casefold() for p in path.parts]:
         raise ValueError("Credential files and Git internals are not evidence inputs")
     with path.open("rb") as stream:
         raw = stream.read(256_001)
