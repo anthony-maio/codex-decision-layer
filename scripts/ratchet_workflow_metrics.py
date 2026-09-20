@@ -62,6 +62,8 @@ def assess(rows):
             raise ValueError("invalid latency")
         if type(row["quality_pass"]) is not bool:
             raise ValueError("invalid quality flag")
+        if type(row["method_compliance"]) is not bool:
+            raise ValueError("invalid method-compliance flag")
         passed = row["grading"]["passed"]
         if type(passed) is not int or passed < 0:
             raise ValueError("invalid grading count")
@@ -79,6 +81,7 @@ def assess(rows):
             known = all(r["total_cost"]["lower_usd"] is not None and r["total_cost"]["upper_usd"] is not None for r in group)
             groups[(task, method)] = {
                 "successes": sum(r["quality_pass"] is True for r in group),
+                "method_compliance": all(r["method_compliance"] for r in group),
                 "passed_tests": sum(r["grading"]["passed"] for r in group),
                 "latency": statistics.median(r["elapsed_seconds"] for r in group),
                 "cost_lower": statistics.median(r["total_cost"]["lower_usd"] for r in group) if known else None,
@@ -92,18 +95,21 @@ def assess(rows):
             cost_ratio = (a["cost_upper"] / b["cost_lower"]
                           if a["cost_upper"] is not None and b["cost_lower"] is not None and b["cost_lower"] > 0 else None)
             per_task.append({"task": task, "quality_no_regression": quality,
+                             "method_compliance": a["method_compliance"] and b["method_compliance"],
                              "latency_ratio": a["latency"] / b["latency"],
                              "conservative_cost_ratio": cost_ratio})
         latency = math.exp(statistics.mean(math.log(r["latency_ratio"]) for r in per_task))
         cost = (math.prod(r["conservative_cost_ratio"] for r in per_task) ** (1 / 3)
                 if all(r["conservative_cost_ratio"] is not None for r in per_task) else None)
         quality = all(r["quality_no_regression"] for r in per_task)
+        compliance = all(r["method_compliance"] for r in per_task)
         tail = all(r["latency_ratio"] <= 1.2 for r in per_task)
         perf = cost is not None and ((latency <= .9 and cost <= 1) or (cost <= .9 and latency <= 1.1))
         comparisons.append({"candidate": candidate, "comparator": comparator, "tasks": per_task,
                             "latency_ratio": latency, "conservative_cost_ratio": cost,
                             "quality_gate": quality, "per_task_latency_gate": tail,
-                            "performance_gate": perf, "usefulness_gate": quality and tail and perf})
+                            "method_gate": compliance,
+                            "performance_gate": perf, "usefulness_gate": quality and tail and perf and compliance})
     return {"status": "COMPLETE", "comparisons": comparisons,
             "jev_incremental_usefulness": all(r["usefulness_gate"] for r in comparisons if r["candidate"] == "jev"),
             "advisory_enabled": False}

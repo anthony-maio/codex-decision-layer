@@ -1,0 +1,429 @@
+{
+  "status": "FROZEN_BEFORE_SCORING",
+  "model": "gpt-5.6-sol",
+  "reasoning": "low",
+  "codex_cli": "codex-cli 0.146.0",
+  "original_platform": "linux",
+  "schedule": [
+    {
+      "index": 0,
+      "task": "invoice",
+      "replicate": 0,
+      "method": "plain",
+      "position": 0,
+      "triplet": 0
+    },
+    {
+      "index": 1,
+      "task": "invoice",
+      "replicate": 0,
+      "method": "deterministic",
+      "position": 1,
+      "triplet": 0
+    },
+    {
+      "index": 2,
+      "task": "invoice",
+      "replicate": 0,
+      "method": "jev",
+      "position": 2,
+      "triplet": 0
+    },
+    {
+      "index": 3,
+      "task": "queue",
+      "replicate": 0,
+      "method": "deterministic",
+      "position": 0,
+      "triplet": 1
+    },
+    {
+      "index": 4,
+      "task": "queue",
+      "replicate": 0,
+      "method": "jev",
+      "position": 1,
+      "triplet": 1
+    },
+    {
+      "index": 5,
+      "task": "queue",
+      "replicate": 0,
+      "method": "plain",
+      "position": 2,
+      "triplet": 1
+    },
+    {
+      "index": 6,
+      "task": "events",
+      "replicate": 0,
+      "method": "jev",
+      "position": 0,
+      "triplet": 2
+    },
+    {
+      "index": 7,
+      "task": "events",
+      "replicate": 0,
+      "method": "plain",
+      "position": 1,
+      "triplet": 2
+    },
+    {
+      "index": 8,
+      "task": "events",
+      "replicate": 0,
+      "method": "deterministic",
+      "position": 2,
+      "triplet": 2
+    },
+    {
+      "index": 9,
+      "task": "invoice",
+      "replicate": 1,
+      "method": "plain",
+      "position": 0,
+      "triplet": 3
+    },
+    {
+      "index": 10,
+      "task": "invoice",
+      "replicate": 1,
+      "method": "jev",
+      "position": 1,
+      "triplet": 3
+    },
+    {
+      "index": 11,
+      "task": "invoice",
+      "replicate": 1,
+      "method": "deterministic",
+      "position": 2,
+      "triplet": 3
+    },
+    {
+      "index": 12,
+      "task": "queue",
+      "replicate": 1,
+      "method": "jev",
+      "position": 0,
+      "triplet": 4
+    },
+    {
+      "index": 13,
+      "task": "queue",
+      "replicate": 1,
+      "method": "deterministic",
+      "position": 1,
+      "triplet": 4
+    },
+    {
+      "index": 14,
+      "task": "queue",
+      "replicate": 1,
+      "method": "plain",
+      "position": 2,
+      "triplet": 4
+    },
+    {
+      "index": 15,
+      "task": "events",
+      "replicate": 1,
+      "method": "deterministic",
+      "position": 0,
+      "triplet": 5
+    },
+    {
+      "index": 16,
+      "task": "events",
+      "replicate": 1,
+      "method": "plain",
+      "position": 1,
+      "triplet": 5
+    },
+    {
+      "index": 17,
+      "task": "events",
+      "replicate": 1,
+      "method": "jev",
+      "position": 2,
+      "triplet": 5
+    },
+    {
+      "index": 18,
+      "task": "invoice",
+      "replicate": 2,
+      "method": "deterministic",
+      "position": 0,
+      "triplet": 6
+    },
+    {
+      "index": 19,
+      "task": "invoice",
+      "replicate": 2,
+      "method": "jev",
+      "position": 1,
+      "triplet": 6
+    },
+    {
+      "index": 20,
+      "task": "invoice",
+      "replicate": 2,
+      "method": "plain",
+      "position": 2,
+      "triplet": 6
+    },
+    {
+      "index": 21,
+      "task": "queue",
+      "replicate": 2,
+      "method": "jev",
+      "position": 0,
+      "triplet": 7
+    },
+    {
+      "index": 22,
+      "task": "queue",
+      "replicate": 2,
+      "method": "plain",
+      "position": 1,
+      "triplet": 7
+    },
+    {
+      "index": 23,
+      "task": "queue",
+      "replicate": 2,
+      "method": "deterministic",
+      "position": 2,
+      "triplet": 7
+    },
+    {
+      "index": 24,
+      "task": "events",
+      "replicate": 2,
+      "method": "plain",
+      "position": 0,
+      "triplet": 8
+    },
+    {
+      "index": 25,
+      "task": "events",
+      "replicate": 2,
+      "method": "deterministic",
+      "position": 1,
+      "triplet": 8
+    },
+    {
+      "index": 26,
+      "task": "events",
+      "replicate": 2,
+      "method": "jev",
+      "position": 2,
+      "triplet": 8
+    },
+    {
+      "index": 27,
+      "task": "invoice",
+      "replicate": 3,
+      "method": "jev",
+      "position": 0,
+      "triplet": 9
+    },
+    {
+      "index": 28,
+      "task": "invoice",
+      "replicate": 3,
+      "method": "deterministic",
+      "position": 1,
+      "triplet": 9
+    },
+    {
+      "index": 29,
+      "task": "invoice",
+      "replicate": 3,
+      "method": "plain",
+      "position": 2,
+      "triplet": 9
+    },
+    {
+      "index": 30,
+      "task": "queue",
+      "replicate": 3,
+      "method": "deterministic",
+      "position": 0,
+      "triplet": 10
+    },
+    {
+      "index": 31,
+      "task": "queue",
+      "replicate": 3,
+      "method": "plain",
+      "position": 1,
+      "triplet": 10
+    },
+    {
+      "index": 32,
+      "task": "queue",
+      "replicate": 3,
+      "method": "jev",
+      "position": 2,
+      "triplet": 10
+    },
+    {
+      "index": 33,
+      "task": "events",
+      "replicate": 3,
+      "method": "plain",
+      "position": 0,
+      "triplet": 11
+    },
+    {
+      "index": 34,
+      "task": "events",
+      "replicate": 3,
+      "method": "jev",
+      "position": 1,
+      "triplet": 11
+    },
+    {
+      "index": 35,
+      "task": "events",
+      "replicate": 3,
+      "method": "deterministic",
+      "position": 2,
+      "triplet": 11
+    },
+    {
+      "index": 36,
+      "task": "invoice",
+      "replicate": 4,
+      "method": "jev",
+      "position": 0,
+      "triplet": 12
+    },
+    {
+      "index": 37,
+      "task": "invoice",
+      "replicate": 4,
+      "method": "plain",
+      "position": 1,
+      "triplet": 12
+    },
+    {
+      "index": 38,
+      "task": "invoice",
+      "replicate": 4,
+      "method": "deterministic",
+      "position": 2,
+      "triplet": 12
+    },
+    {
+      "index": 39,
+      "task": "queue",
+      "replicate": 4,
+      "method": "plain",
+      "position": 0,
+      "triplet": 13
+    },
+    {
+      "index": 40,
+      "task": "queue",
+      "replicate": 4,
+      "method": "deterministic",
+      "position": 1,
+      "triplet": 13
+    },
+    {
+      "index": 41,
+      "task": "queue",
+      "replicate": 4,
+      "method": "jev",
+      "position": 2,
+      "triplet": 13
+    },
+    {
+      "index": 42,
+      "task": "events",
+      "replicate": 4,
+      "method": "deterministic",
+      "position": 0,
+      "triplet": 14
+    },
+    {
+      "index": 43,
+      "task": "events",
+      "replicate": 4,
+      "method": "jev",
+      "position": 1,
+      "triplet": 14
+    },
+    {
+      "index": 44,
+      "task": "events",
+      "replicate": 4,
+      "method": "plain",
+      "position": 2,
+      "triplet": 14
+    }
+  ],
+  "sha256": {
+    "docs/ratchet-plan.md": "8082ec142ac404db3628c3b982f5aebdf4a72df17b784cfc3752f220942860d2",
+    "docs/ratchet-workflow-protocol.md": "eb3f4f323b34423cde9a4efccc0dcd18e06bfcca3313397072d97a92f32ae80c",
+    "evidence_selector/__init__.py": "8266bea66e88db2dd554f5cd90aeec10ff55b91f15d942219f5f882e3b55091c",
+    "evidence_selector/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "evidence_selector/benchmark.py": "80dc8bf756c3e1e1c278544ca34bcebf25a05ee746a103f7a37e8269a662fc0d",
+    "evidence_selector/cli.py": "54fbda920fe3f8d2a39adfae4592a8de83340c2dea587a741fe8dae9cfdfa838",
+    "evidence_selector/core.py": "5bfc1bb1958bf7caf6ff347e10004e0fc64a3daaef2db3d0987595b51b47be6f",
+    "evidence_selector/eve_server.py": "49e383d7aa90a1a4b227799cf069b560c5b58a0329f7eba4f08335c40979dd3c",
+    "evidence_selector/gguf_server.py": "dc33e321061a37ebd58867b88ff84af6818bcde66e391e6224be41230d950322",
+    "evidence_selector/hf_backend.py": "a20dc2b3a1a040ae489896d362cb3d4e783b3e31ef95d388b63f592754444425",
+    "evidence_selector/mcp_server.py": "f5f795a2c6fd848e8f66874031001facf2a594e6228df31cc0e01044e9ce237c",
+    "evidence_selector/owned_process.py": "0c08fddd524cb0552ce10ae8bf606aab0413326dc431b943bb2ae7bd9c9b4056",
+    "evidence_selector/plugin.py": "c2d2fa7f3b0847f3e2cd4e6d0d9313c640e8337135c62376237f94799bb7db1a",
+    "evidence_selector/providers.py": "7665ec28f07602c2a50b00863d14e0d79a31c1699755b93ef0a5ee36c0de86dd",
+    "evidence_selector/ratchet/__init__.py": "8527f4d0f1d296ffb61acc30b7072171cfb18e219837fa473fa1034b6031ce32",
+    "evidence_selector/ratchet/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "evidence_selector/ratchet/cli.py": "9cf28cfab2184385a133ff777e5797889677f85ccbd30546e097eb59279f3e3b",
+    "evidence_selector/ratchet/config.py": "80f1ab2af61f8f451ae7ad7676f15ecbf0adbd7dea6b3687365d1a40996d7e60",
+    "evidence_selector/ratchet/mcp_server.py": "4c5969f3da8f28f755ae2f252718bea7a81fe96c06060e051577bdd0396cddd3",
+    "evidence_selector/ratchet/pytest_reporter.py": "b0d1f8137401300adc2d308c6975f8c76617be185ac6d97713b85c7f05355fba",
+    "evidence_selector/ratchet/records.py": "1dda34ea02f0bfd90a8a693f1bde846ecbcf1824737903d619f937478ddb4f78",
+    "evidence_selector/ratchet/secure_io.py": "c32a0214920f40a1fd2905f5658ef2f53c6bf699aa39e1de04870d95f680cb43",
+    "evidence_selector/ratchet/semantic.py": "903c7e32d7bd02d4d820d3b462fd00db60c168d59bb3ebee6e851481c8aae5ce",
+    "evidence_selector/server_runtime.py": "8f0945cd1fe802f89dcfe3693da4ffbd1dbe793752c439e82ac15312a69bb3aa",
+    "fixtures/ratchet/workflow-v1/events/TASK.md": "f21efa3e72187909f0e45af9c754af4709da34bedf746e9944110e3259f0e4c3",
+    "fixtures/ratchet/workflow-v1/events/previous.py": "1f2567b0e4dbc004e824e416a6ef00896c7049399a1a951111dd7a43a11caccc",
+    "fixtures/ratchet/workflow-v1/events/product.py": "1d8c2a1f57f270dcede18995a5fe20ede55a491843e6b0877edc027b01e3f550",
+    "fixtures/ratchet/workflow-v1/events/reference.py": "5269188029bec7850f9ed35f8820f954e6cc1a0caf1559aa56a44a4a22eadd9b",
+    "fixtures/ratchet/workflow-v1/events/test_grading.py": "35354e3c2d09f73ffe339fb17ef969a5acdde2359b0ff99649adb7d547cab1e4",
+    "fixtures/ratchet/workflow-v1/events/test_visible.py": "19908b29dfe82ae83b3253bcac99e0d08b19aa7f7fef727daf408f6a463ab8ae",
+    "fixtures/ratchet/workflow-v1/invoice/TASK.md": "3412e188a91f34d9b077d4d54c9bdeb50d25921e7d7f85e2279a03eaa7435f0e",
+    "fixtures/ratchet/workflow-v1/invoice/previous.py": "9b63f20afb9016c05b8048598da68b0eab7ffb3a81562e976cf5d6d59e6cc3a3",
+    "fixtures/ratchet/workflow-v1/invoice/product.py": "e5a356c805cf992c5a1bb38caa5f911fbe58aba522e3f5eb72d54cfa7d8e35f5",
+    "fixtures/ratchet/workflow-v1/invoice/reference.py": "b470929d99947c1e7f0e7ebb830bd67e9ea0323d04b337bf05afe62f593f985b",
+    "fixtures/ratchet/workflow-v1/invoice/test_grading.py": "78b935b699d09bf8187310ee3927c0a8fd0eb0e2ae272e916d5d8c311eaaf58d",
+    "fixtures/ratchet/workflow-v1/invoice/test_visible.py": "c49aa4a516de92dcfa8da87c52088fc75a826b1b74008f576aa8ee6f742ccbc3",
+    "fixtures/ratchet/workflow-v1/queue/TASK.md": "375cd155487e666e268abccb586bcb8d1e1749a3f422a44f7e3bb994c5459907",
+    "fixtures/ratchet/workflow-v1/queue/previous.py": "a504543bf4e48d4772b8672258d8c32d3ec91942bf58165af192d593ab16f9ce",
+    "fixtures/ratchet/workflow-v1/queue/product.py": "0ca7d451c4926174989f5294e472ecf3304b39b902e15e7944a8e5f5b7e059c2",
+    "fixtures/ratchet/workflow-v1/queue/reference.py": "272b548ccb793ca5dd5dfcdb36d1884372c721d84edb19066725a57e792fc8e1",
+    "fixtures/ratchet/workflow-v1/queue/test_grading.py": "8e991af2c2060c1d13d2283a705e81380863e0abeac070837e67a225e9f7958b",
+    "fixtures/ratchet/workflow-v1/queue/test_visible.py": "1c1b398e89605ba69f74e5e8a5649d8820adf4c835dfa8e2dd6ea8ac72df15a9",
+    "pyproject.toml": "806c943f5a689249ef1c1c3769bd4c7d402c6996e7480976083a022536cdb7c6",
+    "results/ratchet/workflow-fixtures-linux.json": "fd8d8b59dae24df3bfe88949d62cc8266efd41e0b7151f18d74a7ae27fa7f1ad",
+    "results/ratchet/workflow-history.json": "f0dbaf61b33ec75104aa28740048b2b0c858579cab4943125cca8b967367eb65",
+    "results/ratchet/workflow-runner-review.json": "6a22e7c93051aa7bf5f4348d60ee817d32287d62d3ca37482a49c45d0411c6b7",
+    "scripts/freeze_ratchet_workflow.py": "8957f9c4c52e81bf11e87567d5b77fc2291224312d743e7b839fb6419ae9ca0c",
+    "scripts/prepare_ratchet_workflow_history.py": "61a147c58f3629548fb288d3bee304aff760f8929eec9ff78a11744952f12357",
+    "scripts/ratchet_atomic.py": "9cd9bb742f6b7b768d9e0bc5a77a74108202982e5f2634ac2d15d2a508125645",
+    "scripts/ratchet_mcp_meter.py": "4b597434d24a8f8094b74f488dcc05f78098a1cde85d0d768a94445a6affdb61",
+    "scripts/ratchet_verified_child.py": "905d5d7d3c681a5ae53d36240b96cc1d359b688593502a1edbe2845024f07c20",
+    "scripts/ratchet_worker_runtime.py": "a9e6ff0ca17fa6848d309b4c3cf0afc3d1b31eb517199e6463b10c48b5cbc0e1",
+    "scripts/ratchet_workflow_metrics.py": "d91674dd40b066330828424d2bef9935bb972703cced11de6e752c3ff4656e15",
+    "scripts/ratchet_workflow_trial.py": "ce11f4817810612448c014d4c1095786396ead6c65538d2901f69a85f3cfffa4",
+    "scripts/read_ratchet_history.py": "33fea264a70f1e9ad734d56fdfa5903f7719832758c85247174ad5df46acdc3b",
+    "scripts/run_ratchet_workflow.py": "e33a806817c073558dd3298a5350804ff2ab5b9f2035972b69a57ae9c7fea529",
+    "scripts/validate_ratchet_workflow_fixtures.py": "8b39317aaf4dc42509fa62eee700d7cabd38d32844216faedd91875eecdb327e",
+    "uv.lock": "4af5edfe0fe4c858da78f73a210b1f2832f0bdadce9bf96fbcdb04eca31a5720"
+  }
+}

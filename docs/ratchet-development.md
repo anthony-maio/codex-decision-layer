@@ -212,3 +212,34 @@ Next: implement and independently verify the trial runner and MCP timing capture
 freeze the complete protocol and inputs, then run the 15 matched triplets. General
 published-plugin installation, Windows repair execution, exact-commit CI, workflow
 usefulness, and release preparation remain open. Advisory behavior stays disabled.
+
+## Feasibility checkpoint 6 - 2026-09-20
+
+The installed Ratchet plugin was called directly in this task: status, comparison,
+and complete retrieval of both originals matched the authored replay bytes.
+A separate unscored native Linux worker combined the same four MCP calls with an
+actual addition repair and a passing pytest test in 34.2 seconds. MCP calls took
+36.3 milliseconds in total, including proxy overhead; this is an integration
+receipt, not a matched usefulness result. Authentication was revalidated with a
+successful live request before proceeding.
+
+The prospective runner now keeps a durable assigned-slot claim and an exclusive
+experiment lock. Interruptions remain in the denominator. Recovery never launches
+a replacement worker. Atomic receipts preserve the previous complete state;
+unknown launch identity requires inspection. Independent review verified these
+repairs alongside complete original-reading checks, same-child import provenance,
+and test proof tied to the final edited source. Model transport retries are not
+fully exposed by the CLI; observed notices and unknown exact counts are reported
+separately from measured Jev requests and retries.
+
+Windows passed 105 unit checks. Linux ran the same 105 checks with 103 passing and
+two Windows-only skips. Real metered stdio comparison and complete original
+retrieval passed on both platforms. CI now includes that smoke check. These local
+results do not establish hosted CI or a successful Windows repair worker.
+
+All three historical failure pairs were recorded with verified project imports
+without running classification or scored model repairs. The earlier preparation
+review remains a historical receipt at commit 7b29191; the final runner review
+identifies its own input hashes. The next step is the committed prospective freeze
+and the 45 assigned workers. The known classification failures remain unchanged,
+so advisory behavior remains disabled regardless of workflow results.

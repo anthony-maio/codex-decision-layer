@@ -1,0 +1,122 @@
+{
+  "status": "RECORDED_NOT_CLASSIFIED",
+  "records": [
+    {
+      "task": "invoice",
+      "attempt": 0,
+      "record": "attempt-0.jsonl",
+      "record_sha256": "1bb77896775f62ec31681be3a2dbdc18b55c1aa23934460a1277d501ade8bd2e",
+      "source_sha256": "9b63f20afb9016c05b8048598da68b0eab7ffb3a81562e976cf5d6d59e6cc3a3",
+      "failure_stage": "call",
+      "exit_code": 1,
+      "child_provenance": {
+        "status": "VERIFIED",
+        "mode": "pytest",
+        "module_sha256": {
+          "evidence_selector/__init__.py": "8266bea66e88db2dd554f5cd90aeec10ff55b91f15d942219f5f882e3b55091c",
+          "evidence_selector/ratchet/records.py": "1dda34ea02f0bfd90a8a693f1bde846ecbcf1824737903d619f937478ddb4f78",
+          "evidence_selector/ratchet/pytest_reporter.py": "b0d1f8137401300adc2d308c6975f8c76617be185ac6d97713b85c7f05355fba"
+        },
+        "freeze_sha256": null
+      }
+    },
+    {
+      "task": "invoice",
+      "attempt": 1,
+      "record": "attempt-1.jsonl",
+      "record_sha256": "c0a9208e8a1e5521653d0b02608917653eb2abfd25aca7b06bd589d2590c053c",
+      "source_sha256": "e5a356c805cf992c5a1bb38caa5f911fbe58aba522e3f5eb72d54cfa7d8e35f5",
+      "failure_stage": "call",
+      "exit_code": 1,
+      "child_provenance": {
+        "status": "VERIFIED",
+        "mode": "pytest",
+        "module_sha256": {
+          "evidence_selector/__init__.py": "8266bea66e88db2dd554f5cd90aeec10ff55b91f15d942219f5f882e3b55091c",
+          "evidence_selector/ratchet/records.py": "1dda34ea02f0bfd90a8a693f1bde846ecbcf1824737903d619f937478ddb4f78",
+          "evidence_selector/ratchet/pytest_reporter.py": "b0d1f8137401300adc2d308c6975f8c76617be185ac6d97713b85c7f05355fba"
+        },
+        "freeze_sha256": null
+      }
+    },
+    {
+      "task": "queue",
+      "attempt": 0,
+      "record": "attempt-0.jsonl",
+      "record_sha256": "36d533c0336f7dd163d71b7747bce0e65fdc3890abae7daebab5d969d5e79196",
+      "source_sha256": "a504543bf4e48d4772b8672258d8c32d3ec91942bf58165af192d593ab16f9ce",
+      "failure_stage": "setup",
+      "exit_code": 1,
+      "child_provenance": {
+        "status": "VERIFIED",
+        "mode": "pytest",
+        "module_sha256": {
+          "evidence_selector/__init__.py": "8266bea66e88db2dd554f5cd90aeec10ff55b91f15d942219f5f882e3b55091c",
+          "evidence_selector/ratchet/records.py": "1dda34ea02f0bfd90a8a693f1bde846ecbcf1824737903d619f937478ddb4f78",
+          "evidence_selector/ratchet/pytest_reporter.py": "b0d1f8137401300adc2d308c6975f8c76617be185ac6d97713b85c7f05355fba"
+        },
+        "freeze_sha256": null
+      }
+    },
+    {
+      "task": "queue",
+      "attempt": 1,
+      "record": "attempt-1.jsonl",
+      "record_sha256": "9f23ecc8bcd09798d87f357d35e47440aefdef09e1d7319ee92225cde2faebbf",
+      "source_sha256": "0ca7d451c4926174989f5294e472ecf3304b39b902e15e7944a8e5f5b7e059c2",
+      "failure_stage": "call",
+      "exit_code": 1,
+      "child_provenance": {
+        "status": "VERIFIED",
+        "mode": "pytest",
+        "module_sha256": {
+          "evidence_selector/__init__.py": "8266bea66e88db2dd554f5cd90aeec10ff55b91f15d942219f5f882e3b55091c",
+          "evidence_selector/ratchet/records.py": "1dda34ea02f0bfd90a8a693f1bde846ecbcf1824737903d619f937478ddb4f78",
+          "evidence_selector/ratchet/pytest_reporter.py": "b0d1f8137401300adc2d308c6975f8c76617be185ac6d97713b85c7f05355fba"
+        },
+        "freeze_sha256": null
+      }
+    },
+    {
+      "task": "events",
+      "attempt": 0,
+      "record": "attempt-0.jsonl",
+      "record_sha256": "82f3bd03f0510f65528cd9b2c4810850895b088e23b67b19e541f46881adc79c",
+      "source_sha256": "1f2567b0e4dbc004e824e416a6ef00896c7049399a1a951111dd7a43a11caccc",
+      "failure_stage": "call",
+      "exit_code": 1,
+      "child_provenance": {
+        "status": "VERIFIED",
+        "mode": "pytest",
+        "module_sha256": {
+          "evidence_selector/__init__.py": "8266bea66e88db2dd554f5cd90aeec10ff55b91f15d942219f5f882e3b55091c",
+          "evidence_selector/ratchet/records.py": "1dda34ea02f0bfd90a8a693f1bde846ecbcf1824737903d619f937478ddb4f78",
+          "evidence_selector/ratchet/pytest_reporter.py": "b0d1f8137401300adc2d308c6975f8c76617be185ac6d97713b85c7f05355fba"
+        },
+        "freeze_sha256": null
+      }
+    },
+    {
+      "task": "events",
+      "attempt": 1,
+      "record": "attempt-1.jsonl",
+      "record_sha256": "9d94ae6012f308a75d8169d4b79c97e1c8c096ad0b8310f33aadc69bd669347c",
+      "source_sha256": "1d8c2a1f57f270dcede18995a5fe20ede55a491843e6b0877edc027b01e3f550",
+      "failure_stage": "call",
+      "exit_code": 1,
+      "child_provenance": {
+        "status": "VERIFIED",
+        "mode": "pytest",
+        "module_sha256": {
+          "evidence_selector/__init__.py": "8266bea66e88db2dd554f5cd90aeec10ff55b91f15d942219f5f882e3b55091c",
+          "evidence_selector/ratchet/records.py": "1dda34ea02f0bfd90a8a693f1bde846ecbcf1824737903d619f937478ddb4f78",
+          "evidence_selector/ratchet/pytest_reporter.py": "b0d1f8137401300adc2d308c6975f8c76617be185ac6d97713b85c7f05355fba"
+        },
+        "freeze_sha256": null
+      }
+    }
+  ],
+  "setup_seconds": 3.415135408984497,
+  "python": "3.12.13",
+  "platform": "linux"
+}

@@ -10,7 +10,7 @@ from ratchet_workflow_metrics import assess, schedule, worker_cost
 def rows():
     return [{**s, "elapsed_seconds": 100 if s["method"] == "plain" else 80,
              "total_cost": {"lower_usd": 1, "upper_usd": 1},
-             "quality_pass": True, "grading": {"passed": 10}} for s in schedule()]
+             "quality_pass": True, "method_compliance": True, "grading": {"passed": 10}} for s in schedule()]
 
 
 class WorkflowMetricTests(unittest.TestCase):
@@ -72,6 +72,14 @@ class WorkflowMetricTests(unittest.TestCase):
         result = assess(rows())
         self.assertTrue(result["comparisons"][1]["usefulness_gate"])
         self.assertFalse(result["jev_incremental_usefulness"])
+
+    def test_ignoring_assigned_method_cannot_establish_usefulness(self):
+        sample = rows()
+        sample[0]["method_compliance"] = False
+        result = assess(sample)["comparisons"][1]
+        self.assertTrue(result["performance_gate"])
+        self.assertFalse(result["method_gate"])
+        self.assertFalse(result["usefulness_gate"])
 
     def test_failed_runs_missing_usage_and_quality_cannot_be_removed(self):
         sample = rows()

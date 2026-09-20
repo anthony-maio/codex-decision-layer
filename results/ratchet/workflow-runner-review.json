@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "date": "2026-09-20",
+  "independent_review": true,
+  "human_validation": false,
+  "scope": "pre-freeze runner, matching, evidence observation, final-source tests, interruption journal, fixtures and cost accounting; excludes scored usefulness",
+  "review_rounds": 3,
+  "model_repair_trials_started": 0,
+  "findings_resolved": [
+    "canonical output lock and durable assigned-slot claim prevent replacement runs",
+    "same-child module origin and hash verification",
+    "complete original reading observed in every method",
+    "worker tests bound to final source and committed freeze",
+    "atomic receipts and conservative interrupted-attempt finalization"
+  ],
+  "limits": [
+    "model transport retry total unavailable; numeric notices only",
+    "reported aggregate tokens support API-equivalent estimates, not complete billing",
+    "unknown launch identity requires further process inspection",
+    "cooperative evaluation checks are not adversarial execution attestation"
+  ],
+  "validation": {
+    "independent_non_model_checks_passed": 24,
+    "windows_unit_passed": 105,
+    "linux_unit_passed": 103,
+    "linux_unit_skipped": 2,
+    "windows_meter_stdio": "PASS",
+    "linux_meter_stdio": "PASS"
+  },
+  "sha256": {
+    "docs/ratchet-workflow-protocol.md": "eb3f4f323b34423cde9a4efccc0dcd18e06bfcca3313397072d97a92f32ae80c",
+    "fixtures/ratchet/workflow-v1/events/TASK.md": "f21efa3e72187909f0e45af9c754af4709da34bedf746e9944110e3259f0e4c3",
+    "fixtures/ratchet/workflow-v1/events/previous.py": "1f2567b0e4dbc004e824e416a6ef00896c7049399a1a951111dd7a43a11caccc",
+    "fixtures/ratchet/workflow-v1/events/product.py": "1d8c2a1f57f270dcede18995a5fe20ede55a491843e6b0877edc027b01e3f550",
+    "fixtures/ratchet/workflow-v1/events/reference.py": "5269188029bec7850f9ed35f8820f954e6cc1a0caf1559aa56a44a4a22eadd9b",
+    "fixtures/ratchet/workflow-v1/events/test_grading.py": "35354e3c2d09f73ffe339fb17ef969a5acdde2359b0ff99649adb7d547cab1e4",
+    "fixtures/ratchet/workflow-v1/events/test_visible.py": "19908b29dfe82ae83b3253bcac99e0d08b19aa7f7fef727daf408f6a463ab8ae",
+    "fixtures/ratchet/workflow-v1/invoice/TASK.md": "3412e188a91f34d9b077d4d54c9bdeb50d25921e7d7f85e2279a03eaa7435f0e",
+    "fixtures/ratchet/workflow-v1/invoice/previous.py": "9b63f20afb9016c05b8048598da68b0eab7ffb3a81562e976cf5d6d59e6cc3a3",
+    "fixtures/ratchet/workflow-v1/invoice/product.py": "e5a356c805cf992c5a1bb38caa5f911fbe58aba522e3f5eb72d54cfa7d8e35f5",
+    "fixtures/ratchet/workflow-v1/invoice/reference.py": "b470929d99947c1e7f0e7ebb830bd67e9ea0323d04b337bf05afe62f593f985b",
+    "fixtures/ratchet/workflow-v1/invoice/test_grading.py": "78b935b699d09bf8187310ee3927c0a8fd0eb0e2ae272e916d5d8c311eaaf58d",
+    "fixtures/ratchet/workflow-v1/invoice/test_visible.py": "c49aa4a516de92dcfa8da87c52088fc75a826b1b74008f576aa8ee6f742ccbc3",
+    "fixtures/ratchet/workflow-v1/queue/TASK.md": "375cd155487e666e268abccb586bcb8d1e1749a3f422a44f7e3bb994c5459907",
+    "fixtures/ratchet/workflow-v1/queue/previous.py": "a504543bf4e48d4772b8672258d8c32d3ec91942bf58165af192d593ab16f9ce",
+    "fixtures/ratchet/workflow-v1/queue/product.py": "0ca7d451c4926174989f5294e472ecf3304b39b902e15e7944a8e5f5b7e059c2",
+    "fixtures/ratchet/workflow-v1/queue/reference.py": "272b548ccb793ca5dd5dfcdb36d1884372c721d84edb19066725a57e792fc8e1",
+    "fixtures/ratchet/workflow-v1/queue/test_grading.py": "8e991af2c2060c1d13d2283a705e81380863e0abeac070837e67a225e9f7958b",
+    "fixtures/ratchet/workflow-v1/queue/test_visible.py": "1c1b398e89605ba69f74e5e8a5649d8820adf4c835dfa8e2dd6ea8ac72df15a9",
+    "scripts/freeze_ratchet_workflow.py": "8957f9c4c52e81bf11e87567d5b77fc2291224312d743e7b839fb6419ae9ca0c",
+    "scripts/prepare_ratchet_workflow_history.py": "61a147c58f3629548fb288d3bee304aff760f8929eec9ff78a11744952f12357",
+    "scripts/ratchet_atomic.py": "9cd9bb742f6b7b768d9e0bc5a77a74108202982e5f2634ac2d15d2a508125645",
+    "scripts/ratchet_mcp_meter.py": "4b597434d24a8f8094b74f488dcc05f78098a1cde85d0d768a94445a6affdb61",
+    "scripts/ratchet_verified_child.py": "905d5d7d3c681a5ae53d36240b96cc1d359b688593502a1edbe2845024f07c20",
+    "scripts/ratchet_worker_runtime.py": "a9e6ff0ca17fa6848d309b4c3cf0afc3d1b31eb517199e6463b10c48b5cbc0e1",
+    "scripts/ratchet_workflow_metrics.py": "d91674dd40b066330828424d2bef9935bb972703cced11de6e752c3ff4656e15",
+    "scripts/ratchet_workflow_trial.py": "ce11f4817810612448c014d4c1095786396ead6c65538d2901f69a85f3cfffa4",
+    "scripts/read_ratchet_history.py": "33fea264a70f1e9ad734d56fdfa5903f7719832758c85247174ad5df46acdc3b",
+    "scripts/run_ratchet_workflow.py": "e33a806817c073558dd3298a5350804ff2ab5b9f2035972b69a57ae9c7fea529",
+    "scripts/validate_ratchet_workflow_fixtures.py": "8b39317aaf4dc42509fa62eee700d7cabd38d32844216faedd91875eecdb327e"
+  }
+}

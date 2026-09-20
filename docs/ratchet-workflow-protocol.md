@@ -1,6 +1,7 @@
 # Ratchet prospective repair workflow protocol
 
-Status: DRAFT, not frozen and no scored worker runs yet.
+Status: Predeclared protocol. Scoring requires the first committed freeze.json;
+before that commit, no scored worker runs are permitted.
 
 This experiment asks whether explicitly consulting Ratchet helps Codex complete
 an actual repair. Each worker reads an authored Python project and two recorded
@@ -36,6 +37,22 @@ original records. It does not supply a repair hint or a claim that retries are
 wasteful. Ratchet remains in shadow mode. A wrong or unavailable comparison never
 prevents reading originals, making a repair, or running tests.
 
+Plain mode uses a supplied local reader that prints both complete files and their
+hashes. The trial verifies the actual command output against the original bytes.
+Ratchet modes verify status, comparison sources, and complete MCP evidence pages;
+the same local reader provides an observable fallback when retrieval fails.
+Method compliance is separate from task quality. Missing the assigned method or
+original-evidence observation prevents a usefulness claim even when the patch is
+correct. All methods receive the same reader and test command instructions.
+
+The experiment uses an invocation-configured MCP server launched from the frozen
+checkout, with a stdio timing proxy that forwards tool responses unchanged. It
+does not measure general plugin installation. The proxy's request/response timings
+include local transport and instrumentation overhead; the full worker timer also
+includes server startup and all instrumentation. Actual child processes verify
+module origins and source hashes. Scored server and pytest children require the
+committed freeze; initial historical recording publishes its child source hashes.
+
 Use Codex CLI 0.146.0, gpt-5.6-sol, low reasoning, a fresh ephemeral workspace per
 run, and normal workspace-write permissions. Do not override command approvals,
 ignore security rules, or introduce an execution MCP to work around a declined
@@ -62,6 +79,22 @@ or restarting a scored worker after observing its quality. Pause new runs on an
 account-wide outage; retain attempts already made. Resume the next unstarted
 position after access returns, documenting the interruption.
 
+An exclusive lock is keyed to the experiment output, independent of the private
+log directory. Persist the assigned slot before launching its worker. A failed
+or interrupted measurement keeps that claim and cannot be rerun by selecting a
+different directory. Recover a completed saved receipt without starting a worker.
+For an incomplete Linux attempt, confirm both the owned PID and process group are
+absent before finalizing a failed row. Unknown cost remains unknown. Where cleanup
+timing is available, retain it; otherwise use an explicitly labeled 600-second
+latency penalty. Such a row cannot pass quality or cost gates. Missing launch
+identity or an extant process requires further inspection, not a restart. Windows
+interruption finalization currently requires a separate process audit.
+
+Receipts use atomic replacement so an interrupted write preserves the previous
+complete state. A PREPARING claim cannot have launched a worker and can be
+finalized as a failed attempt. LAUNCHING is persisted before process creation;
+that phase requires a saved process identity or explicit further inspection.
+
 Start the full-task timer before launching Codex and stop after its process and
 owned children have ended. Include MCP startup, selector time, command retries,
 provider failures, and any model transport retries in that interval. Record
@@ -70,11 +103,18 @@ External grading time is separate because it is identical experimental machinery
 Record worker test invocations and repeated commands descriptively; equal commands
 alone do not establish wasted work.
 
+The CLI does not expose an exact model transport retry count. Publish observed
+retry notices from JSON error events and stderr separately, without summing
+potential duplicates or treating no notices as proof of zero retries. The exact
+count stays null. Wall time includes any retries; token estimates use reported
+aggregate usage and cannot establish unreported provider billing. Jev's own
+requests and retry count are measured separately.
+
 ## Quality and usefulness gates
 
 The frozen plan in ratchet-plan.md remains authoritative. A successful run requires
 an actual implementation edit, unchanged supplied tests and contract, at least one
-observed worker test execution, a normally completed worker, and all grading tests
+observed passing worker test on the final source, a normally completed worker, and all grading tests
 passing. Do not accept a final-message claim as proof. Report passed assertions
 and successful runs for every task and method. Quality has no regression only if
 the candidate has at least as many successful runs and total passed grading tests
@@ -87,6 +127,13 @@ Require the exact frozen test identities and counts with no skips or collection
 errors. Compare worker-supplied file hashes before grading; modified supplied
 tests, contract, configuration, or original records fail quality. Source edits
 must be regular files, not links. The task is scoped to product.py.
+
+The supplied test command records a source digest before and after pytest, the
+complete report's digest, exit code, child provenance, and freeze identity. Match
+that proof to its completed worker command and final product.py digest. Testing
+an earlier source version and editing afterward does not meet this requirement.
+These are cooperative-worker evaluation checks, not an adversarial execution
+attestation or a security boundary against forged process output.
 
 Use all assigned runs in time summaries, including failures and capped timeouts.
 For each task, divide candidate median by comparator median; take the geometric

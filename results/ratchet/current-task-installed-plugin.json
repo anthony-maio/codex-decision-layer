@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "scope": "installed Ratchet tools called directly in this desktop task; recorded authored demonstration, not workflow trial",
+  "provider": "deterministic",
+  "mode": "shadow",
+  "hosted_upload": false,
+  "advisory_enabled": false,
+  "command_execution": false,
+  "relationship": "same_blocker",
+  "reason": "matching_explicit_cause",
+  "sources": [
+    {
+      "record": "attempt-0.jsonl",
+      "sha256": "45f3e4ae9a0406dd122f8b026ad6ed68f2d7a6ea03d4280b8a0b387741749b79",
+      "bytes": 1236,
+      "exact_original_recovered": true
+    },
+    {
+      "record": "attempt-1.jsonl",
+      "sha256": "ba009f9e6b7ca4a4fcefce03dda29036ef4b97d46bab342685d922db580e8952",
+      "bytes": 1478,
+      "exact_original_recovered": true
+    }
+  ],
+  "usage_measurement": "NOT_MEASURED",
+  "usefulness_claim": false
+}

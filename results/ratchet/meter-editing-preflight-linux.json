@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "checks": {
+    "worker_completed": true,
+    "mcp_status_comparison_and_exact_originals": true,
+    "implementation_changed_to_addition": true,
+    "test_unchanged": true,
+    "one_observed_passing_test_command": true,
+    "complete_meter": true
+  },
+  "scope": "unscored addition repair plus recorded replay; no usefulness comparison",
+  "platform": "linux",
+  "elapsed_seconds": 34.20656007598154,
+  "usage": {
+    "input_tokens": 138815,
+    "cached_input_tokens": 117248,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 962,
+    "reasoning_output_tokens": 182
+  },
+  "meter": {
+    "status": "COMPLETE",
+    "tool_calls": 4,
+    "tool_elapsed_ms": 36.334180971607566,
+    "tool_errors": 0,
+    "provider_errors": 0,
+    "provider_calls": 0,
+    "provider_retries": 0,
+    "provider_input_tokens": 0,
+    "provider_output_tokens": 0,
+    "provider_latency_ms": 0,
+    "estimated_cost_usd": 0.0
+  },
+  "unexpected_mcp_calls": 0,
+  "worker_events_sha256": "e09bc9cd7d3fb46b2b8d9df70e560f6d400b6e6d4704f234fac1cf80b2e0cfa5"
+}

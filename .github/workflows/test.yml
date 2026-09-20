@@ -15,6 +15,7 @@ jobs:
       - run: uv run --no-sync python -m unittest discover -s tests -v
       - run: uv run --extra mcp python tests/smoke_mcp.py
       - run: uv run --no-sync python tests/smoke_ratchet_mcp.py
+      - run: uv run --no-sync python tests/smoke_ratchet_meter.py
       - run: uv build --wheel
       - shell: bash
         run: uv run python scripts/validate_install.py --wheel "$(echo dist/*.whl)" --output results/local-ci-install.json

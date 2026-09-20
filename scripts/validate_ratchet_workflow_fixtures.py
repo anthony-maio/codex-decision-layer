@@ -34,6 +34,8 @@ def pytest_run(workspace, report, extra=()):
     env = os.environ.copy()
     env["PYTEST_DISABLE_PLUGIN_AUTOLOAD"] = "1"
     env["PYTHONDONTWRITEBYTECODE"] = "1"
+    for key in ("PYTEST_ADDOPTS", "PYTEST_PLUGINS"):
+        env.pop(key, None)
     result = subprocess.run([sys.executable, "-B", "-m", "pytest", "-q", "--tb=long",
                              "-p", "no:cacheprovider", f"--junitxml={report}", *extra],
                             cwd=workspace, env=env, capture_output=True, text=True,
