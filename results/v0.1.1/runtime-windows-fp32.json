@@ -1,0 +1,70 @@
+{
+  "platform": "Windows",
+  "python": "3.12.11",
+  "versions": {
+    "codex-evidence-selector": "0.1.1rc1",
+    "torch": "2.14.0+cpu",
+    "transformers": "5.17.0",
+    "mcp": "1.30.0"
+  },
+  "engine": "fp32",
+  "device": "cpu",
+  "runs": [
+    {
+      "offline": false,
+      "startup_seconds": 25.618,
+      "health": {
+        "status": "ok",
+        "model": "eve-local"
+      },
+      "inference": {
+        "model": "eve-local",
+        "answers": {
+          "relevant": {
+            "type": "noul",
+            "noul": 0.9819113612174988
+          }
+        },
+        "usage": {
+          "input_tokens": 42,
+          "output_tokens": 0
+        },
+        "diagnostics": {
+          "truncated": false,
+          "readout": "saved_fp32_decision_head"
+        }
+      },
+      "clean_stop": true,
+      "ports_released": true
+    },
+    {
+      "offline": true,
+      "startup_seconds": 10.348,
+      "health": {
+        "status": "ok",
+        "model": "eve-local"
+      },
+      "inference": {
+        "model": "eve-local",
+        "answers": {
+          "relevant": {
+            "type": "noul",
+            "noul": 0.9819113612174988
+          }
+        },
+        "usage": {
+          "input_tokens": 42,
+          "output_tokens": 0
+        },
+        "diagnostics": {
+          "truncated": false,
+          "readout": "saved_fp32_decision_head"
+        }
+      },
+      "clean_stop": true,
+      "ports_released": true
+    }
+  ],
+  "stopped_provider_fail_open": true,
+  "offline_scope": "Python external DNS/connect forbidden; local artifact only for owned llama child; host network not disabled"
+}

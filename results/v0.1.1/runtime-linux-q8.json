@@ -1,0 +1,72 @@
+{
+  "platform": "Linux",
+  "python": "3.12.13",
+  "versions": {
+    "codex-evidence-selector": "0.1.1rc1",
+    "torch": "2.14.0+cpu",
+    "transformers": "5.17.0",
+    "mcp": "1.30.0"
+  },
+  "engine": "q8",
+  "device": "cpu",
+  "runs": [
+    {
+      "offline": false,
+      "startup_seconds": 14.275,
+      "health": {
+        "status": "ok",
+        "model": "eve-q8_0"
+      },
+      "inference": {
+        "model": "eve-q8_0",
+        "answers": {
+          "relevant": {
+            "type": "noul",
+            "noul": 0.9807208754117384
+          }
+        },
+        "usage": {
+          "input_tokens": 42,
+          "output_tokens": 1
+        },
+        "diagnostics": {
+          "truncated": false,
+          "readout": "renormalized_A_B",
+          "cache_prompt": false
+        }
+      },
+      "clean_stop": true,
+      "ports_released": true
+    },
+    {
+      "offline": true,
+      "startup_seconds": 10.497,
+      "health": {
+        "status": "ok",
+        "model": "eve-q8_0"
+      },
+      "inference": {
+        "model": "eve-q8_0",
+        "answers": {
+          "relevant": {
+            "type": "noul",
+            "noul": 0.9807208754117384
+          }
+        },
+        "usage": {
+          "input_tokens": 42,
+          "output_tokens": 1
+        },
+        "diagnostics": {
+          "truncated": false,
+          "readout": "renormalized_A_B",
+          "cache_prompt": false
+        }
+      },
+      "clean_stop": true,
+      "ports_released": true
+    }
+  ],
+  "stopped_provider_fail_open": true,
+  "offline_scope": "Python external DNS/connect forbidden; local artifact only for owned llama child; host network not disabled"
+}

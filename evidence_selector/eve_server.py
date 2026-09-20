@@ -74,6 +74,17 @@ def handler_for(backend):
                 pass
 
         def do_POST(self):
+            if self.path == "/shutdown":
+                import hmac
+                import os
+                import threading
+                token = os.environ.get("DECISION_LAYER_SHUTDOWN_TOKEN", "")
+                if self.headers.get("Origin") or not token or not hmac.compare_digest(self.headers.get("Authorization", "").encode(), ("Bearer " + token).encode()):
+                    self.send_json(403, {"error": "shutdown_denied"})
+                    return
+                self.send_json(200, {"status": "stopping"})
+                threading.Thread(target=self.server.shutdown, daemon=True).start()
+                return
             if self.path != "/v1/systemone":
                 self.send_json(404, {"error": "not_found"})
                 return
@@ -99,7 +110,7 @@ def handler_for(backend):
     return Handler
 
 
-def main():
+def main(argv=None):
     parser = argparse.ArgumentParser(description="Serve an existing Eve decision checkpoint on loopback")
     parser.add_argument("--checkpoint", default="anthonym21/qwen3-0.6b-rlcd-decision")
     parser.add_argument("--revision", default="b327ec5efb5fdbf8bfafa3b369720ac5f6434b05")
@@ -108,25 +119,43 @@ def main():
     parser.add_argument("--model", default="eve-local")
     parser.add_argument("--port", type=int, default=8765)
     parser.add_argument("--threads", type=int, default=8)
-    args = parser.parse_args()
+    parser.add_argument("--offline", action="store_true", help="Use cached weights only; never contact Hugging Face")
+    args = parser.parse_args(argv)
     if args.threads < 1:
         parser.error("threads must be positive")
-    import torch
-    torch.set_num_threads(args.threads)
-    if args.engine == "reference":
-        backend = EveBackend(args.checkpoint, args.device, args.model)
-    else:
-        from .hf_backend import HfBackend
-        backend = HfBackend(args.checkpoint, args.device, args.model, args.revision)
-    server = HTTPServer(("127.0.0.1", args.port), handler_for(backend))
-    print(f"Eve ready at http://127.0.0.1:{args.port}/v1/systemone", flush=True)
+    from .server_runtime import bind_server, serve
+    import os
+    import sys
+    os.environ["OPENBLAS_NUM_THREADS"] = str(args.threads)
+    os.environ["OMP_NUM_THREADS"] = str(args.threads)
+    if args.offline:
+        os.environ["HF_HUB_OFFLINE"] = "1"
+    server = None
     try:
-        server.serve_forever()
+        server = bind_server(args.port)
+        import torch
+        torch.set_num_threads(args.threads)
+        if args.engine == "reference":
+            if args.offline and not __import__("pathlib").Path(args.checkpoint).is_dir():
+                raise ValueError("Offline reference engine requires --checkpoint LOCAL_DIRECTORY")
+            backend = EveBackend(args.checkpoint, args.device, args.model)
+        else:
+            from .hf_backend import HfBackend
+            backend = HfBackend(args.checkpoint, args.device, args.model, args.revision, offline=args.offline)
+        serve(server, backend, "Eve")
+        return 0
+    except ImportError:
+        print("Missing local runtime. Run uv sync --extra local --extra mcp --locked, then uv run --no-sync eve-decision-server. Reference mode also requires rlcd.", file=sys.stderr)
+        return 1
+    except (OSError, ValueError, RuntimeError, AssertionError, KeyError) as exc:
+        print(f"Eve startup failed ({type(exc).__name__}). Check the port, checkpoint hashes, device, and cached revision. Download once before using --offline.", file=sys.stderr)
+        return 1
     except KeyboardInterrupt:
-        pass
+        return 130
     finally:
-        server.server_close()
+        if server is not None:
+            server.server_close()
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

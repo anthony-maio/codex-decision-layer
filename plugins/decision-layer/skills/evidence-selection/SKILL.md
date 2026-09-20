@@ -9,7 +9,7 @@ Use the plugin's `shadow_evidence` tool with the user's question and explicitly 
 
 Use `read_evidence` to expand surrounding lines when a passage is incomplete or a decision looks questionable. Keep contradictions and uncertainty visible. Do not interpret a relevance score as truth, authorization, or task completion.
 
-The initial Eve checkpoint retained every passage in the small relevance fixture. Jev filtered more selectively. Treat model suitability as an open evaluation question. Do not claim a speedup or token saving from proposed byte reduction.
+Eve retained every passage in both the initial fixture and frozen public-source holdout. Jev proposed useful relevance reductions on the holdout, but the matched Codex workflow failed the cost/latency usefulness gate. Filtering remains disabled. Do not claim a speedup or token saving from proposed byte reduction.
 
 Configuration lives in `~/.codex/decision-layer.json`, or the file selected by `DECISION_LAYER_CONFIG`. The configured provider determines whether passage text stays local or goes to TypeSafe/OpenRouter. Never read or submit `.env` files, private keys, or credential stores as evidence.
 

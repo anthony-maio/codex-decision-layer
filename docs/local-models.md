@@ -7,10 +7,11 @@ Checkpoint: [anthonym21/qwen3-0.6b-rlcd-decision](https://huggingface.co/anthony
 From the repository:
 
 ```sh
-uv run --extra local eve-decision-server --device cpu
+uv sync --extra local --extra mcp --locked
+uv run --no-sync eve-decision-server --device cpu
 ```
 
-First start downloads the checkpoint and verifies its weight hashes. Subsequent inference stays local. Use `--checkpoint /path/to/export` for an existing copy, `--port` to choose a port, or `--threads` to control CPU threads. Defaults: port 8765, eight CPU threads.
+First start downloads the checkpoint and verifies its weight hashes. Restart without network access using `uv run --offline --no-sync eve-decision-server --offline`. Use `--checkpoint /path/to/export` for an existing copy, `--port` to choose a port, or `--threads` to control PyTorch, OpenMP and OpenBLAS threads. Defaults: port 8765, eight CPU threads. CPU wheels are selected on Windows and Linux; install a compatible GPU runtime separately if you need CUDA.
 
 Wait for `GET http://127.0.0.1:8765/health` to return `status: ok`, then:
 
@@ -32,7 +33,17 @@ Download `eve-qwen3-0.6b-rlcd-q8_0.gguf` from the [v0.1.0 release](https://githu
 
 Install [llama.cpp](https://github.com/ggml-org/llama.cpp). Tested: build 7836, commit `0c21677e4`, CUDA on an RTX 4080. Newer server versions may change response fields; rerun the checks when upgrading.
 
-Terminal one:
+One terminal can own both Q8 processes (replace the executable path):
+
+```sh
+uv run --no-sync gguf-decision-server --llama-server /path/to/llama-server --gguf models/eve-qwen3-0.6b-rlcd-q8_0.gguf
+```
+
+This verifies the GGUF hash, waits for readiness, binds the adapter to 8767, and stops its child on exit. Defaults to CPU; add `--gpu-layers 99` for a compatible GPU build. On Windows use the full path to `llama-server.exe`; the child window stays hidden. An existing llama listener is never adopted by the managed command. Windows job ownership also stops the child if the adapter is abruptly terminated. Stop normally with Ctrl+C. Use `uv run --offline --no-sync` after dependencies and the GGUF have been downloaded.
+
+For automated shutdown, optionally set a random `DECISION_LAYER_SHUTDOWN_TOKEN` in the server environment and POST to `/shutdown` with `Authorization: Bearer TOKEN`. Without that variable the route is disabled. Tokens never enter settings or receipts. Browser-origin requests are refused. This is an automation hook, not authentication for inference or a multi-user server.
+
+The separate-process setup remains supported. Terminal one:
 
 ```sh
 llama-server -m models/eve-qwen3-0.6b-rlcd-q8_0.gguf -ngl 99 --host 127.0.0.1 --port 8766 -c 1024 --parallel 1 --no-webui

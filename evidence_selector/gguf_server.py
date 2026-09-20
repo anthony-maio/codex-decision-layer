@@ -2,6 +2,10 @@
 import argparse
 import json
 import math
+import subprocess
+import sys
+import time
+from pathlib import Path
 from urllib.parse import urlsplit
 from urllib.request import Request, build_opener, ProxyHandler
 from http.server import HTTPServer
@@ -16,12 +20,13 @@ def render_noul(state, question):
 
 
 class GgufBackend:
-    def __init__(self, endpoint="http://127.0.0.1:8766", model="eve-q8_0", letter_ids=(362, 425)):
+    def __init__(self, endpoint="http://127.0.0.1:8766", model="eve-q8_0", letter_ids=(362, 425), deadline=None):
         url = urlsplit(endpoint)
         if url.scheme != "http" or url.hostname not in ("127.0.0.1", "localhost", "::1") or url.username or url.password or url.query or url.fragment or url.path not in ("", "/"):
             raise ValueError("llama-server must be a loopback HTTP origin")
         self.endpoint, self.model = endpoint.rstrip("/"), model
         self.letter_ids = tuple(letter_ids)
+        self.deadline = deadline
         self.opener = build_opener(ProxyHandler({}), NoRedirect())
         for text, expected in zip((" A", " B"), self.letter_ids):
             if self.post("/tokenize", {"content": text, "add_special": False})["tokens"] != [expected]:
@@ -29,7 +34,10 @@ class GgufBackend:
 
     def post(self, route, body):
         request = Request(self.endpoint + route, json.dumps(body).encode(), {"Content-Type": "application/json"})
-        with self.opener.open(request, timeout=60) as response:
+        timeout = 60 if self.deadline is None else min(60, self.deadline - time.monotonic())
+        if timeout <= 0:
+            raise TimeoutError("readiness deadline exceeded")
+        with self.opener.open(request, timeout=timeout) as response:
             return json.load(response)
 
     def decide(self, payload):
@@ -68,22 +76,76 @@ class GgufBackend:
                 "diagnostics": {"truncated": False, "readout": "renormalized_A_B", "cache_prompt": False}}
 
 
-def main():
-    parser = argparse.ArgumentParser()
+def main(argv=None):
+    parser = argparse.ArgumentParser(description="Serve Q8 decisions; optionally own a llama-server child")
     parser.add_argument("--llama-endpoint", default="http://127.0.0.1:8766")
     parser.add_argument("--model", default="eve-q8_0")
     parser.add_argument("--port", type=int, default=8767)
-    args = parser.parse_args()
-    backend = GgufBackend(args.llama_endpoint, args.model)
-    server = HTTPServer(("127.0.0.1", args.port), handler_for(backend))
-    print(f"GGUF decisions ready at http://127.0.0.1:{args.port}/v1/systemone", flush=True)
+    parser.add_argument("--llama-server", help="Executable to start and stop with this adapter")
+    parser.add_argument("--gguf", help="Local Q8 file; required with --llama-server")
+    parser.add_argument("--sha256", default="49523f391d1408655b00b0c041a405efbb0ed343685f9415057cd6e04d8aac9a")
+    parser.add_argument("--gpu-layers", type=int, default=0)
+    parser.add_argument("--startup-timeout", type=float, default=120)
+    args = parser.parse_args(argv)
+    if not math.isfinite(args.startup_timeout) or not 0 < args.startup_timeout <= 600:
+        parser.error("startup-timeout must be between 0 and 600 seconds")
+    if bool(args.llama_server) != bool(args.gguf):
+        parser.error("--llama-server and --gguf must be supplied together")
+    from .server_runtime import bind_server, serve, require_no_listener, install_stop_signal
+    import signal
+    previous = install_stop_signal()
+    child = server = job = None
     try:
-        server.serve_forever()
+        server = bind_server(args.port)
+        if args.llama_server:
+            from .hf_backend import file_sha256
+            url = urlsplit(args.llama_endpoint)
+            if url.scheme != "http" or url.hostname != "127.0.0.1" or not url.port or url.path not in ("", "/") or url.username or url.password or url.query or url.fragment:
+                raise ValueError("Managed llama endpoint requires http://127.0.0.1:PORT")
+            # Never adopt an existing listener as our owned child.
+            require_no_listener(url.port)
+            if file_sha256(args.gguf) != args.sha256:
+                raise ValueError("GGUF hash mismatch")
+            command = [args.llama_server, "-m", str(Path(args.gguf).resolve()), "-ngl", str(args.gpu_layers),
+                       "--host", "127.0.0.1", "--port", str(url.port), "-c", "1024", "--parallel", "1", "--no-webui"]
+            from .owned_process import ChildJob
+            job = ChildJob()
+            child = subprocess.Popen(command, stdout=sys.stderr, stderr=sys.stderr,
+                                     creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+            job.attach(child)
+        deadline = time.monotonic() + args.startup_timeout
+        while True:
+            if child is not None and child.poll() is not None:
+                raise ValueError("llama-server exited before readiness")
+            try:
+                backend = GgufBackend(args.llama_endpoint, args.model, deadline=deadline)
+                backend.deadline = None
+                break
+            except (OSError, ValueError):
+                if time.monotonic() >= deadline:
+                    raise ValueError("llama-server readiness timeout") from None
+                time.sleep(0.2)
+        serve(server, backend, "GGUF decisions")
+        return 0
+    except (OSError, ValueError, KeyError, TypeError):
+        print("Q8 startup failed. Check the adapter/llama ports, executable, GGUF SHA-256 and llama-server readiness. Use --llama-server PATH --gguf PATH for managed startup.", file=sys.stderr)
+        return 1
     except KeyboardInterrupt:
-        pass
+        return 130
     finally:
-        server.server_close()
+        signal.signal(signal.SIGTERM, previous)
+        if server is not None:
+            server.server_close()
+        if child is not None and child.poll() is None:
+            child.terminate()
+            try:
+                child.wait(timeout=10)
+            except subprocess.TimeoutExpired:
+                child.kill()
+                child.wait()
+        if job is not None:
+            job.close()
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

@@ -1,0 +1,447 @@
+{
+  "status": "COMPLETE",
+  "protocol": "docs/workflow-protocol.md",
+  "summary": {
+    "retain-all": {
+      "quality_passes": 5,
+      "estimated_cost_usd": 0.3545936,
+      "median_latency_ms": 9435.803700005636,
+      "empirical_p95_latency_ms": 9927.039899979718
+    },
+    "jev": {
+      "quality_passes": 5,
+      "estimated_cost_usd": 0.42780459,
+      "median_latency_ms": 11260.56470000185,
+      "empirical_p95_latency_ms": 12236.904499994125
+    }
+  },
+  "trials": [
+    {
+      "trial": 0,
+      "method": "retain-all",
+      "prompt_sha256": "b160a7882042b533b8098eff9763258b60f8a706e766492f59ec6a27200865ca",
+      "worker_model": "gpt-5.6-sol",
+      "worker_usage": {
+        "input_tokens": 20422,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 184,
+        "reasoning_output_tokens": 0
+      },
+      "selector_usage": {},
+      "worker_latency_ms": 9619.010900030844,
+      "selector_latency_ms": 0,
+      "end_to_end_latency_ms": 9629.364599997643,
+      "answer": {
+        "can_refresh_unmodified": true,
+        "requires_permanent_for_unmodified_refresh": true,
+        "refresh_setting": "SESSION_REFRESH_EACH_REQUEST",
+        "modified_alone_satisfies_should_set_cookie": true,
+        "empty_session_has_separate_save_path": true,
+        "comment_conflicts_with_implementation": true,
+        "decisive_sources": [
+          "flask-sessions.py-247-261",
+          "flask-sessions.py-361-383",
+          "flask-sessions.py-61-72"
+        ],
+        "explanation": "Yes. The implementation returns true when the session is modified, or when it is permanent and SESSION_REFRESH_EACH_REQUEST is true. Thus an unmodified session can refresh only through the permanent-session branch. Empty sessions are handled earlier: modified empty sessions delete the cookie, while other empty sessions return without setting one. The comment claiming cookies are written only when modified conflicts with the implementation."
+      },
+      "structured_quality_pass": true,
+      "unexpected_tool_items": 0,
+      "selector_errors": 0,
+      "worker_exit_code": 0,
+      "worker_succeeded": true,
+      "retries": 0,
+      "expansion_calls": 0,
+      "estimated_cost_usd": 0.085368,
+      "selector_estimated_cost_usd": 0.0
+    },
+    {
+      "trial": 0,
+      "method": "jev",
+      "prompt_sha256": "b160a7882042b533b8098eff9763258b60f8a706e766492f59ec6a27200865ca",
+      "worker_model": "gpt-5.6-sol",
+      "worker_usage": {
+        "input_tokens": 20422,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 187,
+        "reasoning_output_tokens": 0
+      },
+      "selector_usage": {
+        "input_tokens": 2879,
+        "output_tokens": 132
+      },
+      "worker_latency_ms": 9615.613000001758,
+      "selector_latency_ms": 2491.266,
+      "end_to_end_latency_ms": 12116.216199996416,
+      "answer": {
+        "can_refresh_unmodified": true,
+        "requires_permanent_for_unmodified_refresh": true,
+        "refresh_setting": "SESSION_REFRESH_EACH_REQUEST",
+        "modified_alone_satisfies_should_set_cookie": true,
+        "empty_session_has_separate_save_path": true,
+        "comment_conflicts_with_implementation": true,
+        "decisive_sources": [
+          "flask-sessions.py-247-261",
+          "flask-sessions.py-361-383",
+          "flask-sessions.py-61-72"
+        ],
+        "explanation": "Yes. The implementation returns true when the session is modified, or when it is permanent and SESSION_REFRESH_EACH_REQUEST is true. Thus an unmodified session can refresh only through the permanent-session branch. Empty sessions bypass should_set_cookie: modified empty sessions delete the cookie, while unmodified empty sessions return without setting one. The earlier comment claiming cookies are written only when modified conflicts with the implementation."
+      },
+      "structured_quality_pass": true,
+      "unexpected_tool_items": 0,
+      "selector_errors": 0,
+      "worker_exit_code": 0,
+      "worker_succeeded": true,
+      "retries": 0,
+      "expansion_calls": 0,
+      "estimated_cost_usd": 0.085548918,
+      "selector_estimated_cost_usd": 0.00012091800000000001
+    },
+    {
+      "trial": 1,
+      "method": "jev",
+      "prompt_sha256": "b160a7882042b533b8098eff9763258b60f8a706e766492f59ec6a27200865ca",
+      "worker_model": "gpt-5.6-sol",
+      "worker_usage": {
+        "input_tokens": 20422,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 190,
+        "reasoning_output_tokens": 0
+      },
+      "selector_usage": {
+        "input_tokens": 2879,
+        "output_tokens": 132
+      },
+      "worker_latency_ms": 8738.624199992046,
+      "selector_latency_ms": 2511.091,
+      "end_to_end_latency_ms": 11260.56470000185,
+      "answer": {
+        "can_refresh_unmodified": true,
+        "requires_permanent_for_unmodified_refresh": true,
+        "refresh_setting": "SESSION_REFRESH_EACH_REQUEST",
+        "modified_alone_satisfies_should_set_cookie": true,
+        "empty_session_has_separate_save_path": true,
+        "comment_conflicts_with_implementation": true,
+        "decisive_sources": [
+          "flask-sessions.py-247-261",
+          "flask-sessions.py-361-383",
+          "flask-sessions.py-61-72"
+        ],
+        "explanation": "Yes. The implementation returns true when the session is modified, or when it is permanent and SESSION_REFRESH_EACH_REQUEST is true. Thus an unmodified session can refresh only through the permanent-session branch. The earlier comment claiming cookies are written only when modified conflicts with this implementation. Separately, empty sessions bypass should_set_cookie: modified empty sessions delete the cookie, while unmodified empty sessions return without setting one."
+      },
+      "structured_quality_pass": true,
+      "unexpected_tool_items": 0,
+      "selector_errors": 0,
+      "worker_exit_code": 0,
+      "worker_succeeded": true,
+      "retries": 0,
+      "expansion_calls": 0,
+      "estimated_cost_usd": 0.08560891799999999,
+      "selector_estimated_cost_usd": 0.00012091800000000001
+    },
+    {
+      "trial": 1,
+      "method": "retain-all",
+      "prompt_sha256": "b160a7882042b533b8098eff9763258b60f8a706e766492f59ec6a27200865ca",
+      "worker_model": "gpt-5.6-sol",
+      "worker_usage": {
+        "input_tokens": 20422,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 191,
+        "reasoning_output_tokens": 0
+      },
+      "selector_usage": {},
+      "worker_latency_ms": 9425.456599972676,
+      "selector_latency_ms": 0,
+      "end_to_end_latency_ms": 9435.803700005636,
+      "answer": {
+        "can_refresh_unmodified": true,
+        "requires_permanent_for_unmodified_refresh": true,
+        "refresh_setting": "SESSION_REFRESH_EACH_REQUEST",
+        "modified_alone_satisfies_should_set_cookie": true,
+        "empty_session_has_separate_save_path": true,
+        "comment_conflicts_with_implementation": true,
+        "decisive_sources": [
+          "flask-sessions.py-247-261",
+          "flask-sessions.py-361-383",
+          "flask-sessions.py-61-72"
+        ],
+        "explanation": "Yes. The implementation returns true when the session is modified, or when it is permanent and SESSION_REFRESH_EACH_REQUEST is true. Thus an unmodified session refreshes only if permanent with that setting enabled. The earlier comment claiming cookies are written only when modified conflicts with this implementation. Separately, empty sessions bypass should_set_cookie: modified-empty sessions delete the cookie, while unmodified-empty sessions return without setting one."
+      },
+      "structured_quality_pass": true,
+      "unexpected_tool_items": 0,
+      "selector_errors": 0,
+      "worker_exit_code": 0,
+      "worker_succeeded": true,
+      "retries": 0,
+      "expansion_calls": 0,
+      "estimated_cost_usd": 0.085508,
+      "selector_estimated_cost_usd": 0.0
+    },
+    {
+      "trial": 2,
+      "method": "retain-all",
+      "prompt_sha256": "b160a7882042b533b8098eff9763258b60f8a706e766492f59ec6a27200865ca",
+      "worker_model": "gpt-5.6-sol",
+      "worker_usage": {
+        "input_tokens": 20422,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 187,
+        "reasoning_output_tokens": 0
+      },
+      "selector_usage": {},
+      "worker_latency_ms": 8755.82530000247,
+      "selector_latency_ms": 0,
+      "end_to_end_latency_ms": 8765.110399981495,
+      "answer": {
+        "can_refresh_unmodified": true,
+        "requires_permanent_for_unmodified_refresh": true,
+        "refresh_setting": "SESSION_REFRESH_EACH_REQUEST",
+        "modified_alone_satisfies_should_set_cookie": true,
+        "empty_session_has_separate_save_path": true,
+        "comment_conflicts_with_implementation": true,
+        "decisive_sources": [
+          "flask-sessions.py-247-261",
+          "flask-sessions.py-361-383",
+          "flask-sessions.py-61-72"
+        ],
+        "explanation": "Yes. The implementation returns true when the session is modified, or when it is permanent and SESSION_REFRESH_EACH_REQUEST is true. Thus, an unmodified session refresh requires permanence and that setting. The earlier comment claiming cookies are written only when modified conflicts with this implementation. Separately, save_session handles empty sessions first: it deletes the cookie if modified, otherwise returns without calling should_set_cookie."
+      },
+      "structured_quality_pass": true,
+      "unexpected_tool_items": 0,
+      "selector_errors": 0,
+      "worker_exit_code": 0,
+      "worker_succeeded": true,
+      "retries": 0,
+      "expansion_calls": 0,
+      "estimated_cost_usd": 0.085428,
+      "selector_estimated_cost_usd": 0.0
+    },
+    {
+      "trial": 2,
+      "method": "jev",
+      "prompt_sha256": "b160a7882042b533b8098eff9763258b60f8a706e766492f59ec6a27200865ca",
+      "worker_model": "gpt-5.6-sol",
+      "worker_usage": {
+        "input_tokens": 20422,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 187,
+        "reasoning_output_tokens": 0
+      },
+      "selector_usage": {
+        "input_tokens": 2879,
+        "output_tokens": 132
+      },
+      "worker_latency_ms": 8632.980599999428,
+      "selector_latency_ms": 2481.102,
+      "end_to_end_latency_ms": 11123.469099984504,
+      "answer": {
+        "can_refresh_unmodified": true,
+        "requires_permanent_for_unmodified_refresh": true,
+        "refresh_setting": "SESSION_REFRESH_EACH_REQUEST",
+        "modified_alone_satisfies_should_set_cookie": true,
+        "empty_session_has_separate_save_path": true,
+        "comment_conflicts_with_implementation": true,
+        "decisive_sources": [
+          "flask-sessions.py-247-261",
+          "flask-sessions.py-361-383",
+          "flask-sessions.py-61-72"
+        ],
+        "explanation": "Yes. The implementation returns true when the session is modified, or when it is permanent and SESSION_REFRESH_EACH_REQUEST is true. Thus an unmodified session can refresh only through the permanent-session branch. Empty sessions bypass should_set_cookie: modified empty sessions delete the cookie, while unmodified empty sessions return without setting one. The earlier comment claiming cookies are written only when modified conflicts with the implementation."
+      },
+      "structured_quality_pass": true,
+      "unexpected_tool_items": 0,
+      "selector_errors": 0,
+      "worker_exit_code": 0,
+      "worker_succeeded": true,
+      "retries": 0,
+      "expansion_calls": 0,
+      "estimated_cost_usd": 0.085548918,
+      "selector_estimated_cost_usd": 0.00012091800000000001
+    },
+    {
+      "trial": 3,
+      "method": "jev",
+      "prompt_sha256": "b160a7882042b533b8098eff9763258b60f8a706e766492f59ec6a27200865ca",
+      "worker_model": "gpt-5.6-sol",
+      "worker_usage": {
+        "input_tokens": 20422,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 187,
+        "reasoning_output_tokens": 0
+      },
+      "selector_usage": {
+        "input_tokens": 2879,
+        "output_tokens": 132
+      },
+      "worker_latency_ms": 8613.813700038008,
+      "selector_latency_ms": 2503.275,
+      "end_to_end_latency_ms": 11126.125500013586,
+      "answer": {
+        "can_refresh_unmodified": true,
+        "requires_permanent_for_unmodified_refresh": true,
+        "refresh_setting": "SESSION_REFRESH_EACH_REQUEST",
+        "modified_alone_satisfies_should_set_cookie": true,
+        "empty_session_has_separate_save_path": true,
+        "comment_conflicts_with_implementation": true,
+        "decisive_sources": [
+          "flask-sessions.py-247-261",
+          "flask-sessions.py-361-383",
+          "flask-sessions.py-61-72"
+        ],
+        "explanation": "Yes. The implementation returns true when the session is modified, or when it is permanent and SESSION_REFRESH_EACH_REQUEST is true. Thus an unmodified session can refresh only through the permanent-session branch. The earlier comment claiming cookies are written only when modified conflicts with this implementation. Empty sessions bypass should_set_cookie: modified empty sessions delete the cookie, while unmodified empty sessions return without setting one."
+      },
+      "structured_quality_pass": true,
+      "unexpected_tool_items": 0,
+      "selector_errors": 0,
+      "worker_exit_code": 0,
+      "worker_succeeded": true,
+      "retries": 0,
+      "expansion_calls": 0,
+      "estimated_cost_usd": 0.085548918,
+      "selector_estimated_cost_usd": 0.00012091800000000001
+    },
+    {
+      "trial": 3,
+      "method": "retain-all",
+      "prompt_sha256": "b160a7882042b533b8098eff9763258b60f8a706e766492f59ec6a27200865ca",
+      "worker_model": "gpt-5.6-sol",
+      "worker_usage": {
+        "input_tokens": 20422,
+        "cached_input_tokens": 20224,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 196,
+        "reasoning_output_tokens": 0
+      },
+      "selector_usage": {},
+      "worker_latency_ms": 8487.88130003959,
+      "selector_latency_ms": 0,
+      "end_to_end_latency_ms": 8500.181999988854,
+      "answer": {
+        "can_refresh_unmodified": true,
+        "requires_permanent_for_unmodified_refresh": true,
+        "refresh_setting": "SESSION_REFRESH_EACH_REQUEST",
+        "modified_alone_satisfies_should_set_cookie": true,
+        "empty_session_has_separate_save_path": true,
+        "comment_conflicts_with_implementation": true,
+        "decisive_sources": [
+          "flask-sessions.py-247-261",
+          "flask-sessions.py-361-383",
+          "flask-sessions.py-61-72"
+        ],
+        "explanation": "Yes. The implementation returns true when the session is modified, or when it is permanent and SESSION_REFRESH_EACH_REQUEST is true. Thus an unmodified session can refresh only if it is permanent and that setting is enabled. The earlier comment saying cookies are written only when modified conflicts with this implementation. Separately, empty sessions bypass should_set_cookie: a modified empty session deletes the cookie, while an unmodified empty session returns without setting one."
+      },
+      "structured_quality_pass": true,
+      "unexpected_tool_items": 0,
+      "selector_errors": 0,
+      "worker_exit_code": 0,
+      "worker_succeeded": true,
+      "retries": 0,
+      "expansion_calls": 0,
+      "estimated_cost_usd": 0.0128016,
+      "selector_estimated_cost_usd": 0.0
+    },
+    {
+      "trial": 4,
+      "method": "retain-all",
+      "prompt_sha256": "b160a7882042b533b8098eff9763258b60f8a706e766492f59ec6a27200865ca",
+      "worker_model": "gpt-5.6-sol",
+      "worker_usage": {
+        "input_tokens": 20422,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 190,
+        "reasoning_output_tokens": 0
+      },
+      "selector_usage": {},
+      "worker_latency_ms": 9917.340099986177,
+      "selector_latency_ms": 0,
+      "end_to_end_latency_ms": 9927.039899979718,
+      "answer": {
+        "can_refresh_unmodified": true,
+        "requires_permanent_for_unmodified_refresh": true,
+        "refresh_setting": "SESSION_REFRESH_EACH_REQUEST",
+        "modified_alone_satisfies_should_set_cookie": true,
+        "empty_session_has_separate_save_path": true,
+        "comment_conflicts_with_implementation": true,
+        "decisive_sources": [
+          "flask-sessions.py-247-261",
+          "flask-sessions.py-361-383",
+          "flask-sessions.py-61-72"
+        ],
+        "explanation": "The implementation returns true when the session is modified, or when it is permanent and SESSION_REFRESH_EACH_REQUEST is true. Thus an unmodified session can refresh only if permanent and refresh is enabled. Empty sessions bypass should_set_cookie: a modified empty session deletes the cookie, while an unmodified empty session returns. The earlier comment claiming cookies are written only when modified conflicts with should_set_cookie's permanent-refresh branch."
+      },
+      "structured_quality_pass": true,
+      "unexpected_tool_items": 0,
+      "selector_errors": 0,
+      "worker_exit_code": 0,
+      "worker_succeeded": true,
+      "retries": 0,
+      "expansion_calls": 0,
+      "estimated_cost_usd": 0.085488,
+      "selector_estimated_cost_usd": 0.0
+    },
+    {
+      "trial": 4,
+      "method": "jev",
+      "prompt_sha256": "b160a7882042b533b8098eff9763258b60f8a706e766492f59ec6a27200865ca",
+      "worker_model": "gpt-5.6-sol",
+      "worker_usage": {
+        "input_tokens": 20422,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 187,
+        "reasoning_output_tokens": 0
+      },
+      "selector_usage": {
+        "input_tokens": 2879,
+        "output_tokens": 132
+      },
+      "worker_latency_ms": 9822.633100033272,
+      "selector_latency_ms": 2404.416,
+      "end_to_end_latency_ms": 12236.904499994125,
+      "answer": {
+        "can_refresh_unmodified": true,
+        "requires_permanent_for_unmodified_refresh": true,
+        "refresh_setting": "SESSION_REFRESH_EACH_REQUEST",
+        "modified_alone_satisfies_should_set_cookie": true,
+        "empty_session_has_separate_save_path": true,
+        "comment_conflicts_with_implementation": true,
+        "decisive_sources": [
+          "flask-sessions.py-247-261",
+          "flask-sessions.py-361-383",
+          "flask-sessions.py-61-72"
+        ],
+        "explanation": "Yes. The implementation returns true when the session is modified, or when it is permanent and SESSION_REFRESH_EACH_REQUEST is true. Thus an unmodified session can refresh only through the permanent-session branch. The earlier comment claiming cookies are written only when modified conflicts with this implementation. Empty sessions bypass should_set_cookie: modified empty sessions delete the cookie, while unmodified empty sessions return without setting one."
+      },
+      "structured_quality_pass": true,
+      "unexpected_tool_items": 0,
+      "selector_errors": 0,
+      "worker_exit_code": 0,
+      "worker_succeeded": true,
+      "retries": 0,
+      "expansion_calls": 0,
+      "estimated_cost_usd": 0.085548918,
+      "selector_estimated_cost_usd": 0.00012091800000000001
+    }
+  ],
+  "cost_ratio": 1.2064644990772535,
+  "latency_ratio": 1.1933869183814332,
+  "numeric_U2_pass": false,
+  "independent_answer_review": {
+    "status": "PASS",
+    "blinded": true,
+    "answers_passed": 10,
+    "human_validation": false,
+    "limits": "Correctness of these answers only; not cost, cache comparability or usefulness."
+  },
+  "cost_kind": "API-equivalent estimate, not a subscription bill",
+  "cache_regime": "Service-managed, fresh task each trial, no forced reset; observed cache counts may differ"
+}

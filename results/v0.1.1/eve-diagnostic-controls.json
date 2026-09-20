@@ -1,0 +1,115 @@
+{
+  "dev_relevance_probability_distribution": {
+    "True": {
+      "n": 15,
+      "minimum": 0.5165878534317017,
+      "median": 0.6133406162261963,
+      "maximum": 0.7761737704277039
+    },
+    "False": {
+      "n": 39,
+      "minimum": 0.4471816420555115,
+      "median": 0.6209226846694946,
+      "maximum": 0.808988630771637
+    }
+  },
+  "out_of_benchmark_controls": [
+    {
+      "backend": "fp32",
+      "state": "The only fruit in the basket is an apple.",
+      "question": "Is there an apple in the basket?",
+      "expected": true,
+      "probability": 0.979354739189148,
+      "model": "eve-local",
+      "usage": {
+        "input_tokens": 45,
+        "output_tokens": 0
+      }
+    },
+    {
+      "backend": "fp32",
+      "state": "The only fruit in the basket is an apple.",
+      "question": "Is there a banana in the basket?",
+      "expected": false,
+      "probability": 0.0756952166557312,
+      "model": "eve-local",
+      "usage": {
+        "input_tokens": 45,
+        "output_tokens": 0
+      }
+    },
+    {
+      "backend": "fp32",
+      "state": "The switch is OFF.",
+      "question": "Is the switch ON?",
+      "expected": false,
+      "probability": 0.048915423452854156,
+      "model": "eve-local",
+      "usage": {
+        "input_tokens": 37,
+        "output_tokens": 0
+      }
+    },
+    {
+      "backend": "fp32",
+      "state": "The switch is OFF.",
+      "question": "Is the switch OFF?",
+      "expected": true,
+      "probability": 0.9756821990013123,
+      "model": "eve-local",
+      "usage": {
+        "input_tokens": 37,
+        "output_tokens": 0
+      }
+    },
+    {
+      "backend": "q8",
+      "state": "The only fruit in the basket is an apple.",
+      "question": "Is there an apple in the basket?",
+      "expected": true,
+      "probability": 0.9791504280393402,
+      "model": "eve-q8_0",
+      "usage": {
+        "input_tokens": 45,
+        "output_tokens": 1
+      }
+    },
+    {
+      "backend": "q8",
+      "state": "The only fruit in the basket is an apple.",
+      "question": "Is there a banana in the basket?",
+      "expected": false,
+      "probability": 0.07388450314111447,
+      "model": "eve-q8_0",
+      "usage": {
+        "input_tokens": 45,
+        "output_tokens": 1
+      }
+    },
+    {
+      "backend": "q8",
+      "state": "The switch is OFF.",
+      "question": "Is the switch ON?",
+      "expected": false,
+      "probability": 0.05004962911525691,
+      "model": "eve-q8_0",
+      "usage": {
+        "input_tokens": 37,
+        "output_tokens": 1
+      }
+    },
+    {
+      "backend": "q8",
+      "state": "The switch is OFF.",
+      "question": "Is the switch OFF?",
+      "expected": true,
+      "probability": 0.9755064160051768,
+      "model": "eve-q8_0",
+      "usage": {
+        "input_tokens": 37,
+        "output_tokens": 1
+      }
+    }
+  ],
+  "policy_changed": false
+}

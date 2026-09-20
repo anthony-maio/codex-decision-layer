@@ -122,6 +122,7 @@ def parser():
     configure = sub.add_parser("configure", help="Write user-local plugin settings; never stores key values")
     configure.add_argument("--root", required=True)
     sub.add_parser("plugin-mcp", help="Start MCP with ~/.codex/decision-layer.json settings")
+    sub.add_parser("doctor", help="Check provider inference using a public diagnostic passage")
     return p
 
 
@@ -137,6 +138,14 @@ def main(argv=None):
             serve()
             return 0
         provider = provider_from(args)
+        if args.command == "doctor":
+            import importlib.metadata
+            result = select("Does this service preserve evidence?", [Candidate("diagnostic", "diagnostic", "The service preserves every original evidence passage.")], provider, args.drop_below, args.keep_above)
+            print(json.dumps({"package_version": importlib.metadata.version("codex-evidence-selector"),
+                              "provider": result["provider"], "decisions": result["decisions"],
+                              "ready": not any("error" in d for d in result["decisions"]),
+                              "hint": "Start eve-decision-server or gguf-decision-server for local inference; check credentials for hosted providers."}, indent=2))
+            return 2 if any("error" in d for d in result["decisions"]) else 0
         if args.command == "mcp":
             from .mcp_server import run
             run(args.root, provider, args.drop_below, args.keep_above)
@@ -161,6 +170,9 @@ def main(argv=None):
         result = select(query, candidates, provider, args.drop_below, args.keep_above)
         print(json.dumps(result, indent=2, allow_nan=False))
         return 2 if any("error" in d for d in result["decisions"]) else 0
+    except ImportError:
+        print("Missing optional dependency. Install with uv sync --extra mcp --locked for MCP, or --extra local for FP32. Use uv run --no-sync after setup.", file=sys.stderr)
+        return 1
     except (ValueError, OSError, KeyError, TypeError) as exc:
         # Only controlled validation messages or exception class names reach stderr.
         message = str(exc) if type(exc) is ValueError else type(exc).__name__

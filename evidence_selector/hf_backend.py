@@ -18,7 +18,7 @@ def file_sha256(path):
 
 
 class HfBackend:
-    def __init__(self, checkpoint=MODEL_REPO, device="cpu", model="eve-local", revision=MODEL_REVISION):
+    def __init__(self, checkpoint=MODEL_REPO, device="cpu", model="eve-local", revision=MODEL_REVISION, offline=False):
         import torch
         from huggingface_hub import snapshot_download
         from safetensors.torch import load_file
@@ -27,7 +27,7 @@ class HfBackend:
         if not Path(checkpoint).is_dir():
             if checkpoint != MODEL_REPO:
                 raise ValueError("Use a local checkpoint directory or the documented model repository")
-            checkpoint = snapshot_download(checkpoint, revision=revision)
+            checkpoint = snapshot_download(checkpoint, revision=revision, local_files_only=offline)
         source = Path(checkpoint)
         record = json.loads((source / "decision.json").read_text())
         if record.get("format") != "rlcd-decision-only-v1" or record.get("model_type") != "qwen3" or record.get("prepend_bos"):

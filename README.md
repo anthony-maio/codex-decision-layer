@@ -8,7 +8,7 @@ The first experiment is evidence selection. Give the tool a question and a few f
 
 Use a TypeSafe key, an OpenRouter key, the open-source Eve checkpoint on your own machine, or a deterministic keyword baseline. Local inference works with the original FP32 checkpoint and an optional **639 MB Q8_0 GGUF**.
 
-**Current finding:** Jev preserved every relevant passage in the small fixture set while proposing some exclusions. Eve ran successfully, but retained every passage at the same conservative threshold. The local runtime works; useful relevance filtering with this checkpoint remains an open problem.
+**Experimental v0.1.1 candidate:** Jev retained all 18 relevant passages in the frozen public-source holdout and proposed 37.95% fewer evidence bytes. Eve FP32 and Q8 retained everything. The matched Codex workflow failed the usefulness gate: Jev added 19.3% median latency without reducing that task's worker input. Filtering remains disabled. [Release gates and receipts](docs/release-validation.md).
 
 ## Why build this?
 
@@ -26,17 +26,20 @@ Requirements: Python 3.12 or newer and [uv](https://docs.astral.sh/uv/). The FP3
 git clone https://github.com/anthony-maio/codex-decision-layer.git
 cd codex-decision-layer
 
+# Install once. Windows/Linux use CPU PyTorch wheels by default.
+uv sync --extra local --extra mcp --locked
 # Downloads the pinned model on first use and verifies its weight hashes.
-uv run --extra local eve-decision-server --device cpu
+uv run --no-sync eve-decision-server --device cpu
 ```
 
 Wait for `Eve ready at http://127.0.0.1:8765/v1/systemone`. In another terminal, from the repository:
 
 ```sh
-uv run evidence-selector --provider eve evaluate fixtures/relevance.json --output results/local-eve.json
+uv run --no-sync evidence-selector --provider eve doctor
+uv run --no-sync evidence-selector --provider eve evaluate fixtures/relevance.json --output results/local-eve.json
 ```
 
-Original model weights occupy about 2.4 GB. Subsequent starts use the Hugging Face cache. Pass `--checkpoint /path/to/decision-export` to use an existing local copy. Inference makes no hosted model calls.
+Original model weights occupy about 2.4 GB. After the first download, use `uv run --offline --no-sync eve-decision-server --offline` for a cache-only restart. Pass `--checkpoint /path/to/decision-export` to use an existing local copy. Stop with Ctrl+C. The port is reserved before loading weights; an occupied port or missing dependency produces a short startup error. Use `--no-sync` in the second terminal so another uv command does not remove the running server's optional dependencies.
 
 For the smaller llama.cpp path, see [Run the Q8 GGUF](docs/local-models.md#run-the-q8-gguf). [Release assets](https://github.com/anthony-maio/codex-decision-layer/releases/tag/v0.1.0) include the GGUF, hashes, and conversion provenance.
 
@@ -71,7 +74,7 @@ Configure the provider and the directory the evidence tools may read. This examp
 
 ```sh
 uv run evidence-selector --provider eve configure --root /absolute/path/to/your/project
-codex plugin marketplace add anthony-maio/codex-decision-layer --ref v0.1.0
+codex plugin marketplace add anthony-maio/codex-decision-layer --ref v0.1.1-rc.1
 codex plugin add decision-layer@codex-decision-layer
 ```
 
@@ -152,6 +155,6 @@ uv run python scripts/compare_receipts.py results/eve-fp32.json results/eve-q8_0
 
 Tests cover evidence preservation, failure handling, probability validation, path boundaries, dotenv handling, GGUF readout, and plugin settings. The MCP smoke test starts a real stdio server, calls both tools, and checks an outside-root read. Live model evaluations are separate from CI.
 
-Next work is model suitability: independently label real retrieval cases, compare shorter task-specific questions, and train or calibrate against held-out evidence-selection data. Then test complete tasks with filtering enabled, measuring missed evidence, expansion calls, cache behavior, latency, and downstream cost together.
+The public-source evaluation and matched workflow are recorded under [results/v0.1.1](results/v0.1.1/). Independent blind technical review is recorded separately from human ground truth, which remains unestablished. Eve's two shorter prompts and five thresholds failed the predeclared development improvement criteria. No training or holdout tuning was performed. The next experiment needs a new workflow and, for any policy change, a fresh holdout; the failed gate in this release stays failed.
 
 Code: [MIT](LICENSE). Model weights: [Apache-2.0](MODEL-LICENSE.txt). See [NOTICE.md](NOTICE.md) for sources. This is an independent experimental integration.

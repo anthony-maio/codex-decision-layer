@@ -1,4 +1,8 @@
-# First evidence-selector run
+# Evaluation history
+
+Current candidate: [v0.1.1 validation](docs/release-validation.md). The public-source holdout passed Jev's relevance gates, but the matched Codex workflow failed usefulness. Eve retained everything. Shadow mode remains the only deployed behavior. The results below are the preserved v0.1.0 synthetic baseline, not the current release gate.
+
+## First evidence-selector run
 
 September 20, 2026. Live TypeSafe Jev 1.13.0, using the same eight constructed cases as a deterministic lexical baseline. Each case contains four passages. Fourteen of the 32 passages are labeled relevant; nine are marked critical. Labels are authored fixture expectations, not independently reviewed production ground truth.
 
