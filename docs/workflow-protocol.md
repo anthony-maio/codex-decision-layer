@@ -1,0 +1,15 @@
+# Matched source-explanation workflow v1
+
+Declared after relevance holdout scoring and before any workflow answer trials. This is a separate workflow measurement, not a second relevance holdout or an opportunity to change labels. The existing holdout and Eve policy remain frozen.
+
+Task: explain the permanent-session refresh behavior and the contradictory modified-attribute comment in holdout-flask-3. This case is chosen for its real documentation/code conflict. Compare retain-all with live Jev proposals in an isolated benchmark worker. The installed plugin stays shadow-only.
+
+Run five pairs in order baseline/Jev, Jev/baseline, baseline/Jev, Jev/baseline, baseline/Jev. Each worker is a fresh ephemeral Codex CLI invocation using gpt-5.6-sol, low reasoning, identical output schema, source order, and a 100-word explanation limit. No tools or expansion are requested. Count any unexpected tool execution as a trial violation. All worker input consists of the public task, original excerpts, and common runtime instructions. Keep raw CLI logs outside Git; publish only extracted answers, numeric usage, timings, error counts, and content hashes.
+
+The output must state that an unmodified permanent session can refresh when SESSION_REFRESH_EACH_REQUEST is true, that modification itself satisfies should_set_cookie, that empty sessions take a separate save path, and that the modified-attribute comment conflicts with the implementation's broader condition. Cite both critical excerpts. Every required field must match, with no unsupported claim in the short explanation. Independently review explanations without seeing method identity.
+
+Use the service-managed cache for every run; no cache reset or forced cache priming. Record input, cached input, cache-write input, output, and reasoning tokens exactly as returned. Cache behavior is observed rather than assumed matched; report any imbalance as a limitation. Include CLI startup, live selector requests, worker elapsed time, retries, failures, and zero or actual expansion/tool calls. One attempt per trial; do not discard slow or incorrect runs.
+
+Apply the existing U2 thresholds to totals across the five trials and median end-to-end elapsed time. Report empirical p95 as the maximum. API-equivalent estimates use $4/M uncached input, $0.40/M cached input, $5/M cache-write input, and $20/M output for GPT-5.6 Sol, plus Jev input at $0.042/M and free output. Subtract cache-read and cache-write counts from total input before applying uncached input rates. These estimates are not ChatGPT subscription bills. Sources checked September 20, 2026: https://developers.openai.com/api/docs/models/gpt-5.6-sol and https://openai.com/index/gpt-5-6/; Jev: https://typesafe.ai/blog/introducing-system-one-models-and-jev.
+
+Preflight: gpt-5.4 was unavailable to this Codex account (HTTP 400, no successful worker inference). A gpt-5.6-sol readiness probe succeeded and returned cache-aware usage. Those probes are not task trials, and their separate setup overhead must be disclosed. No paid training is involved.
