@@ -84,3 +84,42 @@ replay with Python DNS/connect disabled. Existing evidence-selector CLI and MCP
 smokes also passed in those environments; that is not Ratchet MCP integration.
 Wheel identity is recorded by SHA-256. The development wheel still carries the
 base package version; it is not a new published release candidate or changed tag.
+
+## Feasibility checkpoint 3 - 2026-09-20
+
+The read-only MCP integration works in an installed local development plugin on
+Codex CLI 0.146.0. A fresh real task called status, compared two public recorded
+pytest attempts, and retrieved the exact first original using its comparison
+hash. The receipt verifies tool results against packaged replay bytes and records
+implementation hashes. The local launcher uses an explicit development
+interpreter and record root; published plugin installation is still pending.
+This proves a callable comparison tool. It does not prove automatic hook capture,
+fresh test execution inside Codex, or fewer wasted debugging attempts.
+
+Independent review identified blank/relative saved roots and a check-then-open
+path race. Saved roots now require a nonempty absolute path. POSIX reads traverse
+pinned directory descriptors without following links. Windows reads pin every
+ancestor with data-read access and exclude write/delete sharing. The reviewer
+also reproduced in-place junction mutation with attribute-only handles; the
+final data-read handles prevent it. The regression test attempts a competing
+writer while the root is pinned and verifies that ordinary child creation still
+works. Post-fix review found no remaining must-fix issue in this scope.
+
+Windows: 72 tests passed. Linux: 72 tests ran, 70 passed, with two Windows-only
+checks skipped. Both platforms passed isolated wheel installation and real
+Ratchet stdio comparison/original retrieval with DNS and new connections denied
+after event-loop creation. Windows needs an initial loopback socketpair for its
+event loop, so this is not described as an OS-level network isolation test.
+CI now runs the Ratchet protocol smoke explicitly and from the isolated wheel.
+
+The successful Codex probe took 53.5 seconds and reported 117,935 input tokens,
+including 92,672 cached input tokens, plus 672 output tokens. Its full host tool
+catalog and context are included. Those numbers are an integration receipt,
+not selector overhead, a matched workflow, or a savings measurement. No price
+estimate is inferred from them. Private task logs and local settings stay outside
+Git. The development wheel retains the base version and is not published.
+
+Next: freeze the public-source holdout and its independent labels, then run the
+predeclared comparisons and prospective workflow trials. Jev still has no
+demonstrated incremental repeated-blocker detection benefit over the stronger
+deterministic baseline. Shadow mode remains the only enabled behavior.

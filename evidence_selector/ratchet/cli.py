@@ -14,6 +14,13 @@ def main():
     commands = parser.add_subparsers(dest="command", required=True)
     demo = commands.add_parser("demo", help="Offline replay of recorded development examples; no model calls")
     demo.add_argument("--json", action="store_true")
+    configure = commands.add_parser("configure", help="Save a local record root; deterministic shadow mode")
+    configure.add_argument("--root", type=Path, required=True)
+    mcp = commands.add_parser("mcp", help="Run read-only stdio MCP tools; never executes tests")
+    mcp.add_argument("--root", type=Path)
+    mcp.add_argument("--jev", action="store_true")
+    mcp.add_argument("--allow-hosted", action="store_true")
+    mcp.add_argument("--env-file", type=Path)
     pair = commands.add_parser("compare", help="Compare two completed pytest records in shadow mode")
     pair.add_argument("previous", type=Path)
     pair.add_argument("current", type=Path)
@@ -21,6 +28,32 @@ def main():
     pair.add_argument("--allow-hosted", action="store_true", help="Allow sending complete failure text to TypeSafe")
     pair.add_argument("--env-file", type=Path)
     args = parser.parse_args()
+    if args.command == "configure":
+        from .config import configure as save_config
+        try:
+            path = save_config(args.root)
+        except (OSError, ValueError):
+            parser.error("Cannot save Ratchet settings; --root must name an accessible directory")
+        print(json.dumps({"mode": "shadow", "config": str(path), "provider": "deterministic"}))
+        return 0
+    if args.command == "mcp":
+        from .config import saved_root
+        try:
+            from .mcp_server import create_server
+            root = args.root or saved_root()
+            provider = None
+            if args.jev:
+                if not args.allow_hosted:
+                    parser.error("--jev requires --allow-hosted")
+                if args.env_file:
+                    load_env(args.env_file)
+                provider = JevChoice(allow_hosted=True)
+            create_server(root, provider).run(transport="stdio")
+        except ImportError:
+            parser.error("MCP requires the mcp extra: install codex-evidence-selector[mcp]")
+        except (OSError, ValueError) as exc:
+            parser.error(str(exc))
+        return 0
     if args.command == "demo":
         replay = json.loads(files("evidence_selector.ratchet").joinpath("data/replay.json").read_text(encoding="utf-8"))
         if args.json:

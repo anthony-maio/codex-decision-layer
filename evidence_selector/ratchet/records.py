@@ -26,7 +26,12 @@ class Run:
 
 
 def read_run(path: Path) -> Run:
-    raw = path.read_bytes()
+    with path.open("rb") as stream:
+        raw = stream.read(8_000_001)
+    return parse_run(raw)
+
+
+def parse_run(raw: bytes) -> Run:
     if len(raw) > 8_000_000:
         raise ValueError("record_too_large")
     try:

@@ -36,6 +36,7 @@ def main():
         cli = json.loads(run([str(python), "-m", "evidence_selector", "doctor"]))
         assert cli["ready"]
         mcp = json.loads(run([str(python), str(ROOT / "tests/smoke_mcp.py")]))
+        ratchet_mcp = json.loads(run([str(python), str(ROOT / "tests/smoke_ratchet_mcp.py")]))
         run([str(python), "-m", "evidence_selector.eve_server", "--port", "0"], expected=1)
         # Restart the installed CLI/MCP with package management explicitly offline.
         offline = run(["uv", "run", "--offline", "--no-project", "--python", str(python), "python", "-m", "evidence_selector", "doctor"])
@@ -53,6 +54,7 @@ def main():
                "wheel_sha256": hashlib.sha256(wheel.read_bytes()).hexdigest(),
                "isolated_wheel_import": True, "cli": "PASS", "mcp": mcp, "missing_local_extra": "ACTIONABLE_NONZERO",
                "offline_installed_cli_restart": "PASS", "ratchet_offline_wheel_replay": "PASS",
+               "ratchet_mcp": ratchet_mcp,
                "dependencies": "constrained by uv.lock"}
     output = Path(args.output)
     output.parent.mkdir(parents=True, exist_ok=True)

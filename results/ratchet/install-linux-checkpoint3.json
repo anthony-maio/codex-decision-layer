@@ -1,0 +1,39 @@
+{
+  "platform": "Linux",
+  "package_version": "0.1.1rc1",
+  "wheel": "codex_evidence_selector-0.1.1rc1-py3-none-any.whl",
+  "wheel_sha256": "8bee3d2e364189259ab4f825b93fc0fbbe3a5043edc24fc0e50483fa2844ffeb",
+  "isolated_wheel_import": true,
+  "cli": "PASS",
+  "mcp": {
+    "mcp_stdio": "PASS",
+    "provider": "baseline",
+    "original_text_preserved": true,
+    "expansion": "PASS",
+    "outside_root": "REFUSED",
+    "decisions": [
+      {
+        "id": "evidence.txt:1:d4ea650f7ad49155",
+        "proposal": "retain",
+        "reason": "lexical_overlap",
+        "probability": null,
+        "lexical_score": 0.5,
+        "model": "lexical-v1",
+        "usage": {},
+        "latency_ms": 0.066
+      }
+    ]
+  },
+  "missing_local_extra": "ACTIONABLE_NONZERO",
+  "offline_installed_cli_restart": "PASS",
+  "ratchet_offline_wheel_replay": "PASS",
+  "ratchet_mcp": {
+    "ratchet_stdio": "PASS",
+    "read_only_annotations": true,
+    "shadow_comparison": "PASS",
+    "exact_evidence_recovery": "PASS",
+    "outside_root": "REFUSED",
+    "server_dns_and_connect": "DENIED_AFTER_EVENT_LOOP_CREATION"
+  },
+  "dependencies": "constrained by uv.lock"
+}

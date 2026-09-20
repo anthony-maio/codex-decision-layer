@@ -1,0 +1,58 @@
+{
+  "worker_exit_code": 0,
+  "timed_out": false,
+  "elapsed_seconds": 53.5,
+  "tool_calls": [
+    {
+      "server": "ratchet",
+      "tool": "ratchet_status",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "server": "ratchet",
+      "tool": "ratchet_compare",
+      "status": "completed",
+      "error": null
+    },
+    {
+      "server": "ratchet",
+      "tool": "ratchet_evidence",
+      "status": "completed",
+      "error": null
+    }
+  ],
+  "usage": {
+    "input_tokens": 117935,
+    "cached_input_tokens": 92672,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 672,
+    "reasoning_output_tokens": 201
+  },
+  "implementation_sha256": {
+    "evidence_selector/ratchet/__init__.py": "8527f4d0f1d296ffb61acc30b7072171cfb18e219837fa473fa1034b6031ce32",
+    "evidence_selector/ratchet/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "evidence_selector/ratchet/cli.py": "9cf28cfab2184385a133ff777e5797889677f85ccbd30546e097eb59279f3e3b",
+    "evidence_selector/ratchet/config.py": "80f1ab2af61f8f451ae7ad7676f15ecbf0adbd7dea6b3687365d1a40996d7e60",
+    "evidence_selector/ratchet/mcp_server.py": "4c5969f3da8f28f755ae2f252718bea7a81fe96c06060e051577bdd0396cddd3",
+    "evidence_selector/ratchet/pytest_reporter.py": "b0d1f8137401300adc2d308c6975f8c76617be185ac6d97713b85c7f05355fba",
+    "evidence_selector/ratchet/records.py": "1dda34ea02f0bfd90a8a693f1bde846ecbcf1824737903d619f937478ddb4f78",
+    "evidence_selector/ratchet/secure_io.py": "c32a0214920f40a1fd2905f5658ef2f53c6bf699aa39e1de04870d95f680cb43",
+    "evidence_selector/ratchet/semantic.py": "903c7e32d7bd02d4d820d3b462fd00db60c168d59bb3ebee6e851481c8aae5ce"
+  },
+  "integration_status": "PASS_INSTALLED_CODEX_READ_ONLY_MCP",
+  "scope": "Installed local development plugin using public recorded pytest evidence",
+  "codex_cli": "0.146.0",
+  "worker_model_requested": "gpt-5.6-sol",
+  "launch": "Local plugin uses an explicit development interpreter and record root",
+  "source_sha256": [
+    "45f3e4ae9a0406dd122f8b026ad6ed68f2d7a6ea03d4280b8a0b387741749b79",
+    "ba009f9e6b7ca4a4fcefce03dda29036ef4b97d46bab342685d922db580e8952"
+  ],
+  "original_evidence_recovery": "EXACT_FIRST_RECORD",
+  "live_test_execution": "NOT_ATTEMPTED",
+  "automatic_hook_capture": "NOT_VERIFIED",
+  "workflow_usefulness": "NOT_EVALUATED",
+  "cost_estimate": null,
+  "usage_scope": "Integration probe including host tool catalog and cached context; not a matched workflow"
+}

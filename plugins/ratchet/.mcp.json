@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "ratchet": {
+      "command": "ratchet",
+      "args": ["mcp"]
+    }
+  }
+}

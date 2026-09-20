@@ -1,0 +1,20 @@
+{
+  "name": "ratchet",
+  "version": "0.1.0-dev.1",
+  "description": "Compare pytest failure records and recover their original evidence in shadow mode.",
+  "author": {
+    "name": "Anthony Maio",
+    "url": "https://github.com/anthony-maio"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Ratchet",
+    "shortDescription": "Inspect repeated failures without losing the evidence.",
+    "longDescription": "Experimental read-only failure comparison. Inspect scoped pytest records, distinguish observed blocker changes, and recover exact originals. Shadow mode is the default; no command blocking or demonstrated savings.",
+    "developerName": "Anthony Maio",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": ["Compare these two pytest attempts with Ratchet.", "Show the evidence behind this Ratchet comparison."]
+  },
+  "mcpServers": "./.mcp.json"
+}

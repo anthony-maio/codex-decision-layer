@@ -6,8 +6,10 @@ execution records are incomplete. Jev can classify unresolved pairs after explic
 hosted-upload opt-in. Everything currently runs in shadow mode.
 
 This prototype has not demonstrated fewer wasted retries, lower task cost, or
-faster completion. Live Codex hook integration remains unverified after the first
-probe's shell commands were declined by policy.
+faster completion. An installed local development plugin has completed a real
+Codex task using read-only MCP comparison and exact original retrieval. Automatic
+hook capture remains unverified after the first probe's shell commands were
+declined by policy. The supported prototype uses explicitly named records.
 
 ## Try the offline replay
 
@@ -50,6 +52,36 @@ review it before opting in. Oversized records abstain without truncation. Provid
 errors preserve an unresolved result and all original files; there are no retries.
 The optional adapter currently uses Jev 1.13.0 and a development-selected choice
 probability threshold of 0.9. This threshold is not a correctness guarantee.
+
+## Read-only Codex tools
+
+The development plugin is in `plugins/ratchet`. Its MCP server exposes
+`ratchet_status`, `ratchet_compare`, and `ratchet_evidence`. These tools never
+start tests, modify records, or block a command. Original retrieval requires the
+SHA-256 from comparison and refuses a record that has since changed.
+
+Configure a directory containing only the records you want the plugin to read:
+
+```sh
+uv run --extra mcp ratchet configure --root /path/to/record-directory
+uv run --extra mcp ratchet mcp
+```
+
+On Windows, supply a Windows directory path. Configuration is local to your user
+account, stores no credential values, and defaults to deterministic shadow mode.
+The server refuses linked paths within the canonical root and pins directories
+during reads. A concurrent writer can cause a read to fail; it does not produce a
+new recommendation. Store completed records in a dedicated directory.
+
+The plugin manifest expects the installed `ratchet` executable on Codex's PATH.
+The verified development installation uses an explicit interpreter and record
+root. General plugin installation from a published Ratchet release is still
+pending. CLI/MCP wheel installation has passed on Windows and Linux, including
+comparison and original retrieval with DNS and new connections denied after
+event-loop creation. These checks do not establish automatic event capture.
+
+Hosted MCP comparison requires starting the server with both `--jev` and
+`--allow-hosted`; installing the default plugin never opts you into uploads.
 
 ## Evidence so far
 
