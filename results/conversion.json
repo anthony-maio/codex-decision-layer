@@ -1,0 +1,51 @@
+{
+  "source_repo": "anthonym21/qwen3-0.6b-rlcd-decision",
+  "source_revision": "b327ec5efb5fdbf8bfafa3b369720ac5f6434b05",
+  "source_sha256": {
+    "model.safetensors": "ad0b65098a40026a9c2b763125c45ec312fa4e11205c07b5eb32ad10d392e47e",
+    "decision_head.safetensors": "da1328e06c64789d334350975cb3350d8d2ef7c779f133cdd5b400feb835f233"
+  },
+  "tied_head_exact_match": true,
+  "letter_ids": [
+    362,
+    425,
+    356,
+    422,
+    468,
+    434,
+    479,
+    472,
+    358,
+    619,
+    730,
+    444,
+    386,
+    451,
+    506,
+    393,
+    1207,
+    431,
+    328,
+    350,
+    547,
+    647,
+    467,
+    1599,
+    809,
+    1863
+  ],
+  "prepend_bos": false,
+  "converter_revision": "9d1ceead3163704639a285e86dbe9c7977f3bda0",
+  "quantization": "Q8_0",
+  "artifacts": {
+    "eve-qwen3-0.6b-rlcd-f16.gguf": {
+      "bytes": 1198177792,
+      "sha256": "a2e9e8937546315299ba809d2958dad17e8e54a141ad3c95a89ac27a0b69a511"
+    },
+    "eve-qwen3-0.6b-rlcd-q8_0.gguf": {
+      "bytes": 639442432,
+      "sha256": "49523f391d1408655b00b0c041a405efbb0ed343685f9415057cd6e04d8aac9a"
+    }
+  },
+  "note": "GGUF reconstructs the tied vocabulary projection. Serve through the bounded-decision adapter; this file is not structurally decision-only."
+}

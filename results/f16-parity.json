@@ -1,0 +1,7 @@
+{
+  "passages": 32,
+  "max_absolute_probability_delta": 0.005842343177969278,
+  "mean_absolute_probability_delta": 0.0015472248529793814,
+  "classification_flips_at_0_5": 0,
+  "retention_proposal_flips": 0
+}

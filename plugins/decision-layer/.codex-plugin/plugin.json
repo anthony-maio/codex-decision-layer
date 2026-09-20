@@ -1,0 +1,22 @@
+{
+  "name": "decision-layer",
+  "version": "0.1.0",
+  "description": "Compare Jev and local Eve relevance decisions while preserving every source passage.",
+  "author": {
+    "name": "Anthony Maio",
+    "url": "https://github.com/anthony-maio"
+  },
+  "repository": "https://github.com/anthony-maio/codex-decision-layer",
+  "license": "MIT",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Decision Layer",
+    "shortDescription": "Test small semantic decisions with Jev or local Eve.",
+    "longDescription": "Read explicit files, compare relevance decisions, and expand the original evidence. Shadow mode preserves every passage. Configure a local Eve endpoint, a Jev key, or the offline baseline.",
+    "developerName": "Anthony Maio",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": ["Compare relevance decisions on these files.", "Help me run Eve locally."]
+  },
+  "mcpServers": "./.mcp.json"
+}

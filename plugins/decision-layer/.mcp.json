@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "evidence": {
+      "command": "uvx",
+      "args": [
+        "--from", "codex-evidence-selector[mcp] @ git+https://github.com/anthony-maio/codex-decision-layer.git@v0.1.0",
+        "evidence-selector", "plugin-mcp"
+      ]
+    }
+  }
+}

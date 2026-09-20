@@ -1,0 +1,20 @@
+{
+  "name": "codex-decision-layer",
+  "interface": {
+    "displayName": "Codex Decision Layer"
+  },
+  "plugins": [
+    {
+      "name": "decision-layer",
+      "source": {
+        "source": "local",
+        "path": "./plugins/decision-layer"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

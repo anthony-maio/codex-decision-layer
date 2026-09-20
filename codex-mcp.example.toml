@@ -1,0 +1,10 @@
+# Optional direct MCP configuration. The plugin is the simpler installation path.
+# Replace the project path; configure provider/root with evidence-selector configure.
+[mcp_servers.evidence_selector]
+command = "uv"
+args = [
+  "run", "--project", "/absolute/path/to/codex-decision-layer",
+  "--extra", "mcp", "--locked", "evidence-selector", "plugin-mcp"
+]
+startup_timeout_sec = 120
+tool_timeout_sec = 1200

@@ -1,0 +1,527 @@
+{
+  "mode": "shadow",
+  "provider": "baseline",
+  "created_utc": "2026-09-20T17:11:57.282958+00:00",
+  "dataset_sha256": "ee19871b75ab240552a9395b684801dfe07ff076f0e2dc007a4eb7b3725b74a2",
+  "label_provenance": "Constructed coding scenarios with authored relevance labels; synthetic, not human-validated production ground truth.",
+  "prompt_version": "relevance-v1",
+  "thresholds": {
+    "drop_below": 0.1,
+    "keep_above": 0.9
+  },
+  "summary": {
+    "cases": 8,
+    "candidates": 32,
+    "scored": 0,
+    "errors": 0,
+    "proposed_recall": 0.7142857142857143,
+    "proposed_precision": 0.5263157894736842,
+    "missed_relevant": 4,
+    "missed_critical": 2,
+    "brier_on_scored": null,
+    "proposed_byte_reduction": 0.2997960571040109,
+    "actual_evidence_bytes_removed": 0,
+    "total_selector_latency_ms": 0.417,
+    "median_case_latency_ms": 0.051,
+    "provider_reported_usage": {}
+  },
+  "cases": [
+    {
+      "case_id": "shutdown-persistence",
+      "relevant": 2,
+      "retained_relevant": 1,
+      "retained": 2,
+      "candidates": 4,
+      "missed_relevant_ids": [
+        "shutdown-paraphrase"
+      ],
+      "critical": 2,
+      "missed_critical_ids": [
+        "shutdown-paraphrase"
+      ],
+      "proposed_recall": 0.5,
+      "proposed_precision": 0.5,
+      "scored": 0,
+      "brier_sum": 0,
+      "errors": 0,
+      "evidence_bytes": 391,
+      "proposed_evidence_bytes": 234,
+      "latency_ms": 0.045,
+      "decisions": [
+        {
+          "id": "shutdown-flush",
+          "proposal": "retain",
+          "reason": "lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.14285714285714285,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.011
+        },
+        {
+          "id": "shutdown-paraphrase",
+          "proposal": "drop",
+          "reason": "no_lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.0,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.009
+        },
+        {
+          "id": "shutdown-distractor",
+          "proposal": "retain",
+          "reason": "lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.2857142857142857,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.009
+        },
+        {
+          "id": "shutdown-unrelated",
+          "proposal": "drop",
+          "reason": "no_lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.0,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.007
+        }
+      ]
+    },
+    {
+      "case_id": "public-access",
+      "relevant": 2,
+      "retained_relevant": 2,
+      "retained": 3,
+      "candidates": 4,
+      "missed_relevant_ids": [],
+      "critical": 1,
+      "missed_critical_ids": [],
+      "proposed_recall": 1.0,
+      "proposed_precision": 0.6666666666666666,
+      "scored": 0,
+      "brier_sum": 0,
+      "errors": 0,
+      "evidence_bytes": 395,
+      "proposed_evidence_bytes": 356,
+      "latency_ms": 0.053,
+      "decisions": [
+        {
+          "id": "access-negative",
+          "proposal": "retain",
+          "reason": "lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.42857142857142855,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.011
+        },
+        {
+          "id": "access-proof",
+          "proposal": "retain",
+          "reason": "lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.14285714285714285,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.012
+        },
+        {
+          "id": "access-decor",
+          "proposal": "retain",
+          "reason": "lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.2857142857142857,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.011
+        },
+        {
+          "id": "access-other",
+          "proposal": "drop",
+          "reason": "no_lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.0,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.007
+        }
+      ]
+    },
+    {
+      "case_id": "cache-accounting",
+      "relevant": 2,
+      "retained_relevant": 1,
+      "retained": 2,
+      "candidates": 4,
+      "missed_relevant_ids": [
+        "cache-paraphrase"
+      ],
+      "critical": 1,
+      "missed_critical_ids": [],
+      "proposed_recall": 0.5,
+      "proposed_precision": 0.5,
+      "scored": 0,
+      "brier_sum": 0,
+      "errors": 0,
+      "evidence_bytes": 365,
+      "proposed_evidence_bytes": 200,
+      "latency_ms": 0.051,
+      "decisions": [
+        {
+          "id": "cache-subset",
+          "proposal": "retain",
+          "reason": "lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.3333333333333333,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.012
+        },
+        {
+          "id": "cache-paraphrase",
+          "proposal": "drop",
+          "reason": "no_lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.0,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.011
+        },
+        {
+          "id": "cache-ui",
+          "proposal": "retain",
+          "reason": "lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.4444444444444444,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.012
+        },
+        {
+          "id": "cache-unrelated",
+          "proposal": "drop",
+          "reason": "no_lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.0,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.007
+        }
+      ]
+    },
+    {
+      "case_id": "injected-passage",
+      "relevant": 2,
+      "retained_relevant": 2,
+      "retained": 3,
+      "candidates": 4,
+      "missed_relevant_ids": [],
+      "critical": 1,
+      "missed_critical_ids": [],
+      "proposed_recall": 1.0,
+      "proposed_precision": 0.6666666666666666,
+      "scored": 0,
+      "brier_sum": 0,
+      "errors": 0,
+      "evidence_bytes": 477,
+      "proposed_evidence_bytes": 343,
+      "latency_ms": 0.063,
+      "decisions": [
+        {
+          "id": "auth-code",
+          "proposal": "retain",
+          "reason": "lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.3333333333333333,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.012
+        },
+        {
+          "id": "auth-paraphrase",
+          "proposal": "retain",
+          "reason": "lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.16666666666666666,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.013
+        },
+        {
+          "id": "auth-injection",
+          "proposal": "drop",
+          "reason": "no_lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.0,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.014
+        },
+        {
+          "id": "auth-color",
+          "proposal": "retain",
+          "reason": "lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.6666666666666666,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.013
+        }
+      ]
+    },
+    {
+      "case_id": "retry-contradiction",
+      "relevant": 2,
+      "retained_relevant": 2,
+      "retained": 3,
+      "candidates": 4,
+      "missed_relevant_ids": [],
+      "critical": 2,
+      "missed_critical_ids": [],
+      "proposed_recall": 1.0,
+      "proposed_precision": 0.6666666666666666,
+      "scored": 0,
+      "brier_sum": 0,
+      "errors": 0,
+      "evidence_bytes": 395,
+      "proposed_evidence_bytes": 348,
+      "latency_ms": 0.056,
+      "decisions": [
+        {
+          "id": "retry-disabled",
+          "proposal": "retain",
+          "reason": "lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.7142857142857143,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.011
+        },
+        {
+          "id": "retry-config",
+          "proposal": "retain",
+          "reason": "lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.14285714285714285,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.01
+        },
+        {
+          "id": "retry-copy",
+          "proposal": "retain",
+          "reason": "lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.8571428571428571,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.012
+        },
+        {
+          "id": "retry-noise",
+          "proposal": "drop",
+          "reason": "no_lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.0,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.009
+        }
+      ]
+    },
+    {
+      "case_id": "test-failure",
+      "relevant": 2,
+      "retained_relevant": 2,
+      "retained": 3,
+      "candidates": 4,
+      "missed_relevant_ids": [],
+      "critical": 1,
+      "missed_critical_ids": [],
+      "proposed_recall": 1.0,
+      "proposed_precision": 0.6666666666666666,
+      "scored": 0,
+      "brier_sum": 0,
+      "errors": 0,
+      "evidence_bytes": 364,
+      "proposed_evidence_bytes": 315,
+      "latency_ms": 0.051,
+      "decisions": [
+        {
+          "id": "test-import",
+          "proposal": "retain",
+          "reason": "lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.14285714285714285,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.013
+        },
+        {
+          "id": "test-stage",
+          "proposal": "retain",
+          "reason": "lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.14285714285714285,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.008
+        },
+        {
+          "id": "test-marketing",
+          "proposal": "retain",
+          "reason": "lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.7142857142857143,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.009
+        },
+        {
+          "id": "test-other",
+          "proposal": "drop",
+          "reason": "no_lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.0,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.007
+        }
+      ]
+    },
+    {
+      "case_id": "lexical-gap",
+      "relevant": 2,
+      "retained_relevant": 0,
+      "retained": 1,
+      "candidates": 4,
+      "missed_relevant_ids": [
+        "gap-cause",
+        "gap-fix"
+      ],
+      "critical": 1,
+      "missed_critical_ids": [
+        "gap-cause"
+      ],
+      "proposed_recall": 0.0,
+      "proposed_precision": 0.0,
+      "scored": 0,
+      "brier_sum": 0,
+      "errors": 0,
+      "evidence_bytes": 259,
+      "proposed_evidence_bytes": 94,
+      "latency_ms": 0.05,
+      "decisions": [
+        {
+          "id": "gap-cause",
+          "proposal": "drop",
+          "reason": "no_lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.0,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.009
+        },
+        {
+          "id": "gap-fix",
+          "proposal": "drop",
+          "reason": "no_lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.0,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.008
+        },
+        {
+          "id": "gap-keywords",
+          "proposal": "retain",
+          "reason": "lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.6666666666666666,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.011
+        },
+        {
+          "id": "gap-noise",
+          "proposal": "drop",
+          "reason": "no_lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.0,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.007
+        }
+      ]
+    },
+    {
+      "case_id": "no-answer",
+      "relevant": 0,
+      "retained_relevant": 0,
+      "retained": 2,
+      "candidates": 4,
+      "missed_relevant_ids": [],
+      "critical": 0,
+      "missed_critical_ids": [],
+      "proposed_recall": null,
+      "proposed_precision": 0.0,
+      "scored": 0,
+      "brier_sum": 0,
+      "errors": 0,
+      "evidence_bytes": 296,
+      "proposed_evidence_bytes": 170,
+      "latency_ms": 0.048,
+      "decisions": [
+        {
+          "id": "none-color",
+          "proposal": "retain",
+          "reason": "lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.8,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.01
+        },
+        {
+          "id": "none-pool",
+          "proposal": "drop",
+          "reason": "no_lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.0,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.009
+        },
+        {
+          "id": "none-copy",
+          "proposal": "retain",
+          "reason": "lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.4,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.009
+        },
+        {
+          "id": "none-weather",
+          "proposal": "drop",
+          "reason": "no_lexical_overlap",
+          "probability": null,
+          "lexical_score": 0.0,
+          "model": "lexical-v1",
+          "usage": {},
+          "latency_ms": 0.006
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Fixture replay, not end-to-end task performance",
+    "Byte reduction is hypothetical and is not token or dollar savings",
+    "Sequential per-passage requests; no latency optimization",
+    "Provisional thresholds; no production filtering enabled"
+  ]
+}

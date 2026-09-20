@@ -1,0 +1,516 @@
+{
+  "mode": "shadow",
+  "provider": "eve",
+  "created_utc": "2026-09-20T18:54:18.102195+00:00",
+  "dataset_sha256": "ee19871b75ab240552a9395b684801dfe07ff076f0e2dc007a4eb7b3725b74a2",
+  "label_provenance": "Constructed coding scenarios with authored relevance labels; synthetic, not human-validated production ground truth.",
+  "prompt_version": "relevance-v1",
+  "thresholds": {
+    "drop_below": 0.1,
+    "keep_above": 0.9
+  },
+  "summary": {
+    "cases": 8,
+    "candidates": 32,
+    "scored": 32,
+    "errors": 0,
+    "proposed_recall": 1.0,
+    "proposed_precision": 0.4375,
+    "missed_relevant": 0,
+    "missed_critical": 0,
+    "brier_on_scored": 0.28110122576197033,
+    "proposed_byte_reduction": 0.0,
+    "actual_evidence_bytes_removed": 0,
+    "total_selector_latency_ms": 11301.377,
+    "median_case_latency_ms": 1370.038,
+    "provider_reported_usage": {}
+  },
+  "cases": [
+    {
+      "case_id": "shutdown-persistence",
+      "relevant": 2,
+      "retained_relevant": 2,
+      "retained": 4,
+      "candidates": 4,
+      "missed_relevant_ids": [],
+      "critical": 2,
+      "missed_critical_ids": [],
+      "proposed_recall": 1.0,
+      "proposed_precision": 0.5,
+      "scored": 4,
+      "brier_sum": 0.9435586999234218,
+      "errors": 0,
+      "evidence_bytes": 391,
+      "proposed_evidence_bytes": 391,
+      "latency_ms": 1402.976,
+      "decisions": [
+        {
+          "id": "shutdown-flush",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.6214810013771057,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 405.29
+        },
+        {
+          "id": "shutdown-paraphrase",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.7857022285461426,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 322.433
+        },
+        {
+          "id": "shutdown-distractor",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.672578752040863,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 338.998
+        },
+        {
+          "id": "shutdown-unrelated",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.5495419502258301,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 336.207
+        }
+      ]
+    },
+    {
+      "case_id": "public-access",
+      "relevant": 2,
+      "retained_relevant": 2,
+      "retained": 4,
+      "candidates": 4,
+      "missed_relevant_ids": [],
+      "critical": 1,
+      "missed_critical_ids": [],
+      "proposed_recall": 1.0,
+      "proposed_precision": 0.5,
+      "scored": 4,
+      "brier_sum": 0.7827982330414764,
+      "errors": 0,
+      "evidence_bytes": 395,
+      "proposed_evidence_bytes": 395,
+      "latency_ms": 1346.571,
+      "decisions": [
+        {
+          "id": "access-negative",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.43197521567344666,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 341.422
+        },
+        {
+          "id": "access-proof",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.782380998134613,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 363.026
+        },
+        {
+          "id": "access-decor",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.5355349183082581,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 330.641
+        },
+        {
+          "id": "access-other",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.35495126247406006,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 311.436
+        }
+      ]
+    },
+    {
+      "case_id": "cache-accounting",
+      "relevant": 2,
+      "retained_relevant": 2,
+      "retained": 4,
+      "candidates": 4,
+      "missed_relevant_ids": [],
+      "critical": 1,
+      "missed_critical_ids": [],
+      "proposed_recall": 1.0,
+      "proposed_precision": 0.5,
+      "scored": 4,
+      "brier_sum": 1.1514549448533966,
+      "errors": 0,
+      "evidence_bytes": 365,
+      "proposed_evidence_bytes": 365,
+      "latency_ms": 1373.37,
+      "decisions": [
+        {
+          "id": "cache-subset",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.46935734152793884,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 330.045
+        },
+        {
+          "id": "cache-paraphrase",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.3039020299911499,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 346.622
+        },
+        {
+          "id": "cache-ui",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.463750422000885,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 363.444
+        },
+        {
+          "id": "cache-unrelated",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.41262146830558777,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 333.202
+        }
+      ]
+    },
+    {
+      "case_id": "injected-passage",
+      "relevant": 2,
+      "retained_relevant": 2,
+      "retained": 4,
+      "candidates": 4,
+      "missed_relevant_ids": [],
+      "critical": 1,
+      "missed_critical_ids": [],
+      "proposed_recall": 1.0,
+      "proposed_precision": 0.5,
+      "scored": 4,
+      "brier_sum": 0.8294120672701162,
+      "errors": 0,
+      "evidence_bytes": 477,
+      "proposed_evidence_bytes": 477,
+      "latency_ms": 1378.443,
+      "decisions": [
+        {
+          "id": "auth-code",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.7846486568450928,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 316.467
+        },
+        {
+          "id": "auth-paraphrase",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.8503273725509644,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 330.703
+        },
+        {
+          "id": "auth-injection",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.6454039216041565,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 379.142
+        },
+        {
+          "id": "auth-color",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.5865899324417114,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 352.066
+        }
+      ]
+    },
+    {
+      "case_id": "retry-contradiction",
+      "relevant": 2,
+      "retained_relevant": 2,
+      "retained": 4,
+      "candidates": 4,
+      "missed_relevant_ids": [],
+      "critical": 2,
+      "missed_critical_ids": [],
+      "proposed_recall": 1.0,
+      "proposed_precision": 0.5,
+      "scored": 4,
+      "brier_sum": 1.5660573627436705,
+      "errors": 0,
+      "evidence_bytes": 395,
+      "proposed_evidence_bytes": 395,
+      "latency_ms": 1366.706,
+      "decisions": [
+        {
+          "id": "retry-disabled",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.6383640766143799,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 345.678
+        },
+        {
+          "id": "retry-config",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.6350683569908142,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 338.097
+        },
+        {
+          "id": "retry-copy",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.8149182796478271,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 348.984
+        },
+        {
+          "id": "retry-noise",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.7987552285194397,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 333.895
+        }
+      ]
+    },
+    {
+      "case_id": "test-failure",
+      "relevant": 2,
+      "retained_relevant": 2,
+      "retained": 4,
+      "candidates": 4,
+      "missed_relevant_ids": [],
+      "critical": 1,
+      "missed_critical_ids": [],
+      "proposed_recall": 1.0,
+      "proposed_precision": 0.5,
+      "scored": 4,
+      "brier_sum": 1.1323938388019688,
+      "errors": 0,
+      "evidence_bytes": 364,
+      "proposed_evidence_bytes": 364,
+      "latency_ms": 1300.651,
+      "decisions": [
+        {
+          "id": "test-import",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.6651631593704224,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 355.245
+        },
+        {
+          "id": "test-stage",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.4905976951122284,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 302.968
+        },
+        {
+          "id": "test-marketing",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.7280395030975342,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 323.702
+        },
+        {
+          "id": "test-other",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.4803601801395416,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 318.68
+        }
+      ]
+    },
+    {
+      "case_id": "lexical-gap",
+      "relevant": 2,
+      "retained_relevant": 2,
+      "retained": 4,
+      "candidates": 4,
+      "missed_relevant_ids": [],
+      "critical": 1,
+      "missed_critical_ids": [],
+      "proposed_recall": 1.0,
+      "proposed_precision": 0.5,
+      "scored": 4,
+      "brier_sum": 0.4549099771792635,
+      "errors": 0,
+      "evidence_bytes": 259,
+      "proposed_evidence_bytes": 259,
+      "latency_ms": 1220.869,
+      "decisions": [
+        {
+          "id": "gap-cause",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.8193406462669373,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 293.302
+        },
+        {
+          "id": "gap-fix",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.7671952247619629,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 301.02
+        },
+        {
+          "id": "gap-keywords",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.26864001154899597,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 319.657
+        },
+        {
+          "id": "gap-noise",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.5439730286598206,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 306.825
+        }
+      ]
+    },
+    {
+      "case_id": "no-answer",
+      "relevant": 0,
+      "retained_relevant": 0,
+      "retained": 4,
+      "candidates": 4,
+      "missed_relevant_ids": [],
+      "critical": 0,
+      "missed_critical_ids": [],
+      "proposed_recall": null,
+      "proposed_precision": 0.0,
+      "scored": 4,
+      "brier_sum": 2.134654100569737,
+      "errors": 0,
+      "evidence_bytes": 296,
+      "proposed_evidence_bytes": 296,
+      "latency_ms": 1911.791,
+      "decisions": [
+        {
+          "id": "none-color",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.7450052499771118,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 317.784
+        },
+        {
+          "id": "none-pool",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.6892181634902954,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 527.516
+        },
+        {
+          "id": "none-copy",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.7906938791275024,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 762.015
+        },
+        {
+          "id": "none-weather",
+          "proposal": "retain",
+          "reason": "uncertain",
+          "probability": 0.692389190196991,
+          "lexical_score": null,
+          "model": "eve-local",
+          "usage": {},
+          "latency_ms": 304.414
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Fixture replay, not end-to-end task performance",
+    "Byte reduction is hypothetical and is not token or dollar savings",
+    "Sequential per-passage requests; no latency optimization",
+    "Provisional thresholds; no production filtering enabled"
+  ]
+}
