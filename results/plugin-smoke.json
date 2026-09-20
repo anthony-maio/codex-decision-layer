@@ -1,0 +1,24 @@
+{
+  "plugin": "decision-layer@codex-decision-layer",
+  "version": "0.1.0",
+  "source": "public GitHub tagged package",
+  "stdio": "PASS",
+  "model": "eve-q8_0",
+  "original_evidence_retained": true,
+  "decisions": [
+    {
+      "id": "evidence_selector/__init__.py:1:8266bea66e88db2d",
+      "proposal": "retain",
+      "reason": "uncertain",
+      "probability": 0.8116312605657875,
+      "lexical_score": null,
+      "model": "eve-q8_0",
+      "usage": {
+        "input_tokens": 96,
+        "output_tokens": 1
+      },
+      "latency_ms": 64.55
+    }
+  ],
+  "desktop_ui_observed": false
+}

@@ -34,6 +34,9 @@ Validation status:
 - OpenRouter: request/response contract tested locally; live provider run NOT RUN.
 - Eve: original checkpoint, native FP32 server, F16 GGUF, and Q8_0 GGUF all ran locally with zero errors on the fixture replay. See below.
 - Codex Desktop UI observation: NOT RUN. Built-in tools are not intercepted.
+- Public GitHub marketplace registration and plugin installation through Codex CLI: PASS for v0.1.0.
+- Installed plugin launcher -> tagged package -> stdio MCP -> local Q8 model: PASS. [Receipt](results/plugin-smoke.json).
+- GitHub CI for the tagged source: Windows and Linux unit tests and MCP smoke checks PASS. [Run](https://github.com/anthony-maio/codex-decision-layer/actions/runs/35531307917).
 
 Next useful measurement: independently label a larger set of real retrieval candidates, freeze the labels, then replay Jev and Eve on the same inputs. End-to-end task trials should follow before evidence filtering is enabled. The current run does not justify changing permissions or dropping context automatically.
 
