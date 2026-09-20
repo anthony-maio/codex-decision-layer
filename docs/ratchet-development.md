@@ -123,3 +123,40 @@ Next: freeze the public-source holdout and its independent labels, then run the
 predeclared comparisons and prospective workflow trials. Jev still has no
 demonstrated incremental repeated-blocker detection benefit over the stronger
 deterministic baseline. Shadow mode remains the only enabled behavior.
+
+## Feasibility checkpoint 4 - 2026-09-20
+
+The independently reviewed public-library adapter holdout is frozen at `941949d`.
+It contains 30 pairs in ten related scenarios across Click, packaging and
+more-itertools, with ten labels per relationship class. Source commits, licenses,
+actual pytest-child import identities and raw/normalized record hashes are
+recorded. Pre-score review tightened partial-result gates, committed-input
+verification, exact child provenance, path-only normalization and atomic receipts.
+No classifier ran until the final packet and scoring code were committed.
+
+Exact matching detected 0/10 repeats. The stronger deterministic baseline detected
+3/10 with one critical false match. Deterministic plus Jev detected 10/10 with
+the same inherited false match: 90.9% precision and 100% recall. Jev recovered
+seven correct repeats missed by the baseline without adding false positives,
+passing the incremental gate. The combined classification gate still failed its
+95% precision and zero-critical-false-match requirements. Advisory stays disabled.
+
+The false match joins too-few and too-many iterable branches at a shared error
+callback. Jev was not called for that already-resolved baseline decision. No
+comparator or prompt revision was made after observing the failure; a future
+revision requires independent development evidence and a new holdout. Independent
+post-score audit verified counts, accepted labels, source hashes and gate failures.
+
+Fourteen provider calls used 13,369 input and 742 output tokens, with 5.560 seconds
+total provider latency, no errors and no retries. These are comparator-only
+measurements, with provider cache usage and billed cost unavailable. Linux
+reproduction of both deterministic methods matched every Windows label, reason,
+evidence hash and metric. No second Jev scoring run was performed.
+
+Checkpoint verification: Windows full suite 78/78 passed; Linux 78 tests ran,
+76 passed and two Windows-only checks skipped. These checks do not establish
+hosted CI or workflow usefulness.
+
+Full prospective workflow quality, latency and cache-aware worker cost remain
+open. Pair classification is now measured; debugging usefulness is still
+unproven. See `ratchet-holdout-results.md` for the failed gates and receipt paths.

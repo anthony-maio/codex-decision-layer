@@ -1,0 +1,20 @@
+{
+  "platform": "Linux",
+  "freeze_sha256": "f15dcc6001c14c7a309847e86280f113339887ed51cebe74a471d0cf6e74c590",
+  "provider_calls": 0,
+  "checks": {
+    "exact": {
+      "matched_cases": 30,
+      "labels_reasons_evidence_and_metrics": "EXACT_MATCH",
+      "original_sha256": "e517609eccfffedcea8c2ba30907b34737ae4399e59e7a6d912478e0d7a8ab59",
+      "reproduction_sha256": "c38d42d326cc9ba6d7ed46d9bb3726cd608a33d824534cb590d4d156933d49c8"
+    },
+    "deterministic": {
+      "matched_cases": 30,
+      "labels_reasons_evidence_and_metrics": "EXACT_MATCH",
+      "original_sha256": "252168e9b862e9cc877477d0523e7ecc3756c7fde6b8f02c8c52db17d8477a2a",
+      "reproduction_sha256": "2bc75c5b190d0e49fd4a17c48ad55adacb313022abe6139e55db153cd7258afc"
+    }
+  },
+  "scope": "Frozen corpus scoring on a second platform; no new pytest execution or Jev inference"
+}

@@ -1,0 +1,798 @@
+{
+  "status": "COMPLETE",
+  "method": "jev",
+  "split": "holdout",
+  "run_purpose": "ORIGINAL_FROZEN_EXPERIMENT",
+  "started_utc": "2026-09-20T22:19:41.931948+00:00",
+  "freeze_sha256": "f15dcc6001c14c7a309847e86280f113339887ed51cebe74a471d0cf6e74c590",
+  "freeze_commit": "941949d93e455ac3ad2d9838aca0a469fb0309b2",
+  "threshold": 0.9,
+  "model": "Jev 1.13.0",
+  "provenance": "Authored adapters deliberately trigger failures in pinned public library code; not natural agent traces or upstream bugs.",
+  "rows": [
+    {
+      "id": "holdout-cli-choice-same",
+      "expected": "same_blocker",
+      "critical": false,
+      "relationship": "same_blocker",
+      "method": "deterministic_plus_jev",
+      "reason": "semantic_comparison",
+      "evidence": [
+        "4e26b460d1daa926302b06ad4e6b2a303de813c1d56643f82a9c6b0616c33113",
+        "ab488f28b01c867c7e33da04c10ccb6c360b68066f0099360724afb839d98e6e"
+      ],
+      "advisory": null,
+      "provider_calls": 1,
+      "provider_latency_ms": 572.7004999644123,
+      "retries": 0,
+      "decision": {
+        "choice": "same_blocker",
+        "probabilities": {
+          "different_blocker": 0.0,
+          "insufficient_evidence": 0.0,
+          "same_blocker": 1.0
+        },
+        "provider_confidence": 0.99,
+        "model": "jev-1.13.0",
+        "usage": {
+          "input_tokens": 736,
+          "output_tokens": 53
+        }
+      },
+      "selector_elapsed_ms": 573.0372999678366
+    },
+    {
+      "id": "holdout-cli-choice-different",
+      "expected": "different_blocker",
+      "critical": true,
+      "relationship": "different_blocker",
+      "method": "deterministic",
+      "reason": "execution_advanced",
+      "evidence": [
+        "fa9218104d60de3541fb69c3ffe966df4faa92a0296b8359c3d4c39e78f87991",
+        "ed0357855c739618c726cd1b661f0f324dbf9b3015f47a6f2ca98dd1f319a3e3"
+      ],
+      "advisory": null,
+      "provider_calls": 0,
+      "provider_latency_ms": 0,
+      "retries": 0,
+      "selector_elapsed_ms": 0.1534000039100647
+    },
+    {
+      "id": "holdout-cli-choice-insufficient",
+      "expected": "insufficient_evidence",
+      "critical": true,
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "unsupported_or_incomplete",
+      "evidence": [
+        "054937dd54261d7cdc418c6564aba5942bbedcb28c07445b4fdb204fb480dee6",
+        "2a38173e095ceaf4c6ace7cee152b00e16af74a94d7ecbf4c1b2c01c410af7c6"
+      ],
+      "advisory": null,
+      "provider_calls": 0,
+      "provider_latency_ms": 0,
+      "retries": 0,
+      "selector_elapsed_ms": 0.21470000501722097
+    },
+    {
+      "id": "holdout-cli-range-same",
+      "expected": "same_blocker",
+      "critical": false,
+      "relationship": "same_blocker",
+      "method": "deterministic_plus_jev",
+      "reason": "semantic_comparison",
+      "evidence": [
+        "8238db2f46954f874d65262ec6a0ea8a85c8c022011496209b61664a7783dcf4",
+        "dd134731bd0a3725b800eeec983f55c8313905628592f1f359b75cc3632f0fac"
+      ],
+      "advisory": null,
+      "provider_calls": 1,
+      "provider_latency_ms": 374.27269999170676,
+      "retries": 0,
+      "decision": {
+        "choice": "same_blocker",
+        "probabilities": {
+          "insufficient_evidence": 0.0,
+          "different_blocker": 0.01,
+          "same_blocker": 0.99
+        },
+        "provider_confidence": 0.99,
+        "model": "jev-1.13.0",
+        "usage": {
+          "input_tokens": 742,
+          "output_tokens": 53
+        }
+      },
+      "selector_elapsed_ms": 374.4997999747284
+    },
+    {
+      "id": "holdout-cli-range-different",
+      "expected": "different_blocker",
+      "critical": true,
+      "relationship": "different_blocker",
+      "method": "deterministic",
+      "reason": "execution_advanced",
+      "evidence": [
+        "4e1efb3a197c9a326aa1d2e70308d4c8ad0900e867bea75e346bf7eb557ac650",
+        "10d9414540b9e976ee048965d28e2892bf6809c63669e51883407bbc7dd0d2ee"
+      ],
+      "advisory": null,
+      "provider_calls": 0,
+      "provider_latency_ms": 0,
+      "retries": 0,
+      "selector_elapsed_ms": 0.16840000171214342
+    },
+    {
+      "id": "holdout-cli-range-insufficient",
+      "expected": "insufficient_evidence",
+      "critical": true,
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "unsupported_or_incomplete",
+      "evidence": [
+        "5c92003b4a63f49b38b597b9febd7ac044feda4dca6b439a464e28e2b2a0a39e",
+        "e2afa7183cc3ce46ff2b66902e4332abd9aa647f108aa3762670491853b5c1be"
+      ],
+      "advisory": null,
+      "provider_calls": 0,
+      "provider_latency_ms": 0,
+      "retries": 0,
+      "selector_elapsed_ms": 0.13420003233477473
+    },
+    {
+      "id": "holdout-cli-tuple-arity-same",
+      "expected": "same_blocker",
+      "critical": false,
+      "relationship": "same_blocker",
+      "method": "deterministic_plus_jev",
+      "reason": "semantic_comparison",
+      "evidence": [
+        "20721a205376eaf74dafcdd2a0dac0d053c0d1b55df5b9911bf11ee90751a51a",
+        "71bda894d77a65a08f78830d9f672c30c202d6eabb84f2dacfeeedfd9563891c"
+      ],
+      "advisory": null,
+      "provider_calls": 1,
+      "provider_latency_ms": 362.3667999636382,
+      "retries": 0,
+      "decision": {
+        "choice": "same_blocker",
+        "probabilities": {
+          "same_blocker": 0.97,
+          "different_blocker": 0.03,
+          "insufficient_evidence": 0.0
+        },
+        "provider_confidence": 0.96,
+        "model": "jev-1.13.0",
+        "usage": {
+          "input_tokens": 730,
+          "output_tokens": 53
+        }
+      },
+      "selector_elapsed_ms": 362.5515999738127
+    },
+    {
+      "id": "holdout-cli-tuple-arity-different",
+      "expected": "different_blocker",
+      "critical": true,
+      "relationship": "different_blocker",
+      "method": "deterministic_plus_jev",
+      "reason": "semantic_comparison",
+      "evidence": [
+        "f97ffa1f33543d6913e8a54c9f4f56aae43129a382b98b196a3e7da1d331d40f",
+        "842fc86709e67a01db144da2577df6792af14d262ba19250a4eb2493aa93d11d"
+      ],
+      "advisory": null,
+      "provider_calls": 1,
+      "provider_latency_ms": 365.0494000175968,
+      "retries": 0,
+      "decision": {
+        "choice": "different_blocker",
+        "probabilities": {
+          "different_blocker": 0.97,
+          "same_blocker": 0.03,
+          "insufficient_evidence": 0.0
+        },
+        "provider_confidence": 0.96,
+        "model": "jev-1.13.0",
+        "usage": {
+          "input_tokens": 978,
+          "output_tokens": 53
+        }
+      },
+      "selector_elapsed_ms": 365.2663000393659
+    },
+    {
+      "id": "holdout-cli-tuple-arity-insufficient",
+      "expected": "insufficient_evidence",
+      "critical": true,
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "unsupported_or_incomplete",
+      "evidence": [
+        "782c50505a178a98107d94f2b5e934d4dac3efc1fcf3040fd388d306204b89bf",
+        "e907e963df0e02d301ece392c206d3613931eb996cb692a4d5afa1ae8ebd6341"
+      ],
+      "advisory": null,
+      "provider_calls": 0,
+      "provider_latency_ms": 0,
+      "retries": 0,
+      "selector_elapsed_ms": 0.13229995965957642
+    },
+    {
+      "id": "holdout-cli-required-option-same",
+      "expected": "same_blocker",
+      "critical": false,
+      "relationship": "same_blocker",
+      "method": "deterministic",
+      "reason": "matching_explicit_cause",
+      "evidence": [
+        "0c813233ee85e3196f7a7dd343a4100079270277d0ad379d8d5f240bc649ed64",
+        "79752eb845f426d766a3d5046061f100e93bb17da988d4613c3dd542ba457725"
+      ],
+      "advisory": null,
+      "provider_calls": 0,
+      "provider_latency_ms": 0,
+      "retries": 0,
+      "selector_elapsed_ms": 0.1917000045068562
+    },
+    {
+      "id": "holdout-cli-required-option-different",
+      "expected": "different_blocker",
+      "critical": true,
+      "relationship": "different_blocker",
+      "method": "deterministic_plus_jev",
+      "reason": "semantic_comparison",
+      "evidence": [
+        "13d0f9ac64e914a64ed2cf287e30ea828ce76745e98f5a8dadaf0ae93cf10bec",
+        "bc0e31027f67455c2f97ba31796b3400acffa8fd7086206dd74c8b4a0fea1805"
+      ],
+      "advisory": null,
+      "provider_calls": 1,
+      "provider_latency_ms": 383.69339995551854,
+      "retries": 0,
+      "decision": {
+        "choice": "different_blocker",
+        "probabilities": {
+          "different_blocker": 1.0,
+          "insufficient_evidence": 0.0,
+          "same_blocker": 0.0
+        },
+        "provider_confidence": 1.0,
+        "model": "jev-1.13.0",
+        "usage": {
+          "input_tokens": 1099,
+          "output_tokens": 53
+        }
+      },
+      "selector_elapsed_ms": 383.91760003287345
+    },
+    {
+      "id": "holdout-cli-required-option-insufficient",
+      "expected": "insufficient_evidence",
+      "critical": true,
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "unsupported_or_incomplete",
+      "evidence": [
+        "65c3c58a4d99e658509b59014bca06c4df8d7872eb5ebd90fe0dcef0f6a954af",
+        "8626bec3f0ded2d246800560185efb1bc76714ca71d664b6fe6fa1a5b2685192"
+      ],
+      "advisory": null,
+      "provider_calls": 0,
+      "provider_latency_ms": 0,
+      "retries": 0,
+      "selector_elapsed_ms": 0.15430001076310873
+    },
+    {
+      "id": "holdout-release-version-grammar-same",
+      "expected": "same_blocker",
+      "critical": false,
+      "relationship": "same_blocker",
+      "method": "deterministic_plus_jev",
+      "reason": "semantic_comparison",
+      "evidence": [
+        "d936d83574e9d0b183663edb035090b126bc28bc9b6413452f462818f3477dfa",
+        "0e85b731f68484a6e7524cd70c6bca1981a83936d0fb1dffc81eb01a56de54ff"
+      ],
+      "advisory": null,
+      "provider_calls": 1,
+      "provider_latency_ms": 355.15949997352436,
+      "retries": 0,
+      "decision": {
+        "choice": "same_blocker",
+        "probabilities": {
+          "different_blocker": 0.01,
+          "insufficient_evidence": 0.0,
+          "same_blocker": 0.99
+        },
+        "provider_confidence": 0.99,
+        "model": "jev-1.13.0",
+        "usage": {
+          "input_tokens": 668,
+          "output_tokens": 53
+        }
+      },
+      "selector_elapsed_ms": 355.35329999402165
+    },
+    {
+      "id": "holdout-release-version-grammar-different",
+      "expected": "different_blocker",
+      "critical": true,
+      "relationship": "different_blocker",
+      "method": "deterministic_plus_jev",
+      "reason": "semantic_comparison",
+      "evidence": [
+        "4d0dc6736ce12825d4b2c20fca39d8177bdf1499c11e3180436f1164977e956a",
+        "afeed62ba3ae6d153c05288460b72f83f68e73cae51d621693c339b4f9648077"
+      ],
+      "advisory": null,
+      "provider_calls": 1,
+      "provider_latency_ms": 399.9887999962084,
+      "retries": 0,
+      "decision": {
+        "choice": "different_blocker",
+        "probabilities": {
+          "same_blocker": 0.0,
+          "different_blocker": 1.0,
+          "insufficient_evidence": 0.0
+        },
+        "provider_confidence": 1.0,
+        "model": "jev-1.13.0",
+        "usage": {
+          "input_tokens": 686,
+          "output_tokens": 53
+        }
+      },
+      "selector_elapsed_ms": 400.18150000832975
+    },
+    {
+      "id": "holdout-release-version-grammar-insufficient",
+      "expected": "insufficient_evidence",
+      "critical": true,
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "multiple_or_missing_failures",
+      "evidence": [
+        "9096b55fc51478049ac99b9be73d0c9c533b5b17c3798c6c5b0d4266c067f86b",
+        "18c3ebbb9db157e1f6f7dec0a2dbf2387a4924aa4e3648146901b156ea67f7c1"
+      ],
+      "advisory": null,
+      "provider_calls": 0,
+      "provider_latency_ms": 0,
+      "retries": 0,
+      "selector_elapsed_ms": 0.172699976246804
+    },
+    {
+      "id": "holdout-release-specifier-operator-same",
+      "expected": "same_blocker",
+      "critical": false,
+      "relationship": "same_blocker",
+      "method": "deterministic_plus_jev",
+      "reason": "semantic_comparison",
+      "evidence": [
+        "9ec540b136f450f444d4cd80d06314fff56e5c12227fca2856df77422031b463",
+        "b70b4f79c7c2fe26f550dfb6b08df5ddf897781da1f642abd2266db85b70e010"
+      ],
+      "advisory": null,
+      "provider_calls": 1,
+      "provider_latency_ms": 403.33970001665875,
+      "retries": 0,
+      "decision": {
+        "choice": "same_blocker",
+        "probabilities": {
+          "insufficient_evidence": 0.0,
+          "different_blocker": 0.0,
+          "same_blocker": 1.0
+        },
+        "provider_confidence": 1.0,
+        "model": "jev-1.13.0",
+        "usage": {
+          "input_tokens": 824,
+          "output_tokens": 53
+        }
+      },
+      "selector_elapsed_ms": 403.51440000813454
+    },
+    {
+      "id": "holdout-release-specifier-operator-different",
+      "expected": "different_blocker",
+      "critical": true,
+      "relationship": "different_blocker",
+      "method": "deterministic_plus_jev",
+      "reason": "semantic_comparison",
+      "evidence": [
+        "19bee9fc652d96596b3d457bc60a76e5eac25d8421ed2b3b3f9a3402bf61b6e4",
+        "822a73efb735aa39936108c560f9fb3841ceff6791413078852beb8583427924"
+      ],
+      "advisory": null,
+      "provider_calls": 1,
+      "provider_latency_ms": 376.8880999996327,
+      "retries": 0,
+      "decision": {
+        "choice": "different_blocker",
+        "probabilities": {
+          "different_blocker": 1.0,
+          "insufficient_evidence": 0.0,
+          "same_blocker": 0.0
+        },
+        "provider_confidence": 1.0,
+        "model": "jev-1.13.0",
+        "usage": {
+          "input_tokens": 771,
+          "output_tokens": 53
+        }
+      },
+      "selector_elapsed_ms": 377.0741000189446
+    },
+    {
+      "id": "holdout-release-specifier-operator-insufficient",
+      "expected": "insufficient_evidence",
+      "critical": true,
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "multiple_or_missing_failures",
+      "evidence": [
+        "95cc4a6634d4db8a6c1623d61808891ffbc4e5e4d9d5e6f48dadeaacc27ab9e5",
+        "28d09f5d764f32d017ce94e2a5b01817f64731eb2e01c514c32f9fb1e5b58276"
+      ],
+      "advisory": null,
+      "provider_calls": 0,
+      "provider_latency_ms": 0,
+      "retries": 0,
+      "selector_elapsed_ms": 0.18419994739815593
+    },
+    {
+      "id": "holdout-requirement-url-grammar-same",
+      "expected": "same_blocker",
+      "critical": false,
+      "relationship": "same_blocker",
+      "method": "deterministic_plus_jev",
+      "reason": "semantic_comparison",
+      "evidence": [
+        "dbe0dae734399b268c077ba32d6d42d53ed6978f846d66d0157f50350dcd2589",
+        "5b7fcc6004cac6ad85cf703fbd5eab6137b1c5f15b439265b072f370c2daa0c3"
+      ],
+      "advisory": null,
+      "provider_calls": 1,
+      "provider_latency_ms": 417.7897000336088,
+      "retries": 0,
+      "decision": {
+        "choice": "same_blocker",
+        "probabilities": {
+          "different_blocker": 0.0,
+          "insufficient_evidence": 0.0,
+          "same_blocker": 1.0
+        },
+        "provider_confidence": 1.0,
+        "model": "jev-1.13.0",
+        "usage": {
+          "input_tokens": 1496,
+          "output_tokens": 53
+        }
+      },
+      "selector_elapsed_ms": 418.0796999717131
+    },
+    {
+      "id": "holdout-requirement-url-grammar-different",
+      "expected": "different_blocker",
+      "critical": true,
+      "relationship": "different_blocker",
+      "method": "deterministic_plus_jev",
+      "reason": "semantic_comparison",
+      "evidence": [
+        "0d000f49aa1606d18e7abb6e160cdded3577e9433f14c7503eaa453b4e5c0086",
+        "9ed68c4378d2abb6c944a31502608dc71a53ea01a32467e2535e313a50206322"
+      ],
+      "advisory": null,
+      "provider_calls": 1,
+      "provider_latency_ms": 409.59390002535656,
+      "retries": 0,
+      "decision": {
+        "choice": "different_blocker",
+        "probabilities": {
+          "insufficient_evidence": 0.0,
+          "different_blocker": 1.0,
+          "same_blocker": 0.0
+        },
+        "provider_confidence": 1.0,
+        "model": "jev-1.13.0",
+        "usage": {
+          "input_tokens": 1062,
+          "output_tokens": 53
+        }
+      },
+      "selector_elapsed_ms": 409.81990000000224
+    },
+    {
+      "id": "holdout-requirement-url-grammar-insufficient",
+      "expected": "insufficient_evidence",
+      "critical": true,
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "multiple_or_missing_failures",
+      "evidence": [
+        "c2d20363dbfb6fa0844537c80eab4b752e5717920229f3ef22c0da5f5717e1cc",
+        "abbc85be719d788a9495bd497b9f0069ce71dcecf7076b987dcd86a83e519c10"
+      ],
+      "advisory": null,
+      "provider_calls": 0,
+      "provider_latency_ms": 0,
+      "retries": 0,
+      "selector_elapsed_ms": 0.18660002388060093
+    },
+    {
+      "id": "holdout-environment-marker-operator-same",
+      "expected": "same_blocker",
+      "critical": false,
+      "relationship": "same_blocker",
+      "method": "deterministic_plus_jev",
+      "reason": "semantic_comparison",
+      "evidence": [
+        "601418be576c1b584e07c38ace25e0aeeae31388244b265d66baa032c84e5bf6",
+        "37a8c849313596ffe07d026f51829b1bdfcfdfa0be49348df5f899237fde2139"
+      ],
+      "advisory": null,
+      "provider_calls": 1,
+      "provider_latency_ms": 380.58579998323694,
+      "retries": 0,
+      "decision": {
+        "choice": "same_blocker",
+        "probabilities": {
+          "insufficient_evidence": 0.0,
+          "same_blocker": 1.0,
+          "different_blocker": 0.0
+        },
+        "provider_confidence": 1.0,
+        "model": "jev-1.13.0",
+        "usage": {
+          "input_tokens": 1682,
+          "output_tokens": 53
+        }
+      },
+      "selector_elapsed_ms": 380.8411000063643
+    },
+    {
+      "id": "holdout-environment-marker-operator-different",
+      "expected": "different_blocker",
+      "critical": true,
+      "relationship": "different_blocker",
+      "method": "deterministic_plus_jev",
+      "reason": "semantic_comparison",
+      "evidence": [
+        "230bed9e755ce968bafa0b78101d8f0db52b409a3cd686b18591ca750085637b",
+        "fed662dd076a31f8cf6acc0f864121ba1e6dea839b234549fed7ce982014211b"
+      ],
+      "advisory": null,
+      "provider_calls": 1,
+      "provider_latency_ms": 412.41240000817925,
+      "retries": 0,
+      "decision": {
+        "choice": "different_blocker",
+        "probabilities": {
+          "different_blocker": 1.0,
+          "insufficient_evidence": 0.0,
+          "same_blocker": 0.0
+        },
+        "provider_confidence": 1.0,
+        "model": "jev-1.13.0",
+        "usage": {
+          "input_tokens": 1212,
+          "output_tokens": 53
+        }
+      },
+      "selector_elapsed_ms": 412.67639998113737
+    },
+    {
+      "id": "holdout-environment-marker-operator-insufficient",
+      "expected": "insufficient_evidence",
+      "critical": true,
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "multiple_or_missing_failures",
+      "evidence": [
+        "ce29ff99f61bad1eebdff60ab55b64ce0668b63882f689c0ce26442640aa2378",
+        "8b1a4b928a690197bb1ab332764ef5e179aca027651b1941a92103afae432a9f"
+      ],
+      "advisory": null,
+      "provider_calls": 0,
+      "provider_latency_ms": 0,
+      "retries": 0,
+      "selector_elapsed_ms": 0.1821999903768301
+    },
+    {
+      "id": "holdout-single-result-cardinality-same",
+      "expected": "same_blocker",
+      "critical": false,
+      "relationship": "same_blocker",
+      "method": "deterministic",
+      "reason": "matching_explicit_cause",
+      "evidence": [
+        "9952156d938050056e4639e3cc7388e8262f845b5bd7f2a6538ca28bed06ecaf",
+        "308255f7296a2326064f46fd87e928fd9831d250cd425569fafb96767a2f7cbf"
+      ],
+      "advisory": null,
+      "provider_calls": 0,
+      "provider_latency_ms": 0,
+      "retries": 0,
+      "selector_elapsed_ms": 0.1596000511199236
+    },
+    {
+      "id": "holdout-single-result-cardinality-different",
+      "expected": "different_blocker",
+      "critical": true,
+      "relationship": "insufficient_evidence",
+      "method": "deterministic_plus_jev",
+      "reason": "semantic_abstention",
+      "evidence": [
+        "616ebb7e4f01ce517f3a5caf2082ee999491529b01a1bc28a2ddeda2fa79f4b6",
+        "3116273a9307d86f87488a9fa4244cb15f5d13121a25c33c27d1c4b69dd4e73a"
+      ],
+      "advisory": null,
+      "provider_calls": 1,
+      "provider_latency_ms": 345.7732999813743,
+      "retries": 0,
+      "decision": {
+        "choice": "different_blocker",
+        "probabilities": {
+          "insufficient_evidence": 0.01,
+          "different_blocker": 0.62,
+          "same_blocker": 0.37
+        },
+        "provider_confidence": 0.44,
+        "model": "jev-1.13.0",
+        "usage": {
+          "input_tokens": 683,
+          "output_tokens": 53
+        }
+      },
+      "selector_elapsed_ms": 345.9550999687053
+    },
+    {
+      "id": "holdout-single-result-cardinality-insufficient",
+      "expected": "insufficient_evidence",
+      "critical": true,
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "multiple_or_missing_failures",
+      "evidence": [
+        "84f837707b39a74dc043d9975cd1de616cef14ce56612aec39f81b6efffb5ee9",
+        "d907b30f0785d3c327daa123ea1817a1f352ea17ee54db2074a0594ab56df862"
+      ],
+      "advisory": null,
+      "provider_calls": 0,
+      "provider_latency_ms": 0,
+      "retries": 0,
+      "selector_elapsed_ms": 0.17640000442042947
+    },
+    {
+      "id": "holdout-fixed-result-cardinality-same",
+      "expected": "same_blocker",
+      "critical": false,
+      "relationship": "same_blocker",
+      "method": "deterministic",
+      "reason": "matching_explicit_cause",
+      "evidence": [
+        "885f6dc3c49c75bfb480b3d35cd1017a675704c6810d84ee24cf592a4835d903",
+        "3130bccbccadc4455bf65f0c8df0dea98c8261a290e82e847be8b8eca49064ba"
+      ],
+      "advisory": null,
+      "provider_calls": 0,
+      "provider_latency_ms": 0,
+      "retries": 0,
+      "selector_elapsed_ms": 0.17680000746622682
+    },
+    {
+      "id": "holdout-fixed-result-cardinality-different",
+      "expected": "different_blocker",
+      "critical": true,
+      "relationship": "same_blocker",
+      "method": "deterministic",
+      "reason": "matching_explicit_cause",
+      "evidence": [
+        "a82d322192b642ec583ce7b8aca39b0f4d02b8b912bfde957725331b3b9e42de",
+        "b06a3c2082a68e95eff54238e42346b5ee228e0f79c8c44320f1076e8767b308"
+      ],
+      "advisory": null,
+      "provider_calls": 0,
+      "provider_latency_ms": 0,
+      "retries": 0,
+      "selector_elapsed_ms": 0.16520003555342555
+    },
+    {
+      "id": "holdout-fixed-result-cardinality-insufficient",
+      "expected": "insufficient_evidence",
+      "critical": true,
+      "relationship": "insufficient_evidence",
+      "method": "deterministic",
+      "reason": "multiple_or_missing_failures",
+      "evidence": [
+        "9d566b6593b715e83d9e722dbebd3482ed595779444c122dd4e8eb76aefb2332",
+        "b88df6d39ecaeb7e88f105f934f62ee9c63dcd6feffa73ff18a66eb10a912290"
+      ],
+      "advisory": null,
+      "provider_calls": 0,
+      "provider_latency_ms": 0,
+      "retries": 0,
+      "selector_elapsed_ms": 0.16360002337023616
+    }
+  ],
+  "retries": 0,
+  "advisory_gate": "NOT_EVALUATED_TWO_ATTEMPT_PAIRS",
+  "workflow_gate": "NOT_EVALUATED",
+  "cost_estimate": null,
+  "cache_usage": "NOT_REPORTED_BY_PROVIDER",
+  "uncertainty_scope": "Wilson intervals summarize pair counts; correlated scenarios and purposive sampling prevent population-level reliability claims",
+  "setup_validation_ms": 1469.631100015249,
+  "elapsed_ms": 5696.131900011096,
+  "metrics": {
+    "cases": 30,
+    "expected_distribution": {
+      "same_blocker": 10,
+      "different_blocker": 10,
+      "insufficient_evidence": 10
+    },
+    "same_predictions": 11,
+    "true_same": 10,
+    "false_same": 1,
+    "actual_same": 10,
+    "same_precision": 0.9090909090909091,
+    "same_recall": 1.0,
+    "precision_wilson_95": [
+      0.6226415635484043,
+      0.9837678271141151
+    ],
+    "recall_wilson_95": [
+      0.7224672001371107,
+      0.9999999999999999
+    ],
+    "critical_false_same": 1,
+    "all_label_accuracy": 0.9333333333333333,
+    "classification_gate": false
+  },
+  "provider_calls": 14,
+  "provider_errors": 0,
+  "provider_latency_ms": 5559.613999910653,
+  "provider_usage": {
+    "input_tokens": 13369,
+    "output_tokens": 742
+  },
+  "unresolved_subset_metrics": {
+    "cases": 14,
+    "expected_distribution": {
+      "same_blocker": 7,
+      "different_blocker": 7
+    },
+    "same_predictions": 7,
+    "true_same": 7,
+    "false_same": 0,
+    "actual_same": 7,
+    "same_precision": 1.0,
+    "same_recall": 1.0,
+    "precision_wilson_95": [
+      0.6456695649333126,
+      1
+    ],
+    "recall_wilson_95": [
+      0.6456695649333126,
+      1
+    ],
+    "critical_false_same": 0,
+    "all_label_accuracy": 0.9285714285714286
+  },
+  "complete_corpus_evaluated": true,
+  "incremental_comparison": {
+    "new_correct_same": [
+      "holdout-cli-choice-same",
+      "holdout-cli-range-same",
+      "holdout-cli-tuple-arity-same",
+      "holdout-release-version-grammar-same",
+      "holdout-release-specifier-operator-same",
+      "holdout-requirement-url-grammar-same",
+      "holdout-environment-marker-operator-same"
+    ],
+    "added_false_same": [],
+    "incremental_semantic_gate": true,
+    "note": "Incremental recovery alone does not pass classification, advisory, or workflow gates"
+  }
+}

@@ -91,10 +91,16 @@ matching found three of ten repeats. Matching explicit exception causes found
 all ten with zero false repeat predictions. Jev resolved the remaining eight
 different-blocker cases, producing 30/30 combined labels with eight requests.
 
-The stronger deterministic baseline already found every repeated blocker in this
-set. Jev has not established an incremental repeat-detection benefit. These fixtures
-also contain only two attempts each, so they cannot establish advisory usefulness.
-This review is not human validation, a frozen holdout, or a public-repository result.
+The stronger deterministic baseline already found every repeated blocker in that
+development set. The later frozen public-library holdout exposed a difference:
+Jev recovered seven more repeats than that baseline, but the combined system
+inherited one critical false match and failed the 95% precision gate (90.9%
+observed). The comparator and prompt were not tuned on the holdout. Advisory mode
+remains disabled. See [holdout results and failure diagnosis](docs/ratchet-holdout-results.md).
+
+Both corpora contain only two attempts per pair, so neither establishes advisory
+usefulness. Independent review is not human validation. The holdout consists of
+authored adapters invoking permitted public-library code, not natural agent traces.
 
 See [evaluation plan](docs/ratchet-plan.md), [development protocol](docs/ratchet-development-evaluation.md),
 and [raw numeric receipts](results/ratchet/). Pytest-xdist is not supported yet.
