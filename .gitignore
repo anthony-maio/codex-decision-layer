@@ -10,3 +10,4 @@ build/
 *.safetensors
 *.log
 results/local-*.json
+.ratchet/
