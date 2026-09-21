@@ -1,6 +1,6 @@
 {
   "name": "ratchet",
-  "version": "0.1.1-rc.2",
+  "version": "0.1.1",
   "description": "Compare pytest failure records and recover their original evidence in shadow mode.",
   "author": {
     "name": "Anthony Maio",

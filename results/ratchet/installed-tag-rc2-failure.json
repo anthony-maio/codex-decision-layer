@@ -1,0 +1,17 @@
+{
+  "status": "FAIL_OFFLINE_LAUNCHER",
+  "tag": "v0.1.1-rc.2",
+  "commit": "d2d3d311249a7800327ab1432fe369cc25a7672f",
+  "platforms": ["Windows", "Linux"],
+  "installation": "Fresh isolated Codex homes and dedicated empty uv caches",
+  "marketplace_install": "PASS",
+  "installed_manifest_matches_candidate": true,
+  "online_stdio_comparison_and_both_originals": "PASS",
+  "offline_restart": "FAIL",
+  "failure": "uvx with the tag reference attempts a remote Git fetch under UV_OFFLINE=1",
+  "real_codex_probe": "NOT_REACHED",
+  "same_cache_full_commit_reference_diagnostic": "PASS on Windows and Linux",
+  "prior_wheel_launcher_smoke_limit": "A local wheel reference did not exercise Git tag resolution",
+  "existing_tag_changed": false,
+  "release_gate": "Blocks patch release until corrected launcher passes both platforms"
+}
