@@ -1,0 +1,27 @@
+{
+  "package_version": "0.1.1rc2",
+  "scope": "local release-candidate checks; not hosted CI or published-tag installation",
+  "source_base_commit": "c4f3509b9fce522d419d0b612a4704aee2b65e27",
+  "wheel_sha256": "608d845d7575d48878f304111c0ceb108f901d021172d0ae1eef49f07ba9a3a8",
+  "windows": {
+    "tests_run": 113,
+    "passed": 113,
+    "skipped": 0,
+    "elapsed_seconds": 17.505
+  },
+  "linux": {
+    "tests_run": 113,
+    "passed": 111,
+    "skipped": 2,
+    "elapsed_seconds": 9.38
+  },
+  "plugin_manifest_validation": {
+    "ratchet": "PASS",
+    "decision_layer": "PASS"
+  },
+  "install_receipts": [
+    "install-windows-rc2.json",
+    "install-linux-rc2.json"
+  ],
+  "canonical_experiment_checkout_modified": false
+}

@@ -85,10 +85,23 @@ The server refuses linked paths within the canonical root and pins directories
 during reads. A concurrent writer can cause a read to fail; it does not produce a
 new recommendation. Store completed records in a dedicated directory.
 
-The plugin manifest expects the installed `ratchet` executable on Codex's PATH.
-The verified development installation uses an explicit interpreter and record
-root. General plugin installation from a published Ratchet release is still
-pending. Fresh pytest recording, installed CLI comparison, and saved-root MCP
+The release candidate manifest launches a tagged package through `uvx`; uv and
+Git must be on Codex's PATH. The verified development installation uses an
+explicit interpreter and record root. General plugin installation from the
+published candidate is still pending. After v0.1.1-rc.2 is published, its intended
+installation commands are:
+
+```sh
+codex plugin marketplace add anthony-maio/codex-decision-layer --ref v0.1.1-rc.2
+codex plugin add ratchet@codex-decision-layer
+```
+
+Configure the record root before starting a new Codex task. The tagged launcher
+uses the saved root and deterministic shadow mode. It never enables hosted
+comparison automatically. Candidate validation is tracked in
+[release validation](docs/ratchet-release-validation.md).
+
+Fresh pytest recording, installed CLI comparison, and saved-root MCP
 startup pass from isolated wheels on Windows and Linux. Offline checks include
 comparison and original retrieval with DNS and new connections denied after
 event-loop creation. These checks do not establish automatic event capture.

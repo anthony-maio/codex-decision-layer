@@ -1,11 +1,13 @@
 {
   "name": "ratchet",
-  "version": "0.1.0-dev.1",
+  "version": "0.1.1-rc.2",
   "description": "Compare pytest failure records and recover their original evidence in shadow mode.",
   "author": {
     "name": "Anthony Maio",
     "url": "https://github.com/anthony-maio"
   },
+  "repository": "https://github.com/anthony-maio/codex-decision-layer",
+  "license": "MIT",
   "skills": "./skills/",
   "interface": {
     "displayName": "Ratchet",

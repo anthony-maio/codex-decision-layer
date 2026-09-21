@@ -1,7 +1,7 @@
 [project]
 name = "codex-evidence-selector"
-version = "0.1.1rc1"
-description = "Shadow-mode evidence selection with Jev, local Eve, and a lexical baseline"
+version = "0.1.1rc2"
+description = "Shadow-mode pytest failure comparison and evidence selection for Codex"
 requires-python = ">=3.12"
 dependencies = []
 

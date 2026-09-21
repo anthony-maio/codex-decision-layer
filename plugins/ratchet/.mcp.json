@@ -1,8 +1,11 @@
 {
   "mcpServers": {
     "ratchet": {
-      "command": "ratchet",
-      "args": ["mcp"]
+      "command": "uvx",
+      "args": [
+        "--from", "codex-evidence-selector[mcp] @ git+https://github.com/anthony-maio/codex-decision-layer.git@v0.1.1-rc.2",
+        "ratchet", "mcp"
+      ]
     }
   }
 }
