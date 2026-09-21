@@ -65,6 +65,84 @@
       "finding": "complete original payload present inside a completed command output; frozen method remains false",
       "frozen_row_modified": false,
       "gate_adjustment": false
+    },
+    {
+      "slot": 22,
+      "frozen_method_compliance": false,
+      "audit_complete_originals_present": true,
+      "worker_events_sha256": "6c32253ac90f7c4913f3355422cdc15d5a6261b4ebc0f1f015f67c3a53ef6ae5",
+      "original_sha256": {
+        "attempt-0.jsonl": "36d533c0336f7dd163d71b7747bce0e65fdc3890abae7daebab5d969d5e79196",
+        "attempt-1.jsonl": "9f23ecc8bcd09798d87f357d35e47440aefdef09e1d7319ee92225cde2faebbf"
+      },
+      "finding": "complete original payload present inside a completed command output; frozen method remains false",
+      "frozen_row_modified": false,
+      "gate_adjustment": false
+    },
+    {
+      "slot": 24,
+      "frozen_method_compliance": false,
+      "audit_complete_originals_present": true,
+      "worker_events_sha256": "51e6d6b55aaac2264f054b1ddbd83c179e8c34210f987b40f7faa5236f584af1",
+      "original_sha256": {
+        "attempt-0.jsonl": "82f3bd03f0510f65528cd9b2c4810850895b088e23b67b19e541f46881adc79c",
+        "attempt-1.jsonl": "9d94ae6012f308a75d8169d4b79c97e1c8c096ad0b8310f33aadc69bd669347c"
+      },
+      "finding": "complete original payload present inside a completed command output; frozen method remains false",
+      "frozen_row_modified": false,
+      "gate_adjustment": false
+    },
+    {
+      "slot": 29,
+      "frozen_method_compliance": false,
+      "audit_complete_originals_present": true,
+      "worker_events_sha256": "15181787eae870c39998dcfb8f3ebd1cc88c8eed7910b5e7c843f0d6950b9617",
+      "original_sha256": {
+        "attempt-0.jsonl": "1bb77896775f62ec31681be3a2dbdc18b55c1aa23934460a1277d501ade8bd2e",
+        "attempt-1.jsonl": "c0a9208e8a1e5521653d0b02608917653eb2abfd25aca7b06bd589d2590c053c"
+      },
+      "finding": "complete original payload present inside a completed command output; frozen method remains false",
+      "frozen_row_modified": false,
+      "gate_adjustment": false
+    },
+    {
+      "slot": 31,
+      "frozen_method_compliance": false,
+      "audit_complete_originals_present": true,
+      "worker_events_sha256": "7b698de0571af51227651aab5108294cdfded96b0d0bf738d34a4c6649b1a6dc",
+      "original_sha256": {
+        "attempt-0.jsonl": "36d533c0336f7dd163d71b7747bce0e65fdc3890abae7daebab5d969d5e79196",
+        "attempt-1.jsonl": "9f23ecc8bcd09798d87f357d35e47440aefdef09e1d7319ee92225cde2faebbf"
+      },
+      "finding": "complete original payload present inside a completed command output; frozen method remains false",
+      "frozen_row_modified": false,
+      "gate_adjustment": false
+    },
+    {
+      "slot": 33,
+      "frozen_method_compliance": false,
+      "audit_complete_originals_present": true,
+      "worker_events_sha256": "760719314d80bd142ca5aaac76cafe421058f66540767378911a5c10098eaeac",
+      "original_sha256": {
+        "attempt-0.jsonl": "82f3bd03f0510f65528cd9b2c4810850895b088e23b67b19e541f46881adc79c",
+        "attempt-1.jsonl": "9d94ae6012f308a75d8169d4b79c97e1c8c096ad0b8310f33aadc69bd669347c"
+      },
+      "finding": "complete original payload present inside a completed command output; frozen method remains false",
+      "frozen_row_modified": false,
+      "gate_adjustment": false
+    },
+    {
+      "slot": 37,
+      "frozen_method_compliance": false,
+      "audit_complete_originals_present": true,
+      "worker_events_sha256": "c038eb479e83ae30a1fbeaa391d2f58a475639c5a180d51f0aad71d56e7c639a",
+      "original_sha256": {
+        "attempt-0.jsonl": "1bb77896775f62ec31681be3a2dbdc18b55c1aa23934460a1277d501ade8bd2e",
+        "attempt-1.jsonl": "c0a9208e8a1e5521653d0b02608917653eb2abfd25aca7b06bd589d2590c053c"
+      },
+      "finding": "complete original payload present inside a completed command output; frozen method remains false",
+      "frozen_row_modified": false,
+      "gate_adjustment": false
     }
   ]
 }

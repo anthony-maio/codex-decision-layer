@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "scope": "Independent evaluation accounting and claims review; not human validation",
+  "must_fix_findings": [],
+  "checks": {
+    "all_45_assigned_positions_retained": true,
+    "summary_and_frozen_assessment_exactly_recomputed": true,
+    "freeze_and_first_three_rows_unchanged": true,
+    "execution_amendment_and_bound_inputs_match": true,
+    "all_45_private_event_hashes_verified": true,
+    "all_90_original_record_copies_verified": true,
+    "decision_audit_exactly_reproduced": true,
+    "all_11_original_read_observations_reproduced": true,
+    "slot_36_failure_verified_against_saved_grading_xml_and_product_hash": true,
+    "document_numbers_and_conclusions_match": true,
+    "reviewed_numeric_artifacts_contain_no_raw_logs_private_paths_or_credential_markers": true
+  },
+  "assigned_runs": 45,
+  "excluded_runs": 0,
+  "quality_failed_slots": [36],
+  "method_failed_slots": [1, 2, 5, 7, 9, 14, 16, 22, 24, 29, 31, 33, 37],
+  "unknown_full_cost_slots": [1, 2],
+  "usefulness": "FAILED",
+  "advisory_enabled": false,
+  "reviewed_sha256": {
+    "results/ratchet/workflow-v1.json": "3ce76b4704311636976855d9a1a0b5d78022624818e22bcd8eff8c689058352d",
+    "results/ratchet/workflow-summary.json": "72e73aa86d231d390b1f5dce26458541af6f528510c26bcd421c1b31e3c386f3",
+    "results/ratchet/workflow-decisions.json": "3730177c034b2bc24f7280a7096dc1e7f7fba97e1f9face712c63d1d0a9fb1b7",
+    "results/ratchet/workflow-observation-notes.json": "8ab1c57e143f4a15b7ea101cdfc89b5309d6bf0905639a22046b7f085d654264",
+    "docs/ratchet-workflow-results.md": "695494967cf4d3641b60a647fef4a19a4e0d6b614e120ff7d3768351b9065a87",
+    "scripts/summarize_ratchet_workflow.py": "0521408c65cf93ad149977ac7b3740a5324962e6fd0ce9b66abd592f2d517f6f",
+    "scripts/audit_ratchet_workflow_decisions.py": "11da932365fe50bb4a16886f1401df1bd84760e8e391223150955e1977b71d6b"
+  },
+  "document_post_review_change": "Only the pending-review status was replaced with the completed-review status and link",
+  "privacy_scope": "Four numeric artifacts, not a repository-wide secret audit",
+  "worker_reruns": 0,
+  "grader_reruns": 0,
+  "new_model_calls": 0,
+  "gate_adjustment": false
+}

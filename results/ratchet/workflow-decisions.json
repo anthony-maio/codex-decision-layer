@@ -1,0 +1,895 @@
+{
+  "scope": "observed shadow decisions from all assigned workers; no new classifier calls or changed gates",
+  "source_receipt_sha256": "3ce76b4704311636976855d9a1a0b5d78022624818e22bcd8eff8c689058352d",
+  "rows": [
+    {
+      "index": 0,
+      "task": "invoice",
+      "method": "plain",
+      "worker_events_sha256": "3829d861d874433c27e5491eb19322360dc3661759ea6d44da2afc4908f5e9f3",
+      "comparisons": []
+    },
+    {
+      "index": 1,
+      "task": "invoice",
+      "method": "deterministic",
+      "worker_events_sha256": "f42fac0534ec6c6dec977a70228935ec235f75319bae6dd48fc56df9c80db7ef",
+      "comparisons": []
+    },
+    {
+      "index": 2,
+      "task": "invoice",
+      "method": "jev",
+      "worker_events_sha256": "207118532cf556ce4fba227c411f081b719fb8ad5b9741398773a21e6e24422a",
+      "comparisons": []
+    },
+    {
+      "index": 3,
+      "task": "queue",
+      "method": "deterministic",
+      "worker_events_sha256": "b7eec1faa633e84342e402fa7a838a2e1ce89750309f226e225bfe7c32ac8e97",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "36d533c0336f7dd163d71b7747bce0e65fdc3890abae7daebab5d969d5e79196",
+            "attempt-1.jsonl": "9f23ecc8bcd09798d87f357d35e47440aefdef09e1d7319ee92225cde2faebbf"
+          },
+          "mode": "shadow",
+          "relationship": "different_blocker",
+          "method": "deterministic",
+          "reason": "execution_advanced",
+          "advisory": null,
+          "provider_calls": null,
+          "provider_latency_ms": null,
+          "retries": null
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "task": "queue",
+      "method": "jev",
+      "worker_events_sha256": "fb0dce48e66d502dbb13ecb97a9ba9c007cc6fcd21ba5b1457543b4e35aaf396",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "36d533c0336f7dd163d71b7747bce0e65fdc3890abae7daebab5d969d5e79196",
+            "attempt-1.jsonl": "9f23ecc8bcd09798d87f357d35e47440aefdef09e1d7319ee92225cde2faebbf"
+          },
+          "mode": "shadow",
+          "relationship": "different_blocker",
+          "method": "deterministic",
+          "reason": "execution_advanced",
+          "advisory": null,
+          "provider_calls": 0,
+          "provider_latency_ms": 0,
+          "retries": 0
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "task": "queue",
+      "method": "plain",
+      "worker_events_sha256": "e50a45ad85b0733bfc7cd0cc6f95a008520665078ba6a76293f2c7357df1ffac",
+      "comparisons": []
+    },
+    {
+      "index": 6,
+      "task": "events",
+      "method": "jev",
+      "worker_events_sha256": "c88d2353aea6c10908f05328ef1689f5a8fafc4d2d3938d4bc41f150bada5c0d",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "82f3bd03f0510f65528cd9b2c4810850895b088e23b67b19e541f46881adc79c",
+            "attempt-1.jsonl": "9d94ae6012f308a75d8169d4b79c97e1c8c096ad0b8310f33aadc69bd669347c"
+          },
+          "mode": "shadow",
+          "relationship": "insufficient_evidence",
+          "method": "deterministic_plus_jev",
+          "reason": "semantic_abstention",
+          "advisory": null,
+          "provider_calls": 1,
+          "provider_latency_ms": 529.8151900060475,
+          "retries": 0,
+          "decision": {
+            "choice": "different_blocker",
+            "probabilities": {
+              "insufficient_evidence": 0.0,
+              "different_blocker": 0.71,
+              "same_blocker": 0.29
+            },
+            "provider_confidence": 0.56,
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1121,
+              "output_tokens": 53
+            }
+          }
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "task": "events",
+      "method": "plain",
+      "worker_events_sha256": "015f766a59f9c973dc418680547ea06ec360c0e38d1fdb7c7139a3b830b9888d",
+      "comparisons": []
+    },
+    {
+      "index": 8,
+      "task": "events",
+      "method": "deterministic",
+      "worker_events_sha256": "41d6edaee9f4c87387b8530cb1d545a4ae6ca088b2dc460e887899bc585feee8",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "82f3bd03f0510f65528cd9b2c4810850895b088e23b67b19e541f46881adc79c",
+            "attempt-1.jsonl": "9d94ae6012f308a75d8169d4b79c97e1c8c096ad0b8310f33aadc69bd669347c"
+          },
+          "mode": "shadow",
+          "relationship": "insufficient_evidence",
+          "method": "deterministic",
+          "reason": "semantic_comparison_needed",
+          "advisory": null,
+          "provider_calls": null,
+          "provider_latency_ms": null,
+          "retries": null
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "task": "invoice",
+      "method": "plain",
+      "worker_events_sha256": "f2ed006506618f81c039e2fcd37e9b8ea8daf3baf36ed35e8eb3d4d322729595",
+      "comparisons": []
+    },
+    {
+      "index": 10,
+      "task": "invoice",
+      "method": "jev",
+      "worker_events_sha256": "b65c12546b174c3dad6f800fcc2e1ad355bded0318b602287fe8c2fba82834af",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "1bb77896775f62ec31681be3a2dbdc18b55c1aa23934460a1277d501ade8bd2e",
+            "attempt-1.jsonl": "c0a9208e8a1e5521653d0b02608917653eb2abfd25aca7b06bd589d2590c053c"
+          },
+          "mode": "shadow",
+          "relationship": "same_blocker",
+          "method": "deterministic_plus_jev",
+          "reason": "semantic_comparison",
+          "advisory": null,
+          "provider_calls": 1,
+          "provider_latency_ms": 418.49012300372124,
+          "retries": 0,
+          "decision": {
+            "choice": "same_blocker",
+            "probabilities": {
+              "insufficient_evidence": 0.0,
+              "different_blocker": 0.0,
+              "same_blocker": 1.0
+            },
+            "provider_confidence": 1.0,
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1352,
+              "output_tokens": 53
+            }
+          }
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "task": "invoice",
+      "method": "deterministic",
+      "worker_events_sha256": "9f4eaaec756f32dfd75471a5d43b0c6a35e77a960fa6fb93c14623fc77c5e31d",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "1bb77896775f62ec31681be3a2dbdc18b55c1aa23934460a1277d501ade8bd2e",
+            "attempt-1.jsonl": "c0a9208e8a1e5521653d0b02608917653eb2abfd25aca7b06bd589d2590c053c"
+          },
+          "mode": "shadow",
+          "relationship": "insufficient_evidence",
+          "method": "deterministic",
+          "reason": "semantic_comparison_needed",
+          "advisory": null,
+          "provider_calls": null,
+          "provider_latency_ms": null,
+          "retries": null
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "task": "queue",
+      "method": "jev",
+      "worker_events_sha256": "5e8696444c178a0191d79d57ae4fcab2db54bb922be67cdf850c38cdcd58156f",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "36d533c0336f7dd163d71b7747bce0e65fdc3890abae7daebab5d969d5e79196",
+            "attempt-1.jsonl": "9f23ecc8bcd09798d87f357d35e47440aefdef09e1d7319ee92225cde2faebbf"
+          },
+          "mode": "shadow",
+          "relationship": "different_blocker",
+          "method": "deterministic",
+          "reason": "execution_advanced",
+          "advisory": null,
+          "provider_calls": 0,
+          "provider_latency_ms": 0,
+          "retries": 0
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "task": "queue",
+      "method": "deterministic",
+      "worker_events_sha256": "098b89509574e74768683439fd4391707c0ab7d8fe57267f464474fbc45af7ed",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "36d533c0336f7dd163d71b7747bce0e65fdc3890abae7daebab5d969d5e79196",
+            "attempt-1.jsonl": "9f23ecc8bcd09798d87f357d35e47440aefdef09e1d7319ee92225cde2faebbf"
+          },
+          "mode": "shadow",
+          "relationship": "different_blocker",
+          "method": "deterministic",
+          "reason": "execution_advanced",
+          "advisory": null,
+          "provider_calls": null,
+          "provider_latency_ms": null,
+          "retries": null
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "task": "queue",
+      "method": "plain",
+      "worker_events_sha256": "692847c3f4c0793ca1f56b956c539b6abfabf1d5f8fd12309bfd5233b51b7dab",
+      "comparisons": []
+    },
+    {
+      "index": 15,
+      "task": "events",
+      "method": "deterministic",
+      "worker_events_sha256": "3af6f7369cf276d8eab34ec7d9ffcbf8d53c9cf5fe21601131f1e74ac7940e49",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "82f3bd03f0510f65528cd9b2c4810850895b088e23b67b19e541f46881adc79c",
+            "attempt-1.jsonl": "9d94ae6012f308a75d8169d4b79c97e1c8c096ad0b8310f33aadc69bd669347c"
+          },
+          "mode": "shadow",
+          "relationship": "insufficient_evidence",
+          "method": "deterministic",
+          "reason": "semantic_comparison_needed",
+          "advisory": null,
+          "provider_calls": null,
+          "provider_latency_ms": null,
+          "retries": null
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "task": "events",
+      "method": "plain",
+      "worker_events_sha256": "b67bbe07d4dbb3e372a5d3b689c07b7d2308904fc9f0977a503b129708f9fc71",
+      "comparisons": []
+    },
+    {
+      "index": 17,
+      "task": "events",
+      "method": "jev",
+      "worker_events_sha256": "7bb6b131f2b83d0cdf80f3f1e73d3914b00c0404540c69fc7f10598d72c71b04",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "82f3bd03f0510f65528cd9b2c4810850895b088e23b67b19e541f46881adc79c",
+            "attempt-1.jsonl": "9d94ae6012f308a75d8169d4b79c97e1c8c096ad0b8310f33aadc69bd669347c"
+          },
+          "mode": "shadow",
+          "relationship": "insufficient_evidence",
+          "method": "deterministic_plus_jev",
+          "reason": "semantic_abstention",
+          "advisory": null,
+          "provider_calls": 1,
+          "provider_latency_ms": 503.1826079939492,
+          "retries": 0,
+          "decision": {
+            "choice": "different_blocker",
+            "probabilities": {
+              "insufficient_evidence": 0.0,
+              "different_blocker": 0.7,
+              "same_blocker": 0.3
+            },
+            "provider_confidence": 0.54,
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1121,
+              "output_tokens": 53
+            }
+          }
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "task": "invoice",
+      "method": "deterministic",
+      "worker_events_sha256": "52d1ebb399bb1b6cf7755fbaa2add6a8fd5d1f7e31994da7a308df0803202fc1",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "1bb77896775f62ec31681be3a2dbdc18b55c1aa23934460a1277d501ade8bd2e",
+            "attempt-1.jsonl": "c0a9208e8a1e5521653d0b02608917653eb2abfd25aca7b06bd589d2590c053c"
+          },
+          "mode": "shadow",
+          "relationship": "insufficient_evidence",
+          "method": "deterministic",
+          "reason": "semantic_comparison_needed",
+          "advisory": null,
+          "provider_calls": null,
+          "provider_latency_ms": null,
+          "retries": null
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "task": "invoice",
+      "method": "jev",
+      "worker_events_sha256": "9bde2ca6dc0ed8a2735c4573b98f8d24dabef3b436c082a12d245b4178e640eb",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "1bb77896775f62ec31681be3a2dbdc18b55c1aa23934460a1277d501ade8bd2e",
+            "attempt-1.jsonl": "c0a9208e8a1e5521653d0b02608917653eb2abfd25aca7b06bd589d2590c053c"
+          },
+          "mode": "shadow",
+          "relationship": "same_blocker",
+          "method": "deterministic_plus_jev",
+          "reason": "semantic_comparison",
+          "advisory": null,
+          "provider_calls": 1,
+          "provider_latency_ms": 531.9712489726953,
+          "retries": 0,
+          "decision": {
+            "choice": "same_blocker",
+            "probabilities": {
+              "same_blocker": 1.0,
+              "different_blocker": 0.0,
+              "insufficient_evidence": 0.0
+            },
+            "provider_confidence": 1.0,
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1352,
+              "output_tokens": 53
+            }
+          }
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "task": "invoice",
+      "method": "plain",
+      "worker_events_sha256": "09637bb09f67e7c3495bc96f5d4fbe79bf4098821fd235ff152a5044bebbecc2",
+      "comparisons": []
+    },
+    {
+      "index": 21,
+      "task": "queue",
+      "method": "jev",
+      "worker_events_sha256": "8c7eae8ea69764d38007a32664da4881fdf14178aa4b66727473fdf14b115649",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "36d533c0336f7dd163d71b7747bce0e65fdc3890abae7daebab5d969d5e79196",
+            "attempt-1.jsonl": "9f23ecc8bcd09798d87f357d35e47440aefdef09e1d7319ee92225cde2faebbf"
+          },
+          "mode": "shadow",
+          "relationship": "different_blocker",
+          "method": "deterministic",
+          "reason": "execution_advanced",
+          "advisory": null,
+          "provider_calls": 0,
+          "provider_latency_ms": 0,
+          "retries": 0
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "task": "queue",
+      "method": "plain",
+      "worker_events_sha256": "6c32253ac90f7c4913f3355422cdc15d5a6261b4ebc0f1f015f67c3a53ef6ae5",
+      "comparisons": []
+    },
+    {
+      "index": 23,
+      "task": "queue",
+      "method": "deterministic",
+      "worker_events_sha256": "7765c825fc08fe2bde366ebdcf33c1226ec86ce57b086025f4c3c6fba77d258f",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "36d533c0336f7dd163d71b7747bce0e65fdc3890abae7daebab5d969d5e79196",
+            "attempt-1.jsonl": "9f23ecc8bcd09798d87f357d35e47440aefdef09e1d7319ee92225cde2faebbf"
+          },
+          "mode": "shadow",
+          "relationship": "different_blocker",
+          "method": "deterministic",
+          "reason": "execution_advanced",
+          "advisory": null,
+          "provider_calls": null,
+          "provider_latency_ms": null,
+          "retries": null
+        }
+      ]
+    },
+    {
+      "index": 24,
+      "task": "events",
+      "method": "plain",
+      "worker_events_sha256": "51e6d6b55aaac2264f054b1ddbd83c179e8c34210f987b40f7faa5236f584af1",
+      "comparisons": []
+    },
+    {
+      "index": 25,
+      "task": "events",
+      "method": "deterministic",
+      "worker_events_sha256": "29394983afbef644b3243dd466d19124ea70a85597eaa02d50bb938390dc94e2",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "82f3bd03f0510f65528cd9b2c4810850895b088e23b67b19e541f46881adc79c",
+            "attempt-1.jsonl": "9d94ae6012f308a75d8169d4b79c97e1c8c096ad0b8310f33aadc69bd669347c"
+          },
+          "mode": "shadow",
+          "relationship": "insufficient_evidence",
+          "method": "deterministic",
+          "reason": "semantic_comparison_needed",
+          "advisory": null,
+          "provider_calls": null,
+          "provider_latency_ms": null,
+          "retries": null
+        }
+      ]
+    },
+    {
+      "index": 26,
+      "task": "events",
+      "method": "jev",
+      "worker_events_sha256": "8eef58762aa32520c1b66fd66c424fb14b9bd726b2bc68228e3cc28c5886a30f",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "82f3bd03f0510f65528cd9b2c4810850895b088e23b67b19e541f46881adc79c",
+            "attempt-1.jsonl": "9d94ae6012f308a75d8169d4b79c97e1c8c096ad0b8310f33aadc69bd669347c"
+          },
+          "mode": "shadow",
+          "relationship": "insufficient_evidence",
+          "method": "deterministic_plus_jev",
+          "reason": "semantic_abstention",
+          "advisory": null,
+          "provider_calls": 1,
+          "provider_latency_ms": 479.91520701907575,
+          "retries": 0,
+          "decision": {
+            "choice": "different_blocker",
+            "probabilities": {
+              "same_blocker": 0.22,
+              "different_blocker": 0.78,
+              "insufficient_evidence": 0.0
+            },
+            "provider_confidence": 0.67,
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1121,
+              "output_tokens": 53
+            }
+          }
+        }
+      ]
+    },
+    {
+      "index": 27,
+      "task": "invoice",
+      "method": "jev",
+      "worker_events_sha256": "a1531a070f5590fd063971cc94ddb9a6d2b14de048ee662128ee6f030184eb98",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "1bb77896775f62ec31681be3a2dbdc18b55c1aa23934460a1277d501ade8bd2e",
+            "attempt-1.jsonl": "c0a9208e8a1e5521653d0b02608917653eb2abfd25aca7b06bd589d2590c053c"
+          },
+          "mode": "shadow",
+          "relationship": "same_blocker",
+          "method": "deterministic_plus_jev",
+          "reason": "semantic_comparison",
+          "advisory": null,
+          "provider_calls": 1,
+          "provider_latency_ms": 910.029263002798,
+          "retries": 0,
+          "decision": {
+            "choice": "same_blocker",
+            "probabilities": {
+              "same_blocker": 1.0,
+              "insufficient_evidence": 0.0,
+              "different_blocker": 0.0
+            },
+            "provider_confidence": 1.0,
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1352,
+              "output_tokens": 53
+            }
+          }
+        }
+      ]
+    },
+    {
+      "index": 28,
+      "task": "invoice",
+      "method": "deterministic",
+      "worker_events_sha256": "68be111f656faab7bb11f1a919364569d6e07ccf8c801312665ac52f0251b968",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "1bb77896775f62ec31681be3a2dbdc18b55c1aa23934460a1277d501ade8bd2e",
+            "attempt-1.jsonl": "c0a9208e8a1e5521653d0b02608917653eb2abfd25aca7b06bd589d2590c053c"
+          },
+          "mode": "shadow",
+          "relationship": "insufficient_evidence",
+          "method": "deterministic",
+          "reason": "semantic_comparison_needed",
+          "advisory": null,
+          "provider_calls": null,
+          "provider_latency_ms": null,
+          "retries": null
+        }
+      ]
+    },
+    {
+      "index": 29,
+      "task": "invoice",
+      "method": "plain",
+      "worker_events_sha256": "15181787eae870c39998dcfb8f3ebd1cc88c8eed7910b5e7c843f0d6950b9617",
+      "comparisons": []
+    },
+    {
+      "index": 30,
+      "task": "queue",
+      "method": "deterministic",
+      "worker_events_sha256": "fa3d3a5863cfc47a1e69a2b2a1bd1f3e8ec6e730267450e61f233354e07dcc2a",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "36d533c0336f7dd163d71b7747bce0e65fdc3890abae7daebab5d969d5e79196",
+            "attempt-1.jsonl": "9f23ecc8bcd09798d87f357d35e47440aefdef09e1d7319ee92225cde2faebbf"
+          },
+          "mode": "shadow",
+          "relationship": "different_blocker",
+          "method": "deterministic",
+          "reason": "execution_advanced",
+          "advisory": null,
+          "provider_calls": null,
+          "provider_latency_ms": null,
+          "retries": null
+        }
+      ]
+    },
+    {
+      "index": 31,
+      "task": "queue",
+      "method": "plain",
+      "worker_events_sha256": "7b698de0571af51227651aab5108294cdfded96b0d0bf738d34a4c6649b1a6dc",
+      "comparisons": []
+    },
+    {
+      "index": 32,
+      "task": "queue",
+      "method": "jev",
+      "worker_events_sha256": "e011e0edb3aba6f510e118f1af36377d66fa6ebbac0a8b8717af1a656ff04264",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "36d533c0336f7dd163d71b7747bce0e65fdc3890abae7daebab5d969d5e79196",
+            "attempt-1.jsonl": "9f23ecc8bcd09798d87f357d35e47440aefdef09e1d7319ee92225cde2faebbf"
+          },
+          "mode": "shadow",
+          "relationship": "different_blocker",
+          "method": "deterministic",
+          "reason": "execution_advanced",
+          "advisory": null,
+          "provider_calls": 0,
+          "provider_latency_ms": 0,
+          "retries": 0
+        }
+      ]
+    },
+    {
+      "index": 33,
+      "task": "events",
+      "method": "plain",
+      "worker_events_sha256": "760719314d80bd142ca5aaac76cafe421058f66540767378911a5c10098eaeac",
+      "comparisons": []
+    },
+    {
+      "index": 34,
+      "task": "events",
+      "method": "jev",
+      "worker_events_sha256": "8ac80eadbff18027ef01a68cba9829383dce6eaa27362fbc3ddb818370fcbeb1",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "82f3bd03f0510f65528cd9b2c4810850895b088e23b67b19e541f46881adc79c",
+            "attempt-1.jsonl": "9d94ae6012f308a75d8169d4b79c97e1c8c096ad0b8310f33aadc69bd669347c"
+          },
+          "mode": "shadow",
+          "relationship": "insufficient_evidence",
+          "method": "deterministic_plus_jev",
+          "reason": "semantic_abstention",
+          "advisory": null,
+          "provider_calls": 1,
+          "provider_latency_ms": 448.6385090276599,
+          "retries": 0,
+          "decision": {
+            "choice": "different_blocker",
+            "probabilities": {
+              "insufficient_evidence": 0.0,
+              "same_blocker": 0.3,
+              "different_blocker": 0.7
+            },
+            "provider_confidence": 0.54,
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1121,
+              "output_tokens": 53
+            }
+          }
+        }
+      ]
+    },
+    {
+      "index": 35,
+      "task": "events",
+      "method": "deterministic",
+      "worker_events_sha256": "aeac14bcdfe8b8a78d0e7454bf9ccfedcb1189a33bc5b0c4878cb88c5f5ab0b0",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "82f3bd03f0510f65528cd9b2c4810850895b088e23b67b19e541f46881adc79c",
+            "attempt-1.jsonl": "9d94ae6012f308a75d8169d4b79c97e1c8c096ad0b8310f33aadc69bd669347c"
+          },
+          "mode": "shadow",
+          "relationship": "insufficient_evidence",
+          "method": "deterministic",
+          "reason": "semantic_comparison_needed",
+          "advisory": null,
+          "provider_calls": null,
+          "provider_latency_ms": null,
+          "retries": null
+        }
+      ]
+    },
+    {
+      "index": 36,
+      "task": "invoice",
+      "method": "jev",
+      "worker_events_sha256": "ea36ead5b914ab6e09178c6a8aa2f859a540094111b8a141ba5e3b920561e738",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "1bb77896775f62ec31681be3a2dbdc18b55c1aa23934460a1277d501ade8bd2e",
+            "attempt-1.jsonl": "c0a9208e8a1e5521653d0b02608917653eb2abfd25aca7b06bd589d2590c053c"
+          },
+          "mode": "shadow",
+          "relationship": "same_blocker",
+          "method": "deterministic_plus_jev",
+          "reason": "semantic_comparison",
+          "advisory": null,
+          "provider_calls": 1,
+          "provider_latency_ms": 452.57829601177946,
+          "retries": 0,
+          "decision": {
+            "choice": "same_blocker",
+            "probabilities": {
+              "different_blocker": 0.0,
+              "same_blocker": 1.0,
+              "insufficient_evidence": 0.0
+            },
+            "provider_confidence": 1.0,
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1352,
+              "output_tokens": 53
+            }
+          }
+        }
+      ]
+    },
+    {
+      "index": 37,
+      "task": "invoice",
+      "method": "plain",
+      "worker_events_sha256": "c038eb479e83ae30a1fbeaa391d2f58a475639c5a180d51f0aad71d56e7c639a",
+      "comparisons": []
+    },
+    {
+      "index": 38,
+      "task": "invoice",
+      "method": "deterministic",
+      "worker_events_sha256": "963a944d5b0f7cf2adf51c80fd770debf88cf337567f7e9eaa65296d6a59e9cd",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "1bb77896775f62ec31681be3a2dbdc18b55c1aa23934460a1277d501ade8bd2e",
+            "attempt-1.jsonl": "c0a9208e8a1e5521653d0b02608917653eb2abfd25aca7b06bd589d2590c053c"
+          },
+          "mode": "shadow",
+          "relationship": "insufficient_evidence",
+          "method": "deterministic",
+          "reason": "semantic_comparison_needed",
+          "advisory": null,
+          "provider_calls": null,
+          "provider_latency_ms": null,
+          "retries": null
+        }
+      ]
+    },
+    {
+      "index": 39,
+      "task": "queue",
+      "method": "plain",
+      "worker_events_sha256": "2444eb59dff8ab1b9d4ed927fb8d650cf612373c471387eb258fe91a339a7682",
+      "comparisons": []
+    },
+    {
+      "index": 40,
+      "task": "queue",
+      "method": "deterministic",
+      "worker_events_sha256": "315bb67ebdc1526bb85ef86b908dcdcd16708192f2eaa4e8b2b345c4951d1272",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "36d533c0336f7dd163d71b7747bce0e65fdc3890abae7daebab5d969d5e79196",
+            "attempt-1.jsonl": "9f23ecc8bcd09798d87f357d35e47440aefdef09e1d7319ee92225cde2faebbf"
+          },
+          "mode": "shadow",
+          "relationship": "different_blocker",
+          "method": "deterministic",
+          "reason": "execution_advanced",
+          "advisory": null,
+          "provider_calls": null,
+          "provider_latency_ms": null,
+          "retries": null
+        }
+      ]
+    },
+    {
+      "index": 41,
+      "task": "queue",
+      "method": "jev",
+      "worker_events_sha256": "89f5f4941238018c8eddd8bc04b0156fa371bb304d2d3e43febe0279148f874e",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "36d533c0336f7dd163d71b7747bce0e65fdc3890abae7daebab5d969d5e79196",
+            "attempt-1.jsonl": "9f23ecc8bcd09798d87f357d35e47440aefdef09e1d7319ee92225cde2faebbf"
+          },
+          "mode": "shadow",
+          "relationship": "different_blocker",
+          "method": "deterministic",
+          "reason": "execution_advanced",
+          "advisory": null,
+          "provider_calls": 0,
+          "provider_latency_ms": 0,
+          "retries": 0
+        }
+      ]
+    },
+    {
+      "index": 42,
+      "task": "events",
+      "method": "deterministic",
+      "worker_events_sha256": "2014ab447eccc3fed04b498498e9ce0adac6d7e3479d5fb4bdd4d90f3d0426a9",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "82f3bd03f0510f65528cd9b2c4810850895b088e23b67b19e541f46881adc79c",
+            "attempt-1.jsonl": "9d94ae6012f308a75d8169d4b79c97e1c8c096ad0b8310f33aadc69bd669347c"
+          },
+          "mode": "shadow",
+          "relationship": "insufficient_evidence",
+          "method": "deterministic",
+          "reason": "semantic_comparison_needed",
+          "advisory": null,
+          "provider_calls": null,
+          "provider_latency_ms": null,
+          "retries": null
+        }
+      ]
+    },
+    {
+      "index": 43,
+      "task": "events",
+      "method": "jev",
+      "worker_events_sha256": "391c18eee0d5131f886d7d05117e93fe89292250e1a0cfde82476606b2d5eab2",
+      "comparisons": [
+        {
+          "status": "OBSERVED",
+          "sources_sha256": {
+            "attempt-0.jsonl": "82f3bd03f0510f65528cd9b2c4810850895b088e23b67b19e541f46881adc79c",
+            "attempt-1.jsonl": "9d94ae6012f308a75d8169d4b79c97e1c8c096ad0b8310f33aadc69bd669347c"
+          },
+          "mode": "shadow",
+          "relationship": "insufficient_evidence",
+          "method": "deterministic_plus_jev",
+          "reason": "semantic_abstention",
+          "advisory": null,
+          "provider_calls": 1,
+          "provider_latency_ms": 495.5569219891913,
+          "retries": 0,
+          "decision": {
+            "choice": "different_blocker",
+            "probabilities": {
+              "insufficient_evidence": 0.0,
+              "same_blocker": 0.3,
+              "different_blocker": 0.7
+            },
+            "provider_confidence": 0.55,
+            "model": "jev-1.13.0",
+            "usage": {
+              "input_tokens": 1121,
+              "output_tokens": 53
+            }
+          }
+        }
+      ]
+    },
+    {
+      "index": 44,
+      "task": "events",
+      "method": "plain",
+      "worker_events_sha256": "49a857c8f8e8a10865e560ee1e30baf7d9e20df17cbf29b6c82ea9a9d6f31c54",
+      "comparisons": []
+    }
+  ]
+}

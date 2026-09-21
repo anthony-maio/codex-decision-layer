@@ -1,0 +1,2458 @@
+{
+  "scope": "descriptive summary of all 45 original assigned positions; amended exploratory run",
+  "source_receipt_sha256": "3ce76b4704311636976855d9a1a0b5d78022624818e22bcd8eff8c689058352d",
+  "freeze_commit": "2c6da13ffb964a77f3e9b0cfd88f7810de23ff7f",
+  "freeze_sha256": "cbc1638d6270a457a194ed3220cdc2fe9cacff7d19decd2d7bb679c5b9c9d03c",
+  "execution_amendment": {
+    "id": "required-mcp-from-slot-3",
+    "sha256": "2052e474ce3d61b5b71028203161356f96b7d8cad46b93526283447fc47a18e9",
+    "first_amended_slot": 3,
+    "interpretation": "amended_exploratory",
+    "confirmatory_usefulness": "NOT_ESTABLISHED",
+    "mcp_startup_failure": "required server may abort worker; retain failed attempt"
+  },
+  "assigned_runs": 45,
+  "excluded_runs": 0,
+  "quality_failed_slots": [
+    36
+  ],
+  "method_failed_slots": [
+    1,
+    2,
+    5,
+    7,
+    9,
+    14,
+    16,
+    22,
+    24,
+    29,
+    31,
+    33,
+    37
+  ],
+  "unknown_full_cost_slots": [
+    1,
+    2
+  ],
+  "per_task_method": [
+    {
+      "task": "invoice",
+      "method": "plain",
+      "assigned_runs": 5,
+      "quality_passes": 5,
+      "method_passes": 2,
+      "latency_median_seconds_including_penalties": 54.3988577920245,
+      "latency_total_seconds_including_penalties": 341.5915357260383,
+      "latency_penalty_slots": [],
+      "observed_elapsed_seconds": {
+        "observed_sum": 341.5915357260383,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 341.5915357260383
+      },
+      "full_cost_known_runs": 5,
+      "full_cost_median_lower_usd": 0.1439792,
+      "full_cost_median_upper_usd": 0.1439792,
+      "full_cost_lower": {
+        "observed_sum": 0.77922,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0.77922
+      },
+      "full_cost_upper": {
+        "observed_sum": 0.77922,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0.77922
+      },
+      "worker_tokens": {
+        "input_tokens": {
+          "observed_sum": 652296,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 652296
+        },
+        "cached_input_tokens": {
+          "observed_sum": 579840,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 579840
+        },
+        "cache_write_input_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "output_tokens": {
+          "observed_sum": 12873,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 12873
+        },
+        "reasoning_output_tokens": {
+          "observed_sum": 4316,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 4316
+        }
+      },
+      "cache_read_fraction": 0.8889215938776261,
+      "selector": {
+        "tool_calls": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "tool_elapsed_ms": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_calls": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_input_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_output_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_latency_ms": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_errors": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_retries": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "estimated_cost_usd": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        }
+      },
+      "selector_status_counts": {
+        "NOT_USED": 5
+      },
+      "observed_test_commands": {
+        "observed_sum": 6,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 6
+      },
+      "repeated_completed_commands": {
+        "observed_sum": 0,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      },
+      "grading_seconds_outside_worker_timer": {
+        "observed_sum": 1.566920320969075,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 1.566920320969075
+      },
+      "worker_retry_count": null,
+      "worker_retry_count_status": "NOT_EXPOSED_BY_CLI",
+      "worker_retry_notice_events": {
+        "observed_sum": 0,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      },
+      "worker_retry_notice_stderr_lines": {
+        "observed_sum": 0,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      }
+    },
+    {
+      "task": "invoice",
+      "method": "deterministic",
+      "assigned_runs": 5,
+      "quality_passes": 5,
+      "method_passes": 4,
+      "latency_median_seconds_including_penalties": 85.47762833803426,
+      "latency_total_seconds_including_penalties": 394.7760597220622,
+      "latency_penalty_slots": [],
+      "observed_elapsed_seconds": {
+        "observed_sum": 394.7760597220622,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 394.7760597220622
+      },
+      "full_cost_known_runs": 4,
+      "full_cost_median_lower_usd": null,
+      "full_cost_median_upper_usd": null,
+      "full_cost_lower": {
+        "observed_sum": 0.9573008000000001,
+        "reported_runs": 4,
+        "known_runs": 4,
+        "unknown_runs": 1,
+        "complete_sum": null
+      },
+      "full_cost_upper": {
+        "observed_sum": 1.391952,
+        "reported_runs": 4,
+        "known_runs": 4,
+        "unknown_runs": 1,
+        "complete_sum": null
+      },
+      "worker_tokens": {
+        "input_tokens": {
+          "observed_sum": 1133055,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 1133055
+        },
+        "cached_input_tokens": {
+          "observed_sum": 1027072,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 1027072
+        },
+        "cache_write_input_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "output_tokens": {
+          "observed_sum": 14655,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 14655
+        },
+        "reasoning_output_tokens": {
+          "observed_sum": 4440,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 4440
+        }
+      },
+      "cache_read_fraction": 0.9064626165543597,
+      "selector": {
+        "tool_calls": {
+          "observed_sum": 16,
+          "reported_runs": 5,
+          "known_runs": 4,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "tool_elapsed_ms": {
+          "observed_sum": 149.69946700148284,
+          "reported_runs": 5,
+          "known_runs": 4,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "provider_calls": {
+          "observed_sum": 0,
+          "reported_runs": 4,
+          "known_runs": 4,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "provider_input_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 4,
+          "known_runs": 4,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "provider_output_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 4,
+          "known_runs": 4,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "provider_latency_ms": {
+          "observed_sum": 0,
+          "reported_runs": 4,
+          "known_runs": 4,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "provider_errors": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 4,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "provider_retries": {
+          "observed_sum": 0,
+          "reported_runs": 4,
+          "known_runs": 4,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "estimated_cost_usd": {
+          "observed_sum": 0.0,
+          "reported_runs": 4,
+          "known_runs": 4,
+          "unknown_runs": 1,
+          "complete_sum": null
+        }
+      },
+      "selector_status_counts": {
+        "INCOMPLETE_ACCOUNTING": 1,
+        "COMPLETE": 4
+      },
+      "observed_test_commands": {
+        "observed_sum": 6,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 6
+      },
+      "repeated_completed_commands": {
+        "observed_sum": 0,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      },
+      "grading_seconds_outside_worker_timer": {
+        "observed_sum": 5.467077692039311,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 5.467077692039311
+      },
+      "worker_retry_count": null,
+      "worker_retry_count_status": "NOT_EXPOSED_BY_CLI",
+      "worker_retry_notice_events": {
+        "observed_sum": 0,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      },
+      "worker_retry_notice_stderr_lines": {
+        "observed_sum": 0,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      }
+    },
+    {
+      "task": "invoice",
+      "method": "jev",
+      "assigned_runs": 5,
+      "quality_passes": 4,
+      "method_passes": 4,
+      "latency_median_seconds_including_penalties": 71.0023075370118,
+      "latency_total_seconds_including_penalties": 348.4961477650213,
+      "latency_penalty_slots": [],
+      "observed_elapsed_seconds": {
+        "observed_sum": 348.4961477650213,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 348.4961477650213
+      },
+      "full_cost_known_runs": 4,
+      "full_cost_median_lower_usd": null,
+      "full_cost_median_upper_usd": null,
+      "full_cost_lower": {
+        "observed_sum": 0.929036736,
+        "reported_runs": 4,
+        "known_runs": 4,
+        "unknown_runs": 1,
+        "complete_sum": null
+      },
+      "full_cost_upper": {
+        "observed_sum": 0.929036736,
+        "reported_runs": 4,
+        "known_runs": 4,
+        "unknown_runs": 1,
+        "complete_sum": null
+      },
+      "worker_tokens": {
+        "input_tokens": {
+          "observed_sum": 940232,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 940232
+        },
+        "cached_input_tokens": {
+          "observed_sum": 816128,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 816128
+        },
+        "cache_write_input_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "output_tokens": {
+          "observed_sum": 13597,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 13597
+        },
+        "reasoning_output_tokens": {
+          "observed_sum": 4620,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 4620
+        }
+      },
+      "cache_read_fraction": 0.8680070450697275,
+      "selector": {
+        "tool_calls": {
+          "observed_sum": 20,
+          "reported_runs": 5,
+          "known_runs": 4,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "tool_elapsed_ms": {
+          "observed_sum": 2485.767556063365,
+          "reported_runs": 5,
+          "known_runs": 4,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "provider_calls": {
+          "observed_sum": 4,
+          "reported_runs": 4,
+          "known_runs": 4,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "provider_input_tokens": {
+          "observed_sum": 5408,
+          "reported_runs": 4,
+          "known_runs": 4,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "provider_output_tokens": {
+          "observed_sum": 212,
+          "reported_runs": 4,
+          "known_runs": 4,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "provider_latency_ms": {
+          "observed_sum": 2313.068930990994,
+          "reported_runs": 4,
+          "known_runs": 4,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "provider_errors": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 4,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "provider_retries": {
+          "observed_sum": 0,
+          "reported_runs": 4,
+          "known_runs": 4,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "estimated_cost_usd": {
+          "observed_sum": 0.00022713600000000002,
+          "reported_runs": 4,
+          "known_runs": 4,
+          "unknown_runs": 1,
+          "complete_sum": null
+        }
+      },
+      "selector_status_counts": {
+        "INCOMPLETE_ACCOUNTING": 1,
+        "COMPLETE": 4
+      },
+      "observed_test_commands": {
+        "observed_sum": 5,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 5
+      },
+      "repeated_completed_commands": {
+        "observed_sum": 0,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      },
+      "grading_seconds_outside_worker_timer": {
+        "observed_sum": 1.837039830046706,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 1.837039830046706
+      },
+      "worker_retry_count": null,
+      "worker_retry_count_status": "NOT_EXPOSED_BY_CLI",
+      "worker_retry_notice_events": {
+        "observed_sum": 0,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      },
+      "worker_retry_notice_stderr_lines": {
+        "observed_sum": 0,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      }
+    },
+    {
+      "task": "queue",
+      "method": "plain",
+      "assigned_runs": 5,
+      "quality_passes": 5,
+      "method_passes": 1,
+      "latency_median_seconds_including_penalties": 46.86619375902228,
+      "latency_total_seconds_including_penalties": 228.39030263904715,
+      "latency_penalty_slots": [],
+      "observed_elapsed_seconds": {
+        "observed_sum": 228.39030263904715,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 228.39030263904715
+      },
+      "full_cost_known_runs": 5,
+      "full_cost_median_lower_usd": 0.17130479999999998,
+      "full_cost_median_upper_usd": 0.17130479999999998,
+      "full_cost_lower": {
+        "observed_sum": 0.8426119999999999,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0.8426119999999999
+      },
+      "full_cost_upper": {
+        "observed_sum": 0.8426119999999999,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0.8426119999999999
+      },
+      "worker_tokens": {
+        "input_tokens": {
+          "observed_sum": 663006,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 663006
+        },
+        "cached_input_tokens": {
+          "observed_sum": 545920,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 545920
+        },
+        "cache_write_input_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "output_tokens": {
+          "observed_sum": 7795,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 7795
+        },
+        "reasoning_output_tokens": {
+          "observed_sum": 1185,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 1185
+        }
+      },
+      "cache_read_fraction": 0.8234012965191868,
+      "selector": {
+        "tool_calls": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "tool_elapsed_ms": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_calls": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_input_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_output_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_latency_ms": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_errors": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_retries": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "estimated_cost_usd": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        }
+      },
+      "selector_status_counts": {
+        "NOT_USED": 5
+      },
+      "observed_test_commands": {
+        "observed_sum": 5,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 5
+      },
+      "repeated_completed_commands": {
+        "observed_sum": 0,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      },
+      "grading_seconds_outside_worker_timer": {
+        "observed_sum": 1.4419067829148844,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 1.4419067829148844
+      },
+      "worker_retry_count": null,
+      "worker_retry_count_status": "NOT_EXPOSED_BY_CLI",
+      "worker_retry_notice_events": {
+        "observed_sum": 0,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      },
+      "worker_retry_notice_stderr_lines": {
+        "observed_sum": 0,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      }
+    },
+    {
+      "task": "queue",
+      "method": "deterministic",
+      "assigned_runs": 5,
+      "quality_passes": 5,
+      "method_passes": 5,
+      "latency_median_seconds_including_penalties": 55.54976824996993,
+      "latency_total_seconds_including_penalties": 298.94684954098193,
+      "latency_penalty_slots": [],
+      "observed_elapsed_seconds": {
+        "observed_sum": 298.94684954098193,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 298.94684954098193
+      },
+      "full_cost_known_runs": 5,
+      "full_cost_median_lower_usd": 0.216736,
+      "full_cost_median_upper_usd": 0.216736,
+      "full_cost_lower": {
+        "observed_sum": 1.0992264,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 1.0992264
+      },
+      "full_cost_upper": {
+        "observed_sum": 1.3171284,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 1.3171284
+      },
+      "worker_tokens": {
+        "input_tokens": {
+          "observed_sum": 1157143,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 1157143
+        },
+        "cached_input_tokens": {
+          "observed_sum": 1037696,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 1037696
+        },
+        "cache_write_input_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "output_tokens": {
+          "observed_sum": 10318,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 10318
+        },
+        "reasoning_output_tokens": {
+          "observed_sum": 1923,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 1923
+        }
+      },
+      "cache_read_fraction": 0.8967742102747889,
+      "selector": {
+        "tool_calls": {
+          "observed_sum": 26,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 26
+        },
+        "tool_elapsed_ms": {
+          "observed_sum": 223.58736296882853,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 223.58736296882853
+        },
+        "provider_calls": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_input_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_output_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_latency_ms": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_errors": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_retries": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "estimated_cost_usd": {
+          "observed_sum": 0.0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0.0
+        }
+      },
+      "selector_status_counts": {
+        "COMPLETE": 5
+      },
+      "observed_test_commands": {
+        "observed_sum": 6,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 6
+      },
+      "repeated_completed_commands": {
+        "observed_sum": 0,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      },
+      "grading_seconds_outside_worker_timer": {
+        "observed_sum": 1.5380535449949093,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 1.5380535449949093
+      },
+      "worker_retry_count": null,
+      "worker_retry_count_status": "NOT_EXPOSED_BY_CLI",
+      "worker_retry_notice_events": {
+        "observed_sum": 0,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      },
+      "worker_retry_notice_stderr_lines": {
+        "observed_sum": 0,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      }
+    },
+    {
+      "task": "queue",
+      "method": "jev",
+      "assigned_runs": 5,
+      "quality_passes": 5,
+      "method_passes": 5,
+      "latency_median_seconds_including_penalties": 61.29665600403678,
+      "latency_total_seconds_including_penalties": 316.2703933060402,
+      "latency_penalty_slots": [],
+      "observed_elapsed_seconds": {
+        "observed_sum": 316.2703933060402,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 316.2703933060402
+      },
+      "full_cost_known_runs": 5,
+      "full_cost_median_lower_usd": 0.20662160000000002,
+      "full_cost_median_upper_usd": 0.20662160000000002,
+      "full_cost_lower": {
+        "observed_sum": 1.079612,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 1.079612
+      },
+      "full_cost_upper": {
+        "observed_sum": 1.079612,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 1.079612
+      },
+      "worker_tokens": {
+        "input_tokens": {
+          "observed_sum": 1110146,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 1110146
+        },
+        "cached_input_tokens": {
+          "observed_sum": 990720,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 990720
+        },
+        "cache_write_input_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "output_tokens": {
+          "observed_sum": 10281,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 10281
+        },
+        "reasoning_output_tokens": {
+          "observed_sum": 1783,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 1783
+        }
+      },
+      "cache_read_fraction": 0.8924231587556952,
+      "selector": {
+        "tool_calls": {
+          "observed_sum": 29,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 29
+        },
+        "tool_elapsed_ms": {
+          "observed_sum": 232.09563392447308,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 232.09563392447308
+        },
+        "provider_calls": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_input_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_output_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_latency_ms": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_errors": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_retries": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "estimated_cost_usd": {
+          "observed_sum": 0.0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0.0
+        }
+      },
+      "selector_status_counts": {
+        "COMPLETE": 5
+      },
+      "observed_test_commands": {
+        "observed_sum": 6,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 6
+      },
+      "repeated_completed_commands": {
+        "observed_sum": 0,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      },
+      "grading_seconds_outside_worker_timer": {
+        "observed_sum": 1.4971710920217447,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 1.4971710920217447
+      },
+      "worker_retry_count": null,
+      "worker_retry_count_status": "NOT_EXPOSED_BY_CLI",
+      "worker_retry_notice_events": {
+        "observed_sum": 0,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      },
+      "worker_retry_notice_stderr_lines": {
+        "observed_sum": 0,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      }
+    },
+    {
+      "task": "events",
+      "method": "plain",
+      "assigned_runs": 5,
+      "quality_passes": 5,
+      "method_passes": 1,
+      "latency_median_seconds_including_penalties": 43.76217513298616,
+      "latency_total_seconds_including_penalties": 206.2874517100281,
+      "latency_penalty_slots": [],
+      "observed_elapsed_seconds": {
+        "observed_sum": 206.2874517100281,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 206.2874517100281
+      },
+      "full_cost_known_runs": 5,
+      "full_cost_median_lower_usd": 0.137664,
+      "full_cost_median_upper_usd": 0.137664,
+      "full_cost_lower": {
+        "observed_sum": 0.6862128000000001,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0.6862128000000001
+      },
+      "full_cost_upper": {
+        "observed_sum": 0.6862128000000001,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0.6862128000000001
+      },
+      "worker_tokens": {
+        "input_tokens": {
+          "observed_sum": 569782,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 569782
+        },
+        "cached_input_tokens": {
+          "observed_sum": 482432,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 482432
+        },
+        "cache_write_input_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "output_tokens": {
+          "observed_sum": 7192,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 7192
+        },
+        "reasoning_output_tokens": {
+          "observed_sum": 1249,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 1249
+        }
+      },
+      "cache_read_fraction": 0.8466957538146168,
+      "selector": {
+        "tool_calls": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "tool_elapsed_ms": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_calls": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_input_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_output_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_latency_ms": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_errors": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_retries": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "estimated_cost_usd": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        }
+      },
+      "selector_status_counts": {
+        "NOT_USED": 5
+      },
+      "observed_test_commands": {
+        "observed_sum": 6,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 6
+      },
+      "repeated_completed_commands": {
+        "observed_sum": 0,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      },
+      "grading_seconds_outside_worker_timer": {
+        "observed_sum": 1.4997287178994156,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 1.4997287178994156
+      },
+      "worker_retry_count": null,
+      "worker_retry_count_status": "NOT_EXPOSED_BY_CLI",
+      "worker_retry_notice_events": {
+        "observed_sum": 0,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      },
+      "worker_retry_notice_stderr_lines": {
+        "observed_sum": 0,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      }
+    },
+    {
+      "task": "events",
+      "method": "deterministic",
+      "assigned_runs": 5,
+      "quality_passes": 5,
+      "method_passes": 5,
+      "latency_median_seconds_including_penalties": 62.06923339702189,
+      "latency_total_seconds_including_penalties": 308.301605100045,
+      "latency_penalty_slots": [],
+      "observed_elapsed_seconds": {
+        "observed_sum": 308.301605100045,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 308.301605100045
+      },
+      "full_cost_known_runs": 5,
+      "full_cost_median_lower_usd": 0.24035040000000002,
+      "full_cost_median_upper_usd": 0.24035040000000002,
+      "full_cost_lower": {
+        "observed_sum": 1.0913064000000001,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 1.0913064000000001
+      },
+      "full_cost_upper": {
+        "observed_sum": 1.0913064000000001,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 1.0913064000000001
+      },
+      "worker_tokens": {
+        "input_tokens": {
+          "observed_sum": 1099804,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 1099804
+        },
+        "cached_input_tokens": {
+          "observed_sum": 980736,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 980736
+        },
+        "cache_write_input_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "output_tokens": {
+          "observed_sum": 11137,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 11137
+        },
+        "reasoning_output_tokens": {
+          "observed_sum": 2589,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 2589
+        }
+      },
+      "cache_read_fraction": 0.8917370731512161,
+      "selector": {
+        "tool_calls": {
+          "observed_sum": 24,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 24
+        },
+        "tool_elapsed_ms": {
+          "observed_sum": 206.30321302451193,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 206.30321302451193
+        },
+        "provider_calls": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_input_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_output_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_latency_ms": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_errors": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_retries": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "estimated_cost_usd": {
+          "observed_sum": 0.0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0.0
+        }
+      },
+      "selector_status_counts": {
+        "COMPLETE": 5
+      },
+      "observed_test_commands": {
+        "observed_sum": 7,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 7
+      },
+      "repeated_completed_commands": {
+        "observed_sum": 0,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      },
+      "grading_seconds_outside_worker_timer": {
+        "observed_sum": 1.5044466161052696,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 1.5044466161052696
+      },
+      "worker_retry_count": null,
+      "worker_retry_count_status": "NOT_EXPOSED_BY_CLI",
+      "worker_retry_notice_events": {
+        "observed_sum": 0,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      },
+      "worker_retry_notice_stderr_lines": {
+        "observed_sum": 0,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      }
+    },
+    {
+      "task": "events",
+      "method": "jev",
+      "assigned_runs": 5,
+      "quality_passes": 5,
+      "method_passes": 5,
+      "latency_median_seconds_including_penalties": 57.29281923401868,
+      "latency_total_seconds_including_penalties": 309.6637992269825,
+      "latency_penalty_slots": [],
+      "observed_elapsed_seconds": {
+        "observed_sum": 309.6637992269825,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 309.6637992269825
+      },
+      "full_cost_known_runs": 5,
+      "full_cost_median_lower_usd": 0.21484148200000003,
+      "full_cost_median_upper_usd": 0.21484148200000003,
+      "full_cost_lower": {
+        "observed_sum": 1.03194261,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 1.03194261
+      },
+      "full_cost_upper": {
+        "observed_sum": 1.03194261,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 1.03194261
+      },
+      "worker_tokens": {
+        "input_tokens": {
+          "observed_sum": 1017228,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 1017228
+        },
+        "cached_input_tokens": {
+          "observed_sum": 899968,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 899968
+        },
+        "cache_write_input_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "output_tokens": {
+          "observed_sum": 10134,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 10134
+        },
+        "reasoning_output_tokens": {
+          "observed_sum": 2482,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 2482
+        }
+      },
+      "cache_read_fraction": 0.8847259414801795,
+      "selector": {
+        "tool_calls": {
+          "observed_sum": 20,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 20
+        },
+        "tool_elapsed_ms": {
+          "observed_sum": 2698.2116588624194,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 2698.2116588624194
+        },
+        "provider_calls": {
+          "observed_sum": 5,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 5
+        },
+        "provider_input_tokens": {
+          "observed_sum": 5605,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 5605
+        },
+        "provider_output_tokens": {
+          "observed_sum": 265,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 265
+        },
+        "provider_latency_ms": {
+          "observed_sum": 2457.1084360359237,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 2457.1084360359237
+        },
+        "provider_errors": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_retries": {
+          "observed_sum": 0,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "estimated_cost_usd": {
+          "observed_sum": 0.00023541,
+          "reported_runs": 5,
+          "known_runs": 5,
+          "unknown_runs": 0,
+          "complete_sum": 0.00023541
+        }
+      },
+      "selector_status_counts": {
+        "COMPLETE": 5
+      },
+      "observed_test_commands": {
+        "observed_sum": 5,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 5
+      },
+      "repeated_completed_commands": {
+        "observed_sum": 0,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      },
+      "grading_seconds_outside_worker_timer": {
+        "observed_sum": 1.5242257890640758,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 1.5242257890640758
+      },
+      "worker_retry_count": null,
+      "worker_retry_count_status": "NOT_EXPOSED_BY_CLI",
+      "worker_retry_notice_events": {
+        "observed_sum": 0,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      },
+      "worker_retry_notice_stderr_lines": {
+        "observed_sum": 0,
+        "reported_runs": 5,
+        "known_runs": 5,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      }
+    }
+  ],
+  "per_method": [
+    {
+      "method": "plain",
+      "assigned_runs": 15,
+      "quality_passes": 15,
+      "method_passes": 4,
+      "latency_median_seconds_including_penalties": 48.450445004040375,
+      "latency_total_seconds_including_penalties": 776.2692900751135,
+      "latency_penalty_slots": [],
+      "observed_elapsed_seconds": {
+        "observed_sum": 776.2692900751135,
+        "reported_runs": 15,
+        "known_runs": 15,
+        "unknown_runs": 0,
+        "complete_sum": 776.2692900751135
+      },
+      "full_cost_known_runs": 15,
+      "full_cost_median_lower_usd": 0.15648079999999998,
+      "full_cost_median_upper_usd": 0.15648079999999998,
+      "full_cost_lower": {
+        "observed_sum": 2.3080448,
+        "reported_runs": 15,
+        "known_runs": 15,
+        "unknown_runs": 0,
+        "complete_sum": 2.3080448
+      },
+      "full_cost_upper": {
+        "observed_sum": 2.3080448,
+        "reported_runs": 15,
+        "known_runs": 15,
+        "unknown_runs": 0,
+        "complete_sum": 2.3080448
+      },
+      "worker_tokens": {
+        "input_tokens": {
+          "observed_sum": 1885084,
+          "reported_runs": 15,
+          "known_runs": 15,
+          "unknown_runs": 0,
+          "complete_sum": 1885084
+        },
+        "cached_input_tokens": {
+          "observed_sum": 1608192,
+          "reported_runs": 15,
+          "known_runs": 15,
+          "unknown_runs": 0,
+          "complete_sum": 1608192
+        },
+        "cache_write_input_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 15,
+          "known_runs": 15,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "output_tokens": {
+          "observed_sum": 27860,
+          "reported_runs": 15,
+          "known_runs": 15,
+          "unknown_runs": 0,
+          "complete_sum": 27860
+        },
+        "reasoning_output_tokens": {
+          "observed_sum": 6750,
+          "reported_runs": 15,
+          "known_runs": 15,
+          "unknown_runs": 0,
+          "complete_sum": 6750
+        }
+      },
+      "cache_read_fraction": 0.8531142378801156,
+      "selector": {
+        "tool_calls": {
+          "observed_sum": 0,
+          "reported_runs": 15,
+          "known_runs": 15,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "tool_elapsed_ms": {
+          "observed_sum": 0,
+          "reported_runs": 15,
+          "known_runs": 15,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_calls": {
+          "observed_sum": 0,
+          "reported_runs": 15,
+          "known_runs": 15,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_input_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 15,
+          "known_runs": 15,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_output_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 15,
+          "known_runs": 15,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_latency_ms": {
+          "observed_sum": 0,
+          "reported_runs": 15,
+          "known_runs": 15,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_errors": {
+          "observed_sum": 0,
+          "reported_runs": 15,
+          "known_runs": 15,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "provider_retries": {
+          "observed_sum": 0,
+          "reported_runs": 15,
+          "known_runs": 15,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "estimated_cost_usd": {
+          "observed_sum": 0,
+          "reported_runs": 15,
+          "known_runs": 15,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        }
+      },
+      "selector_status_counts": {
+        "NOT_USED": 15
+      },
+      "observed_test_commands": {
+        "observed_sum": 17,
+        "reported_runs": 15,
+        "known_runs": 15,
+        "unknown_runs": 0,
+        "complete_sum": 17
+      },
+      "repeated_completed_commands": {
+        "observed_sum": 0,
+        "reported_runs": 15,
+        "known_runs": 15,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      },
+      "grading_seconds_outside_worker_timer": {
+        "observed_sum": 4.508555821783375,
+        "reported_runs": 15,
+        "known_runs": 15,
+        "unknown_runs": 0,
+        "complete_sum": 4.508555821783375
+      },
+      "worker_retry_count": null,
+      "worker_retry_count_status": "NOT_EXPOSED_BY_CLI",
+      "worker_retry_notice_events": {
+        "observed_sum": 0,
+        "reported_runs": 15,
+        "known_runs": 15,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      },
+      "worker_retry_notice_stderr_lines": {
+        "observed_sum": 0,
+        "reported_runs": 15,
+        "known_runs": 15,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      }
+    },
+    {
+      "method": "deterministic",
+      "assigned_runs": 15,
+      "quality_passes": 15,
+      "method_passes": 14,
+      "latency_median_seconds_including_penalties": 62.74349627899937,
+      "latency_total_seconds_including_penalties": 1002.0245143630891,
+      "latency_penalty_slots": [],
+      "observed_elapsed_seconds": {
+        "observed_sum": 1002.0245143630891,
+        "reported_runs": 15,
+        "known_runs": 15,
+        "unknown_runs": 0,
+        "complete_sum": 1002.0245143630891
+      },
+      "full_cost_known_runs": 14,
+      "full_cost_median_lower_usd": null,
+      "full_cost_median_upper_usd": null,
+      "full_cost_lower": {
+        "observed_sum": 3.1478336000000002,
+        "reported_runs": 14,
+        "known_runs": 14,
+        "unknown_runs": 1,
+        "complete_sum": null
+      },
+      "full_cost_upper": {
+        "observed_sum": 3.8003868,
+        "reported_runs": 14,
+        "known_runs": 14,
+        "unknown_runs": 1,
+        "complete_sum": null
+      },
+      "worker_tokens": {
+        "input_tokens": {
+          "observed_sum": 3390002,
+          "reported_runs": 15,
+          "known_runs": 15,
+          "unknown_runs": 0,
+          "complete_sum": 3390002
+        },
+        "cached_input_tokens": {
+          "observed_sum": 3045504,
+          "reported_runs": 15,
+          "known_runs": 15,
+          "unknown_runs": 0,
+          "complete_sum": 3045504
+        },
+        "cache_write_input_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 15,
+          "known_runs": 15,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "output_tokens": {
+          "observed_sum": 36110,
+          "reported_runs": 15,
+          "known_runs": 15,
+          "unknown_runs": 0,
+          "complete_sum": 36110
+        },
+        "reasoning_output_tokens": {
+          "observed_sum": 8952,
+          "reported_runs": 15,
+          "known_runs": 15,
+          "unknown_runs": 0,
+          "complete_sum": 8952
+        }
+      },
+      "cache_read_fraction": 0.8983782310452915,
+      "selector": {
+        "tool_calls": {
+          "observed_sum": 66,
+          "reported_runs": 15,
+          "known_runs": 14,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "tool_elapsed_ms": {
+          "observed_sum": 579.5900429948233,
+          "reported_runs": 15,
+          "known_runs": 14,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "provider_calls": {
+          "observed_sum": 0,
+          "reported_runs": 14,
+          "known_runs": 14,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "provider_input_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 14,
+          "known_runs": 14,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "provider_output_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 14,
+          "known_runs": 14,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "provider_latency_ms": {
+          "observed_sum": 0,
+          "reported_runs": 14,
+          "known_runs": 14,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "provider_errors": {
+          "observed_sum": 0,
+          "reported_runs": 15,
+          "known_runs": 14,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "provider_retries": {
+          "observed_sum": 0,
+          "reported_runs": 14,
+          "known_runs": 14,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "estimated_cost_usd": {
+          "observed_sum": 0.0,
+          "reported_runs": 14,
+          "known_runs": 14,
+          "unknown_runs": 1,
+          "complete_sum": null
+        }
+      },
+      "selector_status_counts": {
+        "INCOMPLETE_ACCOUNTING": 1,
+        "COMPLETE": 14
+      },
+      "observed_test_commands": {
+        "observed_sum": 19,
+        "reported_runs": 15,
+        "known_runs": 15,
+        "unknown_runs": 0,
+        "complete_sum": 19
+      },
+      "repeated_completed_commands": {
+        "observed_sum": 0,
+        "reported_runs": 15,
+        "known_runs": 15,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      },
+      "grading_seconds_outside_worker_timer": {
+        "observed_sum": 8.50957785313949,
+        "reported_runs": 15,
+        "known_runs": 15,
+        "unknown_runs": 0,
+        "complete_sum": 8.50957785313949
+      },
+      "worker_retry_count": null,
+      "worker_retry_count_status": "NOT_EXPOSED_BY_CLI",
+      "worker_retry_notice_events": {
+        "observed_sum": 0,
+        "reported_runs": 15,
+        "known_runs": 15,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      },
+      "worker_retry_notice_stderr_lines": {
+        "observed_sum": 0,
+        "reported_runs": 15,
+        "known_runs": 15,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      }
+    },
+    {
+      "method": "jev",
+      "assigned_runs": 15,
+      "quality_passes": 14,
+      "method_passes": 14,
+      "latency_median_seconds_including_penalties": 63.567457997996826,
+      "latency_total_seconds_including_penalties": 974.430340298044,
+      "latency_penalty_slots": [],
+      "observed_elapsed_seconds": {
+        "observed_sum": 974.430340298044,
+        "reported_runs": 15,
+        "known_runs": 15,
+        "unknown_runs": 0,
+        "complete_sum": 974.430340298044
+      },
+      "full_cost_known_runs": 14,
+      "full_cost_median_lower_usd": null,
+      "full_cost_median_upper_usd": null,
+      "full_cost_lower": {
+        "observed_sum": 3.0405913460000003,
+        "reported_runs": 14,
+        "known_runs": 14,
+        "unknown_runs": 1,
+        "complete_sum": null
+      },
+      "full_cost_upper": {
+        "observed_sum": 3.0405913460000003,
+        "reported_runs": 14,
+        "known_runs": 14,
+        "unknown_runs": 1,
+        "complete_sum": null
+      },
+      "worker_tokens": {
+        "input_tokens": {
+          "observed_sum": 3067606,
+          "reported_runs": 15,
+          "known_runs": 15,
+          "unknown_runs": 0,
+          "complete_sum": 3067606
+        },
+        "cached_input_tokens": {
+          "observed_sum": 2706816,
+          "reported_runs": 15,
+          "known_runs": 15,
+          "unknown_runs": 0,
+          "complete_sum": 2706816
+        },
+        "cache_write_input_tokens": {
+          "observed_sum": 0,
+          "reported_runs": 15,
+          "known_runs": 15,
+          "unknown_runs": 0,
+          "complete_sum": 0
+        },
+        "output_tokens": {
+          "observed_sum": 34012,
+          "reported_runs": 15,
+          "known_runs": 15,
+          "unknown_runs": 0,
+          "complete_sum": 34012
+        },
+        "reasoning_output_tokens": {
+          "observed_sum": 8885,
+          "reported_runs": 15,
+          "known_runs": 15,
+          "unknown_runs": 0,
+          "complete_sum": 8885
+        }
+      },
+      "cache_read_fraction": 0.882387112295386,
+      "selector": {
+        "tool_calls": {
+          "observed_sum": 69,
+          "reported_runs": 15,
+          "known_runs": 14,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "tool_elapsed_ms": {
+          "observed_sum": 5416.074848850258,
+          "reported_runs": 15,
+          "known_runs": 14,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "provider_calls": {
+          "observed_sum": 9,
+          "reported_runs": 14,
+          "known_runs": 14,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "provider_input_tokens": {
+          "observed_sum": 11013,
+          "reported_runs": 14,
+          "known_runs": 14,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "provider_output_tokens": {
+          "observed_sum": 477,
+          "reported_runs": 14,
+          "known_runs": 14,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "provider_latency_ms": {
+          "observed_sum": 4770.177367026918,
+          "reported_runs": 14,
+          "known_runs": 14,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "provider_errors": {
+          "observed_sum": 0,
+          "reported_runs": 15,
+          "known_runs": 14,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "provider_retries": {
+          "observed_sum": 0,
+          "reported_runs": 14,
+          "known_runs": 14,
+          "unknown_runs": 1,
+          "complete_sum": null
+        },
+        "estimated_cost_usd": {
+          "observed_sum": 0.00046254600000000004,
+          "reported_runs": 14,
+          "known_runs": 14,
+          "unknown_runs": 1,
+          "complete_sum": null
+        }
+      },
+      "selector_status_counts": {
+        "INCOMPLETE_ACCOUNTING": 1,
+        "COMPLETE": 14
+      },
+      "observed_test_commands": {
+        "observed_sum": 16,
+        "reported_runs": 15,
+        "known_runs": 15,
+        "unknown_runs": 0,
+        "complete_sum": 16
+      },
+      "repeated_completed_commands": {
+        "observed_sum": 0,
+        "reported_runs": 15,
+        "known_runs": 15,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      },
+      "grading_seconds_outside_worker_timer": {
+        "observed_sum": 4.858436711132526,
+        "reported_runs": 15,
+        "known_runs": 15,
+        "unknown_runs": 0,
+        "complete_sum": 4.858436711132526
+      },
+      "worker_retry_count": null,
+      "worker_retry_count_status": "NOT_EXPOSED_BY_CLI",
+      "worker_retry_notice_events": {
+        "observed_sum": 0,
+        "reported_runs": 15,
+        "known_runs": 15,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      },
+      "worker_retry_notice_stderr_lines": {
+        "observed_sum": 0,
+        "reported_runs": 15,
+        "known_runs": 15,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      }
+    }
+  ],
+  "all_runs": {
+    "assigned_runs": 45,
+    "quality_passes": 44,
+    "method_passes": 32,
+    "latency_median_seconds_including_penalties": 61.05943417199887,
+    "latency_total_seconds_including_penalties": 2752.7241447362467,
+    "latency_penalty_slots": [],
+    "observed_elapsed_seconds": {
+      "observed_sum": 2752.7241447362467,
+      "reported_runs": 45,
+      "known_runs": 45,
+      "unknown_runs": 0,
+      "complete_sum": 2752.7241447362467
+    },
+    "full_cost_known_runs": 43,
+    "full_cost_median_lower_usd": null,
+    "full_cost_median_upper_usd": null,
+    "full_cost_lower": {
+      "observed_sum": 8.496469746,
+      "reported_runs": 43,
+      "known_runs": 43,
+      "unknown_runs": 2,
+      "complete_sum": null
+    },
+    "full_cost_upper": {
+      "observed_sum": 9.149022946,
+      "reported_runs": 43,
+      "known_runs": 43,
+      "unknown_runs": 2,
+      "complete_sum": null
+    },
+    "worker_tokens": {
+      "input_tokens": {
+        "observed_sum": 8342692,
+        "reported_runs": 45,
+        "known_runs": 45,
+        "unknown_runs": 0,
+        "complete_sum": 8342692
+      },
+      "cached_input_tokens": {
+        "observed_sum": 7360512,
+        "reported_runs": 45,
+        "known_runs": 45,
+        "unknown_runs": 0,
+        "complete_sum": 7360512
+      },
+      "cache_write_input_tokens": {
+        "observed_sum": 0,
+        "reported_runs": 45,
+        "known_runs": 45,
+        "unknown_runs": 0,
+        "complete_sum": 0
+      },
+      "output_tokens": {
+        "observed_sum": 97982,
+        "reported_runs": 45,
+        "known_runs": 45,
+        "unknown_runs": 0,
+        "complete_sum": 97982
+      },
+      "reasoning_output_tokens": {
+        "observed_sum": 24587,
+        "reported_runs": 45,
+        "known_runs": 45,
+        "unknown_runs": 0,
+        "complete_sum": 24587
+      }
+    },
+    "cache_read_fraction": 0.8822706148087451,
+    "selector": {
+      "tool_calls": {
+        "observed_sum": 135,
+        "reported_runs": 45,
+        "known_runs": 43,
+        "unknown_runs": 2,
+        "complete_sum": null
+      },
+      "tool_elapsed_ms": {
+        "observed_sum": 5995.664891845081,
+        "reported_runs": 45,
+        "known_runs": 43,
+        "unknown_runs": 2,
+        "complete_sum": null
+      },
+      "provider_calls": {
+        "observed_sum": 9,
+        "reported_runs": 43,
+        "known_runs": 43,
+        "unknown_runs": 2,
+        "complete_sum": null
+      },
+      "provider_input_tokens": {
+        "observed_sum": 11013,
+        "reported_runs": 43,
+        "known_runs": 43,
+        "unknown_runs": 2,
+        "complete_sum": null
+      },
+      "provider_output_tokens": {
+        "observed_sum": 477,
+        "reported_runs": 43,
+        "known_runs": 43,
+        "unknown_runs": 2,
+        "complete_sum": null
+      },
+      "provider_latency_ms": {
+        "observed_sum": 4770.177367026918,
+        "reported_runs": 43,
+        "known_runs": 43,
+        "unknown_runs": 2,
+        "complete_sum": null
+      },
+      "provider_errors": {
+        "observed_sum": 0,
+        "reported_runs": 45,
+        "known_runs": 43,
+        "unknown_runs": 2,
+        "complete_sum": null
+      },
+      "provider_retries": {
+        "observed_sum": 0,
+        "reported_runs": 43,
+        "known_runs": 43,
+        "unknown_runs": 2,
+        "complete_sum": null
+      },
+      "estimated_cost_usd": {
+        "observed_sum": 0.00046254600000000004,
+        "reported_runs": 43,
+        "known_runs": 43,
+        "unknown_runs": 2,
+        "complete_sum": null
+      }
+    },
+    "selector_status_counts": {
+      "NOT_USED": 15,
+      "INCOMPLETE_ACCOUNTING": 2,
+      "COMPLETE": 28
+    },
+    "observed_test_commands": {
+      "observed_sum": 52,
+      "reported_runs": 45,
+      "known_runs": 45,
+      "unknown_runs": 0,
+      "complete_sum": 52
+    },
+    "repeated_completed_commands": {
+      "observed_sum": 0,
+      "reported_runs": 45,
+      "known_runs": 45,
+      "unknown_runs": 0,
+      "complete_sum": 0
+    },
+    "grading_seconds_outside_worker_timer": {
+      "observed_sum": 17.87657038605539,
+      "reported_runs": 45,
+      "known_runs": 45,
+      "unknown_runs": 0,
+      "complete_sum": 17.87657038605539
+    },
+    "worker_retry_count": null,
+    "worker_retry_count_status": "NOT_EXPOSED_BY_CLI",
+    "worker_retry_notice_events": {
+      "observed_sum": 0,
+      "reported_runs": 45,
+      "known_runs": 45,
+      "unknown_runs": 0,
+      "complete_sum": 0
+    },
+    "worker_retry_notice_stderr_lines": {
+      "observed_sum": 0,
+      "reported_runs": 45,
+      "known_runs": 45,
+      "unknown_runs": 0,
+      "complete_sum": 0
+    }
+  },
+  "frozen_assessment": {
+    "status": "COMPLETE",
+    "comparisons": [
+      {
+        "candidate": "deterministic",
+        "comparator": "plain",
+        "tasks": [
+          {
+            "task": "invoice",
+            "quality_no_regression": true,
+            "method_compliance": false,
+            "latency_ratio": 1.5713129247093542,
+            "conservative_cost_ratio": null
+          },
+          {
+            "task": "queue",
+            "quality_no_regression": true,
+            "method_compliance": false,
+            "latency_ratio": 1.1852843978667664,
+            "conservative_cost_ratio": 1.2652068126520684
+          },
+          {
+            "task": "events",
+            "quality_no_regression": true,
+            "method_compliance": false,
+            "latency_ratio": 1.4183306293255202,
+            "conservative_cost_ratio": 1.7459205020920503
+          }
+        ],
+        "latency_ratio": 1.3823592112051024,
+        "conservative_cost_ratio": null,
+        "quality_gate": true,
+        "per_task_latency_gate": false,
+        "method_gate": false,
+        "performance_gate": false,
+        "usefulness_gate": false
+      },
+      {
+        "candidate": "jev",
+        "comparator": "plain",
+        "tasks": [
+          {
+            "task": "invoice",
+            "quality_no_regression": false,
+            "method_compliance": false,
+            "latency_ratio": 1.3052168817305858,
+            "conservative_cost_ratio": null
+          },
+          {
+            "task": "queue",
+            "quality_no_regression": true,
+            "method_compliance": false,
+            "latency_ratio": 1.3079077067622218,
+            "conservative_cost_ratio": 1.206163516725743
+          },
+          {
+            "task": "events",
+            "quality_no_regression": true,
+            "method_compliance": false,
+            "latency_ratio": 1.3091858222292445,
+            "conservative_cost_ratio": 1.560622108902836
+          }
+        ],
+        "latency_ratio": 1.3074357567837778,
+        "conservative_cost_ratio": null,
+        "quality_gate": false,
+        "per_task_latency_gate": false,
+        "method_gate": false,
+        "performance_gate": false,
+        "usefulness_gate": false
+      },
+      {
+        "candidate": "jev",
+        "comparator": "deterministic",
+        "tasks": [
+          {
+            "task": "invoice",
+            "quality_no_regression": false,
+            "method_compliance": false,
+            "latency_ratio": 0.830653691703078,
+            "conservative_cost_ratio": null
+          },
+          {
+            "task": "queue",
+            "quality_no_regression": true,
+            "method_compliance": true,
+            "latency_ratio": 1.1034547566104376,
+            "conservative_cost_ratio": 0.9533330872582312
+          },
+          {
+            "task": "events",
+            "quality_no_regression": true,
+            "method_compliance": true,
+            "latency_ratio": 0.9230469928241068,
+            "conservative_cost_ratio": 0.8938677946864245
+          }
+        ],
+        "latency_ratio": 0.9458003000855266,
+        "conservative_cost_ratio": null,
+        "quality_gate": false,
+        "per_task_latency_gate": true,
+        "method_gate": false,
+        "performance_gate": false,
+        "usefulness_gate": false
+      }
+    ],
+    "jev_incremental_usefulness": false,
+    "advisory_enabled": false
+  },
+  "history_recording_seconds_outside_worker_timer": 3.415135408984497,
+  "cost_kind": "API-equivalent estimate at frozen declared rates, not subscription billing",
+  "interpretation": "No filtering or advisory promotion. Unknown costs remain unknown; observed subtotals are not complete totals.",
+  "source_rows_modified": false,
+  "gate_adjustment": false
+}
