@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "scope": "independent source and receipt review; not independent replay of private logs",
+  "reviewed_script_sha256": "1f902058d478a2963ed21d097669351226a0e9574eb00b6326c1995990a19f9a",
+  "reviewed_observation_snapshot_sha256": "d988894f052db6527d128873f90fc646dda13bffde6c67ecd46c3f9ab2fc1f26",
+  "reviewed_slots": [
+    5,
+    7,
+    9,
+    14,
+    16
+  ],
+  "resolved_findings": [
+    "Bind observed originals to frozen workflow-history hashes",
+    "Limit findings to complete payload observation; preserve failed method checks and gates"
+  ],
+  "frozen_rows_modified": false,
+  "gate_adjustment": false
+}

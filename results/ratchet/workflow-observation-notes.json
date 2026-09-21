@@ -6,7 +6,11 @@
       "frozen_method_compliance": false,
       "audit_complete_originals_present": true,
       "worker_events_sha256": "e50a45ad85b0733bfc7cd0cc6f95a008520665078ba6a76293f2c7357df1ffac",
-      "finding": "frozen verifier requires whole-command JSON; worker batched the supplied reader after other inspections",
+      "original_sha256": {
+        "attempt-0.jsonl": "36d533c0336f7dd163d71b7747bce0e65fdc3890abae7daebab5d969d5e79196",
+        "attempt-1.jsonl": "9f23ecc8bcd09798d87f357d35e47440aefdef09e1d7319ee92225cde2faebbf"
+      },
+      "finding": "complete original payload present inside a completed command output; frozen method remains false",
       "frozen_row_modified": false,
       "gate_adjustment": false
     },
@@ -15,7 +19,50 @@
       "frozen_method_compliance": false,
       "audit_complete_originals_present": true,
       "worker_events_sha256": "015f766a59f9c973dc418680547ea06ec360c0e38d1fdb7c7139a3b830b9888d",
-      "finding": "frozen verifier requires whole-command JSON; worker batched the supplied reader after other inspections",
+      "original_sha256": {
+        "attempt-0.jsonl": "82f3bd03f0510f65528cd9b2c4810850895b088e23b67b19e541f46881adc79c",
+        "attempt-1.jsonl": "9d94ae6012f308a75d8169d4b79c97e1c8c096ad0b8310f33aadc69bd669347c"
+      },
+      "finding": "complete original payload present inside a completed command output; frozen method remains false",
+      "frozen_row_modified": false,
+      "gate_adjustment": false
+    },
+    {
+      "slot": 9,
+      "frozen_method_compliance": false,
+      "audit_complete_originals_present": true,
+      "worker_events_sha256": "f2ed006506618f81c039e2fcd37e9b8ea8daf3baf36ed35e8eb3d4d322729595",
+      "original_sha256": {
+        "attempt-0.jsonl": "1bb77896775f62ec31681be3a2dbdc18b55c1aa23934460a1277d501ade8bd2e",
+        "attempt-1.jsonl": "c0a9208e8a1e5521653d0b02608917653eb2abfd25aca7b06bd589d2590c053c"
+      },
+      "finding": "complete original payload present inside a completed command output; frozen method remains false",
+      "frozen_row_modified": false,
+      "gate_adjustment": false
+    },
+    {
+      "slot": 14,
+      "frozen_method_compliance": false,
+      "audit_complete_originals_present": true,
+      "worker_events_sha256": "692847c3f4c0793ca1f56b956c539b6abfabf1d5f8fd12309bfd5233b51b7dab",
+      "original_sha256": {
+        "attempt-0.jsonl": "36d533c0336f7dd163d71b7747bce0e65fdc3890abae7daebab5d969d5e79196",
+        "attempt-1.jsonl": "9f23ecc8bcd09798d87f357d35e47440aefdef09e1d7319ee92225cde2faebbf"
+      },
+      "finding": "complete original payload present inside a completed command output; frozen method remains false",
+      "frozen_row_modified": false,
+      "gate_adjustment": false
+    },
+    {
+      "slot": 16,
+      "frozen_method_compliance": false,
+      "audit_complete_originals_present": true,
+      "worker_events_sha256": "b67bbe07d4dbb3e372a5d3b689c07b7d2308904fc9f0977a503b129708f9fc71",
+      "original_sha256": {
+        "attempt-0.jsonl": "82f3bd03f0510f65528cd9b2c4810850895b088e23b67b19e541f46881adc79c",
+        "attempt-1.jsonl": "9d94ae6012f308a75d8169d4b79c97e1c8c096ad0b8310f33aadc69bd669347c"
+      },
+      "finding": "complete original payload present inside a completed command output; frozen method remains false",
       "frozen_row_modified": false,
       "gate_adjustment": false
     }
