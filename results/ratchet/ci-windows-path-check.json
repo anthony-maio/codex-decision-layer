@@ -1,0 +1,11 @@
+{
+  "scope": "test harness path normalization; production secure reader unchanged",
+  "failed_run": "https://github.com/anthony-maio/codex-decision-layer/actions/runs/35548412249",
+  "failed_test": "test_pinned_directory_excludes_reparse_writers_but_allows_child_creation",
+  "observed_failure": "directory checkpoint was never entered",
+  "local_reproduction": "supplied root alias names the same directory as the canonical store root",
+  "before_fix": "FAIL: checkpoint list empty",
+  "after_fix": "PASS: canonical root checkpoint, writer sharing violation, and child creation",
+  "focused_windows_tests_passed": 8,
+  "hosted_fix_verification": "PENDING"
+}

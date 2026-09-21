@@ -125,17 +125,19 @@ class EvidenceStoreTests(unittest.TestCase):
                 kernel.GetFileInformationByHandle.argtypes = proxy.GetFileInformationByHandle.argtypes
                 kernel.GetFileInformationByHandle.restype = proxy.GetFileInformationByHandle.restype
                 result = kernel.GetFileInformationByHandle(handle, pointer)
-                if Path(handles[handle]) == self.root:
+                # The store canonicalizes its configured root; Windows temp
+                # paths may use an alias or short spelling for that directory.
+                if Path(handles[handle]) == self.store.root:
                     api.CreateFileW.argtypes = kernel.CreateFileW.argtypes
                     api.CreateFileW.restype = kernel.CreateFileW.restype
-                    writer = api.CreateFileW(str(self.root), 0x40000000, 7, None, 3, 0x02200000, None)
+                    writer = api.CreateFileW(str(self.store.root), 0x40000000, 7, None, 3, 0x02200000, None)
                     error = ctypes.get_last_error()
                     if writer != ctypes.c_void_p(-1).value:
                         kernel.CloseHandle.argtypes = proxy.CloseHandle.argtypes
                         kernel.CloseHandle(writer)
                     self.assertEqual(writer, ctypes.c_void_p(-1).value)
                     self.assertEqual(error, 32)  # ERROR_SHARING_VIOLATION
-                    child = self.root / "new-child.txt"
+                    child = self.store.root / "new-child.txt"
                     child.write_text("child creation remains possible", encoding="utf-8")
                     checked.append(True)
                 return result
