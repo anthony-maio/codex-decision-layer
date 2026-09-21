@@ -1,6 +1,6 @@
 # Evaluation history
 
-Current candidate: [Ratchet validation](docs/ratchet-release-validation.md). Jev recovered seven additional repeated blockers on its frozen holdout, but the combined classifier inherited a critical false match and failed precision. The repair workflow is still in progress. Ratchet remains experimental and shadow-only.
+Current release: [Ratchet validation](docs/ratchet-release-validation.md). Jev recovered seven additional repeated blockers on its frozen holdout, but the combined classifier inherited a critical false match and failed precision. All 45 repair trials are complete and independently reviewed. The workflow failed usefulness: both Ratchet methods were slower than plain Codex, and the Jev method had one repair-quality failure. [Full results](docs/ratchet-workflow-results.md). Ratchet remains experimental and shadow-only.
 
 The earlier [evidence-selection validation](docs/release-validation.md) is preserved separately. Its public-source holdout passed Jev's relevance gates, but its matched Codex workflow failed usefulness. Eve retained everything. Filtering remains disabled. The results below are the preserved v0.1.0 synthetic baseline, not the current release gate.
 

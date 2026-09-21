@@ -1,0 +1,55 @@
+{
+  "platform": "Windows",
+  "package_version": "0.1.1",
+  "wheel": "codex_evidence_selector-0.1.1-py3-none-any.whl",
+  "wheel_sha256": "f6ef16516d7efb7432fad84beea23da4dcdf5818081dd17b1edd8f7c1f5b3d7c",
+  "isolated_wheel_import": true,
+  "cli": "PASS",
+  "mcp": {
+    "mcp_stdio": "PASS",
+    "provider": "baseline",
+    "original_text_preserved": true,
+    "expansion": "PASS",
+    "outside_root": "REFUSED",
+    "decisions": [
+      {
+        "id": "evidence.txt:1:d4ea650f7ad49155",
+        "proposal": "retain",
+        "reason": "lexical_overlap",
+        "probability": null,
+        "lexical_score": 0.5,
+        "model": "lexical-v1",
+        "usage": {},
+        "latency_ms": 0.076
+      }
+    ]
+  },
+  "missing_local_extra": "ACTIONABLE_NONZERO",
+  "offline_installed_cli_restart": "PASS",
+  "ratchet_offline_wheel_replay": "PASS",
+  "ratchet_mcp": {
+    "ratchet_stdio": "PASS",
+    "read_only_annotations": true,
+    "shadow_comparison": "PASS",
+    "exact_evidence_recovery": "PASS",
+    "outside_root": "REFUSED",
+    "launch": "offline_python_bootstrap",
+    "manifest_sha256": null,
+    "package_manager_offline": false,
+    "server_dns_and_connect": "DENIED_AFTER_EVENT_LOOP_CREATION"
+  },
+  "ratchet_installed_entrypoint_mcp": {
+    "ratchet_stdio": "PASS",
+    "read_only_annotations": true,
+    "shadow_comparison": "PASS",
+    "exact_evidence_recovery": "PASS",
+    "outside_root": "REFUSED",
+    "launch": "installed_entrypoint_saved_root",
+    "manifest_sha256": null,
+    "package_manager_offline": false,
+    "server_dns_and_connect": "NOT_BLOCKED"
+  },
+  "ratchet_fresh_project_reporter_and_cli_comparison": "PASS",
+  "ratchet_original_records_unchanged": true,
+  "dependencies": "constrained by uv.lock"
+}

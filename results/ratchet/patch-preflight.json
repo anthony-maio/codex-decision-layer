@@ -1,0 +1,19 @@
+{
+  "filtering_enabled": false,
+  "package_commit": "5491bef6eb8ed5992f3a0bec433bba624cd14a0c",
+  "package_version": "0.1.1",
+  "classification": "FAILED",
+  "wheel_sha256": "f6ef16516d7efb7432fad84beea23da4dcdf5818081dd17b1edd8f7c1f5b3d7c",
+  "plugin_inputs_unchanged": true,
+  "status": "PASS_OPERATIONAL_PREFLIGHT",
+  "windows_linux_wheel_install": "PASS",
+  "windows_linux_real_codex_mcp": "PASS",
+  "installed_marketplace_commit": "c45e8e18a98c51020bba285d4afd091d254b75a5",
+  "package_inputs_unchanged": true,
+  "historical_failures_retained": true,
+  "workflow_usefulness": "FAILED",
+  "windows_linux_cached_offline_launcher": "PASS",
+  "privacy": "No exact local secret or private user path in current tracked files and new receipts",
+  "advisory_enabled": false,
+  "final_commit_ci": "Required before tagging; publication receipt attached to release"
+}

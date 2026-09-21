@@ -68,7 +68,7 @@ probability threshold of 0.9. This threshold is not a correctness guarantee.
 
 ## Read-only Codex tools
 
-The development plugin is in `plugins/ratchet`. Its MCP server exposes
+The plugin is in `plugins/ratchet`. Its MCP server exposes
 `ratchet_status`, `ratchet_compare`, and `ratchet_evidence`. These tools never
 start tests, modify records, or block a command. Original retrieval requires the
 SHA-256 from comparison and refuses a record that has since changed.
@@ -88,8 +88,8 @@ new recommendation. Store completed records in a dedicated directory.
 
 The patch manifest launches an immutable package commit through `uvx`; uv and
 Git must be on Codex's PATH. RC2's tag reference failed offline restart and is
-retained as a failed candidate check. The corrected patch installation is being
-validated. After v0.1.1 is published, its installation commands are:
+retained as a failed candidate check. The corrected patch passed fresh marketplace
+installation, real Codex MCP use, and cached offline startup on both platforms:
 
 ```sh
 codex plugin marketplace add anthony-maio/codex-decision-layer --ref v0.1.1
@@ -100,6 +100,11 @@ Configure the record root before starting a new Codex task. The pinned launcher
 uses the saved root and deterministic shadow mode. It never enables hosted
 comparison automatically. Candidate validation is tracked in
 [release validation](docs/ratchet-release-validation.md).
+
+Use the default saved-root configuration for Codex. A custom `RATCHET_CONFIG`
+environment variable passed to the Codex parent process is not automatically
+forwarded to its MCP child. The installed checks use the saved user setting;
+the test harness preserves and restores the original setting and backup.
 
 Fresh pytest recording, installed CLI comparison, and saved-root MCP
 startup pass from isolated wheels on Windows and Linux. Offline checks include

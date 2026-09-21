@@ -37,7 +37,7 @@ def run(command, label, environment=None, timeout=300):
     if result.returncode:
         raise ValueError(label + ' failed; inspect private log')
     return result.stdout
-run([codex, 'plugin', 'marketplace', 'add', 'anthony-maio/codex-decision-layer', '--ref', args.ref, '--json'], 'marketplace')
+marketplace = json.loads(run([codex, 'plugin', 'marketplace', 'add', 'anthony-maio/codex-decision-layer', '--ref', args.ref, '--json'], 'marketplace'))
 run([codex, 'plugin', 'add', 'ratchet@codex-decision-layer', '--json'], 'install')
 installed = []
 for path in (home / 'plugins/cache').rglob('plugin.json'):
@@ -63,7 +63,11 @@ d=m.distribution('codex-evidence-selector')
 root=pathlib.Path(evidence_selector.ratchet.__file__).parent
 print(json.dumps({'version':d.version,'source':json.loads(d.read_text('direct_url.json')),'python':__import__('platform').python_version(),'dependencies':dict(sorted((x.metadata['Name'],x.version) for x in m.distributions())),'implementation_sha256':{str(p.relative_to(root)).replace('\\\\','/'):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(root.glob('*.py'))}}))'''
 identity = json.loads(run(launcher[:-2] + ['python', '-c', identity_code], 'identity', {**env, 'UV_OFFLINE': '1'}))
-marketplace_commit = subprocess.check_output(['git', 'rev-parse', args.ref + '^{commit}'], cwd=repo, text=True).strip()
+snapshot = Path(marketplace['installedRoot'])
+marketplace_commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=snapshot, text=True).strip()
+expected_commit = subprocess.check_output(['git', 'rev-parse', args.ref + '^{commit}'], cwd=snapshot, text=True).strip()
+if marketplace_commit != expected_commit:
+    raise ValueError('installed marketplace snapshot differs from requested revision')
 if identity['source']['vcs_info']['commit_id'] != package_commit or identity['version'] != args.version:
     raise ValueError('loaded package identity differs from installed manifest')
 for name, digest in identity['implementation_sha256'].items():
@@ -74,8 +78,22 @@ records.mkdir()
 replay = json.loads((repo / 'evidence_selector/ratchet/data/replay.json').read_text())
 for index, events in enumerate(replay['examples'][0]['records']):
     (records / f'attempt-{index}.jsonl').write_text('\n'.join(json.dumps(e) for e in events)+'\n', encoding='utf-8', newline='\n')
-run(launcher[:-1] + ['configure', '--root', str(records)], 'configure')
-run([sys.executable, 'scripts/probe_ratchet_plugin.py', '--private-dir', str(private / 'probe')], 'probe', timeout=240)
+# Codex filters arbitrary parent environment variables from MCP children.
+# Exercise the documented default saved root, preserving the user's settings.
+default_env = {k: v for k, v in env.items() if k not in ('RATCHET_CONFIG', 'UV_CACHE_DIR')}
+settings = Path.home() / '.codex/ratchet.json'
+saved = {path: path.read_bytes() if path.exists() else None for path in (settings, settings.with_suffix('.json.bak'))}
+try:
+    run(launcher[:-1] + ['configure', '--root', str(records)], 'configure', default_env)
+    run([sys.executable, 'scripts/probe_ratchet_plugin.py', '--private-dir', str(private / 'probe')], 'probe', default_env, timeout=240)
+finally:
+    for path, original in saved.items():
+        if original is None:
+            path.unlink(missing_ok=True)
+        else:
+            path.write_bytes(original)
+    if any((path.read_bytes() if path.exists() else None) != original for path, original in saved.items()):
+        raise ValueError('saved settings restoration failed')
 sys.path.insert(0, str(repo / 'scripts'))
 from verify_ratchet_probe import verify
 result = verify(private / 'probe')
@@ -86,7 +104,9 @@ result.update(scope='Plugin installed from the specified marketplace revision in
               launch='Unmodified installed uvx manifest using saved record root and immutable package commit',
               marketplace_ref=args.ref, marketplace_commit=marketplace_commit, platform=platform.system(),
               package_identity=identity, online_launcher=online, offline_launcher=offline,
-              first_install_cache='fresh dedicated uv cache', global_codex_configuration_modified=False,
+              launcher_smoke_cache='fresh dedicated uv cache', real_codex_uv_cache='default user cache warmed by configure',
+              saved_ratchet_settings='Temporarily configured, then original settings and backup restored byte for byte',
+              global_codex_configuration_modified=False,
               private_credentials_and_sessions_published=False)
 args.output.write_text(json.dumps(result, indent=2)+'\n', encoding='utf-8', newline='\n')
 print(json.dumps({'status':result['integration_status'],'platform':platform.system(),'ref':args.ref,'commit':marketplace_commit}))

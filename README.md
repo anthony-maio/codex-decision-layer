@@ -13,13 +13,13 @@ This repository also contains the earlier evidence-selection experiment with loc
 Requirements: Python 3.12 or newer, Git, and [uv](https://docs.astral.sh/uv/).
 
 ```sh
-git clone --branch release/ratchet-rc https://github.com/anthony-maio/codex-decision-layer.git
+git clone --branch v0.1.1 https://github.com/anthony-maio/codex-decision-layer.git
 cd codex-decision-layer
 uv sync --locked --extra mcp --extra ratchet
 uv run --no-sync ratchet demo
 ```
 
-These commands currently use the candidate branch; the versioned release is not yet published. This is a **recorded replay** of authored development cases. It makes no model calls and executes no tests. Use `uv run --offline --no-sync ratchet demo --json` after installation to see complete normalized reports and recorded decisions without downloading anything.
+This is a **recorded replay** of authored development cases. It makes no model calls and executes no tests. Use `uv run --offline --no-sync ratchet demo --json` after installation to see complete normalized reports and recorded decisions without downloading anything.
 
 ## What Jev adds, and where it failed
 
@@ -60,7 +60,7 @@ The plugin exposes three explicit, read-only MCP tools:
 
 The installed development plugin has completed real Codex MCP calls, including exact original retrieval. Linux and Windows repair preflights also passed; Windows needed a newer desktop-bundled CLI and workspace-local Python. [Windows setup](docs/ratchet-windows.md)
 
-The v0.1.1 patch is being prepared. RC2 installed successfully online but its tag-based launcher failed offline restart. The patch pins the package commit; fresh installed-plugin validation is pending. Follow [candidate validation](docs/ratchet-release-validation.md) for current gates. The supported integration uses explicit records and tool calls; automatic hook capture remains unverified.
+The v0.1.1 plugin pins an immutable package commit. Fresh marketplace installs, real Codex MCP calls, exact original retrieval, and cached offline restarts passed on Windows and Linux. RC2's failed tag-based offline startup remains recorded. Follow [release validation](docs/ratchet-release-validation.md) for exact revisions and limits. The supported integration uses explicit records and tool calls; automatic hook capture remains unverified.
 
 ## Inspect or reproduce the work
 

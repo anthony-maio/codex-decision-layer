@@ -1,0 +1,49 @@
+{
+  "additional_harness_failure": "First Linux installation check stopped before a model call because a Windows-owned Git worktree path was not valid to Linux Git; revision validation now uses the installed native marketplace snapshot",
+  "production_comparator_changed": false,
+  "correction": "Use the documented default saved root for real Codex; restore original settings and backup afterward",
+  "required_server_override_added": false,
+  "diagnosis": "Windows instrumented MCP launch observed RATCHET_CONFIG, UV_CACHE_DIR and CODEX_HOME absent, with default saved settings missing",
+  "attempts": [
+    {
+      "tool_call_count": 0,
+      "platform": "Windows",
+      "elapsed_seconds": 23.84399999998277,
+      "usage": {
+        "input_tokens": 54530,
+        "cached_input_tokens": 46336,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 341,
+        "reasoning_output_tokens": 138
+      },
+      "status": "TOOLS_UNAVAILABLE"
+    },
+    {
+      "tool_call_count": 0,
+      "platform": "Windows diagnostic",
+      "elapsed_seconds": 12.21799999999348,
+      "usage": {
+        "input_tokens": 36034,
+        "cached_input_tokens": 28416,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 216,
+        "reasoning_output_tokens": 81
+      },
+      "status": "TOOLS_UNAVAILABLE"
+    },
+    {
+      "tool_call_count": 0,
+      "platform": "Linux",
+      "elapsed_seconds": 18.887725753011182,
+      "usage": {
+        "input_tokens": 49062,
+        "cached_input_tokens": 37504,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 400,
+        "reasoning_output_tokens": 208
+      },
+      "status": "TOOLS_UNAVAILABLE"
+    }
+  ],
+  "scope": "Unscored installation harness failures retained separately from all 45 frozen repair trials"
+}
