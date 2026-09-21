@@ -86,18 +86,17 @@ The server refuses linked paths within the canonical root and pins directories
 during reads. A concurrent writer can cause a read to fail; it does not produce a
 new recommendation. Store completed records in a dedicated directory.
 
-The release candidate manifest launches a tagged package through `uvx`; uv and
-Git must be on Codex's PATH. The verified development installation uses an
-explicit interpreter and record root. General plugin installation from the
-published candidate is still pending. After v0.1.1-rc.2 is published, its intended
-installation commands are:
+The patch manifest launches an immutable package commit through `uvx`; uv and
+Git must be on Codex's PATH. RC2's tag reference failed offline restart and is
+retained as a failed candidate check. The corrected patch installation is being
+validated. After v0.1.1 is published, its installation commands are:
 
 ```sh
-codex plugin marketplace add anthony-maio/codex-decision-layer --ref v0.1.1-rc.2
+codex plugin marketplace add anthony-maio/codex-decision-layer --ref v0.1.1
 codex plugin add ratchet@codex-decision-layer
 ```
 
-Configure the record root before starting a new Codex task. The tagged launcher
+Configure the record root before starting a new Codex task. The pinned launcher
 uses the saved root and deterministic shadow mode. It never enables hosted
 comparison automatically. Candidate validation is tracked in
 [release validation](docs/ratchet-release-validation.md).

@@ -1,6 +1,6 @@
-# Ratchet v0.1.1-rc.2 candidate validation
+# Ratchet v0.1.1 patch validation
 
-Status: preparation in progress. This version is not yet published. Existing tags are unchanged.
+Status: patch preparation in progress. Candidate v0.1.1-rc.2 is published and retained. Its installed Git-tag launcher failed offline restart on both platforms; the patch replaces tag resolution with an immutable package commit. The patch is not yet published. Existing tags are unchanged.
 
 The candidate keeps Ratchet experimental and shadow-only. Classification failures block advisory promotion; workflow failures block savings and anti-thrashing claims. Operational safety, privacy, original recovery, or installation failures block release. These distinctions were declared in the [release plan](ratchet-plan.md) before scoring.
 
@@ -18,9 +18,13 @@ The candidate keeps Ratchet experimental and shadow-only. Classification failure
 | Matched repair usefulness | All 45 workers retained; plain 15/15, deterministic 15/15, Jev 14/15 quality passes; both Ratchet methods slower than plain | Failed; no savings claim |
 | Exact-commit hosted CI | Windows/Linux matrix passed for `cca6aee` | Preparatory candidate passed; final release commit pending |
 | Privacy and artifact audit | Tracked-file scan and reviewed numeric artifacts contain no local keys, private absolute paths, raw sessions or handoffs | Passed within recorded scope |
-| Versioned RC and published installation | Package and launcher target v0.1.1-rc.2 | Pending |
+| Versioned RC and published installation | RC2 published; fresh marketplace and online startup passed, offline launcher failed | Patch blocked pending corrected-launcher checks |
 
-The new launcher uses uvx with a tagged package reference, removing the requirement that an independently installed `ratchet` command be on Codex's PATH. It still requires uv and Git. The product MCP server remains optional; the experiment's required-server startup amendment is not the product default.
+The patch launcher uses uvx with immutable package commit `5491bef6eb8ed5992f3a0bec433bba624cd14a0c`, removing the requirement that an independently installed `ratchet` command be on Codex's PATH. That commit contains package version 0.1.1; the plugin manifests are committed afterward to avoid a self-referential commit hash. It still requires uv and Git. The product MCP server remains optional; the experiment's required-server startup amendment is not the product default.
+
+The [RC2 failure receipt](../results/ratchet/installed-tag-rc2-failure.json) preserves both failed offline starts. The same caches launched successfully with the full package commit. A local wheel smoke had missed the Git-reference behavior, so the patch gate requires a fresh marketplace installation and the unmodified installed manifest on each platform.
+
+To reproduce the installation check after publication, use `python scripts/validate_ratchet_install.py --repo . --private /path/outside/repository --ref v0.1.1 --version 0.1.1 --output ../installed-plugin-receipt.json`. The private directory must be new. This creates an isolated Codex home, copies the current user's local Codex authentication file into it, downloads into a fresh uv cache, checks an offline restart, and runs one real read-only Codex task. It uses the current sign-in and can consume model usage. Credentials and raw sessions remain in the private directory; the output contains reviewed numeric fields, package versions, and hashes. It does not modify the user's main Codex configuration.
 
 Local receipts: [suite and manifests](../results/ratchet/candidate-local-validation.json), [Windows installation](../results/ratchet/install-windows-rc2.json), and [Linux installation](../results/ratchet/install-linux-rc2.json). The tested wheel SHA-256 is `608d845d7575d48878f304111c0ceb108f901d021172d0ae1eef49f07ba9a3a8`. Wheel checks constrain dependencies with `uv.lock`; the uvx launcher resolves dependencies from package metadata. The tagged-launcher test must record its actual environment separately.
 

@@ -1,4 +1,4 @@
-# v0.1.1-rc.2: Experimental pytest failure comparison
+# v0.1.1: Experimental pytest failure comparison
 
 Candidate preparation is in progress. Ratchet adds explicit read-only Codex tools for comparing completed pytest attempts and retrieving the original reports. Deterministic checks run first; hosted Jev comparison requires explicit evidence-upload opt-in and only handles unresolved eligible pairs. A key-free recorded replay ships in the package.
 
@@ -7,6 +7,10 @@ On the independently reviewed frozen holdout, Jev recovered seven repeated block
 The candidate wheel passed Windows and Linux clean installation, fresh pytest recording, installed CLI comparison, saved-root MCP startup, and offline original recovery. Final local suites passed 116 Windows checks and 114 Linux checks, with two Windows-only skips. Hosted Windows/Linux CI passed for the preparatory candidate after correcting a Windows test-path alias issue. Published-tag installation and final-release-commit CI remain pending. Follow the [Ratchet release gates](docs/ratchet-release-validation.md) for the current state.
 
 The earlier local Eve runtimes and frozen relevance results remain available. Neither experiment currently establishes saved task time or lower cost. The Q8 asset and existing tags are unchanged.
+
+## v0.1.1-rc.2: Preserved candidate and offline-start failure
+
+This prerelease passed Windows/Linux CI and wheel installation, and its published marketplace plugin started online. Offline restart then failed on both platforms because uvx attempted to fetch the Git tag again. The patch pins an immutable package commit instead. The failed candidate tag remains unchanged, and the failure receipt is retained.
 
 ## v0.1.1-rc.1: Experimental runtime hardening
 

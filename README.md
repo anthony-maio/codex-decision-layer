@@ -60,7 +60,7 @@ The plugin exposes three explicit, read-only MCP tools:
 
 The installed development plugin has completed real Codex MCP calls, including exact original retrieval. Linux and Windows repair preflights also passed; Windows needed a newer desktop-bundled CLI and workspace-local Python. [Windows setup](docs/ratchet-windows.md)
 
-The v0.1.1-rc.2 package and tagged plugin launcher are being prepared. Published-tag installation and exact-commit CI are still pending. Follow [candidate validation](docs/ratchet-release-validation.md) for current gates. The supported integration uses explicit records and tool calls; automatic hook capture remains unverified.
+The v0.1.1 patch is being prepared. RC2 installed successfully online but its tag-based launcher failed offline restart. The patch pins the package commit; fresh installed-plugin validation is pending. Follow [candidate validation](docs/ratchet-release-validation.md) for current gates. The supported integration uses explicit records and tool calls; automatic hook capture remains unverified.
 
 ## Inspect or reproduce the work
 
