@@ -1,16 +1,19 @@
 """Real stdio protocol roundtrip against Ratchet's read-only tools."""
 import asyncio
+import argparse
 import json
+import os
 from importlib.resources import files
 from pathlib import Path
 import sys
+import subprocess
 import tempfile
 
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
 
-async def main():
+async def main(entrypoint=None):
     with tempfile.TemporaryDirectory() as temp:
         root = Path(temp)
         replay = json.loads(files("evidence_selector.ratchet").joinpath("data/replay.json").read_text())
@@ -19,6 +22,11 @@ async def main():
                 "\n".join(json.dumps(e) for e in events) + "\n", encoding="utf-8", newline="\n")
         params = StdioServerParameters(command=sys.executable,
             args=[str(Path(__file__).with_name("offline_ratchet_server.py")), str(root)])
+        if entrypoint:
+            child_env = {**os.environ, "RATCHET_CONFIG": str(root / "settings.json")}
+            subprocess.run([str(entrypoint), "configure", "--root", str(root)], env=child_env,
+                           check=True, capture_output=True, timeout=15)
+            params = StdioServerParameters(command=str(entrypoint), args=["mcp"], env=child_env)
         async with stdio_client(params) as (read, write):
             async with ClientSession(read, write) as session:
                 await session.initialize()
@@ -38,8 +46,12 @@ async def main():
                 assert denied.isError
                 print(json.dumps({"ratchet_stdio": "PASS", "read_only_annotations": True,
                     "shadow_comparison": "PASS", "exact_evidence_recovery": "PASS", "outside_root": "REFUSED",
-                    "server_dns_and_connect": "DENIED_AFTER_EVENT_LOOP_CREATION"}, indent=2))
+                    "launch": "installed_entrypoint_saved_root" if entrypoint else "offline_python_bootstrap",
+                    "server_dns_and_connect": "NOT_BLOCKED" if entrypoint else "DENIED_AFTER_EVENT_LOOP_CREATION"}, indent=2))
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--entrypoint", type=Path)
+    args = parser.parse_args()
+    asyncio.run(main(args.entrypoint))

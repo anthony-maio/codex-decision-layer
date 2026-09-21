@@ -11,3 +11,5 @@ build/
 *.log
 results/local-*.json
 .ratchet/
+.ratchet-tools/
+results/ratchet/*.json.lock

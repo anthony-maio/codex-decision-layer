@@ -21,22 +21,40 @@ def main():
         root = Path(tmp)
         env = root / "venv"
         python = env / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
+        ratchet = env / ("Scripts/ratchet.exe" if os.name == "nt" else "bin/ratchet")
+        child_env = os.environ.copy()
+        child_env["PYTEST_DISABLE_PLUGIN_AUTOLOAD"] = "1"
+        for name in ("PYTEST_ADDOPTS", "PYTEST_PLUGINS"):
+            child_env.pop(name, None)
         def run(command, expected=0):
-            result = subprocess.run(command, cwd=root, capture_output=True, text=True, encoding="utf-8", timeout=180)
+            result = subprocess.run(command, cwd=root, env=child_env, capture_output=True, text=True, encoding="utf-8", timeout=180)
             if result.returncode != expected:
                 raise RuntimeError(f"Install check failed: {result.stderr[-1000:]}")
             return result.stdout
         run(["uv", "venv", str(env), "--python", "3.12"])
         constraints = root / "constraints.txt"
-        exported = subprocess.run(["uv", "export", "--project", str(ROOT), "--locked", "--extra", "mcp", "--no-emit-project", "--no-hashes"], capture_output=True, text=True, encoding="utf-8", check=True)
+        exported = subprocess.run(["uv", "export", "--project", str(ROOT), "--locked", "--extra", "mcp", "--extra", "ratchet", "--no-emit-project", "--no-hashes"], capture_output=True, text=True, encoding="utf-8", check=True)
         constraints.write_text(exported.stdout, encoding="utf-8")
-        run(["uv", "pip", "install", "--python", str(python), "--constraints", str(constraints), str(wheel) + "[mcp]"])
+        run(["uv", "pip", "install", "--python", str(python), "--constraints", str(constraints), str(wheel) + "[mcp,ratchet]"])
         identity = json.loads(run([str(python), "-c", "import evidence_selector,importlib.metadata,json;print(json.dumps({'module':evidence_selector.__file__,'version':importlib.metadata.version('codex-evidence-selector')}))"]))
         assert Path(identity["module"]).is_relative_to(env)
         cli = json.loads(run([str(python), "-m", "evidence_selector", "doctor"]))
         assert cli["ready"]
         mcp = json.loads(run([str(python), str(ROOT / "tests/smoke_mcp.py")]))
         ratchet_mcp = json.loads(run([str(python), str(ROOT / "tests/smoke_ratchet_mcp.py")]))
+        installed_entrypoint = json.loads(run([str(python), str(ROOT / "tests/smoke_ratchet_mcp.py"), "--entrypoint", str(ratchet)]))
+        (root / "test_install.py").write_text("def test_failure():\n    assert 2 == 3\n", encoding="utf-8")
+        (root / "pytest.ini").write_text("[pytest]\ntestpaths = test_install.py\n", encoding="utf-8")
+        records = root / ".ratchet"
+        records.mkdir()
+        for number in (1, 2):
+            run([str(python), "-m", "pytest", "-q", "-p", "no:cacheprovider",
+                 "-p", "evidence_selector.ratchet.pytest_reporter", "--ratchet-task", "installed-project",
+                 "--ratchet-output", str(records / f"attempt-{number}.jsonl"), "test_install.py"], expected=1)
+        originals = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in records.iterdir()}
+        comparison = json.loads(run([str(ratchet), "compare", str(records / "attempt-1.jsonl"), str(records / "attempt-2.jsonl")]))
+        assert comparison["mode"] == "shadow" and comparison["relationship"] == "same_blocker"
+        assert originals == {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in records.iterdir()}
         run([str(python), "-m", "evidence_selector.eve_server", "--port", "0"], expected=1)
         # Restart the installed CLI/MCP with package management explicitly offline.
         offline = run(["uv", "run", "--offline", "--no-project", "--python", str(python), "python", "-m", "evidence_selector", "doctor"])
@@ -55,10 +73,13 @@ def main():
                "isolated_wheel_import": True, "cli": "PASS", "mcp": mcp, "missing_local_extra": "ACTIONABLE_NONZERO",
                "offline_installed_cli_restart": "PASS", "ratchet_offline_wheel_replay": "PASS",
                "ratchet_mcp": ratchet_mcp,
+               "ratchet_installed_entrypoint_mcp": installed_entrypoint,
+               "ratchet_fresh_project_reporter_and_cli_comparison": "PASS",
+               "ratchet_original_records_unchanged": True,
                "dependencies": "constrained by uv.lock"}
     output = Path(args.output)
     output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
+    output.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8", newline="\n")
     print(json.dumps(receipt, indent=2))
 
 

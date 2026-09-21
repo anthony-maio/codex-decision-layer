@@ -1,0 +1,23 @@
+{
+  "scope": "post-run measurement limitation; does not change frozen assessments",
+  "observations": [
+    {
+      "slot": 5,
+      "frozen_method_compliance": false,
+      "audit_complete_originals_present": true,
+      "worker_events_sha256": "e50a45ad85b0733bfc7cd0cc6f95a008520665078ba6a76293f2c7357df1ffac",
+      "finding": "frozen verifier requires whole-command JSON; worker batched the supplied reader after other inspections",
+      "frozen_row_modified": false,
+      "gate_adjustment": false
+    },
+    {
+      "slot": 7,
+      "frozen_method_compliance": false,
+      "audit_complete_originals_present": true,
+      "worker_events_sha256": "015f766a59f9c973dc418680547ea06ec360c0e38d1fdb7c7139a3b830b9888d",
+      "finding": "frozen verifier requires whole-command JSON; worker batched the supplied reader after other inspections",
+      "frozen_row_modified": false,
+      "gate_adjustment": false
+    }
+  ]
+}

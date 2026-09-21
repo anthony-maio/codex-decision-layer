@@ -243,3 +243,49 @@ review remains a historical receipt at commit 7b29191; the final runner review
 identifies its own input hashes. The next step is the committed prospective freeze
 and the 45 assigned workers. The known classification failures remain unchanged,
 so advisory behavior remains disabled regardless of workflow results.
+
+## Feasibility checkpoint 7 - 2026-09-20
+
+The prospective experiment was frozen at `2c6da13`. Its first triplet completed
+all repairs, but both Ratchet methods missed their MCP calls and used the
+original-record fallback. They retain failed method checks and unknown costs.
+Unscored diagnostics reproduced the readiness failure while direct MCP calls
+worked. Requiring the server at startup passed a real addition repair preflight;
+a second check with only that one config change passed as well.
+
+Independent review approved a prospective infrastructure amendment at `69b791e`.
+It preserves the first three rows and every original frozen input. Starting with
+slot 3, only deterministic and Jev commands add the required-server flag. The
+existing lock protects amendment claims, rows, recovery, and final audit. A
+required-server startup failure can abort the worker and must count as failure;
+this differs from the comparator's fail-open behavior after provider errors.
+All 45 positions remain assigned. The experiment is amended exploratory work,
+and its failed original usefulness gates cannot be rescued by selecting a subset.
+
+Nine of 45 workers have completed, covering the first triplet on each task.
+All nine passed task quality. Five passed the frozen method verifier. The two
+plain queue/event workers did read both complete originals, but batched the
+reader after other inspections; the verifier expects the entire command output
+to be JSON and rejected those outputs. A separate byte-and-hash audit documents
+that measurement limitation without changing their frozen rows or gates.
+The event task exercised one real Jev call: 1,121 input and 53 output tokens,
+529.8 milliseconds, zero retries, and all 29 task grading tests passed. This is
+not evidence of a speed or cost benefit. The remaining 36 workers are unrun at
+this checkpoint.
+
+Windows repair now has a passing unscored receipt. CLI 0.146.0's stalled commands
+were not fixed by removing inherited desktop routing. The tested desktop-bundled
+CLI 0.155.0-alpha.2.6 executed commands and edited the source, but its venv could
+not start a base Python in user AppData. The same Python 3.12.11 installed beneath
+the workspace passed direct read-only sandbox checks, including a derived venv.
+The full Codex repair then changed only the implementation and passed both
+existing tests in 47.1 seconds. No sandbox permissions were widened. The failed
+attempts remain in the receipts, and the working configuration is documented.
+
+Windows passed 113 unit checks; Linux passed 111 with two Windows-only skips.
+Expanded clean-wheel checks then passed on both platforms: fresh pytest failure
+recording, installed CLI comparison with unchanged originals, saved-root MCP
+startup through the installed executable, and the existing offline replay and
+protocol checks. The wheel still has the base development package version and
+is not a new release. Exact-commit hosted CI, published-plugin installation,
+the completed workflow schedule, and versioned release preparation remain open.

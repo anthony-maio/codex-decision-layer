@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "checks": {
+    "worker_completed": true,
+    "actual_addition_edit": true,
+    "tests_unchanged": true,
+    "one_observed_passing_test_command": true
+  },
+  "scope": "unscored authored Windows repair; actual source edit, unchanged supplied tests, two existing tests passed; no Ratchet comparison or usefulness measurement",
+  "elapsed_seconds": 47.14100000000326,
+  "timed_out": false,
+  "worker_exit_code": 0,
+  "usage": {
+    "input_tokens": 162549,
+    "cached_input_tokens": 137344,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 783,
+    "reasoning_output_tokens": 83
+  },
+  "events_sha256": "5d8e936a5ea175d56ef6619c064d33fe9b772bd375ccc5d57007be7c9ea3e626",
+  "implementation_sha256": "a3556971136d81b12967ea30043e028a9f506c94af78b5c0f0b94b7ce2f75edb",
+  "supplied_tests_sha256": "0cb8f9f207ec3cd60294c27e753a227801065e0392da4840c3c44fd741888368",
+  "verification_platform": "win32",
+  "codex_cli": "codex-cli 0.155.0-alpha.2.6",
+  "python": "3.12.11",
+  "python_installation": "workspace-local managed Python; no user AppData base interpreter",
+  "sandbox": "workspace-write"
+}

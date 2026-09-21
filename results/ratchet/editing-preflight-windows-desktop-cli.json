@@ -1,0 +1,26 @@
+{
+  "status": "FAIL",
+  "checks": {
+    "worker_completed": true,
+    "actual_addition_edit": true,
+    "tests_unchanged": true,
+    "one_observed_passing_test_command": false
+  },
+  "scope": "unscored authored addition repair; no Ratchet comparison or usefulness measurement",
+  "elapsed_seconds": 59.53200000000652,
+  "timed_out": false,
+  "worker_exit_code": 0,
+  "usage": {
+    "input_tokens": 175533,
+    "cached_input_tokens": 144128,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1086,
+    "reasoning_output_tokens": 258
+  },
+  "events_sha256": "7cd64b57d69ea37effa7f4445753ff42fcd1fc106f3c8af2928682bae64d0b3e",
+  "implementation_sha256": "a3556971136d81b12967ea30043e028a9f506c94af78b5c0f0b94b7ce2f75edb",
+  "supplied_tests_sha256": "0cb8f9f207ec3cd60294c27e753a227801065e0392da4840c3c44fd741888368",
+  "verification_platform": "win32",
+  "codex_cli": "codex-cli 0.155.0-alpha.2.6",
+  "interpretation": "Actual Windows repair observed; supplied unittest command failed to launch the venv base interpreter. This preflight remains FAIL."
+}

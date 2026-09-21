@@ -12,8 +12,9 @@ hook capture remains unverified after the first probe's shell commands were
 declined by policy. The supported prototype uses explicitly named records.
 
 A separate native Linux Codex preflight has edited a small authored function and
-passed its two existing tests. The Windows repair preflight timed out with the
-function unchanged. These integration checks are unscored and do not measure
+passed its two existing tests. Windows repair passed with a newer desktop-bundled
+CLI and workspace-local Python after earlier failed attempts; see the
+[Windows setup notes](docs/ratchet-windows.md). These checks are unscored and do not measure
 Ratchet's usefulness. A second Linux preflight combined four real MCP calls,
 exact original retrieval, an implementation edit, and a passing pytest test.
 The three-task prospective repair protocol and runner were frozen at `2c6da13`.
@@ -87,7 +88,8 @@ new recommendation. Store completed records in a dedicated directory.
 The plugin manifest expects the installed `ratchet` executable on Codex's PATH.
 The verified development installation uses an explicit interpreter and record
 root. General plugin installation from a published Ratchet release is still
-pending. CLI/MCP wheel installation has passed on Windows and Linux, including
+pending. Fresh pytest recording, installed CLI comparison, and saved-root MCP
+startup pass from isolated wheels on Windows and Linux. Offline checks include
 comparison and original retrieval with DNS and new connections denied after
 event-loop creation. These checks do not establish automatic event capture.
 
