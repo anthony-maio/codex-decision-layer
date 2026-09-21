@@ -1,0 +1,25 @@
+{
+  "status": "PASS_LOCAL_CHECKS",
+  "base_commit": "fdaf769",
+  "package_version": "0.1.1rc2",
+  "changes_since_base": "Documentation and this receipt only",
+  "suite_command": "python -m unittest discover -s tests -v",
+  "windows": {"tests": 116, "passed": 116, "skipped": 0, "seconds": 18.077},
+  "linux": {"tests": 116, "passed": 114, "skipped": 2, "seconds": 9.976},
+  "privacy": {
+    "tracked_files_scanned": 233,
+    "exact_local_secret_matches": 0,
+    "private_user_path_matches": 0,
+    "tracked_private_handoffs_auth_files_or_logs": 0,
+    "numeric_artifact_independent_review": "PASS",
+    "scope": "Current tracked working files; no claim of exhaustive secret discovery or Git-history audit"
+  },
+  "production_code_changed_since_clean_wheel_checks": false,
+  "workflow_trials": 45,
+  "workflow_usefulness": "FAILED",
+  "classification": "FAILED",
+  "shadow_default": true,
+  "advisory_enabled": false,
+  "published_tag_installation": "PENDING",
+  "exact_commit_hosted_ci": "PENDING"
+}

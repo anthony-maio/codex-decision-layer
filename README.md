@@ -33,7 +33,7 @@ The frozen holdout contains 30 independently reviewed pairs from authored adapte
 
 Jev recovered seven repeats that the stronger baseline missed and added no false matches. The combined system still inherited a critical deterministic mistake: two different iterable-length failures shared an error callback. Jev was never called for that already-resolved decision. Combined precision was 90.9%, below the predeclared 95% requirement. The comparator and prompt were not changed after scoring the holdout.
 
-That is a measured semantic benefit with a failed safety gate. Advisory behavior remains disabled. The prospective repair comparison is still in progress, and its disclosed startup amendment and method failures prevent an original confirmatory usefulness claim. [Holdout results](docs/ratchet-holdout-results.md) | [Repair protocol](docs/ratchet-workflow-protocol.md) | [Startup amendment](docs/ratchet-workflow-amendment-1.md)
+That is a measured semantic benefit with a failed safety gate. Advisory behavior remains disabled. All 45 prospective repair trials are complete: plain Codex and deterministic Ratchet each passed 15/15 repairs, while Ratchet plus Jev passed 14/15. Ratchet plus Jev took 30.7% longer than plain Codex by the geometric mean of per-task median ratios. Unknown costs and retained method failures also prevent the declared usefulness gates from passing. The startup amendment makes this exploratory evidence. [Holdout results](docs/ratchet-holdout-results.md) | [Repair results and independent review](docs/ratchet-workflow-results.md)
 
 ## Compare real attempts
 
