@@ -1,0 +1,16 @@
+{
+  "scope": "launcher smoke harness using the candidate wheel; not published-tag installation or real Codex",
+  "wheel_sha256": "608d845d7575d48878f304111c0ceb108f901d021172d0ae1eef49f07ba9a3a8",
+  "platforms": [
+    "Windows",
+    "Linux"
+  ],
+  "first_uvx_launch": "PASS",
+  "restart_with_UV_OFFLINE_1": "PASS",
+  "saved_root_configuration": "PASS",
+  "shadow_comparison": "PASS",
+  "both_originals_recovered": "PASS",
+  "outside_root": "REFUSED",
+  "server_network_isolation": "NOT_BLOCKED; package manager offline only",
+  "published_tag_verification": "PENDING"
+}

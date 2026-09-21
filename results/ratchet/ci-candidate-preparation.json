@@ -1,0 +1,125 @@
+{
+  "scope": "preparatory candidate branch; final release commit requires its own passing check",
+  "head_sha": "cca6aeeccd64bf7bc6e4750cbea4d93c9684b971",
+  "url": "https://github.com/anthony-maio/codex-decision-layer/actions/runs/35548607768",
+  "status": "completed",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "name": "test (ubuntu-latest)",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run uv sync --extra mcp --extra ratchet --locked --python 3.12",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run uv run --no-sync python -m unittest discover -s tests -v",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run uv run --extra mcp python tests/smoke_mcp.py",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run uv run --no-sync python tests/smoke_ratchet_mcp.py",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run uv run --no-sync python tests/smoke_ratchet_meter.py",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run uv build --wheel",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run uv run python scripts/validate_install.py --wheel \"$(echo dist/*.whl)\" --output results/local-ci-install.json",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "name": "test (windows-latest)",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run uv sync --extra mcp --extra ratchet --locked --python 3.12",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run uv run --no-sync python -m unittest discover -s tests -v",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run uv run --extra mcp python tests/smoke_mcp.py",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run uv run --no-sync python tests/smoke_ratchet_mcp.py",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run uv run --no-sync python tests/smoke_ratchet_meter.py",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run uv build --wheel",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run uv run python scripts/validate_install.py --wheel \"$(echo dist/*.whl)\" --output results/local-ci-install.json",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ]
+}

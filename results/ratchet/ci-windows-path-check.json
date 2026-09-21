@@ -7,5 +7,6 @@
   "before_fix": "FAIL: checkpoint list empty",
   "after_fix": "PASS: canonical root checkpoint, writer sharing violation, and child creation",
   "focused_windows_tests_passed": 8,
-  "hosted_fix_verification": "PENDING"
+  "hosted_fix_verification": "PASS",
+  "passing_run": "https://github.com/anthony-maio/codex-decision-layer/actions/runs/35548607768"
 }

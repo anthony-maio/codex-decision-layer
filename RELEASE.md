@@ -1,4 +1,14 @@
-# v0.1.1-rc.1: Experimental runtime hardening
+# v0.1.1-rc.2: Experimental pytest failure comparison
+
+Candidate preparation is in progress. Ratchet adds explicit read-only Codex tools for comparing completed pytest attempts and retrieving the original reports. Deterministic checks run first; hosted Jev comparison requires explicit evidence-upload opt-in and only handles unresolved eligible pairs. A key-free recorded replay ships in the package.
+
+On the independently reviewed frozen holdout, Jev recovered seven repeated blockers missed by the stronger deterministic baseline without adding false matches. The combined system inherited one critical deterministic false match and failed its 95% precision requirement. Advisory behavior stays disabled. The prospective repair experiment is still running; retained method failures and the disclosed startup amendment prevent an original confirmatory usefulness claim.
+
+The candidate wheel passed Windows and Linux clean installation, fresh pytest recording, installed CLI comparison, saved-root MCP startup, and offline original recovery. Local suites passed 113 Windows checks and 111 Linux checks, with two Windows-only skips. Hosted Windows/Linux CI passed for the preparatory candidate after correcting a Windows test-path alias issue. Published-tag installation and final-release-commit CI remain pending. Follow the [Ratchet release gates](docs/ratchet-release-validation.md) for the current state.
+
+The earlier local Eve runtimes and frozen relevance results remain available. Neither experiment currently establishes saved task time or lower cost. The Q8 asset and existing tags are unchanged.
+
+## v0.1.1-rc.1: Experimental runtime hardening
 
 This candidate adds cache-only FP32 restart, one-command managed Q8 startup/shutdown, Windows child-process ownership, CPU dependency locking, configuration validation, and actionable startup diagnostics. Tests cover truncated provider responses, Windows credential-path casing, startup deadlines, interrupted startup, and authenticated shutdown.
 

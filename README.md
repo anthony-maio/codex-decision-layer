@@ -13,13 +13,13 @@ This repository also contains the earlier evidence-selection experiment with loc
 Requirements: Python 3.12 or newer, Git, and [uv](https://docs.astral.sh/uv/).
 
 ```sh
-git clone https://github.com/anthony-maio/codex-decision-layer.git
+git clone --branch release/ratchet-rc https://github.com/anthony-maio/codex-decision-layer.git
 cd codex-decision-layer
 uv sync --locked --extra mcp --extra ratchet
 uv run --no-sync ratchet demo
 ```
 
-This is a **recorded replay** of authored development cases. It makes no model calls and executes no tests. Use `uv run --offline --no-sync ratchet demo --json` after installation to see complete normalized reports and recorded decisions without downloading anything.
+These commands currently use the candidate branch; the versioned release is not yet published. This is a **recorded replay** of authored development cases. It makes no model calls and executes no tests. Use `uv run --offline --no-sync ratchet demo --json` after installation to see complete normalized reports and recorded decisions without downloading anything.
 
 ## What Jev adds, and where it failed
 

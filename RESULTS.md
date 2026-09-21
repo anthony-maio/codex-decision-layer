@@ -1,6 +1,8 @@
 # Evaluation history
 
-Current candidate: [v0.1.1 validation](docs/release-validation.md). The public-source holdout passed Jev's relevance gates, but the matched Codex workflow failed usefulness. Eve retained everything. Shadow mode remains the only deployed behavior. The results below are the preserved v0.1.0 synthetic baseline, not the current release gate.
+Current candidate: [Ratchet validation](docs/ratchet-release-validation.md). Jev recovered seven additional repeated blockers on its frozen holdout, but the combined classifier inherited a critical false match and failed precision. The repair workflow is still in progress. Ratchet remains experimental and shadow-only.
+
+The earlier [evidence-selection validation](docs/release-validation.md) is preserved separately. Its public-source holdout passed Jev's relevance gates, but its matched Codex workflow failed usefulness. Eve retained everything. Filtering remains disabled. The results below are the preserved v0.1.0 synthetic baseline, not the current release gate.
 
 ## First evidence-selector run
 

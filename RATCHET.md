@@ -28,8 +28,9 @@ establish the original confirmatory usefulness gate.
 From this checkout:
 
 ```sh
-uv run --extra ratchet ratchet demo
-uv run --extra ratchet ratchet demo --json
+uv sync --locked --extra mcp --extra ratchet
+uv run --no-sync ratchet demo
+uv run --offline --no-sync ratchet demo --json
 ```
 
 The replay needs no API key. It shows recorded decisions and complete normalized
@@ -42,9 +43,9 @@ and the evidence behind it. This is a replay, not a live agent recording.
 Use a task identity shared only by related runs and a new output file per run:
 
 ```sh
-uv run --extra ratchet pytest -p evidence_selector.ratchet.pytest_reporter --ratchet-task example --ratchet-output .ratchet/attempt-1.jsonl
-uv run --extra ratchet pytest -p evidence_selector.ratchet.pytest_reporter --ratchet-task example --ratchet-output .ratchet/attempt-2.jsonl
-uv run ratchet compare .ratchet/attempt-1.jsonl .ratchet/attempt-2.jsonl
+uv run --no-sync pytest -p evidence_selector.ratchet.pytest_reporter --ratchet-task example --ratchet-output .ratchet/attempt-1.jsonl
+uv run --no-sync pytest -p evidence_selector.ratchet.pytest_reporter --ratchet-task example --ratchet-output .ratchet/attempt-2.jsonl
+uv run --no-sync ratchet compare .ratchet/attempt-1.jsonl .ratchet/attempt-2.jsonl
 ```
 
 The output directory is ignored by this repository. In another repository, add
@@ -55,7 +56,7 @@ them local. No reports are uploaded by the default comparator.
 Hosted comparison is separately enabled:
 
 ```sh
-uv run ratchet compare .ratchet/attempt-1.jsonl .ratchet/attempt-2.jsonl --jev --allow-hosted --env-file .env
+uv run --no-sync ratchet compare .ratchet/attempt-1.jsonl .ratchet/attempt-2.jsonl --jev --allow-hosted --env-file .env
 ```
 
 The env file supplies `TYPESAFE_API_KEY`. The hosted path sends complete failure
@@ -75,8 +76,8 @@ SHA-256 from comparison and refuses a record that has since changed.
 Configure a directory containing only the records you want the plugin to read:
 
 ```sh
-uv run --extra mcp ratchet configure --root /path/to/record-directory
-uv run --extra mcp ratchet mcp
+uv run --no-sync ratchet configure --root /path/to/record-directory
+uv run --no-sync ratchet mcp
 ```
 
 On Windows, supply a Windows directory path. Configuration is local to your user
